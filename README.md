@@ -2,7 +2,7 @@
 
 ## Omic Discordance Explained
 
-Omic layers within the MoTrPAC data are often discordant. Can this discordance be modeled or explained?
+*Omic layers within the MoTrPAC data are often discordant. Can this discordance be modeled or explained?*
 
 ### Challenge
 
@@ -16,3 +16,6 @@ Compatible MoTrPAC transcriptomic, proteomic, and PTM measurements with protein,
 
 - A catalog of concordant and discordant events
 - A predictive model of discordance
+
+> [!IMPORTANT]
+> PTM signal is not automatically a measure of modification occupancy, enzyme activity, or functional consequence.
