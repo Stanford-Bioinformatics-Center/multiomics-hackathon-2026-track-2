@@ -1,0 +1,6 @@
+"metric","value"
+"pah_genes_ranked","19593"
+"gobp_sets_available","7647"
+"gobp_sets_tested_10_to_500_genes","5183"
+"gobp_sets_bh_below_0.05","63"
+"motrpac_package_version","0.2.4"

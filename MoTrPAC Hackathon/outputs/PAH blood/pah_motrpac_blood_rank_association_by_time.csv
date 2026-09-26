@@ -1,0 +1,7 @@
+"Timepoint","shared_genes","spearman_rho","permutation_p_two_sided","permutations","gene_universe","permutation_null","permutation_fdr_six_times"
+"during_20_min",13055,-0.0787638949363291,9.99900009999e-05,10000,"genes with finite PAH t and MoTrPAC blood RNA z.std","shuffled gene labels; gene-gene dependence not preserved",0.00011998800119988
+"during_40_min",13055,-0.0285862077075032,0.0008999100089991,10000,"genes with finite PAH t and MoTrPAC blood RNA z.std","shuffled gene labels; gene-gene dependence not preserved",0.0008999100089991
+"post_10_min",13055,0.0601020705534789,9.99900009999e-05,10000,"genes with finite PAH t and MoTrPAC blood RNA z.std","shuffled gene labels; gene-gene dependence not preserved",0.00011998800119988
+"post_15_30_45_min",13055,0.124714923110028,9.99900009999e-05,10000,"genes with finite PAH t and MoTrPAC blood RNA z.std","shuffled gene labels; gene-gene dependence not preserved",0.00011998800119988
+"post_3.5_4_hr",13055,0.116057976816858,9.99900009999e-05,10000,"genes with finite PAH t and MoTrPAC blood RNA z.std","shuffled gene labels; gene-gene dependence not preserved",0.00011998800119988
+"post_24_hr",13055,0.089856161614909,9.99900009999e-05,10000,"genes with finite PAH t and MoTrPAC blood RNA z.std","shuffled gene labels; gene-gene dependence not preserved",0.00011998800119988

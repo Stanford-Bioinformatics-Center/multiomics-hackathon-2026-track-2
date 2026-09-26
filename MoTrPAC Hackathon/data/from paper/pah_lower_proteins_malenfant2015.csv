@@ -1,0 +1,10 @@
+uniprot_accession,paper_symbol,pah_to_control_ratio,reported_p_value_text,source_doi,source_table
+Q16795,NDUFA9,0.71,0.004,10.1007/s00109-014-1244-0,Table 2 (downregulated proteins)
+P22695,UQCRC2,0.74,0.006,10.1007/s00109-014-1244-0,Table 2 (downregulated proteins)
+P31930,UQCRC1,0.74,0.001,10.1007/s00109-014-1244-0,Table 2 (downregulated proteins)
+O75964,ATP5L,0.7,0.01,10.1007/s00109-014-1244-0,Table 2 (downregulated proteins)
+P06576,ATP5B,0.74,<0.0001,10.1007/s00109-014-1244-0,Table 2 (downregulated proteins)
+P48735,IDH2,0.74,0.05,10.1007/s00109-014-1244-0,Table 2 (downregulated proteins)
+Q02218,OGDH,0.77,0.002,10.1007/s00109-014-1244-0,Table 2 (downregulated proteins)
+P12235,SLC25A4,0.65,<0.0001,10.1007/s00109-014-1244-0,Table 2 (downregulated proteins)
+Q13011,ECH1,0.57,0.02,10.1007/s00109-014-1244-0,Table 2 (downregulated proteins)

@@ -1,0 +1,7 @@
+scripts/.Rhistory
+**/__pycache__/
+*.pyc
+
+# The scripts use the curated Table 2 CSV; this local publisher PDF is not
+# required for a teammate's run. Link to the article in README instead.
+data/from paper/Malenfant2015.pdf

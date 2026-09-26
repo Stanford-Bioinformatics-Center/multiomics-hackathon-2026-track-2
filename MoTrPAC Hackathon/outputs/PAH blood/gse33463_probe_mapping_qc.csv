@@ -1,0 +1,7 @@
+"metric","value"
+"tested_probes",48803
+"annotated_probes",29255
+"unique_genes",19593
+"genes_with_multiple_probes",6392
+"collapsed_extra_probes",9662
+"selected_genes_with_probe_bh_below_0.05",2442
