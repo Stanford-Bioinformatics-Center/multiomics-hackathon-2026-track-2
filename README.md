@@ -21,18 +21,30 @@ Compatible MoTrPAC transcriptomic, proteomic, and PTM measurements with protein,
 > PTM signal is not automatically a measure of modification occupancy, enzyme activity, or functional consequence.
 
 ### Project Snapshot 
+#### Title, one-line purpose, team, intended users, and why it matters
 
 ### Research Question 
+#### Problem, hypothesis or objective, scope, and success criteria 
 
 ### Workflow 
+#### 
 
 ### Setup 
+#### Prerequisites + versions
+#### Install commands
+#### Data downloads + pthas 
+#### Containers or notebooks 
 
 
 ### Inputs & Outputs 
+#### Quick start
+#### accessions, CSVs, FASTQ, API terms 
+#### tables, plots, JSON, dashboards 
 
 ### Methods
+#### Analysis Approach, Datasets + access dates, APIs, models, versions, external code + AI use, Citations & License 
 
 ### Validation 
+#### Small test dataset/data subset, Expected Output, screenshots or plots, known failure modes 
 
 ### Reuse
