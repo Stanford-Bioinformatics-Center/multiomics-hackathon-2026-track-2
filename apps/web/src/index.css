@@ -429,3 +429,9 @@ button { font: inherit; }
   .app-footer { display: block; }
   .app-footer span { display: block; margin-top: 5px; }
 }
+
+/* Shared ResultsTable component (used across Live, Generalized, Discordance, Metabolomics). */
+.results-table { margin-top: 12px; }
+.results-table__caption { margin: 0 18px 4px; }
+.results-table .table-row--head small { display: block; font-weight: 400; font-size: 7px; opacity: .85; }
+.results-table__ortholog { display: inline-block; margin-top: 3px; color: var(--purple); background: var(--purple-soft); border-radius: 4px; padding: 3px 5px; font: 600 8px/1.2 "IBM Plex Mono", monospace; }

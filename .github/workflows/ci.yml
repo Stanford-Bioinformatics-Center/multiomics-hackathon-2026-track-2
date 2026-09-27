@@ -24,6 +24,24 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Golden-hash guard — analysis.py byte-identical to golden reference
+        # R9 AC9: if the engine's analysis.py is modified, CI must confirm it is byte-identical to
+        # the committed golden reference by comparing content hashes. This runs on every push/PR;
+        # any modification to analysis.py changes its sha256 and fails this step, blocking the merge.
+        # Golden reference: hackathon/tool/analysis.py.sha256 (standard `shasum -a 256` format).
+        run: |
+          echo "recorded golden reference:"
+          cat analysis.py.sha256
+          echo "recomputed hash of the working analysis.py:"
+          shasum -a 256 analysis.py
+          if ! shasum -a 256 -c analysis.py.sha256; then
+            echo "GOLDEN-HASH GUARD FAILED: analysis.py is NOT byte-identical to the golden reference"
+            echo "(hackathon/tool/analysis.py.sha256). If this change to analysis.py is intended,"
+            echo "re-run \`shasum -a 256 analysis.py > analysis.py.sha256\`, re-verify the engine"
+            echo "battery (122/34) and \`python analysis.py\` output, and commit the updated reference."
+            exit 1
+          fi
+          echo "GOLDEN-HASH GUARD PASSED: analysis.py matches the golden reference"
       - name: Install engine + service (editable)
         run: |
           python -m pip install --upgrade pip
@@ -32,7 +50,10 @@ jobs:
           pip install "fastapi>=0.110" "httpx>=0.27"
       - name: Fetch the prebuilt store
         run: mprobe store fetch
-      - name: Engine tests (skip reporting + expected-skip allowlist)
+      - name: Engine tests (full-battery gate — EXACTLY 122 passed / 34 skipped)
+        # R9 AC7/AC8: the verification battery is complete ONLY when the engine suite reports
+        # EXACTLY 122 passed and 34 skipped. Any deviation (more/fewer passes, more/fewer skips,
+        # any failure/error) blocks the battery and therefore the merge (CI fails).
         run: |
           python -m pytest -q -rs | tee /tmp/pytest.txt
           # allowlist: only the known store/deck/R skips are permitted (34 total)
@@ -40,20 +61,89 @@ jobs:
           import re, sys
           txt = open("/tmp/pytest.txt").read()
           m = re.search(r"(\d+) passed(?:, (\d+) skipped)?", txt)
+          if not m:
+              print("could not parse the pytest summary line — treating as a battery failure")
+              sys.exit(1)
           passed = int(m.group(1)); skipped = int(m.group(2) or 0)
           print(f"passed={passed} skipped={skipped}")
-          allowed = re.findall(r"needs the local hackathon/ data|motrpac R env not available|no store", txt)
           # every skip line must match an allowlisted reason
           skip_lines = [l for l in txt.splitlines() if l.startswith("SKIPPED")]
           bad = [l for l in skip_lines if not re.search(
               r"needs the local hackathon/ data|motrpac R env not available|no store", l)]
           if bad:
               print("UNEXPECTED SKIPS:\n" + "\n".join(bad)); sys.exit(1)
-          if passed < 100:
-              print("too few passing tests"); sys.exit(1)
+          # R9 AC7: the battery is complete ONLY at exactly 122 passed AND 34 skipped.
+          EXPECTED_PASSED, EXPECTED_SKIPPED = 122, 34
+          if passed != EXPECTED_PASSED or skipped != EXPECTED_SKIPPED:
+              print(f"ENGINE BATTERY GATE FAILED: expected exactly {EXPECTED_PASSED} passed / "
+                    f"{EXPECTED_SKIPPED} skipped, got {passed} passed / {skipped} skipped — "
+                    f"the verification battery is NOT complete and the merge is blocked (R9 AC8)")
+              sys.exit(1)
+          print(f"ENGINE BATTERY GATE PASSED: exactly {passed} passed / {skipped} skipped")
           PY
       - name: Service / API / catalog / parity tests
         run: python -m pytest -q ../../apps/api/tests
+      - name: httpx API smoke check (single pass, must not skip)
+        # R9 AC1-3 / task 12.1: the httpx smoke test is collected by the run above, but assert
+        # here that it actually EXECUTED rather than silently skipping (it skips when the store or
+        # a committed demo is absent). `mprobe store fetch` ran earlier, so it must run and pass.
+        run: |
+          python -m pytest -q ../../apps/api/tests/test_smoke_httpx.py -rs | tee /tmp/smoke.txt
+          python - <<'PY'
+          import re, sys
+          txt = open("/tmp/smoke.txt").read()
+          if re.search(r"\bno tests ran\b", txt) or " skipped" in txt or "SKIPPED" in txt:
+              print("httpx smoke test was SKIPPED or did not run — the store/demo outputs must be present in CI")
+              sys.exit(1)
+          if not re.search(r"\b1 passed\b", txt):
+              print("httpx smoke test did not report the expected single pass")
+              sys.exit(1)
+          print("httpx smoke test executed and passed")
+          PY
+
+  e2e:
+    # R9 AC4-6 / task 12.2+12.3: boot the real API + web and run the Playwright browser battery.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Python engine + service so the API webServer in playwright.config.ts can boot ---
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install engine + service (editable, with uvicorn)
+        working-directory: hackathon/tool
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[test]"
+          # [api] pulls in uvicorn, which playwright.config.ts's default API command needs on PATH.
+          pip install -e "../../apps/api[api,test]"
+      - name: Fetch the prebuilt store
+        working-directory: hackathon/tool
+        run: mprobe store fetch
+
+      # --- Node 22 + pnpm (matching the web job) ---
+      - uses: pnpm/action-setup@v4
+        with:
+          version: "10.34.3"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+          cache-dependency-path: apps/web/pnpm-lock.yaml
+      - name: Install web dependencies (frozen lockfile)
+        working-directory: apps/web
+        run: pnpm install --frozen-lockfile
+      - name: Install Playwright browser (chromium + deps)
+        working-directory: apps/web
+        run: pnpm run test:e2e:install
+      - name: Playwright end-to-end (boots API + web)
+        working-directory: apps/web
+        env:
+          # playwright.config.ts boots the API via `uvicorn ...` from E2E_API_CWD. uvicorn is on PATH
+          # from the [api] install above; point the API cwd at apps/api so the module resolves.
+          E2E_API_CWD: ${{ github.workspace }}/apps/api
+        run: pnpm run test:e2e
 
   web:
     runs-on: ubuntu-latest
@@ -62,11 +152,17 @@ jobs:
         working-directory: apps/web
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: "10.34.3"
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: npm install
+          cache: "pnpm"
+          cache-dependency-path: apps/web/pnpm-lock.yaml
+      - name: Install dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile
       - name: Domain tests
-        run: npm test
+        run: pnpm test
       - name: Production build
-        run: npm run build
+        run: pnpm run build

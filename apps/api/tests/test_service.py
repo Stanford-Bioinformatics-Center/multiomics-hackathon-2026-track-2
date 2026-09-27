@@ -131,3 +131,102 @@ def test_mapping_decision_id_ties_to_audit():
     for f in resp.features:
         # the gene in a mapping_decision_id must be one that appears in the mapping audit
         assert f.gene in audit_genes
+
+
+# ==================================================================================================
+# Property-based tests (Hypothesis). These VERIFY existing backend behavior; they do not change the
+# engine or service logic. Property 5 exercises the pure `service._run_id`; Property 11 exercises the
+# pure species -> study-design derivation (`catalog.SPECIES_DESIGN` + `resolve_availability`).
+# ==================================================================================================
+from hypothesis import given, settings, strategies as st
+
+from motrpac_probe_service import service as _service
+from motrpac_probe_service import catalog as _catalog
+
+
+# ---- reusable strategies -------------------------------------------------------------------------
+_species = st.sampled_from(["rat", "human"])
+_omics = st.lists(st.sampled_from(["transcriptomics", "proteomics", "phosphoproteomics"]),
+                  min_size=1, max_size=3, unique=True)
+# valid analysis FDR thresholds: 0 < t <= 1
+_fdr = st.floats(min_value=1e-6, max_value=1.0, allow_nan=False, allow_infinity=False)
+_sig_bytes = st.binary(min_size=0, max_size=64)
+_family = st.lists(st.text(min_size=1, max_size=12), min_size=0, max_size=6)
+
+
+def _mk_request(species, omics, fdr, include_ns, sig_text="g,d\nMYH7,1\n"):
+    return AnalysisRequest(signature_csv_text=sig_text, target_species=species,
+                           selected_omics=list(omics), fdr_threshold=fdr,
+                           include_nonsignificant=include_ns)
+
+
+# Feature: finalize-discordance-mvp, Property 5
+# For any signature + analysis parameters: identical inputs -> identical run_id; changing the
+# fdr_threshold changes the run_id; toggling include_nonsignificant (presentation-only) does not.
+# Validates: Requirements 4.13, 4.14
+@settings(max_examples=150, deadline=None)
+@given(sig=_sig_bytes, species=_species, omics=_omics, fdr=_fdr,
+       include_ns=st.booleans(), family=_family)
+def test_property5_run_id_determinism(sig, species, omics, fdr, include_ns, family):
+    mapping_version = "idmap@deadbeef"
+    store_hash = "deadbeef"
+
+    req = _mk_request(species, omics, fdr, include_ns)
+
+    # 1) deterministic: same inputs -> same run_id (recompute; no hidden state)
+    id_a = _service._run_id(sig, req, list(family), mapping_version, store_hash)
+    id_b = _service._run_id(sig, req, list(family), mapping_version, store_hash)
+    assert id_a == id_b
+
+    # 2) presentation-only include_nonsignificant MUST NOT change the run_id
+    req_toggled = _mk_request(species, omics, fdr, not include_ns)
+    id_toggled = _service._run_id(sig, req_toggled, list(family), mapping_version, store_hash)
+    assert id_toggled == id_a
+
+    # 3) an analysis parameter (fdr_threshold) MUST change the run_id
+    other_fdr = fdr / 2.0 if fdr > 2e-6 else fdr * 2.0
+    if other_fdr != fdr:
+        req_fdr = _mk_request(species, omics, other_fdr, include_ns)
+        id_fdr = _service._run_id(sig, req_fdr, list(family), mapping_version, store_hash)
+        assert id_fdr != id_a
+
+
+# Feature: finalize-discordance-mvp, Property 11
+# For any target species, the resolved study design is derived on the backend from species alone:
+# rat -> chronic, human -> acute; there is no acute/chronic input. Presentation/analysis choices
+# (omics, tissue, sex, timepoint, fdr) do not alter the derived design.
+# Validates: Requirements 11.2, 11.3
+@settings(max_examples=150, deadline=None)
+@given(species=_species, omics=_omics, fdr=_fdr, include_ns=st.booleans(),
+       tissue=st.one_of(st.none(), st.text(min_size=1, max_size=8)),
+       sex=st.one_of(st.none(), st.sampled_from(["M", "F", "male", "female"])),
+       timepoint=st.one_of(st.none(), st.text(min_size=1, max_size=6)))
+def test_property11_species_derived_study(species, omics, fdr, include_ns, tissue, sex, timepoint):
+    expected = "chronic" if species == "rat" else "acute"
+
+    # the derivation is a pure species -> (design_id, label) mapping
+    design_id, _label = _catalog.SPECIES_DESIGN[species]
+    assert design_id == expected
+    # no acute/chronic input exists on the request contract
+    assert not hasattr(AnalysisRequest(), "study_design")
+    assert not hasattr(AnalysisRequest(), "acute_chronic")
+
+    # and it manifests identically through resolve_availability regardless of the other selections
+    res = _catalog.resolve_availability(species, list(omics), tissue=tissue, sex=sex,
+                                        timepoint=timepoint)
+    resolved = res["resolved_context"]
+    assert resolved is not None
+    assert resolved["species"] == species
+    assert resolved["study_design"] == expected
+
+
+# Feature: finalize-discordance-mvp, Property 11
+# Unsupported source species never resolve to a study design (no chronic/acute is fabricated).
+# Validates: Requirements 11.2, 11.3
+@settings(max_examples=100, deadline=None)
+@given(species=st.sampled_from(["mouse", "other", "zebrafish", ""]), omics=_omics)
+def test_property11_unsupported_species_has_no_design(species, omics):
+    assert species not in _catalog.SPECIES_DESIGN
+    res = _catalog.resolve_availability(species, list(omics))
+    assert res["status"] == "no_matching_context"
+    assert res["resolved_context"] is None

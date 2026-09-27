@@ -24,6 +24,7 @@ from pydantic import BaseModel, Field, model_validator
 
 from . import catalog as _catalog
 from . import convergence as _convergence
+from . import discordance_casestudy as _discordance
 from . import generalized_query as _genq
 from . import metab_casestudy as _metab
 from . import export as _export
@@ -100,6 +101,13 @@ class AnalysisRequestIn(BaseModel):
             signature_name=self.signature_name, target_species=self.target_species,
             selected_omics=self.selected_omics, tissue=self.tissue, sex=self.sex, timepoint=self.timepoint,
             fdr_threshold=self.fdr_threshold, include_nonsignificant=self.include_nonsignificant)
+
+
+class GeneralizedQueryUploadIn(BaseModel):
+    signature_csv_text: str
+    tissue: str
+    reference_contrast_category: str
+    reference: str = "default"
 
 
 class AvailabilityRequestIn(BaseModel):
@@ -289,6 +297,24 @@ def get_generalized_signatures():
     return _genq.list_signatures()
 
 
+@app.post("/api/generalized/query")
+def run_generalized_query_upload(req: GeneralizedQueryUploadIn):
+    """Run an uploaded/pasted disease signature through query_core (schema-gated). query_core is the
+    source of truth. Non-conforming input is rejected with 422 naming the unmet schema requirement
+    (translated from `generalized_query.SchemaError`); a missing module -> 404 (FileNotFoundError).
+    The GET path-param route below is a distinct method, so there is no route collision."""
+    if not _genq.available():
+        raise HTTPException(status_code=404, detail="generalized query_core module not present")
+    try:
+        return _genq.run_uploaded(
+            req.signature_csv_text, tissue=req.tissue,
+            reference_contrast_category=req.reference_contrast_category, reference=req.reference)
+    except _genq.SchemaError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
 @app.get("/api/generalized/query/{signature_id}")
 def run_generalized_query(signature_id: str):
     """Run a bundled signature through query_core against the MoTrPAC reference. The engine is the
@@ -299,3 +325,43 @@ def run_generalized_query(signature_id: str):
         return _genq.run_bundled(signature_id)
     except KeyError:
         raise HTTPException(status_code=404, detail=f"unknown signature: {signature_id}")
+
+
+# ---- discordance (Track 2): FOURTH analysis type - committed demo outputs, read-only ---------------
+# Option-1 adapter (mirrors metabolomics): GET-only, no _RUNS cache entry, no write/create/update/
+# delete. The standalone discordance modules remain the sole source of truth; this layer only serves
+# committed demo outputs shaped JSON-safe. Unavailable resource (missing/invalid committed output) ->
+# 404, matching get_metab_casestudy; the adapter's build_*() raises FileNotFoundError in that case.
+
+@app.get("/api/discordance/catalog")
+def get_discordance_catalog():
+    if not _discordance.catalog_available():
+        raise HTTPException(status_code=404,
+                            detail="discordance catalog outputs not present or event-class domain "
+                                   "invalid (run the discordance pipeline)")
+    try:
+        return asdict(_discordance.build_catalog_summary())
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@app.get("/api/discordance/model")
+def get_discordance_model():
+    if not _discordance.model_available():
+        raise HTTPException(status_code=404,
+                            detail="discordance model outputs not present (run the discordance pipeline)")
+    try:
+        return asdict(_discordance.build_model())
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@app.get("/api/discordance/ptm-parent")
+def get_discordance_ptm_parent():
+    if not _discordance.ptm_available():
+        raise HTTPException(status_code=404,
+                            detail="PTM phosphosite-vs-parent audit outputs not present (run the audit)")
+    try:
+        return asdict(_discordance.build_ptm_parent())
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))

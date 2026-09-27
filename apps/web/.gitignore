@@ -19,3 +19,8 @@ logs/
 # beside it.
 /.plugins/
 /.opencode-skills/
+
+# Playwright e2e artifacts (test run output, HTML report, browser cache)
+/test-results/
+/playwright-report/
+/playwright/.cache/

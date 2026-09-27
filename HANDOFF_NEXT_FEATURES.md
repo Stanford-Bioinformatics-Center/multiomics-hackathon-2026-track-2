@@ -173,7 +173,7 @@ a user needs.
 - Traceability: each feature gets ADR entries in DECISIONS.md, a VERIFICATION.md checkpoint (commands,
   counts, hashes), and REQUIREMENTS_TRACEABILITY.md rows.
 - Verify before claiming: engine (pytest -q -rs, expect 122/34), api (pytest apps/api/tests), web
-  (npm test + npm run build); confirm python analysis.py stays byte-identical to the golden baseline
+  (pnpm test + pnpm run build); confirm python analysis.py stays byte-identical to the golden baseline
   whenever anything near the engine changes.
 
 ## Suggested first steps for the next session

@@ -59,6 +59,13 @@ ANALYSIS_TYPES = {
         "engine": "standalone MoTrPAC Hackathon/generalized query_core (source of truth)",
         "api": True, "react": True,
     },
+    "discordance_catalog": {
+        "label": "Discordance catalog + predictive model",
+        "cohort": "MoTrPAC muscle EE-CON: RNA vs total protein vs PTM within tissue (committed demo)",
+        "engine": "standalone MoTrPAC Hackathon/generalized/discordance module (read-only adapter)",
+        "api": True, "react": True,
+        "note": "Serves committed demo outputs; live recompute is a documented follow-on, not in this MVP.",
+    },
 }
 
 

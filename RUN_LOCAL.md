@@ -9,6 +9,15 @@ You open the **web** URL in your browser — not the API. They run on different 
 
 ## Prerequisites (one time)
 
+For a fresh clone, the one-command bootstrap documented in [BOOTSTRAP.md](BOOTSTRAP.md)
+runs all of the steps below (editable installs + `mprobe store fetch` + a smoke check):
+
+```
+bash scripts/bootstrap.sh
+```
+
+Or do the same steps manually:
+
 ```
 cd "multiomics-hackathon-2026-track-2/hackathon/tool"
 python -m venv .venv
@@ -33,13 +42,13 @@ Port 8765 is an arbitrary free choice; use anything not already taken.
 
 ```
 cd "multiomics-hackathon-2026-track-2/apps/web"
-npm install
-VITE_API_BASE_URL=http://127.0.0.1:8765/api PORT=8443 npm run dev
+pnpm install --frozen-lockfile
+VITE_API_BASE_URL=http://127.0.0.1:8765/api PORT=8443 pnpm run dev
 ```
 Vite prints a URL like `http://localhost:8443/`. Open that in your browser. `VITE_API_BASE_URL` tells
 the frontend where the API is; without it the live views cannot fetch data.
 
-If 8443 (or 5173) is busy, pick another: `PORT=5199 ... npm run dev`. If an old Vite is stuck, find and
+If 8443 (or 5173) is busy, pick another: `PORT=5199 ... pnpm run dev`. If an old Vite is stuck, find and
 stop it: `lsof -nP -iTCP:5173 -sTCP:LISTEN` then `kill <PID>`.
 
 ## What you'll see (8 views in the top nav)

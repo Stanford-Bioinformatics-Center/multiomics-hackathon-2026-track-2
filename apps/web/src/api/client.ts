@@ -165,6 +165,18 @@ export interface GeneralizedQueryResult {
   provenance: Record<string, unknown>;
 }
 
+/**
+ * Request body for `POST /generalized/query` (task 7.3): run an uploaded/pasted disease signature
+ * through query_core. The backend validates `signature_csv_text` against the query_core schema and
+ * returns the same normalized payload as the bundled GET route, so the response is `GeneralizedQueryResult`.
+ */
+export interface GeneralizedQueryUploadInput {
+  signature_csv_text: string;
+  tissue: string;
+  reference_contrast_category: string;
+  reference?: string;
+}
+
 export interface MetabHit {
   evidence_id: string;
   refmet_name: string;
@@ -198,6 +210,89 @@ export interface MetabCaseStudy {
   conclusion: string;
   caveats: string[];
   hits: MetabHit[];
+  provenance: Record<string, unknown>;
+}
+
+/**
+ * Discordance case-study responses (Option-1 read-only adapter: `discordance_casestudy.py`).
+ * These mirror the adapter's dataclasses EXACTLY (CatalogSummaryResponse, ModelResponse,
+ * PtmParentResponse). The adapter serves committed demo outputs and computes no statistics.
+ */
+export interface DiscordanceCatalogResponse {
+  run_id: string;
+  schema_version: string;
+  analysis_type: "discordance_catalog";
+  case_study_id: string;
+  cohort_label: string;
+  title: string;
+  tissue: string;
+  contrast_category: string;
+  total_events: number;
+  /** The four supported classification classes, zero-filled (supported_opposite may be 0). */
+  classification_counts: {
+    supported_concordant: number;
+    supported_opposite: number;
+    rna_response_protein_equivalent: number;
+    indeterminate: number;
+  };
+  /** Coverage states, kept separate from the classification classes. */
+  coverage_counts: {
+    no_protein_measurement: number;
+    no_rna_measurement: number;
+  };
+  occupancy_caveat: string;
+  limitations: string[];
+  provenance: Record<string, unknown>;
+}
+
+export interface DiscordanceModelMetricRow {
+  subset: "all_mapped" | "rna_responsive";
+  model: "zero" | "rna_only" | "temporal";
+  n_rows: number | null;
+  n_genes: number | null;
+  mae: number | null;
+  rmse: number | null;
+  r2: number | null;
+}
+
+export interface DiscordanceModelResponse {
+  run_id: string;
+  schema_version: string;
+  analysis_type: "discordance_model";
+  case_study_id: string;
+  tissue: string;
+  contrast_category: string;
+  /** Exactly 6 rows = {all_mapped, rna_responsive} x {zero, rna_only, temporal}. */
+  metrics: DiscordanceModelMetricRow[];
+  /** Visible honest-framing statement: the out-of-fold R2 is near zero (weak prediction). */
+  weak_prediction_note: string;
+  limitations: string[];
+  provenance: Record<string, unknown>;
+}
+
+export interface PtmParentSummaryRow {
+  tissue: string;
+  contrast_category: string;
+  timepoint: string;
+  raw_phosphosite_rows: number | null;
+  after_mapping_checks_with_uniprot: number | null;
+  excluded_missing_or_ambiguous_site_mapping: number | null;
+  matched_to_single_gene_uniprot_single_feature_parent: number | null;
+  matched_with_both_site_and_parent_ci: number | null;
+  supported_phosphosite_rows_among_matched: number | null;
+  parent_equivalent_rows_among_matched: number | null;
+  supported_phosphosite_and_parent_equivalent_rows: number | null;
+  candidate_genes: number | null;
+}
+
+export interface PtmParentResponse {
+  run_id: string;
+  schema_version: string;
+  analysis_type: "ptm_parent_audit";
+  /** One row per timepoint. */
+  summary_rows: PtmParentSummaryRow[];
+  candidate_count: number;
+  occupancy_caveat: string;
   provenance: Record<string, unknown>;
 }
 
@@ -286,4 +381,9 @@ export const api = {
   metabExportUrl: () => `${BASE}/metabolomics/casestudy/export`,
   generalizedSignatures: () => getJSON<{ signatures: GeneralizedSignature[]; note: string }>("/generalized/signatures"),
   generalizedQuery: (id: string) => getJSON<GeneralizedQueryResult>(`/generalized/query/${id}`),
+  generalizedQueryUpload: (body: GeneralizedQueryUploadInput) =>
+    postJSON<GeneralizedQueryResult>("/generalized/query", body),
+  discordanceCatalog: () => getJSON<DiscordanceCatalogResponse>("/discordance/catalog"),
+  discordanceModel: () => getJSON<DiscordanceModelResponse>("/discordance/model"),
+  discordancePtmParent: () => getJSON<PtmParentResponse>("/discordance/ptm-parent"),
 };
