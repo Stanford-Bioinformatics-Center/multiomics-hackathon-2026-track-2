@@ -603,6 +603,9 @@ def bundle(out=None):
     return out, sha256(out)
 
 
+BUNDLE_SHA256 = "04f866a2ae5f3e4e7561b5893b2294eca2d64c858a9244f5e6445baabda8c382"
+
+
 def fetch(url=BUNDLE_URL, expected_sha256=None, log=print):
     """Download the prebuilt store bundle into tool/store/ (any OS; stdlib only) and verify every file's sha256."""
     import tempfile
@@ -616,6 +619,8 @@ def fetch(url=BUNDLE_URL, expected_sha256=None, log=print):
             tmp = Path(url)
         else:
             urllib.request.urlretrieve(url, tmp)
+        if expected_sha256 is None and url == BUNDLE_URL:
+            expected_sha256 = BUNDLE_SHA256
         if expected_sha256 and sha256(tmp) != expected_sha256:
             raise SystemExit(f"bundle sha256 mismatch: {sha256(tmp)} != {expected_sha256}")
         with zipfile.ZipFile(tmp) as z:

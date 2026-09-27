@@ -20,38 +20,85 @@ pathway class rather than the disease. It uses only public MoTrPAC summary stati
 Everything else is plumbing: report and figure rendering (`run.py`, `figures.py`, `render.py`), the CLI, the gallery
 and the app. Method details for every module: `docs/METHODS.md`.
 
-## Install (macOS, Linux, Windows)
+## Quick start (macOS, Linux, Windows)
 
-Needs Python 3.11 or newer; pure Python wheels only (no R, no compiler).
+Needs Python 3.11 or newer and git. Everything installs from wheels: no R, no compiler, no cluster access.
 
-```
-git clone https://github.com/Stanford-Bioinformatics-Center/multiomics-hackathon-2026-track-2.git
+**1. Install into an isolated environment**
+
+```bash
+git clone -b t3code/build-motrpac-probe-tool https://github.com/Stanford-Bioinformatics-Center/multiomics-hackathon-2026-track-2.git
 cd multiomics-hackathon-2026-track-2/hackathon/tool
-python -m venv .venv
-.venv/bin/activate            # Windows: .venv\Scripts\activate
-pip install -r requirements.txt -e .        # add ".[app]" for the marimo app
-mprobe store fetch            # ~180 MB prebuilt store (public MoTrPAC summary statistics), sha256-verified
-mprobe run --signature examples/pah_muscle_malenfant2015.csv
+python3 -m venv .venv
+source .venv/bin/activate          # Windows (PowerShell): .venv\Scripts\Activate.ps1
+pip install -r requirements.txt -e ".[app]"      # ~1 min; drop [app] if you do not need the interactive app
 ```
-`mprobe store fetch --url <path-or-URL>` also accepts a local copy of the bundle. Maintainers with the hackathon
-data (`hackathon/data/`, the R packages) rebuild everything with `mprobe store build` and `make all` (or
-`python scripts/build_all.py`, which works on Windows too); `make slurm-all` runs it on the cluster's desktop node.
-The analysis functions are executed from `hackathon/scripts/` when present, otherwise from verbatim copies shipped
-in `src/motrpac_probe/legacy_scripts/`; provenance records which. Tests: `python -m pytest -q` (tests that need the
-local hackathon data are skipped automatically on a fresh clone).
 
-## One-command use
+**2. Download the data store** (~180 MB, public MoTrPAC summary statistics; every file is sha256-checked)
+
+```bash
+mprobe store fetch
+```
+The bundle is the GitHub release asset
+[`mprobe-store-v1`](https://github.com/Stanford-Bioinformatics-Center/multiomics-hackathon-2026-track-2/releases/tag/mprobe-store-v1);
+`mprobe store fetch --url <path-or-URL>` accepts a local copy.
+
+**3. See the core result in the terminal**
+
+```bash
+python analysis.py            # PAH muscle signature: opposed / measured, cameraPR t, specificity, RNA vs protein (~2 s)
+python analysis.py examples/type2_diabetes_muscle_mootha2003.csv
+```
+
+**4. Full reports from the command line** (each writes `out/<name>/report.html`; open it in any browser, e.g.
+`open out/pah_muscle_malenfant2015/report.html` on macOS)
+
+```bash
+mprobe run --signature examples/pah_muscle_malenfant2015.csv        # gene/protein signature, ~15 s
+mprobe run --signature examples/random_mito9.csv --name demo        # random mitochondrial genes: the specificity lesson
+mprobe run --signature examples/pah_blood_gse33463_ranked.csv.gz    # a full disease ranking (sections R and P)
+mprobe run --signature examples/tca_intermediates_demo.csv          # a metabolite signature
+mprobe compare --signatures examples/pah_muscle_malenfant2015.csv examples/type2_diabetes_muscle_mootha2003.csv examples/random_mito9.csv
+mprobe discord --species rat --tissue SKM-GN                        # which omic layer responds, when, and why (~1 min)
+mprobe library build                                                # MoTrPAC as GMT gene sets -> store/library/
+mprobe library query --signature examples/pah_muscle_malenfant2015.csv
+mprobe site build && python -m http.server --directory site 8000    # gallery of all reports at http://localhost:8000
+```
+Every option has a flag (`mprobe run -h`); `config.example.yaml` mirrors them all (`--config file.yaml`).
+
+**5. Your own signature**: a CSV with one row per gene, for example `my_disease.csv`:
 
 ```
-mprobe run --signature my_signature.csv --name my_disease         # -> out/my_disease/report.html  (~15-40 s)
-mprobe compare --signatures a.csv b.csv c.csv                      # -> out/compare/report.html
-mprobe discord --species rat --tissue SKM-GN [--signature x.csv]   # -> out/discord_SKM-GN/report.html (~1 min)
-mprobe library build                                               # -> store/library/*.gmt + index JSON
-mprobe library query --signature my_signature.csv                  # ranked MoTrPAC contrasts
-mprobe site build                                                  # -> site/index.html (static gallery)
+gene_symbol,direction
+NDUFA9,-1
+LDHA,1
 ```
-Serve the gallery with `python -m http.server --directory site 8000`. Every option has a flag; `mprobe run -h`
-lists them, and `config.example.yaml` mirrors them all (`--config`).
+then `mprobe run --signature my_disease.csv --name my_disease`. Formats are listed below.
+
+**6. Interactive app**
+
+```bash
+marimo run app.py             # opens http://localhost:2718 (store loads in ~4 s)
+```
+1. "Signature from": an example, an uploaded CSV, or pasted lines such as `NDUFA9,-1`.
+2. Choose tissues, FDR cutoff, background and the number of random sets; press **Run analysis** (~8 s).
+3. Read down the page: coverage and unmapped genes; the agreement grid with a gene selector for its trajectory;
+   set-level opposition with null percentiles; RNA vs protein; the three-layer pathway panel; caveats.
+4. **Export report** writes the same HTML report as `mprobe run`.
+
+**7. Tests**
+
+```bash
+python -m pytest -q           # ~3 min
+```
+On a fresh clone, tests that need the maintainers' raw hackathon files (golden numbers from the original
+analysis) are skipped automatically; everything else runs against the downloaded store. No failures expected.
+
+**Maintainers** with the raw hackathon data (`hackathon/data/`, the MoTrPAC R packages) rebuild the store with
+`mprobe store build`, everything else with `python scripts/build_all.py` (or `make all`; `make slurm-all` on the
+cluster), and a new bundle with `mprobe store bundle`.
+
+### Input formats
 
 **Signature CSV:** `gene_symbol` (human; rat symbols, UniProt and Ensembl ids are also accepted, in the same column
 or in `uniprot` / `ensembl` / `rat_symbol` columns), `direction` (+1 up in disease, −1 down; `up`/`down` accepted),
