@@ -28,4 +28,4 @@ Caveats
   Set membership depends on the FDR cutoff (0.05) and the cap (250); columns with few significant
   genes give small or empty sets, and a gene missing from a set may simply not be measured in that
   column. The full per-gene statistics are in the store (contrasts.parquet), not in the GMT.
-  Built 2026-09-27T01:16:22 from store d615c2f0b9aec182.
+  Built 2026-09-27T01:28:27 from store d615c2f0b9aec182.

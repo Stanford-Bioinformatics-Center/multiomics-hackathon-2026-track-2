@@ -24,7 +24,7 @@ def main():
     ap.add_argument("--skip-store", action="store_true")
     ap.add_argument("--only", choices=["store", "examples", "site"])
     a = ap.parse_args()
-    ex = json.loads((TOOL / "examples" / "examples.json").read_text())
+    ex = json.loads((TOOL / "examples" / "examples.json").read_text(encoding="utf-8"))
     genes = [e for e in ex if e.get("kind") != "metabolite demo"]
     if not a.skip_store and a.only in (None, "store"):
         sh(["store", "build"])

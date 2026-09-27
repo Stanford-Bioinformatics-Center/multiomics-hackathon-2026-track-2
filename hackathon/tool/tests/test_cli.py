@@ -70,7 +70,7 @@ def test_run_outputs(runs, name):
 @pytest.mark.parametrize("name", list(EXAMPLES))
 def test_provenance_json(runs, name):
     out = runs[name]["out"]
-    p = json.loads((out / "provenance.json").read_text())
+    p = json.loads((out / "provenance.json").read_text(encoding="utf-8"))
     for k in ["repo_git_sha", "packages", "store", "signature", "timestamp", "command"]:
         assert k in p, k
     sig_file = paths.EXAMPLES / f"{name}.csv"

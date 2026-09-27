@@ -38,7 +38,7 @@ def _compare(a):
     for p in a.signatures:  # optional titles / kinds from examples.json next to the files
         m = Path(p).resolve().parent / "examples.json"
         if m.exists():
-            for e in json.loads(m.read_text()):
+            for e in json.loads(m.read_text(encoding="utf-8")):
                 titles[e["name"]] = e.get("title", e["name"])
                 kinds[e["name"]] = e.get("kind", "disease")
     cmd = "mprobe " + " ".join(shlex.quote(x) for x in sys.argv[1:])
@@ -70,6 +70,13 @@ def main(argv=None):
     b = ss.add_parser("build")
     b.add_argument("--no-hash", action="store_true", help="skip sha256 of input files")
     b.set_defaults(fn=_store_build)
+    fe = ss.add_parser("fetch", help="download the prebuilt store (no local MoTrPAC data needed)")
+    fe.add_argument("--url", help="bundle URL or local path (default: the GitHub release asset)")
+    fe.add_argument("--sha256", help="expected sha256 of the bundle")
+    fe.set_defaults(fn=lambda a: __import__("motrpac_probe.store", fromlist=["x"]).fetch(
+        **{k: v for k, v in dict(url=a.url, expected_sha256=a.sha256).items() if v}))
+    bu = ss.add_parser("bundle", help="zip the built store for distribution (maintainers)")
+    bu.set_defaults(fn=lambda a: print(*__import__("motrpac_probe.store", fromlist=["x"]).bundle()))
 
     r = sub.add_parser("run", help="probe MoTrPAC with one signature -> out/NAME/report.html")
     r.add_argument("--signature", required=True, help="CSV: gene_symbol|uniprot|ensembl|rat_symbol, direction, ...")

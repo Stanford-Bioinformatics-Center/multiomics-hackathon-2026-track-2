@@ -16,13 +16,27 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "slow: calls R / limma; skipped unless MPROBE_RUN_R=1")
 
 
+HAVE_STORE = paths.CONTRASTS.exists()
+HAVE_HACKATHON = paths.JOIN.exists() and paths.DECK.exists()
+NEEDS_HACKATHON = ("paths.RAW", "paths.JOIN", "paths.DECK", "paths.HACK", "deck")   # names in a test's source
+
+
 def pytest_collection_modifyitems(config, items):
-    if os.environ.get("MPROBE_RUN_R") == "1":
-        return
-    skip = pytest.mark.skip(reason="slow R cross-check; set MPROBE_RUN_R=1 to run")
+    """Skip cleanly on a fresh clone: no store -> only the render tests run; no local hackathon/ data (not in git)
+    -> tests that read the raw CSVs, the join table or the deck numbers are skipped."""
+    import inspect
     for item in items:
-        if "slow" in item.keywords:
-            item.add_marker(skip)
+        if "slow" in item.keywords and os.environ.get("MPROBE_RUN_R") != "1":
+            item.add_marker(pytest.mark.skip(reason="slow R cross-check; set MPROBE_RUN_R=1 to run"))
+        if not HAVE_STORE and "test_render" not in item.nodeid:
+            item.add_marker(pytest.mark.skip(reason="no store: run `mprobe store fetch` (or `mprobe store build`)"))
+            continue
+        if not HAVE_HACKATHON:
+            fn = getattr(item, "function", None)
+            src = inspect.getsource(fn) if fn else ""
+            if "test_golden" in item.nodeid or any(k in src for k in NEEDS_HACKATHON) or \
+                    any(k in getattr(item, "fixturenames", []) for k in ("deck",)):
+                item.add_marker(pytest.mark.skip(reason="needs the local hackathon/ data and deck numbers (not in git)"))
 
 
 @pytest.fixture(scope="session")

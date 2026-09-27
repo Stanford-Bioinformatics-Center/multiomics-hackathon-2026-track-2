@@ -137,7 +137,7 @@ def test_legacy_port_equals_limma(tmp_path, S):
             df[k] = np.isin(np.arange(len(stat)), idx).astype(int)
         inp, out = tmp_path / f"{name}.csv", tmp_path / f"{name}_out.csv"
         df.to_csv(inp, index=False)
-        (tmp_path / "cam.R").write_text(R_CODE)
+        (tmp_path / "cam.R").write_text(R_CODE, encoding="utf-8")
         subprocess.run([RSCRIPT, str(tmp_path / "cam.R"), str(inp), str(out)], check=True, capture_output=True)
         res = pd.read_csv(out).set_index("set")
         for k in sets:

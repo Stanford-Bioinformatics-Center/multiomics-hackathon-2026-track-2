@@ -1,53 +1,7 @@
-"""HTML report rendering for motrpac_probe.
+"""HTML rendering: one self-contained report per run (inline CSS, SVG figures, sortable tables, optional
+vendored Vega-Lite), the gallery index, and a validator.
 
-Produces one self-contained HTML file per run (inline CSS, inline SVG
-figures, HTML tables, optional inlined Vega-Lite for interactive items) and
-a static gallery index. Colours and fonts for the HTML live in
-``templates/style.css``; matplotlib colours live in the constants below.
-
-Report context contract (``render_report(context, out_html)``)
---------------------------------------------------------------
-Plain-text fields are HTML-escaped by the template. To pass inline HTML in a
-plain-text field wrap it in ``markupsafe.Markup``. Fields documented as
-"HTML" are inserted verbatim (they come from ``df_to_html`` / ``fig_to_svg``).
-
-``title`` : str
-    Page title (h1).
-``subtitle`` : str, optional
-    One line under the title.
-``meta`` : list of (label, value)
-    Compact key-value line under the title, e.g. signature name, n genes,
-    run date, store hash, git SHA, command.
-``headline`` : dict
-    The first block after the title. Keys ``title`` (str), ``how_to_read``
-    (str), ``table_html`` (HTML), ``sentences`` (list of str).
-``first_screen`` : list of str, optional
-    Short lines (for example one caveat) shown right under the headline.
-``sections`` : list of dict
-    Each ``{"id", "title", "intro": [str], "items": [...]}``. The table of
-    contents is built from these. An item is one of::
-
-        {"kind": "figure", "title", "how_to_read", "svg" (HTML), "png": "figures/x.png", "id"}
-        {"kind": "table", "title", "caption", "html" (HTML), "csv": "tables/x.csv"}
-        {"kind": "text", "html" (HTML)}
-        {"kind": "interactive", "title", "how_to_read", "spec_json" (Vega-Lite JSON str),
-         "id", "fallback_svg" (HTML)}
-        {"kind": "details", "summary", "items": [...]}   # collapsible block
-
-    Figures and interactive items without a title or how-to-read line render
-    a red "MISSING CAPTION" marker, which ``validate_report`` reports.
-``glossary`` : list of (term, definition), optional
-``provenance_json`` : str, optional
-    Pretty-printed JSON, shown in a collapsed block at the end.
-``toggles`` : dict of section id -> bool, optional
-    Sections mapped to False are not rendered (``"glossary"`` and
-    ``"provenance"`` may also be toggled off).
-``tool_version`` : str, optional
-    Defaults to ``motrpac_probe.__version__``; shown in the footer.
-
-Paths in ``png`` / ``csv`` are relative to the HTML file; the caller writes
-those files. The vendored Vega JS (``vendor/``) is inlined only when at
-least one interactive item is present.
+Method details: docs/METHODS.md#renderpy
 """
 from __future__ import annotations
 

@@ -228,7 +228,7 @@ def test_validate_catches_broken_image_external_script_empty_table(tmp_path):
 
 def test_site_index(tmp_path):
     (tmp_path / "ex1").mkdir()
-    (tmp_path / "ex1" / "report.html").write_text("<html></html>")
+    (tmp_path / "ex1" / "report.html").write_text("<html></html>", encoding="utf-8")
     rows = [
         {"name": "Example one", "href": "ex1/report.html", "description": "First", "n_genes": 12,
          "headline": {"RNA opposed": "61%", "p": "< 0.001"}},

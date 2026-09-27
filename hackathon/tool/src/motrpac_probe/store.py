@@ -1,18 +1,14 @@
-"""Build and load the MoTrPAC contrast store (tool/store/*.parquet). Schema: tool/store/SCHEMA.md.
+"""The data: every MoTrPAC comparison (human acute + rat training, all tissues and layers) as one gene-level
+parquet store, built from the hackathon tables with the join rules of scripts/03 and 10.
 
-Rows = one gene per comparison column (dataset x tissue x layer x contrast), exactly as scripts/03_join.py and
-scripts/10_everywhere.py define them:
-  * columns present in data/join_table_v2.csv are copied from it verbatim (source = "join_table_v2");
-  * every other column (19 rat tissues, human muscle/adipose/blood, all contrasts incl. non-exercise references,
-    PHOSPHO) is collapsed from the raw DA tables with the `bh` and `collapse` functions lifted from
-    10_everywhere.py (source = "alltissue_v1"): BH over all tested features before collapsing, rat RNA on/off
-    filter, max-|stat| feature per human gene.
+Method details: docs/METHODS.md#storepy
 """
 import datetime as dt
 import hashlib
 import json
 import os
 import subprocess
+from pathlib import Path
 import sys
 
 import numpy as np
@@ -339,7 +335,7 @@ def r_pkg_version(pkg):
     for lib in [os.path.expanduser("~/miniconda3/envs/motrpac/lib/R/library")]:
         f = os.path.join(lib, pkg, "DESCRIPTION")
         if os.path.exists(f):
-            for line in open(f):
+            for line in open(f, encoding="utf-8"):
                 if line.startswith("Version:"):
                     return line.split(":", 1)[1].strip()
     return "NA"
@@ -584,3 +580,48 @@ def load_pathway_map():
     if "pwmap" not in _CACHE:
         _CACHE["pwmap"] = pd.read_csv(PATHWAY_MAP, keep_default_na=False)
     return _CACHE["pwmap"]
+
+
+# ------------------------------------------------------------------------------------------------- bundle / fetch
+BUNDLE_FILES = ["contrasts.parquet", "columns.parquet", "annotations.parquet", "genesets.parquet", "id_map.parquet",
+                "provenance.parquet", "metab.parquet", "metab_columns.parquet", "metab_features.parquet",
+                "camera_pkg_gobp.csv.gz"]
+BUNDLE_NAME = "mprobe_store_v1.zip"
+BUNDLE_URL = ("https://github.com/Stanford-Bioinformatics-Center/multiomics-hackathon-2026-track-2/releases/download/"
+              f"mprobe-store-v1/{BUNDLE_NAME}")
+
+
+def bundle(out=None):
+    """Zip the built store (everything `run`, `compare`, `discord`, `library` need) + a sha256 manifest."""
+    import zipfile
+    out = Path(out or STORE / BUNDLE_NAME)
+    manifest = {f: sha256(STORE / f) for f in BUNDLE_FILES if (STORE / f).exists()}
+    with zipfile.ZipFile(out, "w", compression=zipfile.ZIP_STORED) as z:  # parquet/gz are already compressed
+        for f in manifest:
+            z.write(STORE / f, f)
+        z.writestr("MANIFEST.json", json.dumps(manifest, indent=1))
+    return out, sha256(out)
+
+
+def fetch(url=BUNDLE_URL, expected_sha256=None, log=print):
+    """Download the prebuilt store bundle into tool/store/ (any OS; stdlib only) and verify every file's sha256."""
+    import tempfile
+    import urllib.request
+    import zipfile
+    STORE.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td) / BUNDLE_NAME
+        log(f"downloading {url}")
+        if Path(url).exists():                      # a local path works too
+            tmp = Path(url)
+        else:
+            urllib.request.urlretrieve(url, tmp)
+        if expected_sha256 and sha256(tmp) != expected_sha256:
+            raise SystemExit(f"bundle sha256 mismatch: {sha256(tmp)} != {expected_sha256}")
+        with zipfile.ZipFile(tmp) as z:
+            manifest = json.loads(z.read("MANIFEST.json"))
+            for f, h in manifest.items():
+                z.extract(f, STORE)
+                if sha256(STORE / f) != h:
+                    raise SystemExit(f"{f}: sha256 mismatch after extraction")
+    log(f"store ready in {STORE} ({len(manifest)} files verified)")

@@ -41,7 +41,7 @@ def sig(S):
 
 
 def _md_table(path):
-    lines = [ln for ln in path.read_text().splitlines() if ln.startswith("|")]
+    lines = [ln for ln in path.read_text(encoding="utf-8").splitlines() if ln.startswith("|")]
     head = [c.strip() for c in lines[0].strip("|").split("|")]
     rows = [[c.strip() for c in ln.strip("|").split("|")] for ln in lines[2:]]
     return pd.DataFrame(rows, columns=head)
@@ -219,7 +219,7 @@ def test_layer_pairs_direct(S, sig, deck):
 
 # ------------------------------------------------------------------------------------------------ everywhere
 def test_everywhere_summary(R):
-    txt = (paths.HACK / "everywhere" / "pah_everywhere_ranking.md").read_text()
+    txt = (paths.HACK / "everywhere" / "pah_everywhere_ranking.md").read_text(encoding="utf-8")
     m = re.search(r"(\d+) ranked units\. Nominal sign_p < 0\.05: (\d+) opposed-majority and (\d+) same-majority"
                   r".*?After BH: (\d+) opposed-majority and (\d+) same-majority", txt, re.S)
     assert m, "reference sentence not found in pah_everywhere_ranking.md"

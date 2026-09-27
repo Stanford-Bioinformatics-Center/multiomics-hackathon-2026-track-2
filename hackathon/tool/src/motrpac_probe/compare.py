@@ -1,10 +1,7 @@
-"""`mprobe compare`: several disease signatures side by side (the generality view).
+"""Several disease signatures side by side: is exercise opposition disease-specific, or a property of the
+kind of genes a signature contains?
 
-Rows = signatures, columns = layer x time: human vastus lateralis 24 h RNA and protein (EE, RE), rat gastrocnemius
-protein 4 and 8 wk and RNA 8 wk (F, M), and rat heart protein 8 wk (F, M) so heart signatures have their tissue.
-Cell = signed cameraPR t (+ = exercise opposes the signature) with the abundance-matched null percentile. The table
-adds the pathway-class null percentile and each signature's MitoCarta share. The only interpretive sentence is
-selected by rules on these numbers (see `lesson`).
+Method details: docs/METHODS.md#comparepy
 """
 import datetime as dt
 import json
@@ -149,11 +146,11 @@ def main_compare(paths, titles=None, outdir=None, command="", nboot=1000, kinds=
     prov = {"tool": f"motrpac_probe {__version__}", "timestamp": dt.datetime.now().isoformat(timespec="seconds"),
             "command": command, "store": store.store_hash(), "repo_git_sha": store.git_sha(),
             "signatures": [str(p) for p in paths], "nboot": nboot}
-    (out / "provenance.json").write_text(json.dumps(prov, indent=2))
+    (out / "provenance.json").write_text(json.dumps(prov, indent=2), encoding="utf-8")
     ctx = dict(
         title="MoTrPAC probe: several disease signatures side by side",
         subtitle="Is the exercise opposition specific to a disease, or to the kind of genes in its signature?",
-        meta=[("Signatures", str(len(paths))), ("Store", store.store_hash()), ("Command", command)],
+        meta=[("Signatures", str(len(paths))), ("Store", store.store_hash())],
         headline=dict(title="Set-level opposition per disease signature, layer and time",
                       how_to_read=(f"Cell: signed cameraPR t (+ / blue = exercise opposes the disease direction; "
                                    f"* = BH FDR < 0.05 over all cells) and, below it, the percentile of t among {nboot} "

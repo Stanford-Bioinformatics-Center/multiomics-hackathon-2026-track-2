@@ -41,7 +41,7 @@ def _():
 
 @app.cell
 def _(EXAMPLES, json, mo, pd):
-    manifest = json.loads((EXAMPLES / "examples.json").read_text())
+    manifest = json.loads((EXAMPLES / "examples.json").read_text(encoding="utf-8"))
     gene_examples = {e["title"]: e for e in manifest if e.get("kind") != "metabolite demo"}
     _args = mo.cli_args()  # headless checks: --example NAME / --paste FILE.csv
     _by_name = {e["name"]: e["title"] for e in gene_examples.values()}
@@ -108,7 +108,7 @@ def _(EXAMPLES, Path, gene_examples, mo, run, run_form, source, tempfile, time):
         if not _lines[0].lower().startswith(("gene", "uniprot", "ensembl", "rat_symbol")):
             _lines = ["gene_symbol,direction"] + _lines
         src = Path(tempfile.mkdtemp()) / "pasted.csv"
-        src.write_text("\n".join(_lines) + "\n")
+        src.write_text("\n".join(_lines) + "\n", encoding="utf-8")
         how = f"{len(_lines) - 1} pasted genes"
     elif source.value == "Example":
         src = EXAMPLES / gene_examples[v["sig"]]["file"]

@@ -1,18 +1,7 @@
-"""Calibration nulls for the opposition score (section D).
+"""Calibration: is the opposition more than expected for random genes of the same abundance, or of the same
+pathway class (MitoCarta / complex / secreted)? This is what keeps 'opposed' honest.
 
-(i)  abundance-matched: each counted signature gene measured in the column is replaced by a random non-signature
-     gene from the same abundance decile of that column (NARRATIVE R1b: decile of the column's own baseline, i.e.
-     human AveExpr / rat sedentary mean count; columns without a baseline use GTEx v8 median TPM of the matched
-     human tissue; genes without either form their own stratum). Drawn with replacement, gene by gene, in the
-     same order as scripts/05_pah_grid.py R1b, and given the signature's direction vector.
-(ii) pathway-class-matched: same, but the stratum is the gene's class = (MitoCarta3.0 member, GO:CC complex
-     subunit, secreted/extracellular GO:CC proxy; the three flags of scripts/08_discordance_model.py) crossed with
-     the abundance tertile of (i), so it is also abundance-matched. Answers "is it your signature, or its pathway
-     class?".
-(iii) pool null (optional, NARRATIVE R1a): random sets of the same size drawn without replacement from a fixed
-     gene pool (e.g. KEGG OXPHOS + TCA genes measured in both layers), one draw list per dataset.
-Scores: signed cameraPR t (primary) and n opposed. Percentile = 100 x P(null <= observed) (as in R1a); empirical
-p = (1 + #null >= observed) / (B + 1) (as in R1b).
+Method details: docs/METHODS.md#nullspy
 """
 import numpy as np
 import pandas as pd

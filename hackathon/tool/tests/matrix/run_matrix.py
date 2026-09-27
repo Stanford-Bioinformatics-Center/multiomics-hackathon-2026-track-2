@@ -102,7 +102,7 @@ def make_inputs():
     write("direction_words", pd.DataFrame({"gene_symbol": base, "direction": np.where(d > 0, "up", "down")}),
           "id types")
     # real signatures and controls
-    ex = json.loads((TOOL / "examples" / "examples.json").read_text())
+    ex = json.loads((TOOL / "examples" / "examples.json").read_text(encoding="utf-8"))
     for e in ex:
         if e.get("kind") == "metabolite demo":
             continue
@@ -113,7 +113,7 @@ def make_inputs():
         f = next(x for x in ex if x["name"] == e)
         cases.append(dict(case=f"seed2_{e}", group="seed", file=f"examples/{f['file']}",
                           args=f.get("run_args", []) + ["--seed", "12345"]))
-    (HERE / "cases.json").write_text(json.dumps(cases, indent=1))
+    (HERE / "cases.json").write_text(json.dumps(cases, indent=1), encoding="utf-8")
     return cases
 
 
@@ -140,7 +140,7 @@ def run_case(c, out, py):
                    if sc.pct_class.notna().any() else np.nan,
                    rat_gn_prot_f8_t=sc.set_index("column_id").camera_t.get("rat_train|SKM-GN|PROT|F_8w", np.nan),
                    n_flips=int(pd.read_csv(od / "tables" / "sensitivity.csv").flipped.sum()),
-                   headline_has_no_genes_cell=int("no measured genes" in (od / "report.html").read_text()))
+                   headline_has_no_genes_cell=int("no measured genes" in (od / "report.html").read_text(encoding="utf-8")))
     return rec
 
 

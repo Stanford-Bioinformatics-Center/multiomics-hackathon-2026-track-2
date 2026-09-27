@@ -43,7 +43,7 @@ def read_gmt(path):
     """{set name: [genes in file order]}. Enrichr lines are name<TAB><TAB>g1<TAB>g2...;
     a gene may carry ',weight', which is split off and returned separately."""
     sets, weights = {}, {}
-    for line in open(path):
+    for line in open(path, encoding="utf-8"):
         parts = line.rstrip("\n").split("\t")
         genes, w = [], []
         for tok in parts[2:]:
@@ -238,7 +238,7 @@ def main():
     listed = {e["file"] for e in entries}
     unlisted = sorted(p.name for p in OUT.glob("*.csv") if p.name not in listed)
     assert not unlisted, f"example files missing from manifest: {unlisted}"
-    (OUT / "examples.json").write_text(json.dumps(entries, indent=2) + "\n")
+    (OUT / "examples.json").write_text(json.dumps(entries, indent=2) + "\n", encoding="utf-8")
     print(f"\nwrote examples.json ({len(entries)} entries)")
 
 

@@ -1,15 +1,7 @@
-"""Coverage + detection-power flags (section A) and RNA-vs-protein layer discordance (section E).
+"""Which layer answered? RNA vs protein per gene at matched timepoints, next to the detection-power flags
+(baseline mRNA, proteomics missingness, GTEx) that decide whether a layer could have answered.
 
-Detection-power flags follow scripts/08_discordance_model.py and model/discordance_report.pdf, which found that
-"which layer responded" is largely which assay could see the gene:
-  RNA baseline      human: limma AveExpr (log2 CPM); rat: log2(sedentary mean normalized count + 1)
-                    (reference_average_intensity of the DESeq2 table); median over the tissue's columns, tertile
-                    among all genes measured in that tissue's RNA columns.
-  PROT missingness  rat: numNAs of the protein feature (median over columns); human: not in the public DA table.
-  GTEx v8 TPM       median TPM in the matched human tissue (CFDE dataset), tertile among the tissue's RNA genes.
-  n_collapsed       features collapsed into the gene (max over columns); > 1 = isoforms / multi-mapping.
-Per-gene layer class (scripts/08, fdr_bh < cutoff in each layer): concordant (both significant, same sign),
-opposite (both, opposite sign), RNA_only, PROT_only, ns.
+Method details: docs/METHODS.md#layerspy
 """
 import numpy as np
 import pandas as pd

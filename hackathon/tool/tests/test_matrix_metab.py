@@ -17,7 +17,7 @@ CASES = {
 @pytest.mark.parametrize("case", sorted(CASES))
 def test_metab_signature_cli(tmp_path, case):
     f = tmp_path / f"{case}.csv"
-    f.write_text(CASES[case])
+    f.write_text(CASES[case], encoding="utf-8")
     out = tmp_path / "out"
     p = subprocess.run([sys.executable, "-m", "motrpac_probe.cli", "run", "--quiet", "--nboot", "200",
                         "--signature", str(f), "--out", str(out)], capture_output=True, text=True)

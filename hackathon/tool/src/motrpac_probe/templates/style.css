@@ -138,3 +138,9 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
   .vega-target { display: none; }
   .vega-fallback { display: block; }
 }
+
+/* never let a long value widen the page (commands, ids, provenance) */
+.meta, .first-screen li, p, li { overflow-wrap: anywhere; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+nav.toc { display: flex; flex-wrap: wrap; gap: 4px 0; }
+.page > * { max-width: 100%; }

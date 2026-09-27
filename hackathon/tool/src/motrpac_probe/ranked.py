@@ -1,22 +1,7 @@
-"""Full disease rankings (gene + t over the whole genome), generalised from the team's PAH blood pipeline
-(`MoTrPAC Hackathon/scripts` 07.5–12 on main: GSE33463 IPAH-minus-healthy PBMC ranking vs MoTrPAC blood RNA).
+"""Full disease rankings (gene + t), generalised from the team's PAH blood pipeline: whole-ranking Spearman
+association and GO:BP pathway concordance against every MoTrPAC comparison.
 
-Three analyses, any disease, any MoTrPAC column:
-1. Rank association (their script 08): Spearman rho between the disease statistic and the exercise statistic over
-   shared genes; two-sided gene-label permutation p (10,000 shuffles; gene-gene dependence is not preserved, so p
-   is exploratory, as they state). Added: Fisher-z 95% CI, BH across columns, and a calibration against the
-   non-exercise reference contrasts of the same tissue x layer (control time course, baseline and EE-RE
-   differences): how unusual is rho for this ranking when no exercise contrast is involved?
-   Sign convention: rho > 0 = exercise moves genes the SAME way as the disease; rho < 0 = opposed.
-2. Pathway concordance (their scripts 09–11): GO:BP sets from MotrpacHumanPreSuspensionAnalysis
-   MOLECULAR_SIGNATURES (sets with 10–500 genes in the universe), cameraPR on the disease ranking and on each
-   exercise column; BH within each side; a set is concordant (same direction) or discordant when BH < 0.05 on
-   both sides. Added: the exercise side is computed with the same validated cameraPR on the store (so any
-   tissue / species works), and the Spearman correlation of set t values is reported next to the counts.
-   `exercise_side="precomputed"` uses the package's CAMERA_RESULTS instead (human only), which is exactly the
-   team pipeline and reproduces its 40 jointly significant set x time rows (27 same, 13 opposite) for PAH blood.
-3. A directional signature derived from the ranking (BH < 0.05, at most 250 genes per direction by |t|) feeds
-   every other section of the report.
+Method details: docs/METHODS.md#rankedpy
 """
 import numpy as np
 import pandas as pd

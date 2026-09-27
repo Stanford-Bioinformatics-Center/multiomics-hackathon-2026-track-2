@@ -1,12 +1,7 @@
-"""Scoring primitives shared by `run`, `library` and `discord`.
+"""Scoring shared by every command: does exercise move each signature gene against the disease (agreement,
+sign test), and is the whole set shifted (signed cameraPR, + = opposed)?
 
-Definitions follow NARRATIVE.md / scripts/05_pah_grid.py exactly:
-  agreement  = sign(exercise logFC) x signature direction; -1 = exercise moves the gene AGAINST the signature
-  cell value = agreement x min(|stat|, cap), cap 4
-  sign test  = scripts/05_pah_grid.py::sign_test (two-sided binomial, H0 0.5; zero / NA agreements dropped)
-  cameraPR   = scripts/05_pah_grid.py::camera_pr (Python port of limma::cameraPR, inter.gene.cor 0.01) on the full
-               column ranking; for a signed signature the member statistics are multiplied by -direction, so a
-               POSITIVE t means the set is OPPOSED by exercise (up-half and down-half are also tested alone).
+Method details: docs/METHODS.md#corepy
 """
 from dataclasses import dataclass, field
 

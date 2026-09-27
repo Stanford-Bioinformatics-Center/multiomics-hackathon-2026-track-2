@@ -20,7 +20,7 @@ def manifest():
     """examples/examples.json (name, file, title, kind, description, run_args); falls back to examples/*.csv."""
     m = paths.EXAMPLES / "examples.json"
     if m.exists():
-        return json.loads(m.read_text())
+        return json.loads(m.read_text(encoding="utf-8"))
     return [dict(name=f.stem, file=f.name, title=f.stem, kind="", description="", run_args=[])
             for f in sorted(paths.EXAMPLES.glob("*.csv"))]
 
@@ -56,7 +56,7 @@ def _n_counted(run):
     ctx = ["phenotype"]
     pj = run / "provenance.json"
     if pj.exists():
-        ctx = json.loads(pj.read_text()).get("parameters", {}).get("context_groups", ctx) or []
+        ctx = json.loads(pj.read_text(encoding="utf-8")).get("parameters", {}).get("context_groups", ctx) or []
     grp = m["group"] if "group" in m.columns else pd.Series([""] * len(m))
     return int(((m.status == "mapped") & ~grp.isin(ctx)).sum())
 
@@ -104,7 +104,7 @@ def build_site(site=None, out=None):
         summ = pd.read_csv(cmp_ / "tables" / "compare_summary.csv")
         rows.append(dict(name="All disease signatures side by side", href="compare/report.html",
                          description="Generality view: every example signature against the same human 24 h and rat "
-                                     "4–8 wk comparisons (mprobe compare).", n_genes=len(summ),
+                                     "4–8 wk comparisons (mprobe compare).", n_genes="–",
                          headline={"Signatures compared": str(len(summ))}))
     else:
         notes.append("no compare report in out/compare (run `mprobe compare`)")
@@ -117,12 +117,12 @@ def build_site(site=None, out=None):
         for part in RUN_PARTS:
             if (run / part).exists():
                 _copy(run / part, dst / part)
-        prm = json.loads((run / "provenance.json").read_text()).get("parameters", {})
+        prm = json.loads((run / "provenance.json").read_text(encoding="utf-8")).get("parameters", {})
         rows.append(dict(name=f"Layer discordance: {prm.get('species', '')} {prm.get('tissue', run.name[8:])}",
                          href=f"{run.name}/report.html",
                          description="Which omic layer responds, when, and why RNA and protein disagree "
                                      "(mprobe discord): timescale, agreement, detection power, protein-only calls, "
-                                     "lag, sex, 3-layer pathways.", n_genes=None, headline={}))
+                                     "lag, sex, 3-layer pathways.", n_genes="–", headline={}))
     for e in manifest():
         name, desc = e["name"], (e.get("title", e["name"]) + ". " + e.get("description", "")).strip()
         run = out / name

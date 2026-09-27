@@ -1,13 +1,7 @@
-"""Metabolomics (METAB) as a third layer: store view, metabolite signatures and a 3-layer pathway panel.
+"""Metabolomics as a third layer: RefMet-keyed store rows, metabolite signatures, and a pathway panel that
+scores RNA, protein and metabolite sets side by side (pools, not flux).
 
-Rows come from store/metab.parquet (store.build_metab; schema in store/SCHEMA.md "## METAB layer"). They have the
-contrasts.parquet schema, but for layer == "METAB" `gene_symbol_human` holds the RefMet NAME of a metabolite.
-
-Pathway panel: for each pathway in store/pathway_map.csv and each comparison column of one tissue, the cameraPR t
-(legacy.camera_pr, inter-gene correlation 0.01) of the pathway's gene set (RNA, PROT columns) or metabolite set
-(METAB columns) against every other feature measured in that column. t > 0 = the set moves up with exercise
-relative to the rest of the column. The map is many-to-many: a pathway has a gene side and a metabolite side, each
-tested within its own layer. Genes and metabolites are never matched one-to-one, and metabolite pools are not flux.
+Method details: docs/METHODS.md#metabpy
 """
 import re
 import sys

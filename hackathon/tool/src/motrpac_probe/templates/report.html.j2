@@ -102,17 +102,17 @@
 
 <section class="headline" id="headline-block">
 <h2>{{ caption_or_missing(headline.title) }}</h2>
-{% if headline.how_to_read %}<p class="how"><span class="lbl">How to read:</span> {{ headline.how_to_read }}</p>{% endif %}
-{% if headline.table_html %}{{ headline.table_html | safe }}{% endif %}
-{% if headline.sentences %}
-<ul class="sentences">
-{% for s in headline.sentences %}<li>{{ s }}</li>
-{% endfor %}
-</ul>
-{% endif %}
 {% if first_screen %}
 <ul class="first-screen">
 {% for line in first_screen %}<li>{{ line }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% if headline.how_to_read %}<p class="how"><span class="lbl">How to read:</span> {{ headline.how_to_read }}</p>{% endif %}
+{% if headline.table_html %}<div class="table-wrap">{{ headline.table_html | safe }}</div>{% endif %}
+{% if headline.sentences %}
+<ul class="sentences">
+{% for s in headline.sentences %}<li>{{ s }}</li>
 {% endfor %}
 </ul>
 {% endif %}

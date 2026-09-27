@@ -147,6 +147,12 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
   .vega-fallback { display: block; }
 }
 
+/* never let a long value widen the page (commands, ids, provenance) */
+.meta, .first-screen li, p, li { overflow-wrap: anywhere; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+nav.toc { display: flex; flex-wrap: wrap; gap: 4px 0; }
+.page > * { max-width: 100%; }
+
 </style>
 </head>
 <body>
@@ -178,7 +184,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
 <tr>
 <td><a href="compare/report.html">All disease signatures side by side</a></td>
 <td>Generality view: every example signature against the same human 24 h and rat 4–8 wk comparisons (mprobe compare).</td>
-<td class="num">10</td>
+<td class="num">–</td>
 <td>10</td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
@@ -190,7 +196,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
 <tr>
 <td><a href="discord_HEART/report.html">Layer discordance: rat HEART</a></td>
 <td>Which omic layer responds, when, and why RNA and protein disagree (mprobe discord): timescale, agreement, detection power, protein-only calls, lag, sex, 3-layer pathways.</td>
-<td class="num"><span class="na">not measured</span></td>
+<td class="num">–</td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
@@ -202,7 +208,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
 <tr>
 <td><a href="discord_SKM-GN/report.html">Layer discordance: rat SKM-GN</a></td>
 <td>Which omic layer responds, when, and why RNA and protein disagree (mprobe discord): timescale, agreement, detection power, protein-only calls, lag, sex, 3-layer pathways.</td>
-<td class="num"><span class="na">not measured</span></td>
+<td class="num">–</td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
@@ -214,7 +220,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
 <tr>
 <td><a href="discord_VL/report.html">Layer discordance: human VL</a></td>
 <td>Which omic layer responds, when, and why RNA and protein disagree (mprobe discord): timescale, agreement, detection power, protein-only calls, lag, sex, 3-layer pathways.</td>
-<td class="num"><span class="na">not measured</span></td>
+<td class="num">–</td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>

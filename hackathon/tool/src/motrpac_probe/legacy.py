@@ -1,9 +1,7 @@
-"""Bridge to the analysis scripts in hackathon/scripts/.
+"""Runs functions from the hackathon analysis scripts (scripts/03, 05, 06, 08, 10) without running their
+pipelines, so the tool uses the same code as the narrative.
 
-Those scripts run their whole pipeline at module level, so they cannot be imported directly. This module
-parses each script, keeps only the named top-level functions and constant assignments, and executes those
-nodes in a fresh namespace. The code that runs is the scripts' own source (no copies), so a change in the
-scripts propagates to the tool; `SOURCES` records which names come from where, for provenance.json.
+Method details: docs/METHODS.md#legacypy
 """
 import ast
 import hashlib
@@ -12,6 +10,8 @@ from functools import lru_cache
 import numpy as np
 import pandas as pd
 from scipy.stats import binomtest, false_discovery_control
+
+from pathlib import Path
 
 from .paths import SCRIPTS
 
@@ -26,8 +26,16 @@ SOURCES = {
 }
 
 
+VENDORED = Path(__file__).resolve().parent / "legacy_scripts"
+
+
+def script_dir():
+    """hackathon/scripts/ when present (the live originals), else the verbatim copies shipped in the package."""
+    return SCRIPTS if all((SCRIPTS / s).exists() for s in SOURCES) else VENDORED
+
+
 def _lift(script, names):
-    src = (SCRIPTS / script).read_text()
+    src = (script_dir() / script).read_text(encoding="utf-8")
     tree = ast.parse(src)
     keep = []
     for node in tree.body:
@@ -41,7 +49,7 @@ def _lift(script, names):
     from scipy.stats import spearmanr
     ns = {"np": np, "pd": pd, "binomtest": binomtest, "false_discovery_control": false_discovery_control,
           "spearmanr": spearmanr}
-    exec(compile(mod, str(SCRIPTS / script), "exec"), ns)
+    exec(compile(mod, str(script_dir() / script), "exec"), ns)
     missing = [n for n in names if n not in ns]
     if missing:
         raise ImportError(f"{script}: could not lift {missing}")
@@ -63,7 +71,7 @@ def get(name):
 
 
 def script_hashes():
-    return dict(_all()[1])
+    return {**dict(_all()[1]), "_source": "hackathon/scripts" if script_dir() == SCRIPTS else "vendored copies"}
 
 
 def __getattr__(name):  # legacy.camera_pr etc.

@@ -6,23 +6,46 @@ disease direction ("opposed") or with it, separately for RNA, protein, phosphosi
 timepoint. It also reports why the answer differs between layers, and how much of the answer is the signature's
 pathway class rather than the disease. It uses only public MoTrPAC summary statistics.
 
-## Install
+## Read these first
+
+| file | what it shows |
+|---|---|
+| `analysis.py` | the whole story in ~60 commented lines: load MoTrPAC, score a signature by layer and time, check specificity, compare RNA with protein (`python analysis.py`, 2 s) |
+| `src/motrpac_probe/core.py` | the scoring: does exercise move each gene against the disease, and is the whole set shifted (cameraPR) |
+| `src/motrpac_probe/nulls.py` | specificity: the same test on random sets of the same abundance or pathway class |
+| `src/motrpac_probe/layers.py` | which layer answered, next to whether it could have (detection power) |
+| `src/motrpac_probe/ranked.py` | the team's blood analysis, generalised: whole-ranking correlation and pathway concordance |
+| `src/motrpac_probe/store.py` | how the MoTrPAC tables become one gene-level store |
+
+Everything else is plumbing: report and figure rendering (`run.py`, `figures.py`, `render.py`), the CLI, the gallery
+and the app. Method details for every module: `docs/METHODS.md`.
+
+## Install (macOS, Linux, Windows)
+
+Needs Python 3.11 or newer; pure Python wheels only (no R, no compiler).
 
 ```
-conda create -n mprobe python=3.11 && conda activate mprobe      # tested with Python 3.11.16
-pip install -r requirements.txt && pip install -e .
-mprobe store build          # once, ~75 s: builds store/*.parquet from the hackathon CSVs (see store/SCHEMA.md)
+git clone https://github.com/Stanford-Bioinformatics-Center/multiomics-hackathon-2026-track-2.git
+cd multiomics-hackathon-2026-track-2/hackathon/tool
+python -m venv .venv
+.venv/bin/activate            # Windows: .venv\Scripts\activate
+pip install -r requirements.txt -e .        # add ".[app]" for the marimo app
+mprobe store fetch            # ~180 MB prebuilt store (public MoTrPAC summary statistics), sha256-verified
+mprobe run --signature examples/pah_muscle_malenfant2015.csv
 ```
-On danilogin the environment is `~/miniconda3/envs/mprobe` and the store is already built. `make all` (or
-`python scripts/build_all.py`; `make slurm-all` on the cluster) rebuilds store → example runs → compare → library →
-discord reports → site.
+`mprobe store fetch --url <path-or-URL>` also accepts a local copy of the bundle. Maintainers with the hackathon
+data (`hackathon/data/`, the R packages) rebuild everything with `mprobe store build` and `make all` (or
+`python scripts/build_all.py`, which works on Windows too); `make slurm-all` runs it on the cluster's desktop node.
+The analysis functions are executed from `hackathon/scripts/` when present, otherwise from verbatim copies shipped
+in `src/motrpac_probe/legacy_scripts/`; provenance records which. Tests: `python -m pytest -q` (tests that need the
+local hackathon data are skipped automatically on a fresh clone).
 
 ## One-command use
 
 ```
 mprobe run --signature my_signature.csv --name my_disease         # -> out/my_disease/report.html  (~15-40 s)
 mprobe compare --signatures a.csv b.csv c.csv                      # -> out/compare/report.html
-mprobe discord --species rat --tissue SKM-GN [--signature x.csv]   # -> out/discord_SKM-GN/report.html (< 3 min)
+mprobe discord --species rat --tissue SKM-GN [--signature x.csv]   # -> out/discord_SKM-GN/report.html (~1 min)
 mprobe library build                                               # -> store/library/*.gmt + index JSON
 mprobe library query --signature my_signature.csv                  # ranked MoTrPAC contrasts
 mprobe site build                                                  # -> site/index.html (static gallery)
@@ -43,6 +66,18 @@ adds sections R and P below; a directional signature derived from it (BH < 0.05,
 drives the other sections. `--exact-symbols` matches gene symbols exactly, as the team pipeline does.
 
 **Metabolite signature:** `refmet_name` (or `hmdb` / `kegg`) and `direction`; scored on the METAB layer.
+
+## Architecture (the team's whiteboard design)
+
+| whiteboard box | module |
+|---|---|
+| Frontend: dynamic interactive charts, toggles, overlay | reports (inline SVG + Vega-Lite grid with tissue / layer filters and click-a-gene trajectories), `app.py` (marimo), `site/` gallery |
+| User input → Query (gene / protein set) → parser | `signature.py` (symbols, UniProt, Ensembl, rat symbols, pasted lists), `ranked.py` (full disease rankings), `metab.py` (RefMet / HMDB / KEGG) |
+| MoTrPAC → transcriptomics / proteomics / metabolomics DB → table join | `store.py`: one parquet store, 422 gene-level columns + 217 metabolite columns, joined on human gene symbol / RefMet name |
+| Flag | detection-power flags, human 15–45 min flag, fibre-type markers, caveat block (`layers.py`, `caveats.py`) |
+| Key/value tags, processing, plots per layer | `provenance.json` + parameters; `core.py`, `nulls.py`, `everywhere.py`, `discord.py`; `figures.py`, `render.py` |
+| Next steps: other omics, discordance associated with diseases | `compare` (several diseases side by side), `discord` (which layer responds and why), `library` (GMT for any tool) |
+| Optional LLM | not included: every report sentence is filled in from computed numbers, so results are reproducible |
 
 ## Relationship to the team pipeline on main (`MoTrPAC Hackathon/`)
 
@@ -110,8 +145,9 @@ shifts IIb → IIa/IIx).
 ## Why this exists
 
 What already exists: the MoTrPAC Data Hub and its visualisations; the R packages MotrpacRatTraining6moData and
-MotrpacHumanPreSuspensionAnalysis (all differential-analysis tables, with enrichment helpers); MoTrPAC gene sets in
-Enrichr-style libraries. What this adds: (1) layer × time resolution for a user's own signature, RNA and protein
+MotrpacHumanPreSuspensionAnalysis (all differential-analysis tables, with enrichment helpers); the Enrichr library
+`MoTrPAC_2023` (225 gene sets, https://maayanlab.cloud/Enrichr/). This tool's own GMT covers all 422 human and rat
+comparison columns, with direction and provenance. What this adds: (1) layer × time resolution for a user's own signature, RNA and protein
 side by side; (2) calibration nulls including a pathway-class null, so "opposed" can be checked against "any
 mitochondrial list looks opposed"; (3) detection-power flags next to every "which layer responded" call; (4) a
 metabolite layer at pathway level; (5) a fixed caveat block and positive/negative/pathway-class controls; (6)

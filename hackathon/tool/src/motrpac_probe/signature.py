@@ -1,14 +1,7 @@
-"""Read a signature CSV and map it to the human gene symbols used in the store.
+"""Read a signature CSV (symbols, UniProt, Ensembl or rat symbols; +1 / -1 directions) and map it to the
+store's human gene symbols, reporting every row that could not be used.
 
-Input columns (case-insensitive): gene_symbol and/or uniprot / ensembl / rat_symbol, direction (+1 up in disease,
--1 down; 'up'/'down' accepted), optional group, weight, source. Mapping order per row, first hit wins:
-  1. gene_symbol exactly as given, then upper-cased, against the store's human symbols;
-  2. a gene_symbol value that looks like an Ensembl (ENSG/ENSRNOG) or UniProt accession is mapped as such;
-  3. rat symbol -> human ortholog (RGD table used by scripts/03_join.py), case-insensitive;
-  4. the uniprot column (MoTrPAC human proteomics feature map; isoform suffix dropped if needed);
-  5. the ensembl column; 6. the rat_symbol column.
-Duplicated genes keep the first row if directions agree and are dropped if they conflict. Every input row is
-reported with its mapping status.
+Method details: docs/METHODS.md#signaturepy
 """
 import re
 

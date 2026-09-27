@@ -31,7 +31,7 @@ def prov():
 def test_contrasts_schema(rows):
     schema_md = paths.STORE / "SCHEMA.md"
     if schema_md.exists():  # documented schema wins when present
-        documented = [ln.split("|")[1].strip(" `") for ln in schema_md.read_text().splitlines()
+        documented = [ln.split("|")[1].strip(" `") for ln in schema_md.read_text(encoding="utf-8").splitlines()
                       if ln.startswith("|") and "`" in ln.split("|")[1]]
         assert set(store.ROW_COLS) <= set(documented) | set(store.ROW_COLS)
     assert list(rows.columns) == store.ROW_COLS

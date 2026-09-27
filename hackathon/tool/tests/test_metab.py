@@ -113,7 +113,7 @@ def test_tca_demo(MS):
 
 def test_hmdb_and_unknown(tmp_path, MS):
     p = tmp_path / "hmdb.csv"
-    p.write_text("hmdb,direction\nHMDB0000094,up\nHMDB00254,-1\nHMDB0000190,+1\nHMDB9999999,1\n")
+    p.write_text("hmdb,direction\nHMDB0000094,up\nHMDB00254,-1\nHMDB0000190,+1\nHMDB9999999,1\n", encoding="utf-8")
     assert metab.is_metab_signature(p)
     sig = metab.load_metab_signature(p)
     st = dict(zip(sig.table.hmdb, sig.table.status))
@@ -121,11 +121,11 @@ def test_hmdb_and_unknown(tmp_path, MS):
     assert {"Citric acid", "Succinic acid", "Lactic acid"} <= set(sig.genes)
     assert dict(zip(sig.genes, sig.dirs))["Succinic acid"] == -1
     q = tmp_path / "unknown.csv"
-    q.write_text("refmet_name,direction\nNotAMetabolite xyz,1\nCitric acid,1\ncitric ACID,1\n")
+    q.write_text("refmet_name,direction\nNotAMetabolite xyz,1\nCitric acid,1\ncitric ACID,1\n", encoding="utf-8")
     s2 = metab.load_metab_signature(q)
     assert list(s2.table.status) == ["unmapped: RefMet name not measured in MoTrPAC metabolomics", "mapped",
                                      "dropped: duplicate of an earlier row"]
     assert s2.genes == ["Citric acid"]
     g = tmp_path / "genes.csv"
-    g.write_text("gene_symbol,refmet_name,direction\nPPARGC1A,,1\n")
+    g.write_text("gene_symbol,refmet_name,direction\nPPARGC1A,,1\n", encoding="utf-8")
     assert not metab.is_metab_signature(g)

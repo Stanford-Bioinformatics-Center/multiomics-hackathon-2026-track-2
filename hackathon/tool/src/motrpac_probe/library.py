@@ -1,22 +1,7 @@
-"""MoTrPAC as a signature library: every store column exported as UP / DOWN gene sets (GMT + JSON index), and a
-query that ranks all columns against a user signature.
+"""MoTrPAC as a signature library: every comparison exported as UP / DOWN gene sets (GMT + JSON index), and a
+query that ranks all comparisons against a signature.
 
-Set definition (build):
-  UP   = genes with fdr_bh < cutoff and logFC > 0 in the column, ranked by |stat| descending, first `cap` kept;
-  DOWN = genes with fdr_bh < cutoff and logFC < 0, same ranking and cap.
-  All 422 store columns (every kind and layer) are exported. Sets with 0 genes are not written to the GMT but are
-  listed in the JSON index with n_genes = 0.
-
-Query (per column):
-  The cameraPR / sign-test scores come from everywhere.run (signed cameraPR t, + = the column moves the signature
-  genes AGAINST the signature). Set overlap uses the counted signature genes split by direction (sig_up, sig_down)
-  and the column's library sets (UP, DOWN, after the FDR cutoff and the cap):
-    n_overlap_same    = |sig_up & UP|   + |sig_down & DOWN|
-    n_overlap_opposed = |sig_up & DOWN| + |sig_down & UP|
-    denominator       = |(sig_up | sig_down) | (UP | DOWN)|
-    jaccard_same      = n_overlap_same / denominator
-    jaccard_opposed   = n_overlap_opposed / denominator
-  (0 when the denominator is 0).
+Method details: docs/METHODS.md#librarypy
 """
 import datetime as dt
 import json

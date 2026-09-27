@@ -1,10 +1,7 @@
-"""Section F: the signature in every MoTrPAC comparison column (scripts/10_everywhere.py, generalised).
+"""Section F: the signature in all 422 MoTrPAC comparisons, ranked, with non-exercise contrasts as the
+negative control.
 
-Ranking unit = tissue x layer x time (rat: the two sexes of one training week pooled; human: one contrast), counts
-over the counted signature genes; sign_p = two-sided binomial of opposed vs 0.5; sign_q_bh = BH over all units;
-units with fewer than min_n measured cells are kept in the CSV but left out of the ranking (10_everywhere: 10).
-Non-exercise reference comparisons (control time course, baseline group differences, EE-RE) are included as a
-negative control. The per-column cameraPR t (signed; + = opposed) is added as the primary set-level score.
+Method details: docs/METHODS.md#everywherepy
 """
 import numpy as np
 import pandas as pd

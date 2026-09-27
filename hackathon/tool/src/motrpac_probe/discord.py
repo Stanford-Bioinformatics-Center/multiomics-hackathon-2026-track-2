@@ -1,8 +1,7 @@
-"""`mprobe discord`: omic-discordance report for one species x tissue (generalises scripts 04/06/08/11 + lag/).
+"""`mprobe discord`: when does each layer respond, how well do RNA and protein agree, and how much of the
+disagreement is detection power?
 
-Panels (order fixed): a timescale, b agreement by timepoint, c agreement by gene property, d which layer
-responded and the detection-power decomposition, e protein-without-RNA calls, f does early RNA predict later
-protein, g sex without thresholds, h caveats. Every number shown is also written to tables/*.csv.
+Method details: docs/METHODS.md#discordpy
 """
 import datetime as dt
 import json
@@ -572,21 +571,38 @@ def write(R, outdir, command=""):
             "legacy_scripts_sha256_16": legacy.script_hashes(),
             "parameters": {"species": sp, "tissue": tis, "cutoff": cut},
             "timings_s": {k: round(v, 2) for k, v in R["timer"].rows}}
-    (outdir / "provenance.json").write_text(json.dumps(prov, indent=2))
+    (outdir / "provenance.json").write_text(json.dumps(prov, indent=2), encoding="utf-8")
     first = [f"{tw}: {len(R['cols'])} exercise comparisons across layers "
              f"{', '.join(LAYER_WORDS.get(l, l) for l in R['cols'].layer.unique())}.",
              "Much of 'which layer responded' is which assay could see the gene (panel d)."]
     ag = R["agreement"]
     agl = ag[ag.subset == "all genes"].dropna(subset=["rho"])
+    # first screen for a MoTrPAC data user: when each layer moves, how well RNA and protein agree, and how much of
+    # the disagreement is detection power
+    ts = R["timescale"].copy()
+    ts["col"] = ts.layer.map(lambda l: f"{LAYER_WORDS.get(l, l)}: % changed")
+    summ = ts.pivot_table(index=["series", "x", "time"], columns="col", values="fraction", aggfunc="first") * 100
+    rho = agl.set_index(["series", "x", "time"]).rho.rename("RNA–protein ρ")
+    summ = summ[[f"{LAYER_WORDS.get(l, l)}: % changed" for l in LAYER_ORDER
+                 if f"{LAYER_WORDS.get(l, l)}: % changed" in summ.columns]]
+    summ = summ.join(rho).reset_index().sort_values(["series", "x"]).drop(columns="x")
+    summ = summ.rename(columns={"series": "Group / sex", "time": "Time"})
+    md = R["model"]
+    det = (f"Which layer responded is predicted with AUC {md['auc_detection']:.2f} from detection power alone "
+           f"(baseline mRNA, {'proteomics missing values' if sp == 'rat' else 'GTEx abundance'}) and "
+           f"{md['auc_full']:.2f} with gene properties added (shuffled labels {md['auc_label_shuffle']:.2f}): much "
+           "of 'which layer responded' is which assay could see the gene.") if "auc_full" in md else \
+        "Too few RNA-only / protein-only genes to fit the detection-power model."
     head = dict(title=f"{tw}: how discordant are the layers, and why?",
-                how_to_read="Panels a–b answer 'when does each layer move and how well do they agree'; panel d "
-                            "answers 'how much of the disagreement is detection power'.",
-                table_html="", sentences=[
-                    ("Genome-wide RNA–protein ρ ranges " f"{agl.rho.min():.2f} to {agl.rho.max():.2f} across "
-                     f"{len(agl)} timepoints.") if len(agl) else "No timepoint has both RNA and protein."])
+                how_to_read=f"Per timepoint: percent of measured features at BH FDR < {cut} in each layer, and the "
+                            "genome-wide Spearman ρ between RNA and protein statistics (panels a, b).",
+                table_html=render.df_to_html(summ, table_id="discord_headline", formats={
+                    c: "{:.2f}" for c in summ.columns if c not in ("Group / sex", "Time")}),
+                sentences=[det] + ([f"Genome-wide RNA–protein ρ ranges {agl.rho.min():.2f} to {agl.rho.max():.2f} "
+                                    f"across {len(agl)} timepoints."] if len(agl) else []))
     ctx = dict(title=f"MoTrPAC discordance: {tw}", subtitle="Which omic layer responds to exercise, when, and why "
                "they disagree", meta=[("Species", sp), ("Tissue", tis), ("Cutoff", str(cut)),
-                                      ("Store", store.store_hash()), ("Command", command)],
+                                      ("Store", store.store_hash())],
                headline=head, first_screen=first, sections=secs, glossary=_glossary(),
                provenance_json=json.dumps(prov, indent=2))
     render.render_report(ctx, outdir / "report.html")

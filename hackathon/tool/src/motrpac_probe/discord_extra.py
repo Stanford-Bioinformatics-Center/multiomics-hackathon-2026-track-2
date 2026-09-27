@@ -1,24 +1,7 @@
-"""Two extra panels for `mprobe discord` (rat training, tissues with RNA and PROT): pure functions that return
-tables + matplotlib figures; the caller renders them.
+"""Discordance panels e and f: protein-without-RNA calls from summary statistics, and whether early RNA
+predicts later protein (held-out delta R2 with a permutation null).
 
-protein_without_rna(S, tissue, ...)
-    Summary-statistics re-implementation of hackathon/protonly (PLAN.md, scripts/11_protein_only.py): replicated
-    protein training responders whose RNA response is bounded below the protein effect ("protein-only"), with a
-    label-shuffle analogue, a concordance null, a parametric bootstrap and the mirror (RNA-only).
-lag_panel(S, tissue, ...)
-    Summary-statistics port of hackathon/scripts/07_lag.py: does RNA at week w add held-out information about the
-    8-week protein response beyond protein, and beyond same-time (8-week) RNA?
-
-Both return dict(tables, figures, numbers, captions, notes):
-    tables   : dict[str, pandas.DataFrame]
-    figures  : dict[str, matplotlib.figure.Figure]   (the caller saves / closes them)
-    numbers  : dict[str, float | int]                 (headline scalars)
-    captions : dict[str, (title, how_to_read)]        (one entry per table and figure key)
-    notes    : list[str]                              (method statements, deviations, comparison to the originals)
-
-Every value is computed from the store (per gene x column logFC, stat, baseline_expr). SE = |logFC / stat|
-(DESeq2 Wald z for rat RNA, limma t for rat PROT). Reference numbers quoted in notes are copied from
-protonly/RESULTS.md and lag/RESULTS.md (join_table_v2, raw logFC) and are labelled as such.
+Method details: docs/METHODS.md#discord_extrapy
 """
 import time
 

@@ -46,6 +46,6 @@ lines += ["## Seed reproducibility (seed 20260926 vs 12345)", "",
 fail = res[res.exit != 0]
 lines += ["## Failures", "", md(fail[["case", "stderr_tail"]]) if len(fail) else "None.", ""]
 if FIXED.exists():
-    lines += ["## Found and fixed", "", FIXED.read_text().strip(), ""]
-(M.parent / "REPORT.md").write_text("\n".join(lines) + "\n")
+    lines += ["## Found and fixed", "", FIXED.read_text(encoding="utf-8").strip(), ""]
+(M.parent / "REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 print(M.parent / "REPORT.md")

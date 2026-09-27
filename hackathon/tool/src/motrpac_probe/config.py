@@ -1,8 +1,6 @@
-"""Config files that mirror the CLI flags (see tool/config.example.yaml).
+"""Config files (YAML or JSON) that mirror every CLI flag.
 
-YAML is read with PyYAML when installed; otherwise a flat subset is parsed here (top-level `run:` / `discord:`
-blocks of `key: value`, lists as `[a, b]` or `a, b`). JSON files work everywhere. Keys use the CLI flag names with
-underscores (context_groups, pool_sets, ...). CLI flags given explicitly win over the file.
+Method details: docs/METHODS.md#configpy
 """
 import json
 from pathlib import Path
@@ -43,7 +41,7 @@ def _flat_yaml(text):
 
 
 def load_config(path, section):
-    text = Path(path).read_text()
+    text = Path(path).read_text(encoding="utf-8")
     if str(path).endswith(".json"):
         cfg = json.loads(text)
     else:

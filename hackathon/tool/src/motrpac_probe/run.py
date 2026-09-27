@@ -276,7 +276,7 @@ def write(R, outdir, command="", toggles=None):
     if toggles:
         ctx["toggles"] = toggles
     prov = provenance(R, command)
-    (outdir / "provenance.json").write_text(json.dumps(prov, indent=2, default=str))
+    (outdir / "provenance.json").write_text(json.dumps(prov, indent=2, default=str), encoding="utf-8")
     ctx["provenance_json"] = json.dumps(prov, indent=2, default=str)
     render.render_report(ctx, outdir / "report.html")
     R["timer"]("render")
@@ -669,7 +669,7 @@ def context(R, svg, tables, cw, fp, command, outdir):
 
     meta = [("Signature", sig.name), ("Genes counted", str(len(sig.genes))), ("Rows in file", str(n_in)),
             ("Run", dt.datetime.now().strftime("%Y-%m-%d %H:%M")), ("Store", store.store_hash()),
-            ("Repo", store.git_sha()[:10]), ("Command", command)]
+            ("Repo", store.git_sha()[:10])]
     glossary = GLOSSARY
     return dict(title=f"MoTrPAC probe: {sig.name}",
                 subtitle="How much of this signature does the exercise response oppose, by omic layer and time?",
