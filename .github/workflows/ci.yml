@@ -1,0 +1,72 @@
+name: CI — Exercise Signature Explorer
+
+# Runs the four verification levels from the plan:
+#  1. mprobe engine tests (with skip reporting + expected-skip allowlist)
+#  2. service + API + catalog + parity tests
+#  3. React build + domain tests
+#  4. lower-9 golden regression + full-19 regression (via the engine/service tests above)
+# The browser point-to-source guarantee is enforced at the API level by
+# apps/api/tests/test_api.py::test_point_to_evidence_to_source_chain.
+
+on:
+  push:
+    branches: ["integration/**", "main"]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: hackathon/tool
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install engine + service (editable)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[test]"
+          pip install -e "../../apps/api[test]"
+          pip install "fastapi>=0.110" "httpx>=0.27"
+      - name: Fetch the prebuilt store
+        run: mprobe store fetch
+      - name: Engine tests (skip reporting + expected-skip allowlist)
+        run: |
+          python -m pytest -q -rs | tee /tmp/pytest.txt
+          # allowlist: only the known store/deck/R skips are permitted (34 total)
+          python - <<'PY'
+          import re, sys
+          txt = open("/tmp/pytest.txt").read()
+          m = re.search(r"(\d+) passed(?:, (\d+) skipped)?", txt)
+          passed = int(m.group(1)); skipped = int(m.group(2) or 0)
+          print(f"passed={passed} skipped={skipped}")
+          allowed = re.findall(r"needs the local hackathon/ data|motrpac R env not available|no store", txt)
+          # every skip line must match an allowlisted reason
+          skip_lines = [l for l in txt.splitlines() if l.startswith("SKIPPED")]
+          bad = [l for l in skip_lines if not re.search(
+              r"needs the local hackathon/ data|motrpac R env not available|no store", l)]
+          if bad:
+              print("UNEXPECTED SKIPS:\n" + "\n".join(bad)); sys.exit(1)
+          if passed < 100:
+              print("too few passing tests"); sys.exit(1)
+          PY
+      - name: Service / API / catalog / parity tests
+        run: python -m pytest -q ../../apps/api/tests
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install
+      - name: Domain tests
+        run: npm test
+      - name: Production build
+        run: npm run build

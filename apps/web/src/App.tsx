@@ -1,9 +1,10 @@
 import { createElement, useState, type ReactNode } from "react";
 import QueryBuilder, { initialAnalysisQuery } from "./components/QueryBuilder";
 import TechnicalFlowDiagram from "./components/TechnicalFlowDiagram";
+import LiveDashboard from "./components/LiveDashboard";
 import { getStudyContext, getVisualizationMode, type AnalysisQuery } from "./domain/analysis";
 
-type View = "architecture" | "technical" | "workflow" | "dashboard" | "slide";
+type View = "architecture" | "technical" | "workflow" | "dashboard" | "live" | "slide";
 type DashboardTab = "Disease vs Exercise" | "RNA vs Protein" | "Heatmap" | "Evidence Table" | "Methods & Limitations";
 
 const views: { id: View; label: string; eyebrow: string }[] = [
@@ -11,7 +12,8 @@ const views: { id: View; label: string; eyebrow: string }[] = [
   { id: "technical", label: "Technical flow", eyebrow: "02" },
   { id: "workflow", label: "Researcher workflow", eyebrow: "03" },
   { id: "dashboard", label: "Results dashboard", eyebrow: "04" },
-  { id: "slide", label: "Judge slide", eyebrow: "05" },
+  { id: "live", label: "Live results (API)", eyebrow: "05" },
+  { id: "slide", label: "Judge slide", eyebrow: "06" },
 ];
 
 const dashboardTabs: DashboardTab[] = [
@@ -622,6 +624,7 @@ export default function App() {
       {view === "technical" && <TechnicalFlow />}
       {view === "workflow" && <Workflow />}
       {view === "dashboard" && <Dashboard />}
+      {view === "live" && <LiveDashboard />}
       {view === "slide" && <JudgeSlide />}
       <footer className="app-footer"><span>System handoff · v0.1</span><span>Cross-cohort comparison · transparent assumptions · reproducible export</span></footer>
     </main>

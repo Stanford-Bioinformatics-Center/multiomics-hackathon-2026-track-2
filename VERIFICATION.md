@@ -169,3 +169,52 @@ Verified numbers (from the store, 422 columns total):
 
 Commands:
 - `python -m pytest apps/api/tests -v` -> 18 passed (8 service + 2 lineage + 8 catalog)
+
+### Gate 5 checkpoint — End-to-end (PASS)
+Files added / changed:
+- `apps/api/motrpac_probe_service/app.py` (FastAPI; OpenAPI = transport truth), `export.py` (bundle
+  + HTML report), `pyproject.toml` (test extra += fastapi, httpx)
+- `apps/api/tests/test_api.py` (10 incl. point->source), `test_parity.py` (3)
+- `apps/web/src/api/client.ts` (typed client), `src/components/LiveDashboard.tsx` (live view),
+  `src/App.tsx` (+ "Live results (API)" view), `src/domain/analysis.ts`
+  (getVisualizationModeFromReturnedLayers), `src/domain/analysis.test.ts` (+2 tests)
+- `.github/workflows/ci.yml` (python + web jobs, skip allowlist)
+- `hackathon/tool/scripts_regenerate_gallery.md` (gallery regen procedure)
+- `hackathon/tool/src/motrpac_probe/signature.py` (mapping_audit now enforces the id-column
+  requirement so validate/preview return 422 on malformed CSVs)
+
+Why:
+- OpenAPI/Pydantic app wraps the service; endpoints /health, /catalog, /availability,
+  /signatures/validate, /mappings/preview, /comparisons(+/{id}/features,/provenance,/report,/export).
+- Scientific empty states (no_matching_context, no_compatible_data, zero-mapped) return HTTP 200;
+  malformed input returns 422.
+- React: live client + LiveDashboard show real numbers (summary, set-level table with family
+  q-values, headline, both contrasts, guardrails, PTM caveat, export/report links). Static design
+  views retained. Visualization mode derives from RETURNED layers (new domain fn + tests) so a
+  requested-but-unreturned layer cannot fabricate a matrix.
+
+Verified end-to-end (live uvicorn on 127.0.0.1:8137):
+- GET /api/health -> ok, store_hash d615c2f0b9aec182.
+- GET /api/catalog -> rat SKM-VL layers ["RNA"] (store-derived).
+- POST /api/comparisons {example pah_muscle_malenfant2015, rat} -> status ok, 19 counted genes,
+  returned_layers [PROT, RNA], headline male rat SKM-GN protein 8wk q=0.0584 significant=False.
+- GET .../export -> zip with exactly the 9 bundle files.
+- Parity: service set-level results match a direct run.compute() cell-for-cell (n_opposed,
+  n_measured, camera_t, camera_fdr to 6 dp) at q<0.05 and q<0.10; store+counted genes match.
+- point -> evidence -> source: every measured feature's source_feature_id exists in its column's
+  store rows (test_api.py::test_point_to_evidence_to_source_chain).
+
+Test totals:
+- apps/api: 31 passed (8 service + 2 lineage + 8 catalog + 10 api + 3 parity).
+- apps/web: 18 passed (16 original + 2 viz-mode-from-returned-layers); production build OK
+  (JS 276.58 kB / gzip 83.29 kB).
+- engine suite unchanged at 122 passed / 34 skipped (allowlist).
+
+Gallery: committed reports under hackathon/tool/site record stale repo_git_sha 5e2cde3 (predates
+this branch). Regeneration on this branch records the current HEAD (verified a1dbfc4). Left the
+committed teammate-authored reports in place; regen procedure documented in
+scripts_regenerate_gallery.md (should be its own reviewed commit).
+
+Headline policy: male rat SKM-GN protein 8wk reported as q=0.0584 (NOT significant at q<0.05,
+directionally concordant only) under the 52-column family. The 16-column q=0.0413 is not used as a
+headline anywhere; it would only appear as an explicitly labeled sensitivity analysis.

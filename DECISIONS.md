@@ -148,3 +148,22 @@ actions"), a stated judging criterion. Newest at the bottom.
   boolean per layer (hides the engine-vs-UI distinction).
 - **Consequences.** 8 catalog tests + 2 lineage tests. "No compatible data" is a valid HTTP-200
   outcome, not an error. React (Gate 5) consumes this catalog instead of its constants.
+
+## ADR-0010 — Gate 5: FastAPI transport, live React view added (not a rewrite), gallery left as-is
+- **Context.** The React app is a 5-view design handoff with mock data. The requirement is to connect
+  it to real results without destroying the design artifact, and to expose the engine over HTTP.
+- **Decision.** (a) Add a FastAPI app whose OpenAPI/Pydantic schema is the transport source of truth;
+  endpoints wrap the service. Scientific empty states are HTTP 200; malformed input is 422. (b) Add a
+  typed `src/api/client.ts` and a new "Live results (API)" view (`LiveDashboard.tsx`) that renders
+  real numbers from one run object, deriving visualization mode from RETURNED layers via a new
+  `getVisualizationModeFromReturnedLayers`. Keep the existing design views. (c) Report the male rat
+  SKM-GN protein 8wk result as q=0.0584 (not significant); never surface the 16-column q=0.0413 as a
+  headline. (d) Do NOT regenerate the committed teammate gallery in this work; document the stale
+  `5e2cde3` provenance and a regeneration procedure instead (regen belongs in its own reviewed commit).
+- **Reasons.** Preserves the teammate's design work and gallery (Collaboration/integrity), adds a real
+  end-to-end path, and keeps the honest headline. Deriving viz mode from returned layers fixes the
+  fake-multi-omic bug.
+- **Alternatives rejected.** Rewriting the mock dashboard in place (destroys the design view and risks
+  large churn); regenerating the gallery now (large teammate-owned diff mixed into feature work).
+- **Consequences.** 31 api tests + 18 web tests; live round-trip verified over HTTP; CI runs both.
+  Point -> evidence -> source enforced at the API level (browser e2e is a future add).

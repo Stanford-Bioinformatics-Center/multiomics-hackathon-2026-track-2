@@ -5,6 +5,7 @@ import {
   classifyResultPresentation,
   getStudyContext,
   getVisualizationMode,
+  getVisualizationModeFromReturnedLayers,
   reconcileQueryForSpecies,
   resolveContext,
   studyContexts,
@@ -132,4 +133,26 @@ test("study design is catalog metadata rather than a query input", () => {
   assert.equal(studyContexts.length, 2);
   assert.ok(studyContexts.every((context) => context.studyDesign));
   assert.ok(!("exerciseStudyDesign" in ratQuery));
+});
+
+test("visualization mode is derived from RETURNED layers, not requested layers", () => {
+  // requested two omics but the backend returned only one -> single_layer (no fake multi-omic view)
+  assert.equal(getVisualizationModeFromReturnedLayers(["RNA"]), "single_layer");
+  // two returned layers -> pairwise
+  assert.equal(getVisualizationModeFromReturnedLayers(["RNA", "PROT"]), "pairwise");
+  // duplicates collapse
+  assert.equal(getVisualizationModeFromReturnedLayers(["RNA", "RNA"]), "single_layer");
+  // three returned layers -> matrix
+  assert.equal(getVisualizationModeFromReturnedLayers(["RNA", "PROT", "PHOSPHO"]), "matrix");
+  // empty results -> single_layer (nothing to pair)
+  assert.equal(getVisualizationModeFromReturnedLayers([]), "single_layer");
+});
+
+test("selecting an unimplemented layer alongside a real one cannot fabricate a matrix", () => {
+  // user requested 3 omics (would be 'matrix' by request), but only RNA+PROT returned -> pairwise
+  const requestedMode = getVisualizationMode(["transcriptomics", "proteomics", "metabolomics"]);
+  const renderedMode = getVisualizationModeFromReturnedLayers(["RNA", "PROT"]);
+  assert.equal(requestedMode, "matrix");
+  assert.equal(renderedMode, "pairwise");
+  assert.notEqual(renderedMode, requestedMode);
 });

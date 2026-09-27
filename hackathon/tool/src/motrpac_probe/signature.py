@@ -132,6 +132,9 @@ def mapping_audit(path, universe=None):
     audit DataFrame and reconciliation counts."""
     from .core import get_store
     t = read_table(path)
+    idcols = {"gene_symbol", "uniprot", "ensembl", "rat_symbol"}
+    if not idcols & set(t.columns):
+        raise ValueError(f"{path}: needs a gene_symbol, uniprot, ensembl or rat_symbol column")
     if "direction" not in t.columns:
         t["direction"] = ""
     universe = get_store().genes if universe is None else universe

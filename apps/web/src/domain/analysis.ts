@@ -234,9 +234,27 @@ export function resolveContext(
 
 export type VisualizationMode = "single_layer" | "pairwise" | "matrix";
 
+/**
+ * Request-time hint only (how many layers the user asked for). Do NOT use this to decide what to
+ * render: selecting an unimplemented layer (e.g. metabolomics) alongside a real one must not
+ * fabricate a multi-omic view. Use getVisualizationModeFromReturnedLayers for rendering.
+ */
 export function getVisualizationMode(selectedOmics: OmicLayer[]): VisualizationMode {
   if (selectedOmics.length <= 1) return "single_layer";
   if (selectedOmics.length === 2) return "pairwise";
+  return "matrix";
+}
+
+/**
+ * The mode that must drive rendering: it depends on the layers the backend actually RETURNED
+ * (present in the results), not on what the user selected. This prevents a fake multi-omic matrix
+ * when a requested layer produced no data. Layer codes here are the engine/store codes returned by
+ * the API (e.g. "RNA", "PROT", "PHOSPHO", "METAB").
+ */
+export function getVisualizationModeFromReturnedLayers(returnedLayers: string[]): VisualizationMode {
+  const distinct = Array.from(new Set(returnedLayers));
+  if (distinct.length <= 1) return "single_layer";
+  if (distinct.length === 2) return "pairwise";
   return "matrix";
 }
 

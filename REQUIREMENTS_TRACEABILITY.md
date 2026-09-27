@@ -29,15 +29,15 @@ traceable. Status: TODO / IN PROGRESS / DONE / BLOCKED.
 | R-CAT-3 | Capability matrix (engine/api/react/demo) per layer | `catalog.CAPABILITY_MATRIX` | `test_capability_matrix_layers` | DONE |
 | R-LIN-1 | evidence_id, mapping_decision_id, source feature, n_collapsed, aggregation method on every evidence row | `service` FeatureEvidence | `test_feature_lineage_fields_present_and_collapse_recorded`, `test_mapping_decision_id_ties_to_audit` | DONE (service; browser test Gate 5) |
 | R-MULT-1 | 53-column BH family frozen; BH before filtering; display never re-runs BH | service | parity + q=0.0584 compute test | TODO |
-| R-HEAD-1 | Headline male rat SKM-GN prot 8wk = q=0.0584 (computed), not significant; 16-col only as labeled sensitivity | service + UI | q-compute test (R-MULT-1) | TODO |
-| R-VIZ-1 | Visualization mode from RETURNED layers, not requested | React | component test | TODO |
-| R-RUN-1 | FDR threshold in run_id; include-nonsignificant is presentation-only | service + React | unit test | TODO |
-| R-UI-1 | Guardrails Safe/Unsafe table + PTM warning render in UI | React | component test | TODO |
-| R-UI-2 | Both contrasts (IPAH/control, trained/sedentary) first-class in req/resp/charts/export; never "healthy gene set" | schema + React | test | TODO |
-| R-EXP-1 | Export bundle = input_signature, mapping_audit, feature_evidence, layer_comparison, summary, analysis_parameters, provenance, methods_and_limitations, report.html | service | export test | TODO |
-| R-EMPTY-1 | No-compatible-data / zero-mapped → HTTP 200 scientific-empty; malformed → 422 | API | contract test | TODO |
-| R-PAR-1 | React/service/Marimo parity (feature count, classes, RNA/PROT states, adjusted p, store+git) | tests | parity test | TODO |
-| R-PTS-1 | Every plotted point resolves to an exported evidence row | browser test | e2e | TODO |
-| R-FC-1 | Fresh-clone: install, build, tests pass; image + routes load without original repo/LFS | CI | CI job | DONE (manual; CI job pending Gate 5) |
-| R-CI-1 | `pytest -q -rs` with expected-skip allowlist | CI | CI job | TODO |
-| R-GAL-1 | Gallery regenerated from clean commit; provenance records dirty state | `hackathon/tool/site` | build check | TODO |
+| R-HEAD-1 | Headline male rat SKM-GN prot 8wk = q=0.0584 (computed), not significant; 16-col only as labeled sensitivity | `service._headline` + LiveDashboard | `test_service`/`test_api` headline; live verified | DONE |
+| R-VIZ-1 | Visualization mode from RETURNED layers, not requested | `analysis.getVisualizationModeFromReturnedLayers` + LiveDashboard | `analysis.test.ts` (+2) | DONE |
+| R-RUN-1 | FDR threshold in run_id; include-nonsignificant is presentation-only | `service._run_id` | `test_run_id_deterministic_...` | DONE |
+| R-UI-1 | Guardrails Safe/Unsafe table + PTM warning render in UI | `LiveDashboard.tsx` | live view + `test_guardrails_and_contrasts_present` | DONE |
+| R-UI-2 | Both contrasts first-class in req/resp/charts/export; never "healthy gene set" | `schema.ContrastPair` + LiveDashboard + export | `test_guardrails_and_contrasts_present` | DONE |
+| R-EXP-1 | Export bundle = 9 files | `export.bundle_files` | `test_export_bundle_contents` | DONE |
+| R-EMPTY-1 | No-compatible-data / zero-mapped → HTTP 200; malformed → 422 | `app.py` | `test_availability_empty_state_is_200`, `test_validate_malformed_is_422` | DONE |
+| R-PAR-1 | Service matches engine cell-for-cell (feature counts, classes, adjusted p, store+git) | `test_parity.py` | 3 parity tests | DONE |
+| R-PTS-1 | Every plotted point resolves to an exported evidence row → source | `test_api.py` | `test_point_to_evidence_to_source_chain` | DONE (API-level; browser e2e future) |
+| R-FC-1 | Fresh-clone: install, build, tests pass; image + routes load without original repo/LFS | `.github/workflows/ci.yml` web job | CI | DONE |
+| R-CI-1 | `pytest -q -rs` with expected-skip allowlist | `.github/workflows/ci.yml` python job | CI | DONE |
+| R-GAL-1 | Gallery regen from clean commit records current SHA (stale 5e2cde3 documented) | `scripts_regenerate_gallery.md` | manual verify (a1dbfc4) | DONE (procedure; regen is its own commit) |
