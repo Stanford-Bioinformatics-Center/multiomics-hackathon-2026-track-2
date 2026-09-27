@@ -310,3 +310,15 @@ Verified:
 Local-run diagnosis: `:8000` is an unrelated "aegis" app; this app's web UI is Vite on 8443/5173 and
 the API is uvicorn on a chosen port (docs use 8765). A stale Vite was found on :5173. RUN_LOCAL.md
 records the exact two-terminal commands and VITE_API_BASE_URL wiring.
+
+
+### CORS fix checkpoint (PASS)
+- Symptom: browser showed "TypeError: Failed to fetch"; API logged OPTIONS /api/comparisons 405.
+  Root cause: FastAPI app had no CORS middleware; the web origin (8443) differs from the API origin
+  (8765), so preflight OPTIONS were rejected and every browser fetch failed. Server-side/TestClient
+  calls worked, which is why tests were green but the UI was not.
+- Fix: added CORSMiddleware to app.py, allowing the default Vite ports plus any localhost/127.0.0.1
+  port (regex), overridable via MPROBE_CORS_ORIGINS.
+- Verified (TestClient): preflight OPTIONS /api/comparisons -> 200 with access-control-allow-origin
+  http://localhost:8443 (was 405); GET carries the header. Added regression test
+  test_cors_preflight_allows_web_origin. api suite 44 passed.

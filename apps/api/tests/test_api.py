@@ -119,3 +119,17 @@ def test_point_to_evidence_to_source_chain(client):
         assert f["column_id"] in col_ids                       # point -> column
         assert f["evidence_id"].startswith(run_id)             # -> exported evidence row
         assert f["source_feature_id"] in store_features_by_col[f["column_id"]]  # -> source record
+
+
+def test_cors_preflight_allows_web_origin(client):
+    """The web dev server is a different origin; the browser preflights each request. Without CORS
+    these OPTIONS return 405 and every fetch fails ('Failed to fetch'). They must be allowed."""
+    r = client.options("/api/comparisons", headers={
+        "Origin": "http://localhost:8443",
+        "Access-Control-Request-Method": "POST",
+        "Access-Control-Request-Headers": "content-type"})
+    assert r.status_code in (200, 204)
+    assert r.headers.get("access-control-allow-origin") == "http://localhost:8443"
+    # actual responses also carry the header
+    g = client.get("/api/health", headers={"Origin": "http://localhost:5173"})
+    assert g.headers.get("access-control-allow-origin")

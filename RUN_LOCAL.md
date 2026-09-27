@@ -80,3 +80,10 @@ reproduce the legacy hardcoded pipeline.
 - API (uvicorn): you choose — examples use 8765. JSON only, not a browser page.
 - Web (Vite): 8443 by default here (or 5173) — this is the browser URL.
 - 8000: unrelated ("aegis") — do not use it for this app.
+
+
+## CORS (cross-origin)
+The web app (Vite) and API run on different origins, so the browser sends a preflight OPTIONS before
+each request. The API enables CORS for localhost/127.0.0.1 on any port by default, so local dev works
+out of the box. For a non-localhost origin, set MPROBE_CORS_ORIGINS before starting the API server,
+e.g. MPROBE_CORS_ORIGINS="https://my.host".

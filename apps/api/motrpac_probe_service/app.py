@@ -11,12 +11,14 @@ provenance, report, and the export bundle without recomputation.
 from __future__ import annotations
 
 import io
+import os
 import json
 import zipfile
 from dataclasses import asdict
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field, model_validator
 
@@ -32,6 +34,25 @@ from .service import SCHEMA_VERSION, run_analysis
 app = FastAPI(title="Exercise Signature Explorer API", version="0.1.0",
               description="Thin transport over the motrpac_probe engine. mprobe is the sole "
                           "scientific engine; this layer performs no statistics.")
+
+# The web dev server (Vite) runs on a different origin than the API, so the browser sends a CORS
+# preflight (OPTIONS) before each request. Without CORS middleware those preflights 405 and every
+# fetch fails with "Failed to fetch". Allow local dev origins (and any localhost/127.0.0.1 port);
+# MPROBE_CORS_ORIGINS overrides for other deployments.
+_default_origins = [
+    "http://localhost:8443", "http://127.0.0.1:8443",
+    "http://localhost:5173", "http://127.0.0.1:5173",
+    "http://localhost:3000", "http://127.0.0.1:3000",
+]
+_env_origins = os.environ.get("MPROBE_CORS_ORIGINS", "")
+_allow_origins = [o.strip() for o in _env_origins.split(",") if o.strip()] or _default_origins
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=_allow_origins,
+    allow_origin_regex=r"http://(localhost|127\.0\.0\.1):\d+",
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # in-process run cache: run_id -> AnalysisResponse (as a dataclass instance)
 _RUNS: dict[str, object] = {}
