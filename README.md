@@ -21,10 +21,27 @@ Compatible MoTrPAC transcriptomic, proteomic, and PTM measurements with protein,
 > PTM signal is not automatically a measure of modification occupancy, enzyme activity, or functional consequence.
 
 ### Project Snapshot 
-#### Title, one-line purpose, team, intended users, and why it matters
+#### Title: MoTrPAC Explorer 
+#### One-line Purpose: Comprehensive query of MoTrPAC stack based on a disease signatures
+#### Team:
+##### Sheng-Ye Wang: AI Engineer  
+##### Christopher Thai: Team Lead
+##### Bradley Haraguchi: Chief Developer 
+##### Daniyal Rahman: Project Manager
+##### Nur-Taz Rahman: Quality Assurance/Resident Mom
 
-### Research Question 
-#### Problem, hypothesis or objective, scope, and success criteria 
+### Intended Users
+Clinicians & researchers looking for comprehensive OMICS data based on their disease signature of interest 
+
+### Why It Matters
+Tools are required to reliably query publicly available OMICS datasets to accelerate hypothesis generation & target validation. 
+
+### Research Question:
+Is there a relationship between exercise and disease outcomes?
+
+#### Problem:
+, hypothesis or objective, scope, and success criteria
+
 
 ### Workflow 
 #### 
