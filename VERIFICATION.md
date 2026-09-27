@@ -218,3 +218,20 @@ scripts_regenerate_gallery.md (should be its own reviewed commit).
 Headline policy: male rat SKM-GN protein 8wk reported as q=0.0584 (NOT significant at q<0.05,
 directionally concordant only) under the 52-column family. The 16-column q=0.0413 is not used as a
 headline anywhere; it would only appear as an explicitly labeled sensitivity analysis.
+
+### Post-Gate-5 merge checkpoint — origin/main (metabolomics pipeline) (PASS, no conflicts)
+- Fetched origin/main which advanced to `2140f9b` "Add PAH metabolomics pipeline mapped to MoTrPAC".
+- Merged into the integration branch: merge commit `fb161d9` (parents f756b6c + 2140f9b). Working
+  tree clean; NO merge conflicts. Branch is 22 ahead / 0 behind origin/main (fully contains 2140f9b).
+- What 2140f9b added: a self-contained module under `MoTrPAC Hackathon/Metabolomics/` (ST000763 PAH
+  metabolomics: scripts 00–07, data, outputs, README). Additive analysis module only.
+- Impact assessment: 2140f9b does NOT touch `hackathon/tool/` — the mprobe engine, examples, tests,
+  and store are untouched. Therefore this is the additive-module case, not a scientific-output STOP
+  condition; no app change required and no golden re-verification forced.
+- Post-merge verification (run anyway):
+  - `python analysis.py` output byte-identical to /tmp/golden_full19_baseline.txt (no scientific drift).
+  - engine: 122 passed / 34 skipped (allowlist unchanged).
+  - api: 31 passed. web: 18 passed + production build OK.
+- Note: the new Metabolomics module is the deferred "Track 2 blood/pathway"-adjacent work maturing on
+  main; it is NOT yet wired into the app (metabolomics remains engine-supported / UI-not-exposed per
+  the capability matrix, ADR-0009). Wiring it into the API/UI is a future, separate task.
