@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:28:10",
+  "timestamp": "2026-09-27T02:06:28",
   "command": "mprobe run --quiet --signature examples/heart_failure_lv_hannenhalli2006.csv --name heart_failure_lv_hannenhalli2006",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -62,15 +62,15 @@
     "sections": null
   },
   "timings_s": {
-    "store load": 0.22,
+    "store load": 0.23,
     "signature mapping": 0.03,
-    "B/C grid + cameraPR": 1.18,
-    "D calibration nulls": 0.86,
-    "A coverage + detection flags": 0.37,
+    "B/C grid + cameraPR": 1.19,
+    "D calibration nulls": 0.9,
+    "A coverage + detection flags": 0.38,
     "E layer discordance": 0.18,
     "F everywhere": 0.44,
-    "sensitivity": 0.33,
-    "3-layer pathways": 0.25,
-    "figures": 2.76
+    "sensitivity": 0.35,
+    "3-layer pathways": 0.28,
+    "figures": 5.91
   }
 }

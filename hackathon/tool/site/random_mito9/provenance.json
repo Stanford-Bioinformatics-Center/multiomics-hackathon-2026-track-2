@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:27:54",
+  "timestamp": "2026-09-27T02:06:08",
   "command": "mprobe run --quiet --signature examples/random_mito9.csv --name random_mito9",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -62,15 +62,15 @@
     "sections": null
   },
   "timings_s": {
-    "store load": 0.22,
+    "store load": 0.21,
     "signature mapping": 0.03,
     "B/C grid + cameraPR": 0.17,
-    "D calibration nulls": 0.16,
+    "D calibration nulls": 0.17,
     "A coverage + detection flags": 0.11,
     "E layer discordance": 0.17,
     "F everywhere": 0.31,
-    "sensitivity": 0.13,
+    "sensitivity": 0.15,
     "3-layer pathways": 0.26,
-    "figures": 1.48
+    "figures": 2.24
   }
 }

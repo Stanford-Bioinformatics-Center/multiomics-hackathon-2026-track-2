@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:27:41",
+  "timestamp": "2026-09-27T02:05:52",
   "command": "mprobe run --quiet --signature examples/pah_blood_gse33463_ranked.csv.gz --name pah_blood_gse33463_ranked",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -64,15 +64,15 @@
   "timings_s": {
     "store load": 0.22,
     "signature mapping": 0.17,
-    "R rank association": 5.81,
-    "P pathway concordance": 2.84,
-    "B/C grid + cameraPR": 0.83,
-    "D calibration nulls": 0.71,
+    "R rank association": 5.95,
+    "P pathway concordance": 2.87,
+    "B/C grid + cameraPR": 0.84,
+    "D calibration nulls": 0.75,
     "A coverage + detection flags": 0.34,
     "E layer discordance": 0.17,
     "F everywhere": 0.45,
-    "sensitivity": 0.29,
-    "3-layer pathways": 0.26,
-    "figures": 6.22
+    "sensitivity": 0.3,
+    "3-layer pathways": 0.27,
+    "figures": 8.88
   }
 }

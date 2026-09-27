@@ -163,7 +163,7 @@ nav.toc { display: flex; flex-wrap: wrap; gap: 4px 0; }
 <div class="site-intro">
 <p>Each example is a gene signature (direction = up or down in the condition) scored by motrpac_probe against MoTrPAC exercise and training comparisons. A positive cameraPR t means the comparison moves the signature genes against the signature (opposed); a negative t means it moves them the same way.</p>
 <p>The headline columns are read from each run&#39;s tables/column_scores.csv (the core muscle and heart comparisons); percentiles are against the pathway-class-matched random-set null. Each report holds the figures, full tables and provenance.</p>
-<p>Signature library (every MoTrPAC comparison as UP and DOWN gene sets, BH FDR &lt; 0.05, top 250 by |stat|): <a href="library/motrpac_library.gmt">motrpac_library.gmt</a>, <a href="library/motrpac_library_index.json">motrpac_library_index.json</a>, <a href="library/README.txt">README.txt</a>, <a href="library/query_pah_muscle_malenfant2015/report.html">library query for pah_muscle_malenfant2015</a>.</p>
+<p>Signature library (every MoTrPAC comparison as UP and DOWN gene sets, BH FDR &lt; 0.05, top 250 by |stat|): <a href="library/motrpac_library.gmt">motrpac_library.gmt</a>, <a href="library/motrpac_library_index.json">motrpac_library_index.json</a>, <a href="library/README.txt">README.txt</a>, <a href="library/query_pah_muscle_lower9_malenfant2015/report.html">library query for pah_muscle_lower9_malenfant2015</a>.</p>
 </div>
 <h2>Examples</h2>
 <div class="table-wrap">
@@ -185,7 +185,7 @@ nav.toc { display: flex; flex-wrap: wrap; gap: 4px 0; }
 <td><a href="compare/report.html">All disease signatures side by side</a></td>
 <td>Generality view: every example signature against the same human 24 h and rat 4–8 wk comparisons (mprobe compare).</td>
 <td class="num">–</td>
-<td>10</td>
+<td>11</td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
@@ -228,6 +228,18 @@ nav.toc { display: flex; flex-wrap: wrap; gap: 4px 0; }
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
 <td><span class="na">not measured</span></td>
+</tr>
+<tr>
+<td><a href="pah_muscle_lower9_malenfant2015/report.html">pah_muscle_lower9_malenfant2015</a></td>
+<td>PAH, 9 lower muscle proteins (Malenfant 2015; team rat pipeline input). The nine downregulated proteins of Malenfant 2015 Table 2 exactly as the team&#39;s rat protein pipeline uses them (paper symbols ATP5L / ATP5B mapped through UniProt).</td>
+<td class="num">9</td>
+<td><span class="na">not measured</span></td>
+<td>9/9, t = 6.19</td>
+<td>0/9, t = -4.05</td>
+<td>9/9, t = 6.04</td>
+<td>Rat vastus lateralis RNA, female 4 wk: t = +6.64, pct 95</td>
+<td>23/52</td>
+<td>5/52</td>
 </tr>
 <tr>
 <td><a href="pah_muscle_malenfant2015/report.html">pah_muscle_malenfant2015</a></td>

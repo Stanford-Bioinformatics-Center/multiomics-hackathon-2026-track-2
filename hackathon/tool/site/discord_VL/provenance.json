@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:29:05",
+  "timestamp": "2026-09-27T02:07:30",
   "command": "mprobe discord --quiet --species human --tissue VL",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "store": "d615c2f0b9aec182",
@@ -18,13 +18,13 @@
     "cutoff": 0.05
   },
   "timings_s": {
-    "store load": 0.42,
+    "store load": 0.47,
     "a timescale": 0.0,
-    "b agreement": 1.19,
-    "c stratified rho": 5.74,
+    "b agreement": 1.21,
+    "c stratified rho": 5.73,
     "d which layer": 0.08,
     "g sex": 0.0,
     "3-layer pathways": 0.01,
-    "figures + tables": 0.49
+    "figures + tables": 0.5
   }
 }

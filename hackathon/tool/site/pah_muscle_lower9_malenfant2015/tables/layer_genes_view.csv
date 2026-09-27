@@ -1,0 +1,217 @@
+Comparison,Gene,Disease direction,RNA stat,Protein stat,Which layer answered,RNA baseline tertile,Proteomics missing values,GTEx tertile,RNA features,Protein features
+"Human vastus lateralis, EE–CON 15–45 min",ATP5F1B,-1.0,-0.75953952074253,-1.3808796651633,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",ATP5MG,-1.0,-1.75305020375238,0.493063835620251,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",ECH1,-1.0,-2.36176631963919,-1.07892473565678,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",IDH2,-1.0,-1.13216977908504,-0.48916487575965,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",NDUFA9,-1.0,-1.41070687650261,-1.1584349433261,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",OGDH,-1.0,-1.72433157093753,-0.825136856295554,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",SLC25A4,-1.0,-0.382662667957943,-1.12032472273901,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",UQCRC1,-1.0,-0.656738626930771,-0.782479728747967,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",UQCRC2,-1.0,-1.42157396229414,-1.14847021214731,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",ATP5F1B,-1.0,0.351916926702047,0.132520230227883,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",ATP5MG,-1.0,0.282834748767144,0.811292047035975,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",ECH1,-1.0,-0.138856327366241,0.22519249239671,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",IDH2,-1.0,0.528747368203763,-0.595416053242771,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",NDUFA9,-1.0,0.191815399616556,0.180352863061458,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",OGDH,-1.0,-0.161308159733191,-0.188776331282174,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",SLC25A4,-1.0,1.74970787401906,1.12537275299887,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",UQCRC1,-1.0,0.399677291164303,-0.0944037187701095,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",UQCRC2,-1.0,0.221339806050278,-0.18630519818531,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",ATP5F1B,-1.0,3.78013013880638,-0.669243434148941,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",ATP5MG,-1.0,5.6003884869213,0.153001295391212,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",ECH1,-1.0,3.22675052417384,-0.786386326587196,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",IDH2,-1.0,0.781450126687144,-0.374561974399406,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",NDUFA9,-1.0,3.20686243161604,-0.58749366187543,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",OGDH,-1.0,4.32091194041795,-0.601341848733608,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",SLC25A4,-1.0,6.3275173898988,-0.945494377641577,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",UQCRC1,-1.0,3.38577209163927,-0.988961923796049,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",UQCRC2,-1.0,2.62770021744143,-0.73666962434862,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",ATP5F1B,-1.0,-0.89391915645689,-1.8078188928786,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",ATP5MG,-1.0,-1.48077388191683,0.109918692991394,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",ECH1,-1.0,-1.9443145228833,-2.05500839750712,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",IDH2,-1.0,-0.525530112158146,-1.09103455103313,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",NDUFA9,-1.0,-1.72868506235345,-1.39042303493782,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",OGDH,-1.0,-1.84100219682814,-1.33620026751643,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",SLC25A4,-1.0,-0.398901334487249,-1.0988345285711,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",UQCRC1,-1.0,-0.556097919518682,-0.754699178641426,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",UQCRC2,-1.0,-1.4968185496559,-0.769327298371436,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",ATP5F1B,-1.0,0.782916568776113,-0.413074641393836,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",ATP5MG,-1.0,1.04071541033058,0.153311055093877,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",ECH1,-1.0,-1.03834020371159,-0.521311670915349,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",IDH2,-1.0,-0.141249793981988,-0.746439679755477,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",NDUFA9,-1.0,-0.228469995265931,-0.897561403853438,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",OGDH,-1.0,0.301861870264941,-0.703121477459533,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",SLC25A4,-1.0,1.20319910901612,0.238098281240343,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",UQCRC1,-1.0,0.368578095699442,0.0740641977549405,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",UQCRC2,-1.0,0.805032428578818,0.155751668069685,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",ATP5F1B,-1.0,0.992684707914495,-1.50502502715684,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",ATP5MG,-1.0,3.73990568426026,-0.878921000814364,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",ECH1,-1.0,0.389110741014893,-2.02180824279233,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",IDH2,-1.0,-2.48157434141077,-1.60300494503238,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",NDUFA9,-1.0,0.755549146011485,-1.66183830886515,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",OGDH,-1.0,2.56409241556393,-1.7436207144372,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",SLC25A4,-1.0,2.96471192631424,-2.2559307919194,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",UQCRC1,-1.0,1.61947247823196,-1.90932677480311,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",UQCRC2,-1.0,0.572006489054066,-1.75056344405146,neither,high,,high,1.0,1.0
+"Human subcutaneous adipose, EE–CON 3.5–4 h",ATP5F1B,-1.0,-0.073988445436373,-2.52300996197647,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",ATP5MG,-1.0,0.986302948278709,-0.908332550330622,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",ECH1,-1.0,0.648409208876048,-2.74325422855476,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",IDH2,-1.0,0.394337661689963,1.17474188784217,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",NDUFA9,-1.0,-0.0045665524030105,-0.613815147611589,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",OGDH,-1.0,-0.375849664927165,0.0626969932845444,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",SLC25A4,-1.0,0.369319138028337,-1.62990951279449,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",UQCRC1,-1.0,-0.172497193859596,-0.0640487139192575,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",UQCRC2,-1.0,0.119903107677783,-2.21365968509026,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",ATP5F1B,-1.0,-0.098901560173381,-1.77814027879609,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",ATP5MG,-1.0,1.83713564753208,-1.48812701469198,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",ECH1,-1.0,1.04090835971574,-2.20688528305972,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",IDH2,-1.0,1.09471712242682,0.31257691908685,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",NDUFA9,-1.0,-0.10837225455181,-1.26308258905181,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",OGDH,-1.0,-0.681832711805534,0.122097330447272,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",SLC25A4,-1.0,0.147211968464963,-1.26891650966187,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",UQCRC1,-1.0,0.236821205126747,-0.751884465799481,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",UQCRC2,-1.0,0.533146524749412,-1.52187835845868,neither,,,,,
+"Rat gastrocnemius, female 1 wk",ATP5F1B,-1.0,0.538192000649495,1.51513445577806,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",ATP5MG,-1.0,-1.20027088267079,0.664851342224007,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",ECH1,-1.0,2.02001734936413,3.06777778034723,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",IDH2,-1.0,-1.11464256099344,1.57174176440122,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",NDUFA9,-1.0,1.11818370818997,2.75450531411025,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",OGDH,-1.0,1.09269435903828,2.1219875232175,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",SLC25A4,-1.0,1.19696905933164,1.22519256552636,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",UQCRC1,-1.0,0.261436082254712,1.79435272963894,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",UQCRC2,-1.0,0.498703166608212,1.4649985877004,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",ATP5F1B,-1.0,0.445331248392683,2.49274752475965,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",ATP5MG,-1.0,-1.83346273658722,-0.695071968911063,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",ECH1,-1.0,0.303091237962431,3.80514381571032,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",IDH2,-1.0,-0.818019201383859,1.53004580893292,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",NDUFA9,-1.0,1.15889333591142,1.01210888633763,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",OGDH,-1.0,0.573376680467496,0.288365883423838,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",SLC25A4,-1.0,0.422005485016434,-1.36981651605351,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",UQCRC1,-1.0,0.414793235367864,1.43610136738803,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",UQCRC2,-1.0,0.489410464122469,-0.808323631179297,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",ATP5F1B,-1.0,1.02640538317738,4.16698560103572,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",ATP5MG,-1.0,0.608044131274152,0.983033166306855,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",ECH1,-1.0,1.43217005473167,4.92940517931929,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",IDH2,-1.0,0.256713643266662,2.58080436651316,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",NDUFA9,-1.0,1.80732710200542,4.12997508311564,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",OGDH,-1.0,1.61591862097907,3.26826793872379,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",SLC25A4,-1.0,1.66486534375987,1.35631095885074,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",UQCRC1,-1.0,1.26658772232485,2.86574436203694,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",UQCRC2,-1.0,1.74593437866266,2.18729082027192,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",ATP5F1B,-1.0,1.83118501748261,7.06761809468629,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",ATP5MG,-1.0,1.42617425821927,1.07764921480248,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",ECH1,-1.0,-0.234796212805509,6.06460927462382,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",IDH2,-1.0,0.357187068005477,5.18889901504803,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",NDUFA9,-1.0,2.8555260580856,6.06198536788364,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",OGDH,-1.0,1.76878426924558,4.70045994236659,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",SLC25A4,-1.0,2.09775067701907,0.870692798961331,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",UQCRC1,-1.0,1.83113556925373,4.83113620565098,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",UQCRC2,-1.0,2.40028026239303,2.17785361984433,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",ATP5F1B,-1.0,2.50093256625561,1.07160948421459,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",ATP5MG,-1.0,1.57731886093792,-2.05856077376854,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",ECH1,-1.0,1.43819198471069,4.42944651008886,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",IDH2,-1.0,0.556070843359181,0.19556795539386,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",NDUFA9,-1.0,3.34229445972537,-0.761072125206482,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",OGDH,-1.0,2.38610304362029,0.876572736724499,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",SLC25A4,-1.0,2.30903814627581,-2.2521027943538,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",UQCRC1,-1.0,2.4177714986904,-0.388682368422224,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",UQCRC2,-1.0,3.36366437410756,-1.19768189977472,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",ATP5F1B,-1.0,2.24079976940794,2.18219109191392,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",ATP5MG,-1.0,-0.232482815169543,-0.115773469362739,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",ECH1,-1.0,0.114551008913567,5.24147562268558,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",IDH2,-1.0,-1.82829006517776,-0.0074659593971087,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",NDUFA9,-1.0,2.1940584491016,1.30238412367114,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",OGDH,-1.0,0.747383912252736,2.69151231286896,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",SLC25A4,-1.0,2.44562797350351,-0.794766368111604,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",UQCRC1,-1.0,0.903034306644379,1.01943896709548,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",UQCRC2,-1.0,1.66037156018498,1.08993266152417,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",ATP5F1B,-1.0,2.71396607074775,2.96019111445354,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",ATP5MG,-1.0,0.543030040783255,-1.58101260834214,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",ECH1,-1.0,-0.0808796420550496,6.26177891588089,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",IDH2,-1.0,-0.342791872668203,0.868941888136628,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",NDUFA9,-1.0,2.75236873417446,1.36884100959706,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",OGDH,-1.0,1.49256995856932,2.03649574493853,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",SLC25A4,-1.0,2.2533332232829,-1.01414760427655,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",UQCRC1,-1.0,1.83314874470693,0.251999945348922,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",UQCRC2,-1.0,2.43055845439242,0.178095649287735,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",ATP5F1B,-1.0,3.15997829552198,3.67260115404259,protein only,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",ATP5MG,-1.0,0.553283355769308,-0.518522443073582,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",ECH1,-1.0,-3.44334748132999,3.66857420890935,"both, opposite sign",high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",IDH2,-1.0,0.209792662148617,0.951211205604919,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",NDUFA9,-1.0,3.12093618504891,2.85103498381263,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",OGDH,-1.0,1.23191810986637,3.02432852048029,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",SLC25A4,-1.0,1.49657623541761,0.519769960981211,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",UQCRC1,-1.0,2.17481017533308,1.00443518289095,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",UQCRC2,-1.0,2.03844227885896,1.28581425714701,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",ATP5F1B,-1.0,-0.215652345810971,1.23239284247746,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",ATP5MG,-1.0,-1.21977524114624,-0.954791950693951,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",ECH1,-1.0,0.0032985817819854,1.27051165467715,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",IDH2,-1.0,-0.0363185076139631,0.0278382328988464,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",NDUFA9,-1.0,0.657540735043413,0.261290847259156,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",OGDH,-1.0,-0.609091061688017,0.609948461775675,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",SLC25A4,-1.0,-0.0183321569917504,0.207659776338799,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",UQCRC1,-1.0,-0.241215279842878,-1.37065852206419,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",UQCRC2,-1.0,1.28130118034715,-0.860037632480606,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",ATP5F1B,-1.0,0.498393238921721,1.64283592790287,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",ATP5MG,-1.0,-2.54961384342331,0.758020101988974,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",ECH1,-1.0,-1.83855932219515,1.4835395830429,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",IDH2,-1.0,0.0624147558549681,0.41854205021673,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",NDUFA9,-1.0,0.874929609523631,1.26665814832646,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",OGDH,-1.0,-2.26702928452844,0.708904600074595,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",SLC25A4,-1.0,-2.12906034177556,2.20034480189771,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",UQCRC1,-1.0,-2.50745006582929,0.239184586263834,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",UQCRC2,-1.0,1.3555494494598,0.776868164615206,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",ATP5F1B,-1.0,1.3586537680248,3.87477839630372,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",ATP5MG,-1.0,0.183803084762148,1.13782216686644,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",ECH1,-1.0,-2.09204144376599,2.15474439842357,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",IDH2,-1.0,0.529740200259883,2.73800327105555,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",NDUFA9,-1.0,1.46315707788105,2.24445196004031,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",OGDH,-1.0,-0.198745397782537,2.85404903368923,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",SLC25A4,-1.0,1.15598286911717,1.84070557588646,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",UQCRC1,-1.0,1.22543100580047,0.838186302951741,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",UQCRC2,-1.0,1.97325154126838,1.68287523840218,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",ATP5F1B,-1.0,1.30857871775178,-0.137086719216432,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",ATP5MG,-1.0,1.56763506120688,0.856746932680002,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",ECH1,-1.0,-3.73216611510897,-0.62728947308885,RNA only,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",IDH2,-1.0,0.225869064724197,-1.84517975648548,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",NDUFA9,-1.0,2.65422474590383,0.396669584864458,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",OGDH,-1.0,-2.38791716246419,0.367895561340581,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",SLC25A4,-1.0,1.39397342411723,1.50112628013579,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",UQCRC1,-1.0,0.823069611973354,-0.578937581335148,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",UQCRC2,-1.0,3.10856476733515,0.212273044817484,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",ATP5F1B,-1.0,0.48832762347497,2.20989506416512,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",ATP5MG,-1.0,-0.1927067352595,0.834711810447721,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",ECH1,-1.0,0.268805886624556,3.11013085127869,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",IDH2,-1.0,0.45492790046765,1.74667802295379,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",NDUFA9,-1.0,1.33767594880759,0.301503011504176,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",OGDH,-1.0,1.11629235365528,1.39480321756504,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",SLC25A4,-1.0,1.4239009342306,0.981543424831765,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",UQCRC1,-1.0,0.740682100497064,0.542460747156154,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",UQCRC2,-1.0,1.54269622218021,0.22696724531408,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",ATP5F1B,-1.0,1.4878328119336,4.12165383067747,protein only,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",ATP5MG,-1.0,0.210009014907194,0.853813369945416,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",ECH1,-1.0,0.571315163000807,3.76528898932978,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",IDH2,-1.0,0.992436684154183,3.00585685943965,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",NDUFA9,-1.0,2.53390601706495,2.8030078341813,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",OGDH,-1.0,1.78383558085603,2.33562295157752,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",SLC25A4,-1.0,1.47401335235699,1.23658879553562,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",UQCRC1,-1.0,1.36708111549994,0.213957671764812,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",UQCRC2,-1.0,2.19954134002444,0.0209111000425914,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",ATP5F1B,-1.0,0.927721926203687,3.61482908455454,protein only,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",ATP5MG,-1.0,0.0399042671205205,2.58462071180807,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",ECH1,-1.0,-0.699388596569146,3.66206890621925,protein only,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",IDH2,-1.0,0.302587237417029,2.12050668488294,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",NDUFA9,-1.0,2.43168728172684,2.24332718165256,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",OGDH,-1.0,0.644356185172564,0.98880507468881,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",SLC25A4,-1.0,0.413718616561818,3.31103285589684,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",UQCRC1,-1.0,1.05741621203461,2.65274642625987,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",UQCRC2,-1.0,0.994977484429127,2.12292606388298,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",ATP5F1B,-1.0,-1.23633639426367,2.89788653999558,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",ATP5MG,-1.0,-1.70654832828758,0.0359515431657851,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",ECH1,-1.0,-4.60627483737375,1.22155387949079,RNA only,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",IDH2,-1.0,-1.17960788023409,0.626288812156694,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",NDUFA9,-1.0,-1.10344796949756,2.35597140633679,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",OGDH,-1.0,-2.70752047275437,0.522597994209594,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",SLC25A4,-1.0,-0.45616180066042,1.67672771940132,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",UQCRC1,-1.0,-0.362668190454086,0.51439355880998,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",UQCRC2,-1.0,-1.09543568348323,-0.108164003519607,neither,high,0.0,high,1.0,1.0

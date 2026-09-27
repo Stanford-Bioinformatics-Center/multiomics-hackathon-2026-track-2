@@ -1,0 +1,423 @@
+Rank,Comparison,Kind,Genes measured,Opposed,Same,Sign test p,cameraPR t,cameraPR FDR,Overlap opposed,Overlap same,Jaccard opposed,Jaccard same,UP set size,DOWN set size,column_id
+1,"Rat vastus lateralis RNA, female 4 wk",training vs sedentary,9,9,0,0.00390625,6.636517067991451,6.352467052098124e-09,2,0,0.00749063670411985,0.0,182,78,rat_train|SKM-VL|RNA|F_4w
+2,"Rat adrenal RNA, male 1 wk",training vs sedentary,9,9,0,0.00390625,6.573775795725366,6.436370358106148e-09,0,0,0.0,0.0,250,250,rat_train|ADRNL|RNA|M_1w
+3,"Human vastus lateralis RNA, EE–CON 24 h",exercise vs control,9,9,0,0.00390625,6.1853852967645695,6.0383478222486e-08,2,0,0.0039447731755424065,0.0,250,250,human_acute|VL|RNA|EE_vs_CON_24h
+4,"Rat gastrocnemius protein, female 8 wk",training vs sedentary,9,9,0,0.00390625,6.03823417697608,1.2603834177397972e-07,6,0,0.015267175572519083,0.0,250,140,rat_train|SKM-GN|PROT|F_8w
+5,"Rat gastrocnemius RNA, male 1 wk",training vs sedentary,9,9,0,0.00390625,5.621427551157935,9.188874116376317e-07,0,0,0.0,0.0,37,13,rat_train|SKM-GN|RNA|M_1w
+6,"Rat vastus lateralis RNA, female 8 wk",training vs sedentary,9,9,0,0.00390625,5.499391630464764,1.394390325864009e-06,2,0,0.004728132387706856,0.0,250,166,rat_train|SKM-VL|RNA|F_8w
+7,"Rat gastrocnemius protein, female 4 wk",training vs sedentary,9,9,0,0.00390625,5.393223369528536,2.2814982588733417e-06,3,0,0.017142857142857144,0.0,147,22,rat_train|SKM-GN|PROT|F_4w
+8,"Human vastus lateralis RNA, EE–CON pre",reference (non-exercise),9,9,0,0.00390625,4.999374753912898,1.700259731372419e-05,0,0,0.0,0.0,0,0,human_acute|VL|RNA|EE_vs_CON_pre
+9,"Rat liver protein, female 8 wk",training vs sedentary,9,9,0,0.00390625,4.872162159948333,3.047855640293633e-05,1,0,0.00641025641025641,0.0,94,54,rat_train|LIVER|PROT|F_8w
+10,"Human subcutaneous adipose RNA, EE–RE 15–45 min",reference (non-exercise),9,9,0,0.00390625,4.738369352215971,5.5013521066726256e-05,0,0,0.0,0.0,1,0,human_acute|ADIPOSE|RNA|EE_vs_RE_15to45min
+11,"Rat heart protein, male 4 wk",training vs sedentary,9,9,0,0.00390625,4.527877068173519,0.00013500668725324852,2,0,0.00823045267489712,0.0,135,101,rat_train|HEART|PROT|M_4w
+12,"Rat heart protein, female 4 wk",training vs sedentary,9,9,0,0.00390625,4.502836967685526,0.0001434585241954861,0,0,0.0,0.0,59,12,rat_train|HEART|PROT|F_4w
+13,"Human vastus lateralis RNA, RE–CON pre",reference (non-exercise),9,9,0,0.00390625,4.320207001886076,0.00028389172452499955,0,0,0.0,0.0,116,75,human_acute|VL|RNA|RE_vs_CON_pre
+14,"Rat gastrocnemius protein, female 1 wk",training vs sedentary,9,9,0,0.00390625,4.280481095429687,0.000316559214538305,0,0,0.0,0.0,0,7,rat_train|SKM-GN|PROT|F_1w
+15,"Rat heart phosphosite, female 4 wk",training vs sedentary,9,9,0,0.00390625,4.277320451893074,0.000316559214538305,0,0,0.0,0.0,1,0,rat_train|HEART|PHOSPHO|F_4w
+16,"Rat gastrocnemius RNA, female 8 wk",training vs sedentary,9,8,1,0.0390625,4.2579001811524595,0.00032912287685122314,0,0,0.0,0.0,8,10,rat_train|SKM-GN|RNA|F_8w
+17,"Rat heart protein, male 2 wk",training vs sedentary,9,9,0,0.00390625,4.071910917849266,0.0007152466645188434,1,0,0.00847457627118644,0.0,83,27,rat_train|HEART|PROT|M_2w
+18,"Rat vastus lateralis RNA, male 4 wk",training vs sedentary,9,9,0,0.00390625,4.049009731767367,0.0007387305815451859,0,0,0.0,0.0,2,3,rat_train|SKM-VL|RNA|M_4w
+19,"Rat liver protein, female 4 wk",training vs sedentary,9,9,0,0.00390625,4.026641376624464,0.0007742380354431146,0,0,0.0,0.0,1,0,rat_train|LIVER|PROT|F_4w
+20,"Rat heart phosphosite, male 2 wk",training vs sedentary,9,8,1,0.0390625,4.002686642486747,0.0008288679433170355,1,0,0.004784688995215311,0.0,79,122,rat_train|HEART|PHOSPHO|M_2w
+21,"Human vastus lateralis RNA, EE–RE 24 h",reference (non-exercise),9,9,0,0.00390625,3.9072599261628325,0.001170945511329945,0,0,0.0,0.0,250,250,human_acute|VL|RNA|EE_vs_RE_24h
+22,"Rat heart phosphosite, male 1 wk",training vs sedentary,9,8,1,0.0390625,3.903885639209869,0.001170945511329945,0,0,0.0,0.0,0,0,rat_train|HEART|PHOSPHO|M_1w
+23,"Rat heart phosphosite, female 2 wk",training vs sedentary,9,9,0,0.00390625,3.871656003484728,0.001276841135322865,0,0,0.0,0.0,0,0,rat_train|HEART|PHOSPHO|F_2w
+24,"Rat colon RNA, female 8 wk",training vs sedentary,9,8,1,0.0390625,3.8665251796541718,0.001276841135322865,0,0,0.0,0.0,74,32,rat_train|COLON|RNA|F_8w
+25,"Rat gastrocnemius RNA, male 4 wk",training vs sedentary,9,7,2,0.1796875,3.809515600240981,0.001563671771006399,0,0,0.0,0.0,38,36,rat_train|SKM-GN|RNA|M_4w
+26,"Rat heart phosphosite, male 4 wk",training vs sedentary,9,8,1,0.0390625,3.648648357176458,0.002726631809462294,0,0,0.0,0.0,34,31,rat_train|HEART|PHOSPHO|M_4w
+27,"Rat spleen RNA, male 8 wk",training vs sedentary,9,9,0,0.00390625,3.6252747827804708,0.0028968650132686845,0,0,0.0,0.0,250,250,rat_train|SPLEEN|RNA|M_8w
+28,"Rat gastrocnemius RNA, female 4 wk",training vs sedentary,9,9,0,0.00390625,3.5719622274421394,0.0034653232879246322,0,0,0.0,0.0,1,2,rat_train|SKM-GN|RNA|F_4w
+29,"Rat vastus lateralis RNA, female 1 wk",training vs sedentary,9,9,0,0.00390625,3.4842568286316133,0.0047042433497948635,0,0,0.0,0.0,14,9,rat_train|SKM-VL|RNA|F_1w
+30,"Rat spleen RNA, female 8 wk",training vs sedentary,9,8,1,0.0390625,3.4184156347464807,0.005715168011424132,0,0,0.0,0.0,41,3,rat_train|SPLEEN|RNA|F_8w
+31,"Rat heart RNA, male 2 wk",training vs sedentary,9,9,0,0.00390625,3.338910085671774,0.007453677818434708,0,0,0.0,0.0,100,24,rat_train|HEART|RNA|M_2w
+32,"Human blood RNA, EE–CON 20 min during",exercise vs control,9,8,1,0.0390625,3.1598608098089866,0.012784303242645975,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|EE_vs_CON_during20min
+33,"Human subcutaneous adipose protein, CON post–pre 3.5–4 h",reference (non-exercise),9,8,1,0.0390625,3.1350835918558735,0.013658765505614498,0,0,0.0,0.0,75,60,human_acute|ADIPOSE|PROT|CON_post_vs_pre_3.5to4h
+34,"Rat ovary RNA, female 4 wk",training vs sedentary,9,8,1,0.0390625,3.1128585322435662,0.013937780348708259,0,0,0.0,0.0,9,8,rat_train|OVARY|RNA|F_4w
+35,"Human subcutaneous adipose RNA, EE–RE 24 h",reference (non-exercise),9,9,0,0.00390625,3.110523803908983,0.013937780348708259,0,0,0.0,0.0,0,0,human_acute|ADIPOSE|RNA|EE_vs_RE_24h
+36,"Rat kidney protein, female 8 wk",training vs sedentary,9,9,0,0.00390625,3.0318935049785827,0.017473223649565627,0,0,0.0,0.0,10,5,rat_train|KIDNEY|PROT|F_8w
+37,"Human vastus lateralis protein, EE–RE 24 h",reference (non-exercise),9,9,0,0.00390625,3.0232694519442536,0.017671193796359036,0,0,0.0,0.0,2,22,human_acute|VL|PROT|EE_vs_RE_24h
+38,"Rat kidney protein, female 4 wk",training vs sedentary,9,8,1,0.0390625,2.999588713867677,0.01839419665420559,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PROT|F_4w
+39,"Rat heart phosphosite, male 8 wk",training vs sedentary,9,7,2,0.1796875,2.979694786651457,0.01896717028295715,0,0,0.0,0.0,76,51,rat_train|HEART|PHOSPHO|M_8w
+40,"Rat gastrocnemius protein, male 8 wk",training vs sedentary,9,8,1,0.0390625,2.9689303396030375,0.019042510215070814,2,0,0.006493506493506494,0.0,192,109,rat_train|SKM-GN|PROT|M_8w
+41,"Rat gastrocnemius protein, male 2 wk",training vs sedentary,9,6,3,0.5078125,2.9683501537835704,0.019042510215070814,1,0,0.015151515151515152,0.0,40,18,rat_train|SKM-GN|PROT|M_2w
+42,"Rat vena cava RNA, female 4 wk",training vs sedentary,9,8,1,0.0390625,2.939121756029514,0.020536828805451775,0,0,0.0,0.0,2,2,rat_train|VENACV|RNA|F_4w
+43,"Human vastus lateralis RNA, EE post–pre 24 h",exercise post−pre,9,8,1,0.0390625,2.8861243179247515,0.023397502057338114,1,0,0.001968503937007874,0.0,250,250,human_acute|VL|RNA|EE_post_vs_pre_24h
+44,"Rat heart protein, male 1 wk",training vs sedentary,9,9,0,0.00390625,2.8836720882653903,0.023397502057338114,0,0,0.0,0.0,4,0,rat_train|HEART|PROT|M_1w
+45,"Rat liver protein, male 2 wk",training vs sedentary,9,8,1,0.0390625,2.827564055650564,0.027481832243116143,0,0,0.0,0.0,6,1,rat_train|LIVER|PROT|M_2w
+46,"Rat subcutaneous WAT protein, male 8 wk",training vs sedentary,9,8,1,0.0390625,2.8121380329174395,0.02839540276480037,1,0,0.00558659217877095,0.0,121,50,rat_train|WAT-SC|PROT|M_8w
+47,"Rat blood RNA, male 8 wk",training vs sedentary,9,6,3,0.5078125,2.7869587401635223,0.030224806316527485,2,0,0.0039447731755424065,0.0,250,250,rat_train|BLOOD|RNA|M_8w
+48,"Human blood RNA, EE post–pre 20 min during",exercise post−pre,9,9,0,0.00390625,2.7103846155487097,0.03759360506757343,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|EE_post_vs_pre_during20min
+49,"Rat kidney RNA, male 2 wk",training vs sedentary,9,8,1,0.0390625,2.6864285281010347,0.03982045647732523,0,0,0.0,0.0,2,4,rat_train|KIDNEY|RNA|M_2w
+50,"Rat subcutaneous WAT RNA, female 4 wk",training vs sedentary,9,8,1,0.0390625,2.6688903116967198,0.04077653620745677,0,0,0.0,0.0,29,5,rat_train|WAT-SC|RNA|F_4w
+51,"Rat cortex RNA, male 4 wk",training vs sedentary,9,8,1,0.0390625,2.5905832221759924,0.04795511945515883,0,0,0.0,0.0,1,0,rat_train|CORTEX|RNA|M_4w
+52,"Rat gastrocnemius RNA, male 2 wk",training vs sedentary,9,7,2,0.1796875,2.5320360543458453,0.0552870232537092,0,0,0.0,0.0,9,20,rat_train|SKM-GN|RNA|M_2w
+53,"Rat gastrocnemius phosphosite, female 4 wk",training vs sedentary,5,5,0,0.0625,2.4994068260983733,0.05928848302798933,0,0,0.0,0.0,1,0,rat_train|SKM-GN|PHOSPHO|F_4w
+54,"Rat gastrocnemius RNA, male 8 wk",training vs sedentary,9,8,1,0.0390625,2.47564716324014,0.062454523406738745,0,1,0.0,0.002403846153846154,192,216,rat_train|SKM-GN|RNA|M_8w
+55,"Rat vastus lateralis RNA, female 2 wk",training vs sedentary,9,9,0,0.00390625,2.461800936099181,0.06327334022040118,0,0,0.0,0.0,28,25,rat_train|SKM-VL|RNA|F_2w
+56,"Rat hippocampus RNA, female 4 wk",training vs sedentary,9,7,2,0.1796875,2.458871445241645,0.06327334022040118,0,0,0.0,0.0,1,0,rat_train|HIPPOC|RNA|F_4w
+57,"Rat lung protein, female 4 wk",training vs sedentary,9,8,1,0.0390625,2.457654585399002,0.06327334022040118,0,0,0.0,0.0,0,0,rat_train|LUNG|PROT|F_4w
+58,"Rat small intestine RNA, female 1 wk",training vs sedentary,9,8,1,0.0390625,2.4536520511381927,0.06327334022040118,0,0,0.0,0.0,250,250,rat_train|SMLINT|RNA|F_1w
+59,"Human subcutaneous adipose RNA, EE post–pre 15–45 min",exercise post−pre,9,8,1,0.0390625,2.42743277485606,0.06723459198457732,0,0,0.0,0.0,250,197,human_acute|ADIPOSE|RNA|EE_post_vs_pre_15to45min
+60,"Rat gastrocnemius protein, male 4 wk",training vs sedentary,9,7,2,0.1796875,2.3969106282152395,0.07235960202356115,1,0,0.006622516556291391,0.0,98,45,rat_train|SKM-GN|PROT|M_4w
+61,"Rat gastrocnemius phosphosite, female 8 wk",training vs sedentary,5,5,0,0.0625,2.3639447477425284,0.07741444125524802,0,0,0.0,0.0,95,121,rat_train|SKM-GN|PHOSPHO|F_8w
+62,"Rat vena cava RNA, male 1 wk",training vs sedentary,9,9,0,0.00390625,2.3544234177363177,0.07838537491106984,0,0,0.0,0.0,54,10,rat_train|VENACV|RNA|M_1w
+63,"Human vastus lateralis protein, CON post–pre 15–45 min",reference (non-exercise),9,8,1,0.0390625,2.339943043089924,0.08006854470024896,0,0,0.0,0.0,0,0,human_acute|VL|PROT|CON_post_vs_pre_15to45min
+64,"Rat blood RNA, male 4 wk",training vs sedentary,9,7,2,0.1796875,2.2977755655545695,0.08636802536478382,1,0,0.022727272727272728,0.0,19,17,rat_train|BLOOD|RNA|M_4w
+65,"Human vastus lateralis protein, CON post–pre 24 h",reference (non-exercise),9,8,1,0.0390625,2.237966463803078,0.0989559714729835,0,0,0.0,0.0,0,0,human_acute|VL|PROT|CON_post_vs_pre_24h
+66,"Rat blood RNA, female 8 wk",training vs sedentary,9,6,3,0.5078125,2.2056520541951303,0.1059479499886026,0,0,0.0,0.0,2,4,rat_train|BLOOD|RNA|F_8w
+67,"Human vastus lateralis phosphosite, EE–RE pre",reference (non-exercise),6,6,0,0.03125,2.195900281147136,0.10702430373898848,0,0,0.0,0.0,106,185,human_acute|VL|PHOSPHO|EE_vs_RE_pre
+68,"Rat adrenal RNA, male 2 wk",training vs sedentary,9,9,0,0.00390625,2.1613489736639737,0.11134812872810726,0,0,0.0,0.0,2,3,rat_train|ADRNL|RNA|M_2w
+69,"Rat heart protein, female 2 wk",training vs sedentary,9,9,0,0.00390625,2.160433247161293,0.11134812872810726,0,0,0.0,0.0,0,0,rat_train|HEART|PROT|F_2w
+70,"Human vastus lateralis protein, EE–RE pre",reference (non-exercise),9,9,0,0.00390625,2.140301636479509,0.11450653855334308,0,0,0.0,0.0,68,165,human_acute|VL|PROT|EE_vs_RE_pre
+71,"Human vastus lateralis protein, EE–CON pre",reference (non-exercise),9,8,1,0.0390625,2.138161259871144,0.11450653855334308,0,0,0.0,0.0,6,4,human_acute|VL|PROT|EE_vs_CON_pre
+72,"Rat cortex protein, female 1 wk",training vs sedentary,9,7,2,0.1796875,2.106950593737888,0.12252962100820146,0,0,0.0,0.0,0,0,rat_train|CORTEX|PROT|F_1w
+73,"Rat heart RNA, male 1 wk",training vs sedentary,9,8,1,0.0390625,2.089690170653041,0.1266610312340972,0,0,0.0,0.0,32,2,rat_train|HEART|RNA|M_1w
+74,"Human vastus lateralis phosphosite, EE–RE 24 h",reference (non-exercise),6,6,0,0.03125,2.0824311218499694,0.12795166868931832,0,0,0.0,0.0,24,66,human_acute|VL|PHOSPHO|EE_vs_RE_24h
+75,"Rat subcutaneous WAT RNA, female 8 wk",training vs sedentary,9,8,1,0.0390625,2.0597271590824406,0.13263872756211212,0,0,0.0,0.0,245,74,rat_train|WAT-SC|RNA|F_8w
+76,"Rat cortex protein, female 4 wk",training vs sedentary,9,8,1,0.0390625,2.0481734874090325,0.13523003609842316,0,0,0.0,0.0,0,0,rat_train|CORTEX|PROT|F_4w
+77,"Rat kidney phosphosite, male 8 wk",training vs sedentary,6,5,1,0.21875,2.03659609648611,0.13672996689437691,0,0,0.0,0.0,5,4,rat_train|KIDNEY|PHOSPHO|M_8w
+78,"Human blood RNA, EE–CON 40 min during",exercise vs control,9,8,1,0.0390625,2.009171330540951,0.143450567191176,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|EE_vs_CON_during40min
+79,"Rat blood RNA, male 1 wk",training vs sedentary,9,5,4,1.0,2.0022431018176436,0.143450567191176,1,0,0.0029239766081871343,0.0,250,84,rat_train|BLOOD|RNA|M_1w
+80,"Rat kidney RNA, female 4 wk",training vs sedentary,9,8,1,0.0390625,1.9661595160630918,0.15108030906890293,0,0,0.0,0.0,3,1,rat_train|KIDNEY|RNA|F_4w
+81,"Rat vastus lateralis RNA, male 1 wk",training vs sedentary,9,8,1,0.0390625,1.95751770031581,0.15293843714996697,0,0,0.0,0.0,3,2,rat_train|SKM-VL|RNA|M_1w
+82,"Rat liver phosphosite, male 2 wk",training vs sedentary,6,5,1,0.21875,1.9368626602071244,0.15797893896992093,0,0,0.0,0.0,3,0,rat_train|LIVER|PHOSPHO|M_2w
+83,"Rat liver protein, male 4 wk",training vs sedentary,9,7,2,0.1796875,1.916575088462466,0.1632509118521774,0,0,0.0,0.0,3,1,rat_train|LIVER|PROT|M_4w
+84,"Rat cortex RNA, female 1 wk",training vs sedentary,9,6,3,0.5078125,1.9157293006538239,0.1632509118521774,0,0,0.0,0.0,3,5,rat_train|CORTEX|RNA|F_1w
+85,"Human subcutaneous adipose RNA, EE–CON 15–45 min",exercise vs control,9,8,1,0.0390625,1.9018141756602247,0.1640775224407194,0,0,0.0,0.0,42,13,human_acute|ADIPOSE|RNA|EE_vs_CON_15to45min
+86,"Human vastus lateralis RNA, CON post–pre 15–45 min",reference (non-exercise),9,9,0,0.00390625,1.900191917928166,0.1640775224407194,0,0,0.0,0.0,139,113,human_acute|VL|RNA|CON_post_vs_pre_15to45min
+87,"Rat heart phosphosite, female 1 wk",training vs sedentary,9,6,3,0.5078125,1.8848588990260524,0.1687004857224836,0,0,0.0,0.0,0,1,rat_train|HEART|PHOSPHO|F_1w
+88,"Rat vena cava RNA, female 8 wk",training vs sedentary,9,8,1,0.0390625,1.8373119275995504,0.18342028822900905,0,0,0.0,0.0,0,1,rat_train|VENACV|RNA|F_8w
+89,"Rat liver protein, male 8 wk",training vs sedentary,9,7,2,0.1796875,1.8345179286152453,0.18342028822900905,0,0,0.0,0.0,250,250,rat_train|LIVER|PROT|M_8w
+90,"Rat blood RNA, male 2 wk",training vs sedentary,9,5,4,1.0,1.8041573951202374,0.1945409618601021,1,0,0.0030120481927710845,0.0,250,74,rat_train|BLOOD|RNA|M_2w
+91,"Rat kidney phosphosite, female 4 wk",training vs sedentary,6,6,0,0.03125,1.801539349816335,0.1945409618601021,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PHOSPHO|F_4w
+92,"Rat liver RNA, male 1 wk",training vs sedentary,9,6,3,0.5078125,1.7977850726758084,0.19467531778321645,0,0,0.0,0.0,4,3,rat_train|LIVER|RNA|M_1w
+93,"Rat vastus lateralis RNA, male 2 wk",training vs sedentary,9,8,1,0.0390625,1.7943357689871613,0.19477297786827796,0,0,0.0,0.0,1,4,rat_train|SKM-VL|RNA|M_2w
+94,"Human blood RNA, EE post–pre 40 min during",exercise post−pre,9,8,1,0.0390625,1.7878168883797967,0.19617404388080095,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|EE_post_vs_pre_during40min
+95,"Rat spleen RNA, female 1 wk",training vs sedentary,9,7,2,0.1796875,1.763466005505909,0.20542144631021553,0,0,0.0,0.0,10,1,rat_train|SPLEEN|RNA|F_1w
+96,"Rat small intestine RNA, female 2 wk",training vs sedentary,9,8,1,0.0390625,1.7184447689800515,0.2186586789921722,0,0,0.0,0.0,3,10,rat_train|SMLINT|RNA|F_2w
+97,"Rat heart RNA, male 4 wk",training vs sedentary,9,8,1,0.0390625,1.6743810476832333,0.23821000127782063,0,0,0.0,0.0,69,26,rat_train|HEART|RNA|M_4w
+98,"Human vastus lateralis phosphosite, EE–RE 3.5–4 h",reference (non-exercise),6,5,1,0.21875,1.6514236808572322,0.2455655415478641,1,0,0.002570694087403599,0.0,131,250,human_acute|VL|PHOSPHO|EE_vs_RE_3.5to4h
+99,"Rat heart phosphosite, female 8 wk",training vs sedentary,9,6,3,0.5078125,1.6504450330746354,0.2455655415478641,0,0,0.0,0.0,9,0,rat_train|HEART|PHOSPHO|F_8w
+100,"Rat gastrocnemius protein, female 2 wk",training vs sedentary,9,6,3,0.5078125,1.6474651053177964,0.2455655415478641,0,0,0.0,0.0,17,27,rat_train|SKM-GN|PROT|F_2w
+101,"Human vastus lateralis phosphosite, EE post–pre 3.5–4 h",exercise post−pre,6,5,1,0.21875,1.6341016156860428,0.24834372573916635,0,0,0.0,0.0,62,75,human_acute|VL|PHOSPHO|EE_post_vs_pre_3.5to4h
+102,"Rat liver RNA, male 4 wk",training vs sedentary,9,6,3,0.5078125,1.6324705053746766,0.24834372573916635,0,0,0.0,0.0,22,4,rat_train|LIVER|RNA|M_4w
+103,"Rat heart RNA, female 4 wk",training vs sedentary,9,7,2,0.1796875,1.6109861322604164,0.25621805416087773,0,0,0.0,0.0,38,24,rat_train|HEART|RNA|F_4w
+104,"Rat spleen RNA, female 2 wk",training vs sedentary,9,7,2,0.1796875,1.6027447612074581,0.25830894445588204,0,0,0.0,0.0,1,1,rat_train|SPLEEN|RNA|F_2w
+105,"Rat lung RNA, female 8 wk",training vs sedentary,9,8,1,0.0390625,1.6008085741206242,0.25830894445588204,0,0,0.0,0.0,1,1,rat_train|LUNG|RNA|F_8w
+106,"Rat heart protein, male 8 wk",training vs sedentary,9,8,1,0.0390625,1.5439342953227455,0.28074629960647796,0,0,0.0,0.0,250,212,rat_train|HEART|PROT|M_8w
+107,"Human vastus lateralis phosphosite, CON post–pre 15–45 min",reference (non-exercise),6,5,1,0.21875,1.5081387196789582,0.2976870819541856,0,0,0.0,0.0,1,0,human_acute|VL|PHOSPHO|CON_post_vs_pre_15to45min
+108,"Rat vastus lateralis RNA, male 8 wk",training vs sedentary,9,7,2,0.1796875,1.4964395043886585,0.302570485319374,0,0,0.0,0.0,32,30,rat_train|SKM-VL|RNA|M_8w
+109,"Rat liver protein, female 1 wk",training vs sedentary,9,6,3,0.5078125,1.463161457574128,0.3151112301492077,0,0,0.0,0.0,1,0,rat_train|LIVER|PROT|F_1w
+110,"Rat lung RNA, female 1 wk",training vs sedentary,9,7,2,0.1796875,1.4548148651365316,0.31828817195493586,0,0,0.0,0.0,92,249,rat_train|LUNG|RNA|F_1w
+111,"Rat cortex phosphosite, female 8 wk",training vs sedentary,4,4,0,0.125,1.431833195172982,0.32871104781611643,0,0,0.0,0.0,0,0,rat_train|CORTEX|PHOSPHO|F_8w
+112,"Human vastus lateralis RNA, RE–CON 24 h",exercise vs control,9,8,1,0.0390625,1.4140906772258526,0.33619638015522985,0,0,0.0,0.0,250,250,human_acute|VL|RNA|RE_vs_CON_24h
+113,"Human blood RNA, RE–CON 10 min",exercise vs control,9,8,1,0.0390625,1.4136553500823432,0.33619638015522985,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|RE_vs_CON_10min
+114,"Rat vena cava RNA, male 4 wk",training vs sedentary,9,9,0,0.00390625,1.400117300276441,0.34284917190905223,0,0,0.0,0.0,4,0,rat_train|VENACV|RNA|M_4w
+115,"Rat kidney RNA, male 1 wk",training vs sedentary,9,7,2,0.1796875,1.3964027705859825,0.34329907128011833,0,0,0.0,0.0,1,2,rat_train|KIDNEY|RNA|M_1w
+116,"Rat vena cava RNA, male 2 wk",training vs sedentary,9,9,0,0.00390625,1.3876066298124607,0.34608189407435647,0,0,0.0,0.0,2,0,rat_train|VENACV|RNA|M_2w
+117,"Rat kidney protein, female 2 wk",training vs sedentary,9,6,3,0.5078125,1.3831072207561144,0.34608189407435647,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PROT|F_2w
+118,"Human subcutaneous adipose RNA, CON post–pre 24 h",reference (non-exercise),9,7,2,0.1796875,1.3740052817354111,0.34996731801076986,0,0,0.0,0.0,1,3,human_acute|ADIPOSE|RNA|CON_post_vs_pre_24h
+119,"Rat subcutaneous WAT protein, male 4 wk",training vs sedentary,9,8,1,0.0390625,1.3312313367949402,0.373950351282341,0,1,0.0,0.00234192037470726,250,169,rat_train|WAT-SC|PROT|M_4w
+120,"Rat kidney phosphosite, male 1 wk",training vs sedentary,6,4,2,0.6875,1.3100061173625457,0.3804976131800735,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PHOSPHO|M_1w
+121,"Rat cortex protein, male 8 wk",training vs sedentary,9,5,4,1.0,1.2930573776441103,0.3899894830977993,0,0,0.0,0.0,17,14,rat_train|CORTEX|PROT|M_8w
+122,"Rat heart RNA, female 8 wk",training vs sedentary,9,7,2,0.1796875,1.2523908778297426,0.41010769896869204,0,1,0.0,0.004098360655737705,138,98,rat_train|HEART|RNA|F_8w
+123,"Human vastus lateralis protein, EE–RE 3.5–4 h",reference (non-exercise),9,7,2,0.1796875,1.2369664963317923,0.41906238107689764,0,0,0.0,0.0,1,4,human_acute|VL|PROT|EE_vs_RE_3.5to4h
+124,"Rat kidney protein, female 1 wk",training vs sedentary,9,7,2,0.1796875,1.21995674553945,0.42733063983667435,0,0,0.0,0.0,0,1,rat_train|KIDNEY|PROT|F_1w
+125,"Human subcutaneous adipose RNA, EE–RE pre",reference (non-exercise),9,7,2,0.1796875,1.2040830625977226,0.4321298817583039,0,0,0.0,0.0,0,1,human_acute|ADIPOSE|RNA|EE_vs_RE_pre
+126,"Rat gastrocnemius RNA, female 1 wk",training vs sedentary,9,7,2,0.1796875,1.1946252369066883,0.436917614754145,0,0,0.0,0.0,38,41,rat_train|SKM-GN|RNA|F_1w
+127,"Rat liver protein, female 2 wk",training vs sedentary,9,7,2,0.1796875,1.1796775720591306,0.44363141555227165,0,0,0.0,0.0,1,0,rat_train|LIVER|PROT|F_2w
+128,"Rat liver phosphosite, male 4 wk",training vs sedentary,6,5,1,0.21875,1.1676040339936566,0.4481711708563729,0,0,0.0,0.0,1,1,rat_train|LIVER|PHOSPHO|M_4w
+129,"Rat liver phosphosite, female 2 wk",training vs sedentary,6,4,2,0.6875,1.163306546371619,0.4481711708563729,0,0,0.0,0.0,1,2,rat_train|LIVER|PHOSPHO|F_2w
+130,"Human vastus lateralis phosphosite, EE–RE 15–45 min",reference (non-exercise),6,5,1,0.21875,1.1619993210207207,0.4481711708563729,0,0,0.0,0.0,250,250,human_acute|VL|PHOSPHO|EE_vs_RE_15to45min
+131,"Rat colon RNA, male 8 wk",training vs sedentary,9,7,2,0.1796875,1.158387972511577,0.44859093107328873,0,0,0.0,0.0,0,0,rat_train|COLON|RNA|M_8w
+132,"Rat kidney phosphosite, female 8 wk",training vs sedentary,6,5,1,0.21875,1.1412131138427004,0.45498051399197287,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PHOSPHO|F_8w
+133,"Human subcutaneous adipose RNA, RE–CON 3.5–4 h",exercise vs control,9,6,3,0.5078125,1.1112226962209593,0.467253233435462,0,0,0.0,0.0,9,17,human_acute|ADIPOSE|RNA|RE_vs_CON_3.5to4h
+134,"Rat subcutaneous WAT RNA, male 4 wk",training vs sedentary,9,5,4,1.0,1.110444721913095,0.467253233435462,0,0,0.0,0.0,29,21,rat_train|WAT-SC|RNA|M_4w
+135,"Rat liver RNA, male 2 wk",training vs sedentary,9,5,4,1.0,1.0922200676771323,0.4754485662161554,0,0,0.0,0.0,13,11,rat_train|LIVER|RNA|M_2w
+136,"Rat subcutaneous WAT protein, male 2 wk",training vs sedentary,9,7,2,0.1796875,1.0910953724777714,0.4754485662161554,0,0,0.0,0.0,0,0,rat_train|WAT-SC|PROT|M_2w
+137,"Human vastus lateralis phosphosite, CON post–pre 24 h",reference (non-exercise),6,5,1,0.21875,1.0822705650018336,0.4800838604672769,0,0,0.0,0.0,2,1,human_acute|VL|PHOSPHO|CON_post_vs_pre_24h
+138,"Human subcutaneous adipose RNA, EE post–pre 24 h",exercise post−pre,9,5,4,1.0,1.076313598604734,0.4823638711692188,0,0,0.0,0.0,1,18,human_acute|ADIPOSE|RNA|EE_post_vs_pre_24h
+139,"Rat hippocampus RNA, male 4 wk",training vs sedentary,9,5,4,1.0,1.0666862687063785,0.4875780616635785,0,0,0.0,0.0,8,4,rat_train|HIPPOC|RNA|M_4w
+140,"Rat cortex RNA, female 4 wk",training vs sedentary,9,5,4,1.0,1.0544068363294044,0.4926732554653187,0,0,0.0,0.0,0,0,rat_train|CORTEX|RNA|F_4w
+141,"Rat spleen RNA, male 1 wk",training vs sedentary,9,6,3,0.5078125,0.9934010723424412,0.5295743675563067,0,0,0.0,0.0,2,3,rat_train|SPLEEN|RNA|M_1w
+142,"Rat kidney phosphosite, male 2 wk",training vs sedentary,6,4,2,0.6875,0.96765574543222,0.5458554737599054,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PHOSPHO|M_2w
+143,"Rat cortex RNA, male 1 wk",training vs sedentary,9,6,3,0.5078125,0.9635273576366419,0.5468398296931584,0,0,0.0,0.0,0,0,rat_train|CORTEX|RNA|M_1w
+144,"Human vastus lateralis phosphosite, EE post–pre 24 h",exercise post−pre,6,5,1,0.21875,0.9579476297614857,0.5491408315386747,0,0,0.0,0.0,23,3,human_acute|VL|PHOSPHO|EE_post_vs_pre_24h
+145,"Rat hypothalamus RNA, male 4 wk",training vs sedentary,9,6,3,0.5078125,0.9301455700498165,0.5672803793489104,0,0,0.0,0.0,1,2,rat_train|HYPOTH|RNA|M_4w
+146,"Rat ovary RNA, female 1 wk",training vs sedentary,9,7,2,0.1796875,0.9270038006181008,0.5674983602196463,0,0,0.0,0.0,230,250,rat_train|OVARY|RNA|F_1w
+147,"Rat hypothalamus RNA, female 8 wk",training vs sedentary,9,5,4,1.0,0.9053826275342971,0.5811670478758845,0,0,0.0,0.0,0,0,rat_train|HYPOTH|RNA|F_8w
+148,"Human vastus lateralis protein, EE–RE 15–45 min",reference (non-exercise),9,6,3,0.5078125,0.9049589670222502,0.5811670478758845,0,0,0.0,0.0,0,0,human_acute|VL|PROT|EE_vs_RE_15to45min
+149,"Rat kidney RNA, female 2 wk",training vs sedentary,9,6,3,0.5078125,0.8979382890326962,0.5821944923508262,0,0,0.0,0.0,18,22,rat_train|KIDNEY|RNA|F_2w
+150,"Rat liver RNA, male 8 wk",training vs sedentary,9,6,3,0.5078125,0.8866611261757523,0.5859035392282466,0,0,0.0,0.0,79,64,rat_train|LIVER|RNA|M_8w
+151,"Rat small intestine RNA, male 1 wk",training vs sedentary,9,7,2,0.1796875,0.8849254566854184,0.5859035392282466,0,0,0.0,0.0,0,1,rat_train|SMLINT|RNA|M_1w
+152,"Rat cortex protein, female 8 wk",training vs sedentary,9,7,2,0.1796875,0.8702528315412332,0.5934535677925624,0,0,0.0,0.0,1,0,rat_train|CORTEX|PROT|F_8w
+153,"Rat gastrocnemius phosphosite, female 1 wk",training vs sedentary,5,3,2,1.0,0.8529493391081078,0.6057551921272514,0,0,0.0,0.0,0,3,rat_train|SKM-GN|PHOSPHO|F_1w
+154,"Rat liver protein, male 1 wk",training vs sedentary,9,4,5,1.0,0.8420498699085899,0.6076696668292838,0,0,0.0,0.0,0,0,rat_train|LIVER|PROT|M_1w
+155,"Rat colon RNA, male 4 wk",training vs sedentary,9,7,2,0.1796875,0.8184400670690345,0.6156291246537826,0,0,0.0,0.0,0,0,rat_train|COLON|RNA|M_4w
+156,"Human subcutaneous adipose protein, RE post–pre 3.5–4 h",exercise post−pre,9,7,2,0.1796875,0.8109132963229744,0.6196429048076191,0,0,0.0,0.0,1,0,human_acute|ADIPOSE|PROT|RE_post_vs_pre_3.5to4h
+157,"Rat kidney RNA, female 1 wk",training vs sedentary,9,6,3,0.5078125,0.7796691892475602,0.6351196239390493,0,0,0.0,0.0,93,117,rat_train|KIDNEY|RNA|F_1w
+158,"Rat ovary RNA, female 8 wk",training vs sedentary,9,5,4,1.0,0.7644322533260727,0.6448715348443316,0,0,0.0,0.0,2,1,rat_train|OVARY|RNA|F_8w
+159,"Human vastus lateralis phosphosite, EE–CON pre",reference (non-exercise),6,4,2,0.6875,0.7257793756546442,0.6668689772354077,0,0,0.0,0.0,23,24,human_acute|VL|PHOSPHO|EE_vs_CON_pre
+160,"Rat hypothalamus RNA, male 2 wk",training vs sedentary,9,7,2,0.1796875,0.7219802028218827,0.6668689772354077,0,0,0.0,0.0,2,1,rat_train|HYPOTH|RNA|M_2w
+161,"Rat adrenal RNA, male 8 wk",training vs sedentary,9,9,0,0.00390625,0.7117358868200829,0.6733208939513431,0,0,0.0,0.0,141,158,rat_train|ADRNL|RNA|M_8w
+162,"Human blood RNA, EE post–pre 24 h",exercise post−pre,9,5,4,1.0,0.6879536843955393,0.6892381995182258,0,0,0.0,0.0,2,11,human_acute|BLOOD|RNA|EE_post_vs_pre_24h
+163,"Rat lung protein, female 1 wk",training vs sedentary,9,4,5,1.0,0.6598701882138175,0.7038324851433114,0,0,0.0,0.0,3,0,rat_train|LUNG|PROT|F_1w
+164,"Human vastus lateralis phosphosite, EE–CON 3.5–4 h",exercise vs control,6,3,3,1.0,0.6500641525584842,0.7070867640243617,0,0,0.0,0.0,12,0,human_acute|VL|PHOSPHO|EE_vs_CON_3.5to4h
+165,"Human vastus lateralis protein, EE post–pre 24 h",exercise post−pre,9,7,2,0.1796875,0.6464454917451962,0.7070867640243617,0,0,0.0,0.0,6,1,human_acute|VL|PROT|EE_post_vs_pre_24h
+166,"Rat cortex RNA, male 2 wk",training vs sedentary,9,6,3,0.5078125,0.6384087883092235,0.7075543034635945,0,0,0.0,0.0,2,2,rat_train|CORTEX|RNA|M_2w
+167,"Rat ovary RNA, female 2 wk",training vs sedentary,9,5,4,1.0,0.5960849848689019,0.7312272312589452,0,0,0.0,0.0,47,34,rat_train|OVARY|RNA|F_2w
+168,"Rat gastrocnemius phosphosite, male 8 wk",training vs sedentary,5,4,1,0.375,0.5944158428166954,0.7312272312589452,0,0,0.0,0.0,62,67,rat_train|SKM-GN|PHOSPHO|M_8w
+169,"Rat lung phosphosite, female 8 wk",training vs sedentary,3,2,1,1.0,0.5846442454664168,0.7367211665402115,0,0,0.0,0.0,0,0,rat_train|LUNG|PHOSPHO|F_8w
+170,"Rat lung protein, male 2 wk",training vs sedentary,9,6,3,0.5078125,0.5784140915379025,0.7367211665402115,0,0,0.0,0.0,4,3,rat_train|LUNG|PROT|M_2w
+171,"Human blood RNA, RE post–pre 24 h",exercise post−pre,9,4,5,1.0,0.5506413185622142,0.751642258868222,1,0,0.0019723865877712033,0.0,250,249,human_acute|BLOOD|RNA|RE_post_vs_pre_24h
+172,"Rat blood RNA, female 1 wk",training vs sedentary,9,5,4,1.0,0.5488999194032409,0.751642258868222,0,0,0.0,0.0,6,11,rat_train|BLOOD|RNA|F_1w
+173,"Human vastus lateralis RNA, EE–CON 3.5–4 h",exercise vs control,9,7,2,0.1796875,0.5462255026195574,0.751642258868222,0,0,0.0,0.0,250,250,human_acute|VL|RNA|EE_vs_CON_3.5to4h
+174,"Rat cortex RNA, female 8 wk",training vs sedentary,9,5,4,1.0,0.5453958528526087,0.751642258868222,0,0,0.0,0.0,0,2,rat_train|CORTEX|RNA|F_8w
+175,"Human subcutaneous adipose RNA, EE–CON 3.5–4 h",exercise vs control,9,5,4,1.0,0.5268083038075934,0.7655445149356738,0,0,0.0,0.0,1,2,human_acute|ADIPOSE|RNA|EE_vs_CON_3.5to4h
+176,"Rat subcutaneous WAT protein, female 4 wk",training vs sedentary,9,5,4,1.0,0.5117801425156332,0.7755861125407214,0,0,0.0,0.0,0,0,rat_train|WAT-SC|PROT|F_4w
+177,"Rat spleen RNA, male 4 wk",training vs sedentary,9,5,4,1.0,0.509708476137005,0.7755861125407214,0,0,0.0,0.0,3,2,rat_train|SPLEEN|RNA|M_4w
+178,"Rat cortex protein, male 2 wk",training vs sedentary,9,4,5,1.0,0.4847296648044132,0.7926708064771577,0,0,0.0,0.0,0,0,rat_train|CORTEX|PROT|M_2w
+179,"Human vastus lateralis protein, EE–CON 3.5–4 h",exercise vs control,9,5,4,1.0,0.4762095923101519,0.7951950174141489,0,0,0.0,0.0,2,1,human_acute|VL|PROT|EE_vs_CON_3.5to4h
+180,"Rat liver phosphosite, female 8 wk",training vs sedentary,6,4,2,0.6875,0.4673265056002754,0.7977251024759003,0,0,0.0,0.0,14,8,rat_train|LIVER|PHOSPHO|F_8w
+181,"Rat adrenal RNA, male 4 wk",training vs sedentary,9,6,3,0.5078125,0.4522646932373715,0.8059037267061957,0,0,0.0,0.0,3,4,rat_train|ADRNL|RNA|M_4w
+182,"Human blood RNA, EE–CON 24 h",exercise vs control,9,5,4,1.0,0.44192131114072486,0.8124989484185439,0,0,0.0,0.0,0,0,human_acute|BLOOD|RNA|EE_vs_CON_24h
+183,"Rat hypothalamus RNA, male 1 wk",training vs sedentary,9,5,4,1.0,0.4336036178739905,0.8146795820378417,0,0,0.0,0.0,0,1,rat_train|HYPOTH|RNA|M_1w
+184,"Human blood RNA, EE–CON 10 min",exercise vs control,9,6,3,0.5078125,0.4326137003032638,0.8146795820378417,0,0,0.0,0.0,250,153,human_acute|BLOOD|RNA|EE_vs_CON_10min
+185,"Rat kidney phosphosite, female 1 wk",training vs sedentary,6,4,2,0.6875,0.4306347843154697,0.8146795820378417,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PHOSPHO|F_1w
+186,"Human subcutaneous adipose protein, EE post–pre 3.5–4 h",exercise post−pre,9,5,4,1.0,0.42683192368902845,0.8154351413668399,0,0,0.0,0.0,11,19,human_acute|ADIPOSE|PROT|EE_post_vs_pre_3.5to4h
+187,"Human blood RNA, RE–CON 24 h",exercise vs control,9,3,6,0.5078125,0.4187328636885132,0.8199946837244299,0,0,0.0,0.0,2,2,human_acute|BLOOD|RNA|RE_vs_CON_24h
+188,"Rat spleen RNA, male 2 wk",training vs sedentary,9,7,2,0.1796875,0.37547014078161267,0.8505705737843022,0,0,0.0,0.0,4,5,rat_train|SPLEEN|RNA|M_2w
+189,"Rat subcutaneous WAT phosphosite, male 2 wk",training vs sedentary,2,2,0,0.5,0.35358242340239043,0.8638790289605409,0,0,0.0,0.0,2,1,rat_train|WAT-SC|PHOSPHO|M_2w
+190,"Rat small intestine RNA, male 8 wk",training vs sedentary,9,5,4,1.0,0.35115823655392936,0.8638790289605409,0,0,0.0,0.0,0,2,rat_train|SMLINT|RNA|M_8w
+191,"Rat gastrocnemius RNA, female 2 wk",training vs sedentary,9,7,2,0.1796875,0.3467376503877028,0.8638790289605409,0,0,0.0,0.0,0,3,rat_train|SKM-GN|RNA|F_2w
+192,"Human vastus lateralis phosphosite, EE–CON 24 h",exercise vs control,6,3,3,1.0,0.3454850604003137,0.8638790289605409,0,0,0.0,0.0,2,1,human_acute|VL|PHOSPHO|EE_vs_CON_24h
+193,"Human vastus lateralis RNA, RE–CON 3.5–4 h",exercise vs control,9,6,3,0.5078125,0.3356354279897552,0.8688824765731585,0,0,0.0,0.0,250,250,human_acute|VL|RNA|RE_vs_CON_3.5to4h
+194,"Rat cortex phosphosite, male 8 wk",training vs sedentary,4,3,1,0.625,0.33005362101478647,0.8695095410257395,0,0,0.0,0.0,1,0,rat_train|CORTEX|PHOSPHO|M_8w
+195,"Rat liver RNA, female 8 wk",training vs sedentary,9,7,2,0.1796875,0.3128507811532921,0.8820667190979163,0,0,0.0,0.0,32,26,rat_train|LIVER|RNA|F_8w
+196,"Rat blood RNA, female 2 wk",training vs sedentary,9,4,5,1.0,0.2816596692272343,0.9051966140791552,0,0,0.0,0.0,1,4,rat_train|BLOOD|RNA|F_2w
+197,"Rat cortex phosphosite, female 4 wk",training vs sedentary,4,2,2,1.0,0.27450054595187523,0.9051966140791552,0,0,0.0,0.0,0,0,rat_train|CORTEX|PHOSPHO|F_4w
+198,"Rat kidney protein, male 2 wk",training vs sedentary,9,6,3,0.5078125,0.26584709541549945,0.9073653353291029,0,0,0.0,0.0,0,2,rat_train|KIDNEY|PROT|M_2w
+199,"Rat heart protein, female 1 wk",training vs sedentary,9,6,3,0.5078125,0.2519042317095834,0.9165974398949908,0,0,0.0,0.0,0,0,rat_train|HEART|PROT|F_1w
+200,"Human subcutaneous adipose protein, EE–RE pre",reference (non-exercise),9,3,6,0.5078125,0.24770149419120754,0.9165974398949908,0,0,0.0,0.0,250,250,human_acute|ADIPOSE|PROT|EE_vs_RE_pre
+201,"Rat gastrocnemius phosphosite, male 4 wk",training vs sedentary,5,4,1,0.375,0.24080628091591447,0.9165974398949908,0,0,0.0,0.0,4,3,rat_train|SKM-GN|PHOSPHO|M_4w
+202,"Human blood RNA, CON post–pre 3.5–4 h",reference (non-exercise),9,5,4,1.0,0.23118491974601912,0.9214424157111601,0,0,0.0,0.0,80,75,human_acute|BLOOD|RNA|CON_post_vs_pre_3.5to4h
+203,"Human blood RNA, RE post–pre 10 min",exercise post−pre,9,5,4,1.0,0.22585786568049637,0.9233715438418592,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|RE_post_vs_pre_10min
+204,"Rat subcutaneous WAT protein, male 1 wk",training vs sedentary,9,5,4,1.0,0.2157638418854032,0.9262720573369654,0,0,0.0,0.0,0,0,rat_train|WAT-SC|PROT|M_1w
+205,"Rat hippocampus RNA, female 2 wk",training vs sedentary,9,5,4,1.0,0.21366379689982667,0.9262720573369654,0,0,0.0,0.0,0,0,rat_train|HIPPOC|RNA|F_2w
+206,"Rat lung protein, female 2 wk",training vs sedentary,9,5,4,1.0,0.2064180160359207,0.9274260435472501,0,0,0.0,0.0,5,19,rat_train|LUNG|PROT|F_2w
+207,"Rat blood RNA, female 4 wk",training vs sedentary,9,4,5,1.0,0.2046324295800566,0.9274260435472501,0,0,0.0,0.0,1,0,rat_train|BLOOD|RNA|F_4w
+208,"Rat kidney protein, male 1 wk",training vs sedentary,9,5,4,1.0,0.20245616284268717,0.9274260435472501,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PROT|M_1w
+209,"Rat kidney phosphosite, male 4 wk",training vs sedentary,6,3,3,1.0,0.1891159226029927,0.9308455714413367,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PHOSPHO|M_4w
+210,"Rat hippocampus RNA, female 1 wk",training vs sedentary,9,5,4,1.0,0.18151918281919507,0.9346718287415181,0,0,0.0,0.0,2,1,rat_train|HIPPOC|RNA|F_1w
+211,"Human blood RNA, RE–CON pre",reference (non-exercise),9,7,2,0.1796875,0.16840139373021024,0.9429376791772364,0,0,0.0,0.0,0,0,human_acute|BLOOD|RNA|RE_vs_CON_pre
+212,"Human subcutaneous adipose protein, EE–CON pre",reference (non-exercise),9,5,4,1.0,0.1640888049951449,0.9429376791772364,0,0,0.0,0.0,250,250,human_acute|ADIPOSE|PROT|EE_vs_CON_pre
+213,"Human vastus lateralis phosphosite, EE post–pre 15–45 min",exercise post−pre,6,4,2,0.6875,0.16242993904413106,0.9429376791772364,0,0,0.0,0.0,250,250,human_acute|VL|PHOSPHO|EE_post_vs_pre_15to45min
+214,"Rat subcutaneous WAT protein, female 8 wk",training vs sedentary,9,5,4,1.0,0.13181217653049895,0.9581734874297284,0,0,0.0,0.0,26,12,rat_train|WAT-SC|PROT|F_8w
+215,"Rat cortex protein, female 2 wk",training vs sedentary,9,4,5,1.0,0.11957605189502621,0.9658205836399391,0,0,0.0,0.0,0,0,rat_train|CORTEX|PROT|F_2w
+216,"Rat liver RNA, female 1 wk",training vs sedentary,9,5,4,1.0,0.08761840564624476,0.9798289348986748,0,0,0.0,0.0,0,1,rat_train|LIVER|RNA|F_1w
+217,"Human vastus lateralis RNA, EE–RE 3.5–4 h",reference (non-exercise),9,5,4,1.0,0.0727445452675431,0.9802965892335704,0,0,0.0,0.0,250,250,human_acute|VL|RNA|EE_vs_RE_3.5to4h
+218,"Human blood RNA, CON post–pre 24 h",reference (non-exercise),9,5,4,1.0,0.06700477290591976,0.9802965892335704,0,0,0.0,0.0,4,25,human_acute|BLOOD|RNA|CON_post_vs_pre_24h
+219,"Rat lung RNA, male 4 wk",training vs sedentary,9,4,5,1.0,0.06615713825982296,0.9802965892335704,0,0,0.0,0.0,7,30,rat_train|LUNG|RNA|M_4w
+220,"Rat gastrocnemius protein, male 1 wk",training vs sedentary,9,4,5,1.0,0.06353864556084804,0.9802965892335704,1,0,0.038461538461538464,0.0,15,3,rat_train|SKM-GN|PROT|M_1w
+221,"Rat kidney phosphosite, female 2 wk",training vs sedentary,6,3,3,1.0,0.05963225160361306,0.9808435501869596,0,0,0.0,0.0,0,0,rat_train|KIDNEY|PHOSPHO|F_2w
+222,"Rat small intestine RNA, female 4 wk",training vs sedentary,9,3,6,0.5078125,0.054086515048038235,0.9827282632840758,0,0,0.0,0.0,0,0,rat_train|SMLINT|RNA|F_4w
+223,"Human subcutaneous adipose RNA, CON post–pre 15–45 min",reference (non-exercise),9,7,2,0.1796875,0.03461624780855255,0.9932976751011512,0,0,0.0,0.0,5,5,human_acute|ADIPOSE|RNA|CON_post_vs_pre_15to45min
+224,"Rat lung phosphosite, male 1 wk",training vs sedentary,3,1,2,1.0,0.024534376431588345,0.9976228448217896,0,0,0.0,0.0,0,1,rat_train|LUNG|PHOSPHO|M_1w
+225,"Rat heart protein, female 8 wk",training vs sedentary,9,5,4,1.0,0.022724080813583958,0.9976228448217896,0,0,0.0,0.0,135,56,rat_train|HEART|PROT|F_8w
+226,"Human vastus lateralis protein, RE–CON pre",reference (non-exercise),9,5,4,1.0,0.018519336467995882,0.9981503191221713,0,0,0.0,0.0,131,74,human_acute|VL|PROT|RE_vs_CON_pre
+227,"Rat hippocampus RNA, male 2 wk",training vs sedentary,9,5,4,1.0,0.00845778209671145,0.9985071642902272,0,0,0.0,0.0,19,25,rat_train|HIPPOC|RNA|M_2w
+228,"Rat lung protein, male 1 wk",training vs sedentary,9,3,6,0.5078125,-0.0001095381058650209,0.9999126034392476,0,0,0.0,0.0,2,3,rat_train|LUNG|PROT|M_1w
+229,"Rat liver phosphosite, male 8 wk",training vs sedentary,6,3,3,1.0,-0.0017439468595615223,0.9999126034392476,0,0,0.0,0.0,83,32,rat_train|LIVER|PHOSPHO|M_8w
+230,"Rat subcutaneous WAT phosphosite, male 1 wk",training vs sedentary,2,1,1,1.0,-0.011164104244978003,0.9985071642902272,0,0,0.0,0.0,2,0,rat_train|WAT-SC|PHOSPHO|M_1w
+231,"Human vastus lateralis phosphosite, CON post–pre 3.5–4 h",reference (non-exercise),6,3,3,1.0,-0.015488331626330351,0.9981503191221713,0,0,0.0,0.0,1,0,human_acute|VL|PHOSPHO|CON_post_vs_pre_3.5to4h
+232,"Human vastus lateralis RNA, EE post–pre 3.5–4 h",exercise post−pre,9,5,4,1.0,-0.043096425528061776,0.9890501145798101,0,0,0.0,0.0,250,250,human_acute|VL|RNA|EE_post_vs_pre_3.5to4h
+233,"Human blood RNA, EE–RE 24 h",reference (non-exercise),9,4,5,1.0,-0.07219662949658158,0.9802965892335704,0,0,0.0,0.0,0,0,human_acute|BLOOD|RNA|EE_vs_RE_24h
+234,"Rat subcutaneous WAT phosphosite, female 2 wk",training vs sedentary,2,1,1,1.0,-0.07394657187851594,0.9802965892335704,0,0,0.0,0.0,0,0,rat_train|WAT-SC|PHOSPHO|F_2w
+235,"Human subcutaneous adipose protein, RE–CON pre",reference (non-exercise),9,5,4,1.0,-0.08033760060188357,0.9802965892335704,0,0,0.0,0.0,30,26,human_acute|ADIPOSE|PROT|RE_vs_CON_pre
+236,"Rat gastrocnemius phosphosite, female 2 wk",training vs sedentary,5,2,3,1.0,-0.08679691605890433,0.9798289348986748,0,0,0.0,0.0,0,8,rat_train|SKM-GN|PHOSPHO|F_2w
+237,"Rat liver RNA, female 4 wk",training vs sedentary,9,7,2,0.1796875,-0.08928298786418958,0.9798289348986748,0,0,0.0,0.0,0,2,rat_train|LIVER|RNA|F_4w
+238,"Human vastus lateralis RNA, RE post–pre 3.5–4 h",exercise post−pre,9,3,6,0.5078125,-0.1082984607484608,0.9699132684401922,0,0,0.0,0.0,250,250,human_acute|VL|RNA|RE_post_vs_pre_3.5to4h
+239,"Rat lung phosphosite, female 2 wk",training vs sedentary,3,1,2,1.0,-0.11378179162626734,0.9680043535885151,0,0,0.0,0.0,0,0,rat_train|LUNG|PHOSPHO|F_2w
+240,"Rat liver RNA, female 2 wk",training vs sedentary,9,5,4,1.0,-0.13656306379199126,0.9568468040518636,0,0,0.0,0.0,2,2,rat_train|LIVER|RNA|F_2w
+241,"Human subcutaneous adipose protein, EE–RE 3.5–4 h",reference (non-exercise),9,4,5,1.0,-0.13927079654830435,0.9568468040518636,0,0,0.0,0.0,4,8,human_acute|ADIPOSE|PROT|EE_vs_RE_3.5to4h
+242,"Rat subcutaneous WAT protein, female 2 wk",training vs sedentary,9,4,5,1.0,-0.14143976728008834,0.9568468040518636,0,0,0.0,0.0,2,0,rat_train|WAT-SC|PROT|F_2w
+243,"Rat gastrocnemius phosphosite, male 2 wk",training vs sedentary,5,3,2,1.0,-0.1931416109511327,0.9300755527920964,0,0,0.0,0.0,1,3,rat_train|SKM-GN|PHOSPHO|M_2w
+244,"Rat lung RNA, female 2 wk",training vs sedentary,9,5,4,1.0,-0.19704122220851975,0.9294007858675021,0,0,0.0,0.0,139,250,rat_train|LUNG|RNA|F_2w
+245,"Rat heart RNA, female 1 wk",training vs sedentary,9,3,6,0.5078125,-0.21315771207984108,0.9262720573369654,0,0,0.0,0.0,2,2,rat_train|HEART|RNA|F_1w
+246,"Rat subcutaneous WAT phosphosite, male 4 wk",training vs sedentary,2,1,1,1.0,-0.2398380422804069,0.9165974398949908,0,0,0.0,0.0,8,4,rat_train|WAT-SC|PHOSPHO|M_4w
+247,"Rat subcutaneous WAT phosphosite, female 4 wk",training vs sedentary,2,0,2,0.5,-0.24239091223762343,0.9165974398949908,0,0,0.0,0.0,0,0,rat_train|WAT-SC|PHOSPHO|F_4w
+248,"Rat small intestine RNA, female 8 wk",training vs sedentary,9,6,3,0.5078125,-0.27030379394899606,0.906162343359765,0,0,0.0,0.0,0,0,rat_train|SMLINT|RNA|F_8w
+249,"Rat brown adipose RNA, female 1 wk",training vs sedentary,9,3,6,0.5078125,-0.27485741364179445,0.9051966140791552,0,0,0.0,0.0,50,128,rat_train|BAT|RNA|F_1w
+250,"Rat subcutaneous WAT RNA, female 2 wk",training vs sedentary,9,4,5,1.0,-0.276419815399758,0.9051966140791552,0,0,0.0,0.0,12,2,rat_train|WAT-SC|RNA|F_2w
+251,"Human vastus lateralis RNA, EE–RE 15–45 min",reference (non-exercise),9,5,4,1.0,-0.3337801941670596,0.8688824765731585,0,0,0.0,0.0,177,151,human_acute|VL|RNA|EE_vs_RE_15to45min
+252,"Human blood RNA, EE–CON pre",reference (non-exercise),9,4,5,1.0,-0.351469714891022,0.8638790289605409,0,0,0.0,0.0,0,0,human_acute|BLOOD|RNA|EE_vs_CON_pre
+253,"Human blood RNA, RE–CON 15–45 min",exercise vs control,9,4,5,1.0,-0.37980292320559045,0.8493862111569677,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|RE_vs_CON_15to45min
+254,"Rat liver phosphosite, female 1 wk",training vs sedentary,6,3,3,1.0,-0.38494680834380524,0.8474814791640566,0,0,0.0,0.0,2,0,rat_train|LIVER|PHOSPHO|F_1w
+255,"Human subcutaneous adipose RNA, EE–CON 24 h",exercise vs control,9,5,4,1.0,-0.45857624721388107,0.8028981038552607,0,0,0.0,0.0,1,1,human_acute|ADIPOSE|RNA|EE_vs_CON_24h
+256,"Human vastus lateralis phosphosite, RE post–pre 15–45 min",exercise post−pre,6,2,4,0.6875,-0.4731213666851398,0.7951950174141489,0,0,0.0,0.0,250,250,human_acute|VL|PHOSPHO|RE_post_vs_pre_15to45min
+257,"Rat small intestine RNA, male 2 wk",training vs sedentary,9,3,6,0.5078125,-0.47502805767578066,0.7951950174141489,0,0,0.0,0.0,0,3,rat_train|SMLINT|RNA|M_2w
+258,"Rat liver phosphosite, female 4 wk",training vs sedentary,6,3,3,1.0,-0.487163938937983,0.7926708064771577,0,0,0.0,0.0,5,4,rat_train|LIVER|PHOSPHO|F_4w
+259,"Human blood RNA, EE–RE pre",reference (non-exercise),9,3,6,0.5078125,-0.5662928226482632,0.7433453631145568,0,0,0.0,0.0,0,0,human_acute|BLOOD|RNA|EE_vs_RE_pre
+260,"Human vastus lateralis phosphosite, RE–CON pre",reference (non-exercise),6,3,3,1.0,-0.5767085837303325,0.7367211665402115,0,0,0.0,0.0,200,107,human_acute|VL|PHOSPHO|RE_vs_CON_pre
+261,"Rat lung RNA, male 8 wk",training vs sedentary,9,2,7,0.1796875,-0.5802620291614646,0.7367211665402115,0,0,0.0,0.0,27,41,rat_train|LUNG|RNA|M_8w
+262,"Human vastus lateralis phosphosite, EE–CON 15–45 min",exercise vs control,6,2,4,0.6875,-0.6026482245759353,0.7290422183135494,0,0,0.0,0.0,250,250,human_acute|VL|PHOSPHO|EE_vs_CON_15to45min
+263,"Human subcutaneous adipose RNA, EE–CON pre",reference (non-exercise),9,4,5,1.0,-0.6132939253780946,0.7221205282617589,0,0,0.0,0.0,0,0,human_acute|ADIPOSE|RNA|EE_vs_CON_pre
+264,"Rat lung phosphosite, female 1 wk",training vs sedentary,3,1,2,1.0,-0.6161581712164906,0.7221205282617589,0,0,0.0,0.0,1,2,rat_train|LUNG|PHOSPHO|F_1w
+265,"Rat spleen RNA, female 4 wk",training vs sedentary,9,3,6,0.5078125,-0.6256173472483822,0.7163084088022234,0,0,0.0,0.0,0,1,rat_train|SPLEEN|RNA|F_4w
+266,"Human vastus lateralis protein, EE post–pre 15–45 min",exercise post−pre,9,3,6,0.5078125,-0.6393654616677794,0.7075543034635945,0,0,0.0,0.0,1,0,human_acute|VL|PROT|EE_post_vs_pre_15to45min
+267,"Human vastus lateralis protein, RE–CON 3.5–4 h",exercise vs control,9,4,5,1.0,-0.6446934194432553,0.7070867640243617,0,0,0.0,0.0,9,2,human_acute|VL|PROT|RE_vs_CON_3.5to4h
+268,"Human blood RNA, CON post–pre 40 min during",reference (non-exercise),9,4,5,1.0,-0.6467906275059713,0.7070867640243617,0,0,0.0,0.0,161,202,human_acute|BLOOD|RNA|CON_post_vs_pre_during40min
+269,"Rat brown adipose RNA, male 2 wk",training vs sedentary,9,3,6,0.5078125,-0.6656355555412788,0.7012739549514728,0,0,0.0,0.0,17,7,rat_train|BAT|RNA|M_2w
+270,"Rat gastrocnemius phosphosite, male 1 wk",training vs sedentary,5,3,2,1.0,-0.6751604697828693,0.6954339856334586,0,0,0.0,0.0,0,1,rat_train|SKM-GN|PHOSPHO|M_1w
+271,"Rat subcutaneous WAT phosphosite, female 1 wk",training vs sedentary,2,0,2,0.5,-0.6839874569831288,0.6901652776714071,0,0,0.0,0.0,0,0,rat_train|WAT-SC|PHOSPHO|F_1w
+272,"Rat cortex protein, male 4 wk",training vs sedentary,9,3,6,0.5078125,-0.6878936773137547,0.6892381995182258,0,0,0.0,0.0,8,6,rat_train|CORTEX|PROT|M_4w
+273,"Rat lung phosphosite, female 4 wk",training vs sedentary,3,1,2,1.0,-0.723746238461188,0.6668689772354077,0,0,0.0,0.0,0,0,rat_train|LUNG|PHOSPHO|F_4w
+274,"Rat lung phosphosite, male 2 wk",training vs sedentary,3,0,3,0.25,-0.7364159155788382,0.6617831757271394,0,0,0.0,0.0,0,0,rat_train|LUNG|PHOSPHO|M_2w
+275,"Rat vena cava RNA, male 8 wk",training vs sedentary,9,2,7,0.1796875,-0.7486018162990787,0.6536425777518583,0,0,0.0,0.0,8,1,rat_train|VENACV|RNA|M_8w
+276,"Human blood RNA, EE post–pre 10 min",exercise post−pre,9,1,8,0.0390625,-0.7610694637093507,0.6453153529730932,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|EE_post_vs_pre_10min
+277,"Rat testes RNA, male 1 wk",training vs sedentary,9,3,6,0.5078125,-0.7786021846723413,0.6351196239390493,0,0,0.0,0.0,2,7,rat_train|TESTES|RNA|M_1w
+278,"Human vastus lateralis RNA, CON post–pre 3.5–4 h",reference (non-exercise),9,2,7,0.1796875,-0.7798128209910095,0.6351196239390493,0,0,0.0,0.0,250,250,human_acute|VL|RNA|CON_post_vs_pre_3.5to4h
+279,"Rat hypothalamus RNA, female 4 wk",training vs sedentary,9,4,5,1.0,-0.7829421091923868,0.6351196239390493,0,0,0.0,0.0,0,0,rat_train|HYPOTH|RNA|F_4w
+280,"Rat hypothalamus RNA, female 1 wk",training vs sedentary,9,3,6,0.5078125,-0.80607685337683,0.6213244902242815,0,0,0.0,0.0,1,4,rat_train|HYPOTH|RNA|F_1w
+281,"Rat subcutaneous WAT phosphosite, female 8 wk",training vs sedentary,2,0,2,0.5,-0.8222866811948459,0.6148082973594934,0,0,0.0,0.0,2,1,rat_train|WAT-SC|PHOSPHO|F_8w
+282,"Rat subcutaneous WAT phosphosite, male 8 wk",training vs sedentary,2,0,2,0.5,-0.8315057026901054,0.6093901260351939,0,0,0.0,0.0,218,53,rat_train|WAT-SC|PHOSPHO|M_8w
+283,"Human vastus lateralis RNA, EE–RE pre",reference (non-exercise),9,3,6,0.5078125,-0.8336921505061166,0.6093901260351939,0,0,0.0,0.0,8,36,human_acute|VL|RNA|EE_vs_RE_pre
+284,"Rat lung protein, female 8 wk",training vs sedentary,9,3,6,0.5078125,-0.8364649105996506,0.6093901260351939,0,0,0.0,0.0,4,2,rat_train|LUNG|PROT|F_8w
+285,"Rat brown adipose RNA, female 4 wk",training vs sedentary,9,2,7,0.1796875,-0.8448094443236664,0.6076696668292838,0,0,0.0,0.0,12,71,rat_train|BAT|RNA|F_4w
+286,"Human vastus lateralis RNA, RE post–pre 15–45 min",exercise post−pre,9,2,7,0.1796875,-0.8453453479760463,0.6076696668292838,0,0,0.0,0.0,250,250,human_acute|VL|RNA|RE_post_vs_pre_15to45min
+287,"Human subcutaneous adipose RNA, EE–RE 3.5–4 h",reference (non-exercise),9,4,5,1.0,-0.8711457072259197,0.5934535677925624,0,0,0.0,0.0,0,0,human_acute|ADIPOSE|RNA|EE_vs_RE_3.5to4h
+288,"Rat lung RNA, female 4 wk",training vs sedentary,9,2,7,0.1796875,-0.8934307201349422,0.5835694530155547,0,0,0.0,0.0,32,157,rat_train|LUNG|RNA|F_4w
+289,"Rat hypothalamus RNA, female 2 wk",training vs sedentary,9,4,5,1.0,-0.899899691553164,0.5821944923508262,0,0,0.0,0.0,1,1,rat_train|HYPOTH|RNA|F_2w
+290,"Rat kidney protein, male 4 wk",training vs sedentary,9,4,5,1.0,-0.944817274584341,0.5575119543000777,0,0,0.0,0.0,1,1,rat_train|KIDNEY|PROT|M_4w
+291,"Rat lung phosphosite, male 4 wk",training vs sedentary,3,0,3,0.25,-0.972590655011285,0.5441671918528257,0,0,0.0,0.0,1,0,rat_train|LUNG|PHOSPHO|M_4w
+292,"Rat testes RNA, male 2 wk",training vs sedentary,9,2,7,0.1796875,-1.024968607855349,0.5067693923267651,0,0,0.0,0.0,43,73,rat_train|TESTES|RNA|M_2w
+293,"Rat hippocampus RNA, female 8 wk",training vs sedentary,9,2,7,0.1796875,-1.033947049375783,0.5019637043984504,0,0,0.0,0.0,1,0,rat_train|HIPPOC|RNA|F_8w
+294,"Rat brown adipose RNA, male 1 wk",training vs sedentary,9,2,7,0.1796875,-1.0381749843630201,0.5008754571372911,0,0,0.0,0.0,2,6,rat_train|BAT|RNA|M_1w
+295,"Human vastus lateralis RNA, EE post–pre 15–45 min",exercise post−pre,9,1,8,0.0390625,-1.03838479466355,0.5008754571372911,0,0,0.0,0.0,250,250,human_acute|VL|RNA|EE_post_vs_pre_15to45min
+296,"Rat cortex phosphosite, male 1 wk",training vs sedentary,4,1,3,0.625,-1.0552100500256545,0.4926732554653187,0,0,0.0,0.0,0,0,rat_train|CORTEX|PHOSPHO|M_1w
+297,"Rat cortex phosphosite, male 4 wk",training vs sedentary,4,2,2,1.0,-1.0945694393877594,0.4754485662161554,0,0,0.0,0.0,72,27,rat_train|CORTEX|PHOSPHO|M_4w
+298,"Rat testes RNA, male 8 wk",training vs sedentary,9,3,6,0.5078125,-1.1143328721109607,0.467253233435462,0,0,0.0,0.0,0,1,rat_train|TESTES|RNA|M_8w
+299,"Human vastus lateralis phosphosite, RE post–pre 3.5–4 h",exercise post−pre,6,1,5,0.21875,-1.1258784130674233,0.4622042305312374,0,0,0.0,0.0,250,250,human_acute|VL|PHOSPHO|RE_post_vs_pre_3.5to4h
+300,"Rat hippocampus RNA, male 8 wk",training vs sedentary,9,3,6,0.5078125,-1.1344158250173035,0.4578535786584858,0,0,0.0,0.0,10,22,rat_train|HIPPOC|RNA|M_8w
+301,"Human blood RNA, RE post–pre 15–45 min",exercise post−pre,9,1,8,0.0390625,-1.143564830488461,0.45498051399197287,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|RE_post_vs_pre_15to45min
+302,"Human vastus lateralis RNA, RE post–pre 24 h",exercise post−pre,9,3,6,0.5078125,-1.1464841896128721,0.45498051399197287,0,0,0.0,0.0,250,250,human_acute|VL|RNA|RE_post_vs_pre_24h
+303,"Human vastus lateralis phosphosite, RE–CON 15–45 min",exercise vs control,6,1,5,0.21875,-1.1768234719378192,0.4436653304183987,0,0,0.0,0.0,250,250,human_acute|VL|PHOSPHO|RE_vs_CON_15to45min
+304,"Human blood RNA, RE post–pre 3.5–4 h",exercise post−pre,9,2,7,0.1796875,-1.186307798680974,0.44086996184826654,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|RE_post_vs_pre_3.5to4h
+305,"Human vastus lateralis phosphosite, RE post–pre 24 h",exercise post−pre,6,1,5,0.21875,-1.210303207950288,0.4298637202499041,0,0,0.0,0.0,199,139,human_acute|VL|PHOSPHO|RE_post_vs_pre_24h
+306,"Rat subcutaneous WAT protein, female 1 wk",training vs sedentary,9,3,6,0.5078125,-1.2131546997016949,0.4298431076224033,0,0,0.0,0.0,0,0,rat_train|WAT-SC|PROT|F_1w
+307,"Rat cortex protein, male 1 wk",training vs sedentary,9,3,6,0.5078125,-1.219556497909009,0.42733063983667435,0,0,0.0,0.0,0,0,rat_train|CORTEX|PROT|M_1w
+308,"Rat colon RNA, male 1 wk",training vs sedentary,9,2,7,0.1796875,-1.2617419414496145,0.4055856700339301,0,0,0.0,0.0,0,0,rat_train|COLON|RNA|M_1w
+309,"Rat cortex RNA, female 2 wk",training vs sedentary,9,4,5,1.0,-1.2816755800353583,0.3937374158187372,0,0,0.0,0.0,7,10,rat_train|CORTEX|RNA|F_2w
+310,"Rat cortex phosphosite, female 1 wk",training vs sedentary,4,2,2,1.0,-1.2835260686429955,0.3937374158187372,0,0,0.0,0.0,0,0,rat_train|CORTEX|PHOSPHO|F_1w
+311,"Human vastus lateralis protein, EE–CON 24 h",exercise vs control,9,1,8,0.0390625,-1.3142488095197113,0.3796235402475795,0,0,0.0,0.0,1,0,human_acute|VL|PROT|EE_vs_CON_24h
+312,"Human vastus lateralis protein, EE post–pre 3.5–4 h",exercise post−pre,9,1,8,0.0390625,-1.3256474148251316,0.373950351282341,0,0,0.0,0.0,11,11,human_acute|VL|PROT|EE_post_vs_pre_3.5to4h
+313,"Rat lung phosphosite, male 8 wk",training vs sedentary,3,0,3,0.25,-1.327493205804836,0.373950351282341,0,0,0.0,0.0,6,1,rat_train|LUNG|PHOSPHO|M_8w
+314,"Rat cortex phosphosite, male 2 wk",training vs sedentary,4,0,4,0.125,-1.3342517179687345,0.373950351282341,0,0,0.0,0.0,136,31,rat_train|CORTEX|PHOSPHO|M_2w
+315,"Human blood RNA, RE–CON 3.5–4 h",exercise vs control,9,3,6,0.5078125,-1.385619036032401,0.34608189407435647,0,1,0.0,0.001968503937007874,250,250,human_acute|BLOOD|RNA|RE_vs_CON_3.5to4h
+316,"Human subcutaneous adipose RNA, RE–CON pre",reference (non-exercise),9,2,7,0.1796875,-1.445892693053212,0.321860939024579,0,0,0.0,0.0,0,0,human_acute|ADIPOSE|RNA|RE_vs_CON_pre
+317,"Rat cortex RNA, male 8 wk",training vs sedentary,9,3,6,0.5078125,-1.481373462539289,0.30605247680138825,0,0,0.0,0.0,0,0,rat_train|CORTEX|RNA|M_8w
+318,"Rat kidney protein, male 8 wk",training vs sedentary,9,1,8,0.0390625,-1.4844208375881576,0.30605247680138825,0,0,0.0,0.0,98,155,rat_train|KIDNEY|PROT|M_8w
+319,"Rat brown adipose RNA, female 2 wk",training vs sedentary,9,1,8,0.0390625,-1.4932373556646947,0.30265519394168944,0,0,0.0,0.0,37,164,rat_train|BAT|RNA|F_2w
+320,"Human blood RNA, EE–RE 3.5–4 h",reference (non-exercise),9,2,7,0.1796875,-1.5348831321647354,0.28404699155102786,0,0,0.0,0.0,0,0,human_acute|BLOOD|RNA|EE_vs_RE_3.5to4h
+321,"Rat small intestine RNA, male 4 wk",training vs sedentary,9,3,6,0.5078125,-1.554282820582293,0.2766840899090661,0,0,0.0,0.0,0,1,rat_train|SMLINT|RNA|M_4w
+322,"Rat testes RNA, male 4 wk",training vs sedentary,9,3,6,0.5078125,-1.562471996857844,0.2738753504583949,0,0,0.0,0.0,1,0,rat_train|TESTES|RNA|M_4w
+323,"Rat hypothalamus RNA, male 8 wk",training vs sedentary,9,4,5,1.0,-1.5900396775321826,0.2607484026739173,0,0,0.0,0.0,0,1,rat_train|HYPOTH|RNA|M_8w
+324,"Human vastus lateralis phosphosite, RE–CON 3.5–4 h",exercise vs control,6,0,6,0.03125,-1.5977985878774388,0.2584418024059699,0,0,0.0,0.0,250,141,human_acute|VL|PHOSPHO|RE_vs_CON_3.5to4h
+325,"Rat liver phosphosite, male 1 wk",training vs sedentary,6,1,5,0.21875,-1.6221950681887995,0.2520555112778938,0,0,0.0,0.0,0,0,rat_train|LIVER|PHOSPHO|M_1w
+326,"Rat colon RNA, male 2 wk",training vs sedentary,9,1,8,0.0390625,-1.6411916461510399,0.24707241002648012,0,0,0.0,0.0,2,0,rat_train|COLON|RNA|M_2w
+327,"Rat subcutaneous WAT RNA, female 1 wk",training vs sedentary,9,2,7,0.1796875,-1.6714372657933336,0.23821000127782063,0,0,0.0,0.0,3,1,rat_train|WAT-SC|RNA|F_1w
+328,"Human blood RNA, CON post–pre 10 min",reference (non-exercise),9,2,7,0.1796875,-1.7268359625542407,0.21622853350081303,0,0,0.0,0.0,113,34,human_acute|BLOOD|RNA|CON_post_vs_pre_10min
+329,"Rat kidney RNA, male 4 wk",training vs sedentary,9,1,8,0.0390625,-1.746940755449252,0.20853343114890077,0,0,0.0,0.0,1,5,rat_train|KIDNEY|RNA|M_4w
+330,"Rat cortex phosphosite, female 2 wk",training vs sedentary,4,1,3,0.625,-1.7545543351105923,0.2066264133015711,0,0,0.0,0.0,0,0,rat_train|CORTEX|PHOSPHO|F_2w
+331,"Human blood RNA, CON post–pre 15–45 min",reference (non-exercise),9,2,7,0.1796875,-1.7578967192813275,0.20646607721252336,0,0,0.0,0.0,131,88,human_acute|BLOOD|RNA|CON_post_vs_pre_15to45min
+332,"Human vastus lateralis phosphosite, RE–CON 24 h",exercise vs control,6,0,6,0.03125,-1.8444878181458277,0.18216610538769049,0,0,0.0,0.0,72,23,human_acute|VL|PHOSPHO|RE_vs_CON_24h
+333,"Human vastus lateralis protein, CON post–pre 3.5–4 h",reference (non-exercise),9,1,8,0.0390625,-1.8811566434085896,0.16888615028214293,0,0,0.0,0.0,3,0,human_acute|VL|PROT|CON_post_vs_pre_3.5to4h
+334,"Rat hippocampus RNA, male 1 wk",training vs sedentary,9,2,7,0.1796875,-1.9056076128222503,0.1640775224407194,0,0,0.0,0.0,10,28,rat_train|HIPPOC|RNA|M_1w
+335,"Human blood RNA, EE–RE 10 min",reference (non-exercise),9,2,7,0.1796875,-1.9078935540159954,0.1640775224407194,0,0,0.0,0.0,4,1,human_acute|BLOOD|RNA|EE_vs_RE_10min
+336,"Rat subcutaneous WAT RNA, male 2 wk",training vs sedentary,9,2,7,0.1796875,-1.9480409174994135,0.1551059278145507,0,0,0.0,0.0,164,102,rat_train|WAT-SC|RNA|M_2w
+337,"Human vastus lateralis RNA, RE–CON 15–45 min",exercise vs control,9,0,9,0.00390625,-1.9671967835868083,0.15108030906890293,0,0,0.0,0.0,250,225,human_acute|VL|RNA|RE_vs_CON_15to45min
+338,"Human subcutaneous adipose protein, EE–CON 3.5–4 h",exercise vs control,9,2,7,0.1796875,-1.9904143543361896,0.145100789877016,0,0,0.0,0.0,172,131,human_acute|ADIPOSE|PROT|EE_vs_CON_3.5to4h
+339,"Human blood RNA, EE post–pre 3.5–4 h",exercise post−pre,9,1,8,0.0390625,-1.9955569404394957,0.14445692489515258,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|EE_post_vs_pre_3.5to4h
+340,"Human vastus lateralis protein, RE post–pre 15–45 min",exercise post−pre,9,0,9,0.00390625,-2.002274427066257,0.143450567191176,0,0,0.0,0.0,1,1,human_acute|VL|PROT|RE_post_vs_pre_15to45min
+341,"Rat kidney RNA, female 8 wk",training vs sedentary,9,2,7,0.1796875,-2.0034230594792644,0.143450567191176,0,0,0.0,0.0,18,7,rat_train|KIDNEY|RNA|F_8w
+342,"Human vastus lateralis RNA, EE–CON 15–45 min",exercise vs control,9,0,9,0.00390625,-2.0419807394930114,0.1360430747218937,0,0,0.0,0.0,250,250,human_acute|VL|RNA|EE_vs_CON_15to45min
+343,"Human blood RNA, CON post–pre 20 min during",reference (non-exercise),9,1,8,0.0390625,-2.0647021769046363,0.13220723687290234,0,0,0.0,0.0,0,2,human_acute|BLOOD|RNA|CON_post_vs_pre_during20min
+344,"Rat colon RNA, female 4 wk",training vs sedentary,9,2,7,0.1796875,-2.1471403935490234,0.11399567400398668,0,0,0.0,0.0,1,1,rat_train|COLON|RNA|F_4w
+345,"Human subcutaneous adipose RNA, RE–CON 15–45 min",exercise vs control,9,1,8,0.0390625,-2.164300245243515,0.11134812872810726,0,0,0.0,0.0,25,8,human_acute|ADIPOSE|RNA|RE_vs_CON_15to45min
+346,"Rat subcutaneous WAT RNA, male 1 wk",training vs sedentary,9,2,7,0.1796875,-2.171277161386084,0.11134812872810726,0,2,0.0,0.0039447731755424065,250,250,rat_train|WAT-SC|RNA|M_1w
+347,"Human blood RNA, EE–CON 15–45 min",exercise vs control,9,1,8,0.0390625,-2.1715968771035774,0.11134812872810726,0,0,0.0,0.0,250,232,human_acute|BLOOD|RNA|EE_vs_CON_15to45min
+348,"Rat lung RNA, male 2 wk",training vs sedentary,9,3,6,0.5078125,-2.203119445864498,0.1059479499886026,0,0,0.0,0.0,5,1,rat_train|LUNG|RNA|M_2w
+349,"Rat subcutaneous WAT RNA, male 8 wk",training vs sedentary,9,2,7,0.1796875,-2.275746080784807,0.09055107482180215,0,1,0.0,0.010416666666666666,65,23,rat_train|WAT-SC|RNA|M_8w
+350,"Rat kidney RNA, male 8 wk",training vs sedentary,9,1,8,0.0390625,-2.3038198735099376,0.08589338646208705,0,0,0.0,0.0,21,39,rat_train|KIDNEY|RNA|M_8w
+351,"Human blood RNA, EE–CON 3.5–4 h",exercise vs control,9,1,8,0.0390625,-2.3088260143350388,0.08566422151820895,0,1,0.0,0.001968503937007874,250,250,human_acute|BLOOD|RNA|EE_vs_CON_3.5to4h
+352,"Human subcutaneous adipose RNA, RE post–pre 24 h",exercise post−pre,9,0,9,0.00390625,-2.338261718903901,0.08006854470024896,0,0,0.0,0.0,24,38,human_acute|ADIPOSE|RNA|RE_post_vs_pre_24h
+353,"Human subcutaneous adipose RNA, RE post–pre 3.5–4 h",exercise post−pre,9,0,9,0.00390625,-2.36822944090405,0.07722802659483174,0,0,0.0,0.0,250,250,human_acute|ADIPOSE|RNA|RE_post_vs_pre_3.5to4h
+354,"Human vastus lateralis protein, EE–CON 15–45 min",exercise vs control,9,1,8,0.0390625,-2.528092288240697,0.0552870232537092,0,0,0.0,0.0,1,0,human_acute|VL|PROT|EE_vs_CON_15to45min
+355,"Human subcutaneous adipose protein, RE–CON 3.5–4 h",exercise vs control,9,2,7,0.1796875,-2.580905158631365,0.04873265306897168,0,0,0.0,0.0,1,1,human_acute|ADIPOSE|PROT|RE_vs_CON_3.5to4h
+356,"Human blood RNA, EE–RE 15–45 min",reference (non-exercise),9,1,8,0.0390625,-2.602457580415385,0.04693694585938218,0,0,0.0,0.0,20,54,human_acute|BLOOD|RNA|EE_vs_RE_15to45min
+357,"Rat heart RNA, female 2 wk",training vs sedentary,9,4,5,1.0,-2.616954267274383,0.04561074588403379,0,0,0.0,0.0,18,17,rat_train|HEART|RNA|F_2w
+358,"Rat lung RNA, male 1 wk",training vs sedentary,9,1,8,0.0390625,-2.626525560717979,0.0449511486372301,0,0,0.0,0.0,50,34,rat_train|LUNG|RNA|M_1w
+359,"Human subcutaneous adipose RNA, RE post–pre 15–45 min",exercise post−pre,9,0,9,0.00390625,-2.6518840202526937,0.04228401487948246,0,0,0.0,0.0,250,239,human_acute|ADIPOSE|RNA|RE_post_vs_pre_15to45min
+360,"Human blood RNA, EE post–pre 15–45 min",exercise post−pre,9,1,8,0.0390625,-2.674131120582984,0.04071151727094647,0,0,0.0,0.0,250,250,human_acute|BLOOD|RNA|EE_post_vs_pre_15to45min
+361,"Human vastus lateralis protein, RE–CON 15–45 min",exercise vs control,9,1,8,0.0390625,-2.911086515001992,0.02215652296140605,0,0,0.0,0.0,0,0,human_acute|VL|PROT|RE_vs_CON_15to45min
+362,"Human subcutaneous adipose RNA, EE post–pre 3.5–4 h",exercise post−pre,9,0,9,0.00390625,-2.9901912421159715,0.01861302854083697,0,0,0.0,0.0,250,250,human_acute|ADIPOSE|RNA|EE_post_vs_pre_3.5to4h
+363,"Rat colon RNA, female 1 wk",training vs sedentary,9,1,8,0.0390625,-3.0116518721740113,0.017983146953833885,0,1,0.0,0.0064516129032258064,46,101,rat_train|COLON|RNA|F_1w
+364,"Human subcutaneous adipose RNA, CON post–pre 3.5–4 h",reference (non-exercise),9,0,9,0.00390625,-3.078377517340475,0.015233397710271478,0,0,0.0,0.0,250,250,human_acute|ADIPOSE|RNA|CON_post_vs_pre_3.5to4h
+365,"Human vastus lateralis protein, RE post–pre 24 h",exercise post−pre,9,0,9,0.00390625,-3.1247518721299463,0.01386647707581547,0,0,0.0,0.0,70,63,human_acute|VL|PROT|RE_post_vs_pre_24h
+366,"Rat colon RNA, female 2 wk",training vs sedentary,9,2,7,0.1796875,-3.2336295781421533,0.010119928142762014,0,1,0.0,0.012195121951219513,16,58,rat_train|COLON|RNA|F_2w
+367,"Human subcutaneous adipose RNA, RE–CON 24 h",exercise vs control,9,1,8,0.0390625,-3.275912063395513,0.008911316859021592,0,0,0.0,0.0,0,0,human_acute|ADIPOSE|RNA|RE_vs_CON_24h
+368,"Human vastus lateralis protein, RE post–pre 3.5–4 h",exercise post−pre,9,0,9,0.00390625,-3.3320291525421024,0.007490927875919275,0,0,0.0,0.0,15,6,human_acute|VL|PROT|RE_post_vs_pre_3.5to4h
+369,"Rat heart RNA, male 8 wk",training vs sedentary,9,0,9,0.00390625,-3.44678295058771,0.005274576236617873,0,1,0.0,0.0024813895781637717,234,161,rat_train|HEART|RNA|M_8w
+370,"Rat lung protein, male 4 wk",training vs sedentary,9,0,9,0.00390625,-3.699574315057116,0.0022919136811160278,0,0,0.0,0.0,6,5,rat_train|LUNG|PROT|M_4w
+371,"Rat brown adipose RNA, male 4 wk",training vs sedentary,9,1,8,0.0390625,-3.7514755187962856,0.0019165921966116742,0,0,0.0,0.0,32,19,rat_train|BAT|RNA|M_4w
+372,"Human vastus lateralis protein, RE–CON 24 h",exercise vs control,9,0,9,0.00390625,-4.047188033035623,0.0007387305815451859,0,0,0.0,0.0,16,5,human_acute|VL|PROT|RE_vs_CON_24h
+373,"Rat lung protein, male 8 wk",training vs sedentary,9,0,9,0.00390625,-4.386639883369008,0.00022097677320464317,0,0,0.0,0.0,38,51,rat_train|LUNG|PROT|M_8w
+374,"Human vastus lateralis RNA, CON post–pre 24 h",reference (non-exercise),9,0,9,0.00390625,-4.420557587159302,0.0001982785757039333,0,0,0.0,0.0,250,250,human_acute|VL|RNA|CON_post_vs_pre_24h
+375,"Rat adrenal RNA, female 1 wk",training vs sedentary,9,0,9,0.00390625,-4.67302755668133,7.114987236554573e-05,0,1,0.0,0.001968503937007874,250,250,rat_train|ADRNL|RNA|F_1w
+376,"Rat adrenal RNA, female 8 wk",training vs sedentary,9,0,9,0.00390625,-5.492334207375787,1.394390325864009e-06,0,1,0.0,0.001968503937007874,250,250,rat_train|ADRNL|RNA|F_8w
+377,"Rat adrenal RNA, female 2 wk",training vs sedentary,9,0,9,0.00390625,-5.534966204543868,1.338109791995011e-06,0,1,0.0,0.001968503937007874,250,250,rat_train|ADRNL|RNA|F_2w
+378,"Rat brown adipose RNA, female 8 wk",training vs sedentary,9,0,9,0.00390625,-5.753209222718952,4.855770848474389e-07,0,0,0.0,0.0,15,5,rat_train|BAT|RNA|F_8w
+379,"Rat adrenal RNA, female 4 wk",training vs sedentary,9,0,9,0.00390625,-5.820307020295116,3.802111862669396e-07,0,0,0.0,0.0,8,10,rat_train|ADRNL|RNA|F_4w
+380,"Rat brown adipose RNA, male 8 wk",training vs sedentary,9,0,9,0.00390625,-7.729097364960616,4.40703691779792e-12,0,7,0.0,0.013944223107569721,250,250,rat_train|BAT|RNA|M_8w
+381,"Human subcutaneous adipose phosphosite, EE–CON 3.5–4 h",exercise vs control,1,1,0,1.0,,,0,0,0.0,0.0,98,145,human_acute|ADIPOSE|PHOSPHO|EE_vs_CON_3.5to4h
+382,"Human subcutaneous adipose phosphosite, RE–CON 3.5–4 h",exercise vs control,1,1,0,1.0,,,0,0,0.0,0.0,10,32,human_acute|ADIPOSE|PHOSPHO|RE_vs_CON_3.5to4h
+383,"Human subcutaneous adipose phosphosite, EE post–pre 3.5–4 h",exercise post−pre,1,1,0,1.0,,,0,0,0.0,0.0,44,60,human_acute|ADIPOSE|PHOSPHO|EE_post_vs_pre_3.5to4h
+384,"Human subcutaneous adipose phosphosite, RE post–pre 3.5–4 h",exercise post−pre,1,1,0,1.0,,,0,0,0.0,0.0,4,8,human_acute|ADIPOSE|PHOSPHO|RE_post_vs_pre_3.5to4h
+385,"Human subcutaneous adipose phosphosite, CON post–pre 3.5–4 h",reference (non-exercise),1,0,1,1.0,,,0,0,0.0,0.0,132,63,human_acute|ADIPOSE|PHOSPHO|CON_post_vs_pre_3.5to4h
+386,"Human subcutaneous adipose phosphosite, EE–CON pre",reference (non-exercise),1,1,0,1.0,,,0,0,0.0,0.0,224,177,human_acute|ADIPOSE|PHOSPHO|EE_vs_CON_pre
+387,"Human subcutaneous adipose phosphosite, EE–RE pre",reference (non-exercise),1,0,1,1.0,,,0,0,0.0,0.0,208,166,human_acute|ADIPOSE|PHOSPHO|EE_vs_RE_pre
+388,"Human subcutaneous adipose phosphosite, EE–RE 3.5–4 h",reference (non-exercise),1,1,0,1.0,,,0,0,0.0,0.0,33,34,human_acute|ADIPOSE|PHOSPHO|EE_vs_RE_3.5to4h
+389,"Human subcutaneous adipose phosphosite, RE–CON pre",reference (non-exercise),1,1,0,1.0,,,0,0,0.0,0.0,81,48,human_acute|ADIPOSE|PHOSPHO|RE_vs_CON_pre
+390,"Human blood plasma protein (Olink), EE–CON 20 min during",exercise vs control,0,0,0,,,,0,0,0.0,0.0,31,2,human_acute|BLOOD|PROT_OLINK|EE_vs_CON_during20min
+391,"Human blood plasma protein (Olink), EE–CON 40 min during",exercise vs control,0,0,0,,,,0,0,0.0,0.0,130,3,human_acute|BLOOD|PROT_OLINK|EE_vs_CON_during40min
+392,"Human blood plasma protein (Olink), EE–CON 10 min",exercise vs control,0,0,0,,,,0,0,0.0,0.0,18,0,human_acute|BLOOD|PROT_OLINK|EE_vs_CON_10min
+393,"Human blood plasma protein (Olink), EE–CON 15–45 min",exercise vs control,0,0,0,,,,0,0,0.0,0.0,6,1,human_acute|BLOOD|PROT_OLINK|EE_vs_CON_15to45min
+394,"Human blood plasma protein (Olink), EE–CON 3.5–4 h",exercise vs control,0,0,0,,,,0,0,0.0,0.0,1,7,human_acute|BLOOD|PROT_OLINK|EE_vs_CON_3.5to4h
+395,"Human blood plasma protein (Olink), EE–CON 24 h",exercise vs control,0,0,0,,,,0,0,0.0,0.0,1,0,human_acute|BLOOD|PROT_OLINK|EE_vs_CON_24h
+396,"Human blood plasma protein (Olink), RE–CON 10 min",exercise vs control,0,0,0,,,,0,0,0.0,0.0,28,15,human_acute|BLOOD|PROT_OLINK|RE_vs_CON_10min
+397,"Human blood plasma protein (Olink), RE–CON 15–45 min",exercise vs control,0,0,0,,,,0,0,0.0,0.0,7,41,human_acute|BLOOD|PROT_OLINK|RE_vs_CON_15to45min
+398,"Human blood plasma protein (Olink), RE–CON 3.5–4 h",exercise vs control,0,0,0,,,,0,0,0.0,0.0,1,46,human_acute|BLOOD|PROT_OLINK|RE_vs_CON_3.5to4h
+399,"Human blood plasma protein (Olink), RE–CON 24 h",exercise vs control,0,0,0,,,,0,0,0.0,0.0,0,2,human_acute|BLOOD|PROT_OLINK|RE_vs_CON_24h
+400,"Human blood plasma protein (Olink), EE post–pre 20 min during",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,250,13,human_acute|BLOOD|PROT_OLINK|EE_post_vs_pre_during20min
+401,"Human blood plasma protein (Olink), EE post–pre 40 min during",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,250,19,human_acute|BLOOD|PROT_OLINK|EE_post_vs_pre_during40min
+402,"Human blood plasma protein (Olink), EE post–pre 10 min",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,64,5,human_acute|BLOOD|PROT_OLINK|EE_post_vs_pre_10min
+403,"Human blood plasma protein (Olink), EE post–pre 15–45 min",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,11,14,human_acute|BLOOD|PROT_OLINK|EE_post_vs_pre_15to45min
+404,"Human blood plasma protein (Olink), EE post–pre 3.5–4 h",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,13,15,human_acute|BLOOD|PROT_OLINK|EE_post_vs_pre_3.5to4h
+405,"Human blood plasma protein (Olink), EE post–pre 24 h",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,1,0,human_acute|BLOOD|PROT_OLINK|EE_post_vs_pre_24h
+406,"Human blood plasma protein (Olink), RE post–pre 10 min",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,187,56,human_acute|BLOOD|PROT_OLINK|RE_post_vs_pre_10min
+407,"Human blood plasma protein (Olink), RE post–pre 15–45 min",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,13,138,human_acute|BLOOD|PROT_OLINK|RE_post_vs_pre_15to45min
+408,"Human blood plasma protein (Olink), RE post–pre 3.5–4 h",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,7,47,human_acute|BLOOD|PROT_OLINK|RE_post_vs_pre_3.5to4h
+409,"Human blood plasma protein (Olink), RE post–pre 24 h",exercise post−pre,0,0,0,,,,0,0,0.0,0.0,1,10,human_acute|BLOOD|PROT_OLINK|RE_post_vs_pre_24h
+410,"Human blood plasma protein (Olink), CON post–pre 20 min during",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,3,0,human_acute|BLOOD|PROT_OLINK|CON_post_vs_pre_during20min
+411,"Human blood plasma protein (Olink), CON post–pre 40 min during",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,0,4,human_acute|BLOOD|PROT_OLINK|CON_post_vs_pre_during40min
+412,"Human blood plasma protein (Olink), CON post–pre 10 min",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,0,1,human_acute|BLOOD|PROT_OLINK|CON_post_vs_pre_10min
+413,"Human blood plasma protein (Olink), CON post–pre 15–45 min",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,1,2,human_acute|BLOOD|PROT_OLINK|CON_post_vs_pre_15to45min
+414,"Human blood plasma protein (Olink), CON post–pre 3.5–4 h",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,45,9,human_acute|BLOOD|PROT_OLINK|CON_post_vs_pre_3.5to4h
+415,"Human blood plasma protein (Olink), CON post–pre 24 h",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,0,1,human_acute|BLOOD|PROT_OLINK|CON_post_vs_pre_24h
+416,"Human blood plasma protein (Olink), EE–CON pre",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,0,0,human_acute|BLOOD|PROT_OLINK|EE_vs_CON_pre
+417,"Human blood plasma protein (Olink), EE–RE pre",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,0,16,human_acute|BLOOD|PROT_OLINK|EE_vs_RE_pre
+418,"Human blood plasma protein (Olink), EE–RE 10 min",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,0,0,human_acute|BLOOD|PROT_OLINK|EE_vs_RE_10min
+419,"Human blood plasma protein (Olink), EE–RE 15–45 min",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,0,0,human_acute|BLOOD|PROT_OLINK|EE_vs_RE_15to45min
+420,"Human blood plasma protein (Olink), EE–RE 3.5–4 h",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,0,0,human_acute|BLOOD|PROT_OLINK|EE_vs_RE_3.5to4h
+421,"Human blood plasma protein (Olink), EE–RE 24 h",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,1,0,human_acute|BLOOD|PROT_OLINK|EE_vs_RE_24h
+422,"Human blood plasma protein (Olink), RE–CON pre",reference (non-exercise),0,0,0,,,,0,0,0.0,0.0,17,4,human_acute|BLOOD|PROT_OLINK|RE_vs_CON_pre

@@ -1,4 +1,5 @@
 File,Signature,Kind,MitoCarta share,Columns opposed (FDR < 0.05),Columns measured,Median class null percentile
+pah_muscle_lower9_malenfant2015,"PAH, 9 lower muscle proteins (Malenfant 2015; team rat pipeline input)",disease,1.0,6,12,76.55
 pah_muscle_malenfant2015,"PAH, skeletal muscle proteome (Malenfant 2015)",disease,0.47368421052631576,5,12,77.94999999999999
 pah_blood_cheadle2012_eds,"PAH, blood erythroid signature (Cheadle 2012)",disease,0.18181818181818182,0,12,43.1
 pah_blood_gse33463_ranked,"PAH, blood PBMC full ranking (GSE33463; team pipeline)",disease,0.076,0,12,46.95

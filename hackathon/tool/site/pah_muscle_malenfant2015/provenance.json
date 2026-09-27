@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:27:18",
+  "timestamp": "2026-09-27T02:05:24",
   "command": "mprobe run --quiet --signature examples/pah_muscle_malenfant2015.csv --name pah_muscle_malenfant2015 --pool-sets KEGG_OXIDATIVE_PHOSPHORYLATION,KEGG_CITRATE_CYCLE_TCA_CYCLE --pool-groups OXPHOS-down,TCA/transport-down",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -71,12 +71,12 @@
     "store load": 0.22,
     "signature mapping": 0.03,
     "B/C grid + cameraPR": 0.19,
-    "D calibration nulls": 1.87,
+    "D calibration nulls": 1.89,
     "A coverage + detection flags": 0.12,
     "E layer discordance": 0.17,
     "F everywhere": 0.35,
-    "sensitivity": 0.14,
-    "3-layer pathways": 0.25,
-    "figures": 1.58
+    "sensitivity": 0.15,
+    "3-layer pathways": 0.27,
+    "figures": 3.56
   }
 }

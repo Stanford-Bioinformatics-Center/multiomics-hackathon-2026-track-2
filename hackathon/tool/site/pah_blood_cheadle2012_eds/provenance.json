@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:27:22",
+  "timestamp": "2026-09-27T02:05:30",
   "command": "mprobe run --quiet --signature examples/pah_blood_cheadle2012_eds.csv --name pah_blood_cheadle2012_eds",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -62,15 +62,15 @@
     "sections": null
   },
   "timings_s": {
-    "store load": 0.21,
+    "store load": 0.23,
     "signature mapping": 0.03,
-    "B/C grid + cameraPR": 0.18,
-    "D calibration nulls": 0.17,
+    "B/C grid + cameraPR": 0.19,
+    "D calibration nulls": 0.18,
     "A coverage + detection flags": 0.12,
     "E layer discordance": 0.17,
     "F everywhere": 0.33,
-    "sensitivity": 0.14,
-    "3-layer pathways": 0.25,
-    "figures": 1.72
+    "sensitivity": 0.15,
+    "3-layer pathways": 0.28,
+    "figures": 3.04
   }
 }

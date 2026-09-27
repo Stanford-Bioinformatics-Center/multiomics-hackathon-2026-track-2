@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:27:46",
+  "timestamp": "2026-09-27T02:05:58",
   "command": "mprobe run --quiet --signature examples/hostrup2022_hiit_proteome.csv --name hostrup2022_hiit_proteome",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -65,12 +65,12 @@
     "store load": 0.22,
     "signature mapping": 0.03,
     "B/C grid + cameraPR": 0.22,
-    "D calibration nulls": 0.34,
+    "D calibration nulls": 0.35,
     "A coverage + detection flags": 0.16,
     "E layer discordance": 0.17,
     "F everywhere": 0.39,
-    "sensitivity": 0.19,
-    "3-layer pathways": 0.25,
-    "figures": 2.14
+    "sensitivity": 0.2,
+    "3-layer pathways": 0.26,
+    "figures": 3.7
   }
 }

@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:28:24",
+  "timestamp": "2026-09-27T02:06:48",
   "command": "mprobe run --quiet --signature examples/septic_shock_blood_cvijanovich2008.csv --name septic_shock_blood_cvijanovich2008",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -62,15 +62,15 @@
     "sections": null
   },
   "timings_s": {
-    "store load": 0.22,
+    "store load": 0.24,
     "signature mapping": 0.03,
-    "B/C grid + cameraPR": 0.71,
-    "D calibration nulls": 0.61,
+    "B/C grid + cameraPR": 0.73,
+    "D calibration nulls": 0.64,
     "A coverage + detection flags": 0.35,
-    "E layer discordance": 0.17,
-    "F everywhere": 0.43,
-    "sensitivity": 0.26,
-    "3-layer pathways": 0.25,
-    "figures": 3.02
+    "E layer discordance": 0.18,
+    "F everywhere": 0.44,
+    "sensitivity": 0.28,
+    "3-layer pathways": 0.28,
+    "figures": 5.46
   }
 }

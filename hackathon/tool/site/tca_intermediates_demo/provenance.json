@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:27:57",
+  "timestamp": "2026-09-27T02:06:11",
   "command": "mprobe run --quiet --signature examples/tca_intermediates_demo.csv --name tca_intermediates_demo",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -64,11 +64,11 @@
   "timings_s": {
     "store load": 0.4,
     "signature mapping": 0.06,
-    "B/C grid + cameraPR": 0.14,
-    "D calibration nulls": 0.07,
+    "B/C grid + cameraPR": 0.13,
+    "D calibration nulls": 0.08,
     "F everywhere": 0.13,
-    "sensitivity": 0.04,
+    "sensitivity": 0.05,
     "3-layer pathways": 0.03,
-    "figures": 1.26
+    "figures": 1.19
   }
 }

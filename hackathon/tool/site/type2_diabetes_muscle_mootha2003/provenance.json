@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T01:28:02",
+  "timestamp": "2026-09-27T02:06:18",
   "command": "mprobe run --quiet --signature examples/type2_diabetes_muscle_mootha2003.csv --name type2_diabetes_muscle_mootha2003",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -62,15 +62,15 @@
     "sections": null
   },
   "timings_s": {
-    "store load": 0.21,
+    "store load": 0.22,
     "signature mapping": 0.03,
-    "B/C grid + cameraPR": 0.2,
-    "D calibration nulls": 0.28,
+    "B/C grid + cameraPR": 0.21,
+    "D calibration nulls": 0.3,
     "A coverage + detection flags": 0.15,
     "E layer discordance": 0.17,
-    "F everywhere": 0.35,
-    "sensitivity": 0.17,
-    "3-layer pathways": 0.25,
-    "figures": 2.13
+    "F everywhere": 0.36,
+    "sensitivity": 0.18,
+    "3-layer pathways": 0.28,
+    "figures": 3.64
   }
 }
