@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "jobs": [
+    {
+      "id": "muscle_human",
+      "disease": "signatures/pah_muscle_protein.csv.gz",
+      "reference": "../query_core/motrpac_reference_full.csv.gz",
+      "filters": {
+        "species": "human",
+        "reference_species": "human",
+        "tissue": "muscle",
+        "reference_contrast_category": "EE-CON"
+      },
+      "plots": {"enabled": true, "top": 9}
+    },
+    {
+      "id": "blood_rna_human",
+      "disease": "signatures/pah_blood_rna.csv.gz",
+      "reference": "../query_core/motrpac_reference_full.csv.gz",
+      "filters": {
+        "species": "human",
+        "reference_species": "human",
+        "tissue": "blood",
+        "reference_contrast_category": "EE-CON"
+      },
+      "plots": {"enabled": false}
+    },
+    {
+      "id": "blood_biocarta_human",
+      "disease": "signatures/cheadle2012_biocarta_ipah.csv.gz",
+      "reference": "../query_core/motrpac_reference_full.csv.gz",
+      "filters": {
+        "species": "human",
+        "reference_species": "human",
+        "tissue": "blood",
+        "reference_contrast_category": "EE-CON"
+      },
+      "plots": {"enabled": true, "top": 6}
+    },
+    {
+      "id": "plasma_metabolite_human",
+      "disease": "signatures/st000763_rest_pah_vs_healthy.csv.gz",
+      "reference": "../query_core/motrpac_reference_full.csv.gz",
+      "filters": {
+        "species": "human",
+        "reference_species": "human",
+        "tissue": "blood",
+        "reference_contrast_category": "EE-CON"
+      },
+      "plots": {"enabled": true, "top": 20}
+    },
+    {
+      "id": "muscle_rat_training",
+      "disease": "signatures/pah_muscle_protein.csv.gz",
+      "reference": "rat_training_reference.csv.gz",
+      "filters": {
+        "species": "human",
+        "reference_species": "rat",
+        "tissue": "muscle",
+        "ortholog_map": "human_to_rat_orthologs.csv"
+      },
+      "plots": {"enabled": true, "top": 9}
+    }
+  ]
+}

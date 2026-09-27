@@ -1,0 +1,23 @@
+{
+  "study_id": "ST000763",
+  "species": "human",
+  "tissue": "blood",
+  "biospecimen": "plasma",
+  "contrast": "SSc-PAH minus healthy, resting samples",
+  "design": {
+    "type": "unpaired",
+    "group_factor": "Group",
+    "case_values": ["PAH"],
+    "control_values": ["Healthy"],
+    "time_factor": "Exercise",
+    "time_value": "No"
+  },
+  "normalization": {
+    "input_scale": "linear",
+    "pseudocount": 0,
+    "sample_center": "none"
+  },
+  "min_samples_per_arm": 7,
+  "min_fraction_per_arm": 0.7,
+  "duplicate_policy": "highest_coverage"
+}

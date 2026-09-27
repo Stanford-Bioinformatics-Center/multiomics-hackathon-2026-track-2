@@ -1,0 +1,4 @@
+tissue,contrast_category,timepoint,raw_phosphosite_rows,after_mapping_checks_with_uniprot,excluded_missing_or_ambiguous_site_mapping,matched_to_single_gene_uniprot_single_feature_parent,matched_with_both_site_and_parent_ci,supported_phosphosite_rows_among_matched,parent_equivalent_rows_among_matched,supported_phosphosite_and_parent_equivalent_rows,candidate_genes
+muscle,EE-CON,post_15_30_45_min,18164,18098,66,10938,10938,935,7994,735,350
+muscle,EE-CON,post_3.5_4_hr,18164,18098,66,10938,10938,15,7221,13,8
+muscle,EE-CON,post_24_hr,18164,18098,66,10938,10938,2,7731,1,1

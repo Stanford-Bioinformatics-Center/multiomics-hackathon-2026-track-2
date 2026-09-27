@@ -1,0 +1,18 @@
+{
+  "train_contrast_category": "EE-CON",
+  "test_contrast_category": "RE-CON",
+  "tissue": "muscle",
+  "target_time": "post_24_hr",
+  "earlier_times": [
+    "post_15_30_45_min",
+    "post_3.5_4_hr"
+  ],
+  "shared_gene_uniprot_pairs": 5586,
+  "temporal_features": [
+    "rna_early_1_log2_fc",
+    "ptm_early_1_site_minus_parent_maxabs",
+    "rna_early_2_log2_fc",
+    "ptm_early_2_site_minus_parent_maxabs"
+  ],
+  "limitation": "Different exercise arms may share the same control group and all data come from the same release; this tests modality transfer, not external replication or causality."
+}
