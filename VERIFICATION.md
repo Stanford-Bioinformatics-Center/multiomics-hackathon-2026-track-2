@@ -26,3 +26,37 @@ commands, versions, checksums, and passed/skipped tests. Append per gate.
 
 ## Gate checkpoints
 (Appended as each gate completes.)
+
+### Gate 1 checkpoint — Repository & integration (PASS)
+Files changed / added:
+- `DECISIONS.md`, `VERIFICATION.md`, `REQUIREMENTS_TRACEABILITY.md` (new; traceability trail)
+- `apps/web/**` (React app imported via `git subtree add --prefix=apps/web`, no `--squash`)
+- `apps/web/.gitattributes` (LFS rules replaced with plain `binary` attributes)
+
+Why each change was necessary:
+- Branch off tool branch + merge main → single integration line with engine + analysis
+  modules (ADR-0002).
+- Subtree import (not submodule, not rm-rf) → self-contained repo, preserved history
+  (ADR-0003).
+- `.gitattributes` neutralized → fresh clone works without Git LFS.
+
+Commands run (key):
+- `git switch -c integration/exercise-signature-explorer origin/t3code/build-motrpac-probe-tool`
+- `git merge --no-ff origin/main`  → merge commit `09ae0d7`
+- `git subtree add --prefix=apps/web ese-src main`  (source `d9fd564`)  → commit `7863879`
+- `GIT_LFS_SKIP_SMUDGE=1 git clone --branch integration/... <repo>.git /tmp/ese-freshclone`
+
+Results:
+- Integration branch HEAD after Gate 1: `728f36f`
+- `hackathon/tool/` (mprobe) and `MoTrPAC Hackathon/Rat Comparison PAH Proteins/` coexist.
+- React app at `apps/web`, tracked as real files (not a gitlink).
+- PNG `apps/web/src/imports/Screenshot_2026-09-26_at_6.48.13_PM.png`: real PNG blob
+  (152,756 bytes), NOT an LFS pointer, verified in a fresh clone with LFS smudge skipped.
+- In-repo build: `npm run build` OK (JS 269.10 kB / gzip 81.42 kB), `npm test` 16/16 pass.
+- Fresh clone (no original repo, LFS skipped): install OK, build OK, tests 16/16 pass.
+
+Skips / assumptions / limitations:
+- The React app ships both `pnpm-lock.yaml` (original) and now installs cleanly with npm;
+  the stray `package-lock.json` from an npm install was removed to avoid dual lockfiles.
+  Toolchain (`.mise.toml`) prefers pnpm 10.34.3; CI should standardize on one. (Open item.)
+- Source repo URL: `github.com/StanchPillow55/ExerciseSignatureExplorerHandoff` @ `d9fd564`.

@@ -7,7 +7,7 @@ traceable. Status: TODO / IN PROGRESS / DONE / BLOCKED.
 |----|-------------|-----------|------|--------|
 | R-ENG-1 | mprobe is the only scientific engine (no stats in API/React) | `hackathon/tool/src/motrpac_probe/*`; `apps/api` calls only | parity test (R-PAR-1) | IN PROGRESS |
 | R-BRANCH-1 | Integration branch off tool branch, merge main | git history (`09ae0d7`) | VERIFICATION.md | DONE |
-| R-IMP-1 | React imported via subtree, history preserved, LFS-independent | `apps/web/` | fresh-clone build (R-FC-1) | IN PROGRESS |
+| R-IMP-1 | React imported via subtree, history preserved, LFS-independent | `apps/web/` | fresh-clone build (R-FC-1) | DONE |
 | R-FIX-1 | Full-19 fixture enriched (paper+canonical ids, ratio, log2fc, p-text, corrections) | `hackathon/tool/examples/pah_muscle_malenfant2015.csv` (+companion) | Table-2 validation (R-FIX-2) | TODO |
 | R-FIX-2 | Table-2 validation test for all 19 records | `hackathon/tool/tests/` | pytest | TODO |
 | R-FIX-3 | Lower-9 regression fixture unchanged | `examples/pah_muscle_lower9_malenfant2015.csv` | golden test | TODO |
@@ -30,6 +30,6 @@ traceable. Status: TODO / IN PROGRESS / DONE / BLOCKED.
 | R-EMPTY-1 | No-compatible-data / zero-mapped → HTTP 200 scientific-empty; malformed → 422 | API | contract test | TODO |
 | R-PAR-1 | React/service/Marimo parity (feature count, classes, RNA/PROT states, adjusted p, store+git) | tests | parity test | TODO |
 | R-PTS-1 | Every plotted point resolves to an exported evidence row | browser test | e2e | TODO |
-| R-FC-1 | Fresh-clone: install, build, tests pass; image + routes load without original repo/LFS | CI | CI job | TODO |
+| R-FC-1 | Fresh-clone: install, build, tests pass; image + routes load without original repo/LFS | CI | CI job | DONE (manual; CI job pending Gate 5) |
 | R-CI-1 | `pytest -q -rs` with expected-skip allowlist | CI | CI job | TODO |
 | R-GAL-1 | Gallery regenerated from clean commit; provenance records dirty state | `hackathon/tool/site` | build check | TODO |
