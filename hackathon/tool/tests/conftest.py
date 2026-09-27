@@ -16,6 +16,9 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "slow: calls R / limma; skipped unless MPROBE_RUN_R=1")
 
 
+from motrpac_probe import store as _store
+
+_store.ensure_store()            # fresh clone: download the public store once (MPROBE_NO_FETCH=1 to skip)
 HAVE_STORE = paths.CONTRASTS.exists()
 HAVE_HACKATHON = paths.JOIN.exists() and paths.DECK.exists()
 NEEDS_HACKATHON = ("paths.RAW", "paths.JOIN", "paths.DECK", "paths.HACK", "deck")   # names in a test's source

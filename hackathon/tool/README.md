@@ -22,27 +22,31 @@ and the app. Method details for every module: `docs/METHODS.md`.
 
 ## Quick start (macOS, Linux, Windows)
 
-Needs Python 3.11 to 3.14 and git. Everything installs from wheels: no R, no compiler, no cluster access.
-Paste the blocks as they are (they contain no comments, so zsh and PowerShell accept them).
+Paste the blocks as they are (they contain no comments, so zsh and PowerShell accept them). Nothing needs R, a
+compiler or cluster access.
 
-**1. Install into an isolated environment.** On Windows PowerShell, replace the `source` line with
-`.venv\Scripts\Activate.ps1`. The `[app]` extra adds the interactive app; the install takes about a minute.
+**1. Clone and create the environment** (recommended: conda or mamba; the same commands on every OS).
 
 ```bash
 git clone -b t3code/build-motrpac-probe-tool https://github.com/Stanford-Bioinformatics-Center/multiomics-hackathon-2026-track-2.git
 cd multiomics-hackathon-2026-track-2/hackathon/tool
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt -e ".[app]"
+conda env create -f environment.yml
+conda activate mprobe
 ```
 
-**2. Download the data store** (about 180 MB of public MoTrPAC summary statistics from the GitHub release
-[`mprobe-store-v1`](https://github.com/Stanford-Bioinformatics-Center/multiomics-hackathon-2026-track-2/releases/tag/mprobe-store-v1);
-every file is sha256-checked; `--url <path-or-URL>` accepts a local copy).
+Without conda: a plain virtual environment with Python 3.11 to 3.14 works too (on Windows PowerShell use
+`.venv\Scripts\Activate.ps1` instead of the `source` line).
 
 ```bash
-mprobe store fetch
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt -e .
 ```
+
+**2. Data.** Nothing to do: the first command that needs data downloads the store once (about 180 MB of public
+MoTrPAC summary statistics from the GitHub release
+[`mprobe-store-v1`](https://github.com/Stanford-Bioinformatics-Center/multiomics-hackathon-2026-track-2/releases/tag/mprobe-store-v1),
+every file sha256-checked). To do it explicitly, or from a local copy: `mprobe store fetch [--url <path-or-URL>]`.
 
 **3. See the core result in the terminal** (about 2 s): genes opposed / measured, cameraPR t, the specificity
 percentile and RNA vs protein, for the PAH muscle signature and then for type 2 diabetes.
@@ -85,9 +89,11 @@ LDHA,1
 mprobe run --signature my_disease.csv --name my_disease
 ```
 
-**6. Interactive app.** Opens http://localhost:2718; the store loads in about 4 s.
+**6. Interactive app (optional).** Everything above works without it. It needs one extra package; it opens
+http://localhost:2718 and the store loads in about 4 s.
 
 ```bash
+pip install "marimo>=0.16"
 marimo run app.py
 ```
 1. "Signature from": an example, an uploaded CSV, or pasted lines such as `NDUFA9,-1`.
@@ -96,9 +102,9 @@ marimo run app.py
    set-level opposition with null percentiles; RNA vs protein; the three-layer pathway panel; caveats.
 4. **Export report** writes the same HTML report as `mprobe run`.
 
-**7. Tests** (about 3 minutes). On a fresh clone, tests that need the maintainers' raw hackathon files (golden
-numbers from the original analysis) skip automatically; everything else runs against the downloaded store. No
-failures expected.
+**7. Tests** (about 3 minutes; downloads the store first if needed). On a fresh clone, tests that need the
+maintainers' raw hackathon files (golden numbers from the original analysis) skip automatically; everything else
+runs against the downloaded store. No failures expected.
 
 ```bash
 python -m pytest -q

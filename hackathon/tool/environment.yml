@@ -1,0 +1,16 @@
+name: mprobe
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pandas=2.3.3
+  - numpy=2.3.5
+  - scipy=1.16.3
+  - matplotlib-base=3.10.7
+  - jinja2=3.1.6
+  - markupsafe
+  - pyarrow=22.0.0
+  - pytest=8.4.2
+  - pip
+  - pip:
+      - -e .

@@ -400,8 +400,18 @@ def build(log=print, hash_inputs=True):
 _CACHE = {}
 
 
+def ensure_store():
+    """First use on a fresh clone: download the public store bundle once (set MPROBE_NO_FETCH=1 to disable)."""
+    if CONTRASTS.exists() or os.environ.get("MPROBE_NO_FETCH") == "1":
+        return
+    print("[mprobe] no data store found; downloading it once (~180 MB, public MoTrPAC summary statistics) ...",
+          file=sys.stderr)
+    fetch(log=lambda m: print(f"[mprobe] {m}", file=sys.stderr))
+
+
 def load(columns=None):
     """Store rows as a DataFrame (categoricals kept). `columns`: subset of row fields to read."""
+    ensure_store()
     key = tuple(columns) if columns else None
     if key not in _CACHE:
         _CACHE[key] = pd.read_parquet(CONTRASTS, columns=list(columns) if columns else None)
@@ -409,18 +419,21 @@ def load(columns=None):
 
 
 def load_columns():
+    ensure_store()
     if "cols" not in _CACHE:
         _CACHE["cols"] = pd.read_parquet(COLUMNS)
     return _CACHE["cols"]
 
 
 def load_annotations():
+    ensure_store()
     if "ann" not in _CACHE:
         _CACHE["ann"] = pd.read_parquet(ANNOT).set_index("gene_symbol_human")
     return _CACHE["ann"]
 
 
 def load_genesets():
+    ensure_store()
     if "gs" not in _CACHE:
         g = pd.read_parquet(GENESETS)
         _CACHE["gs"] = {k: set(v) for k, v in g.groupby("gs_name").gene_symbol}
@@ -428,12 +441,14 @@ def load_genesets():
 
 
 def load_idmap():
+    ensure_store()
     if "id" not in _CACHE:
         _CACHE["id"] = pd.read_parquet(IDMAP)
     return _CACHE["id"]
 
 
 def load_provenance():
+    ensure_store()
     if "prov" not in _CACHE:
         _CACHE["prov"] = dict(pd.read_parquet(PROVENANCE).itertuples(index=False))
     return _CACHE["prov"]
@@ -563,12 +578,14 @@ def build_metab(log=print):
 
 def load_metab():
     """(METAB rows, METAB column index). Rows have the contrasts.parquet schema; gene_symbol_human = RefMet name."""
+    ensure_store()
     if "metab" not in _CACHE:
         _CACHE["metab"] = (pd.read_parquet(METAB), pd.read_parquet(METAB_COLUMNS))
     return _CACHE["metab"]
 
 
 def load_metab_features():
+    ensure_store()
     if "metab_feat" not in _CACHE:
         _CACHE["metab_feat"] = pd.read_parquet(METAB_FEATURES)
     return _CACHE["metab_feat"]

@@ -192,7 +192,8 @@ def exercise_pathways_store(S, cid, sets):
 
 def exercise_pathways_precomputed(S, cids):
     """Package CAMERA_RESULTS (GOBP) for human columns, keyed by column_id."""
-    from .store import human_contrast_code
+    from .store import ensure_store, human_contrast_code
+    ensure_store()
     c = pd.read_csv(CAMERA_PKG)
     c["column_id"] = ("human_acute|" + c.tissue.map(H_CODE) + "|" + c.assay.map(ASSAY_LAYER) + "|"
                       + c.contrast_short.map(lambda s: human_contrast_code(s)))
