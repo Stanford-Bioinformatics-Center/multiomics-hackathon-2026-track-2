@@ -25,6 +25,7 @@ import pandas as pd
 from scipy.stats import false_discovery_control
 
 from motrpac_probe import core, metab, signature
+from motrpac_probe import store as _store_mod
 
 API_ROOT = Path(__file__).resolve().parents[1]
 REPO = API_ROOT.parents[1]
@@ -112,6 +113,39 @@ EXERCISE = {"EE-CON": "endurance", "EE-EE": "endurance", "RE-CON": "resistance",
 @lru_cache(maxsize=1)
 def _store():
     return metab.metab_store()
+
+
+# ---- store-sourced study/dataset labels (no statistics computed here) -------------------------------
+_DATASET_STUDY = {  # store dataset code -> (display phrase, store provenance version key)
+    "rat_train": ("endurance training", "MotrpacRatTraining6moData"),
+    "human_acute": ("acute exercise", "MotrpacHumanPreSuspensionAnalysis"),
+}
+
+
+def _dataset_for_species(species: str) -> str:
+    """Store dataset code for a species, matching the store's own convention (human -> human_acute)."""
+    return "human_acute" if species == "human" else "rat_train"
+
+
+@lru_cache(maxsize=1)
+def _provenance() -> dict:
+    """Store provenance versions, e.g. {"MotrpacRatTraining6moData": "2.0.0", ...}; {} on any load failure."""
+    try:
+        return _store_mod.load_provenance()
+    except Exception:
+        return {}
+
+
+def _study_label(dataset: str) -> str:
+    """Human-readable study label sourced from store provenance; falls back to the dataset code (R4.7)."""
+    entry = _DATASET_STUDY.get(dataset)
+    if entry is None:
+        return dataset  # unknown dataset -> the code itself
+    phrase, version_key = entry
+    version = _provenance().get(version_key)
+    if not version:
+        return dataset  # no store version -> the code itself, never fabricate
+    return f"{phrase} ({version})"
 
 
 def _columns(layer_codes: list[str]) -> pd.DataFrame:
@@ -274,6 +308,7 @@ def _layer(layer_id: str, mapped: pd.DataFrame, directed: bool, ranked: bool) ->
         row = dict(id=c.column_id, species=c.species, tissue=c.tissue, tissue_label=TISSUE_LABEL.get(c.tissue, c.tissue),
                    layer=LAYER_LABEL.get(c.layer, c.layer), category=c.category, exercise=EXERCISE[c.category],
                    time=c.time_key, time_label=c.time_label, time_rank=int(c.time_rank), sex=c.sex_label,
+                   dataset=c.dataset, study_label=_study_label(c.dataset),
                    n_tested=n_col, n_measured=int(s.n_measured),
                    set_t=_f(s.camera_t), set_p=_f(s.camera_p), set_bh=_f(bh[j]), set_bonferroni=_f(bonf[j]))
         if directed:
@@ -385,7 +420,8 @@ def _pathway_layer(t: pd.DataFrame, directed: bool) -> tuple[dict, list[str]]:
     columns = [dict(id=f"{c.tissue}|{c.assay}|{c.category}|{c.time}", species="human", tissue=c.tissue,
                     tissue_label={"muscle": "Skeletal muscle"}.get(c.tissue, c.tissue.capitalize()),
                     layer=ASSAY_LABEL.get(c.assay, c.assay), category=c.category, exercise=EXERCISE[c.category],
-                    time=c.time, time_label=c.time_label, time_rank=int(c.time_rank), sex="all") for c in cols.itertuples()]
+                    time=c.time, time_label=c.time_label, time_rank=int(c.time_rank), sex="all",
+                    dataset=_dataset_for_species("human"), study_label=_study_label(_dataset_for_species("human"))) for c in cols.itertuples()]
     return ({"id": "pathways", "label": "Pathways", "available": True, "n_matched": len(keys),
              "molecules": [{"name": label if label.upper() != k else (set_short.get(k) or k), "dir": d if directed else 0, "score": None,
                             "set": k} for k, d, label in wanted],

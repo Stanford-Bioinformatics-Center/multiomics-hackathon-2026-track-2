@@ -9,6 +9,14 @@ import "./LiveDashboard.css";
 
 type Load<T> = { kind: "idle" } | { kind: "loading" } | { kind: "error"; message: string } | { kind: "ready"; data: T };
 type Filters = { species: string; tissue: string; contrast: string; sex: string; time: string; layer: string };
+// Compare-All Mode toggles the results area from the single-tab view (Tabs Mode) to a grid of every available unit.
+type Mode = "tabs" | "compare";
+// A Comparison-Grid unit is one grid cell: RNA↔protein fuse into a single "pair" unit (a LayerView with a partner);
+// every other available layer is its own unit. Unavailable layers produce no unit (R1.7).
+type Unit =
+  | { kind: "pair"; layer: ExplorerLayer; partner: ExplorerLayer }
+  | { kind: "layer"; layer: ExplorerLayer }
+  | { kind: "pathways"; layer: ExplorerLayer };
 
 const KINDS: Array<{ id: ExplorerKind; label: string; hint: string; placeholder: string }> = [
   { id: "genes", label: "Genes & proteins", hint: "One per line, or columns gene_symbol / uniprot / ensembl. Optional direction (+1, −1) or score.",
@@ -31,6 +39,12 @@ const SERIES_COLOURS = [COLOURS.warm, COLOURS.cool, "#1f8a6b", "#b07a16", "#6d68
 const rank = (list: string[], v: string) => { const i = list.indexOf(v); return i === -1 ? 999 : i; };
 const uniq = <T,>(xs: T[]) => Array.from(new Set(xs));
 const shortTime = (t: string) => t.replace(" after", "").replace(" (during)", " during");
+const speciesWord = (s: string) => s === "human" ? "Human" : s === "rat" ? "Rat" : s.charAt(0).toUpperCase() + s.slice(1);
+// Provenance Label (R5.2): dot-joined species · study_label · tissue · contrast · sex · time. The study/dataset token
+// comes from the column's store-sourced study_label, never a client literal (R5.5); human sex renders `all` (R5.3).
+const provenanceLabel = (c: ExplorerColumn): string =>
+  [speciesWord(c.species), c.study_label, c.tissue_label, CATEGORY[c.category] ?? c.category,
+    c.species === "human" ? "all" : c.sex, shortTime(c.time_label)].join(" · ");
 function errorText(error: unknown): string { return error instanceof ApiError ? `${error.status}: ${error.detail}` : String(error); }
 function setP(c: ExplorerColumn, rule: Significance, ranked: boolean): number | null | undefined {
   if (ranked) return rule === "raw" ? c.rho_p : rule === "bh" ? c.rho_bh : c.rho_bonferroni;
@@ -149,14 +163,84 @@ function defaults(cols: ExplorerColumn[], values: ExplorerValue[], allCols: Expl
   return { species: sp, tissue: hinted ?? tissues[0] ?? ALL, contrast: cats.includes("EE-CON") ? "EE-CON" : cats[0] ?? ALL, sex: ALL, time: ALL, layer: ALL };
 }
 
-function LayerView({ layer, partner, directed, ranked, rule, hint }: {
-  layer: ExplorerLayer; partner?: ExplorerLayer; directed: boolean; ranked: boolean; rule: Significance; hint?: string;
+/** PathwayView's original seed (human-only pathway table): blood if present else first tissue, RNA layer, exercise-vs-control. */
+function pathwayDefaults(cols: ExplorerColumn[]): Filters {
+  const tissues = uniq(cols.map((c) => c.tissue));
+  return { species: "human", tissue: tissues.includes("blood") ? "blood" : tissues[0], layer: "RNA", contrast: "VS-CON", sex: ALL, time: ALL };
+}
+
+/** Seed the shared filters from the active layer, matching each view's original per-mount seed. */
+function seedFilters(layer: ExplorerLayer, hint?: string): Filters {
+  const cols = layer.columns ?? [];
+  if (layer.id === "pathways") return pathwayDefaults(cols);
+  return defaults(cols, layer.values ?? [], cols, undefined, hint);
+}
+
+/**
+ * Derive the Comparison-Grid unit list for one input (R1.3, R1.6, R1.7, R3.6, R3.7). Each unit is one grid cell that
+ * renders an EXISTING view. RNA + protein (same input, both available) collapse into a single fused "pair" unit — a
+ * LayerView given its partner, reusing the shipped pair machinery, never two independent panels (R3.6). Phospho renders
+ * as its own LayerView unit, pathways as its own PathwayView unit (R3.7). Unavailable layers contribute no unit (R1.7).
+ */
+function unitsFor(layers: ExplorerLayer[], inputId: number): Unit[] {
+  const mine = layers.filter((l) => l.available && l.input === inputId);
+  const byId = (id: string) => mine.find((l) => l.id === id);
+  const units: Unit[] = [];
+  const rna = byId("transcriptomics"), protein = byId("proteomics");
+  if (rna && protein) units.push({ kind: "pair", layer: rna, partner: protein });
+  else if (rna) units.push({ kind: "layer", layer: rna });
+  else if (protein) units.push({ kind: "layer", layer: protein });
+  // Remaining single-layer views (phospho, metabolomics, and any other available non-pair layer) each get their own cell.
+  for (const l of mine) {
+    if (l.id === "transcriptomics" || l.id === "proteomics" || l.id === "pathways") continue;
+    units.push({ kind: "layer", layer: l });
+  }
+  const pathways = byId("pathways");
+  if (pathways) units.push({ kind: "pathways", layer: pathways });
+  return units;
+}
+
+/** The stable primary layer of an input — the first available non-pathways layer, else the first available layer.
+ *  Compare-All Mode seeds the one shared Filters object from this layer so every unit shares one biological context. */
+function primaryLayerOf(layers: ExplorerLayer[], inputId: number): ExplorerLayer | undefined {
+  const mine = layers.filter((l) => l.available && l.input === inputId);
+  return mine.find((l) => l.id !== "pathways") ?? mine[0];
+}
+
+/**
+ * Central resolver for a shared-filter change, copied verbatim from the per-view logic so behavior is identical.
+ * - LayerView layers: a species change rebuilds via defaults(cols filtered to that species); other changes merge; a
+ *   tissue change resets time to ALL. PathwayView passes an already-resolved next (its tissue→layer fallback), so it
+ *   takes the merge branch. Whenever the resolved species is human, sex is forced to ALL (R2.5).
+ */
+function resolveFilters(prev: Filters, next: Filters, layer: ExplorerLayer, hint?: string): Filters {
+  const cols = layer.columns ?? [];
+  const values = layer.values ?? [];
+  const speciesChanged = next.species !== prev.species;
+  const tissueChanged = next.tissue !== prev.tissue;
+  // A pure species toggle (only species differs) rebuilds the whole Filters via defaults — LayerView's old pick("species").
+  const speciesOnly = speciesChanged && next.tissue === prev.tissue && next.contrast === prev.contrast
+    && next.sex === prev.sex && next.time === prev.time && next.layer === prev.layer;
+  let resolved: Filters;
+  if (layer.id !== "pathways" && speciesOnly) {
+    resolved = defaults(cols.filter((c) => c.species === next.species), values, cols, next.species, hint);
+  } else {
+    resolved = { ...next, ...(tissueChanged && layer.id !== "pathways" ? { time: ALL } : {}) };
+  }
+  if (resolved.species === "human") resolved = { ...resolved, sex: ALL };
+  return resolved;
+}
+
+function LayerView({ layer, partner, directed, ranked, rule, filters, onFiltersChange }: {
+  layer: ExplorerLayer; partner?: ExplorerLayer; directed: boolean; ranked: boolean; rule: Significance;
+  filters: Filters; onFiltersChange: (next: Filters) => void;
 }) {
   const cols = layer.columns ?? [];
   const values = layer.values ?? [];
   const molecules = layer.molecules ?? [];
-  const [f, setF] = useState<Filters>(() => defaults(cols, values, cols, undefined, hint));
-  useEffect(() => setF(defaults(cols, values, cols, undefined, hint)), [layer]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Filters are lifted to the parent; this view is controlled via props (setF → onFiltersChange).
+  const f = filters;
+  const setF = onFiltersChange;
   const refOverview = useRef<SVGSVGElement>(null), refMolecules = useRef<SVGSVGElement>(null), refTime = useRef<SVGSVGElement>(null);
   const refContext = useRef<SVGSVGElement>(null), refBars = useRef<SVGSVGElement>(null);
   const refPair = useRef<SVGSVGElement>(null), refPairTime = useRef<SVGSVGElement>(null);
@@ -178,6 +262,11 @@ function LayerView({ layer, partner, directed, ranked, rule, hint }: {
   const setLabels: [string, string] = ranked ? ["opposite ranking", "same ranking"] : directed ? ["same direction as list", "opposite"] : ["down", "up"];
   const describe = (c: ExplorerColumn) => `${c.tissue_label} · ${CATEGORY[c.category]} · ${c.time_label}${c.sex !== "all" ? " · " + c.sex : ""}`;
   const rows = molecules.map((_, i) => i);
+  // Provenance chip for this panel's current context (R5.1, R5.2): species · study_label · tissue · contrast · sex · time.
+  // Built from the selected columns (or the species-scoped columns as a fallback) so the study/dataset token is the
+  // store-sourced study_label (R5.5); in Compare-All each unit derives from its own columns, so each shows its own (R5.4).
+  const provColumn = selected[0] ?? inTissue[0] ?? bySpecies[0];
+  const provChips = provColumn ? [provenanceLabel(provColumn)] : [];
 
   // overview: every comparison for this species
   const multiLayer = uniq(bySpecies.map((c) => c.layer)).length > 1;
@@ -294,20 +383,20 @@ function LayerView({ layer, partner, directed, ranked, rule, hint }: {
     value: setValue(c), pass: passes(setP(c, rule, ranked)),
     title: `${describe(c)}\n${ranked ? "Spearman ρ" : "cameraPR t"} ${fmt(setValue(c))} · ${RULE_LABEL[rule].split(" <")[0]} ${fmt(setP(c, rule, ranked))}`,
   }));
-  const pick = (key: keyof Filters, value: string) => setF(key === "species" ? defaults(cols.filter((c) => c.species === value), values, cols, value, hint)
-    : { ...f, [key]: value, ...(key === "tissue" ? { time: ALL } : {}) });
+  // The control emits the intended change; the parent resolver applies the species-rebuild / tissue-reset centrally.
+  const pick = (key: keyof Filters, value: string) => onFiltersChange({ ...f, [key]: value });
   const large = layer.n_matched > (layer.n_shown ?? 0);
   const listSize = `${layer.n_shown}${large ? ` of ${layer.n_matched.toLocaleString()} (${ranked ? "largest scores" : "first in your list"})` : ""} molecules`;
   const cameraNote = ranked ? "Spearman ρ across shared genes" : directed ? "cameraPR t · positive = opposite to your list" : "cameraPR t · positive = up";
 
   const cards: Record<string, ReactNode> = {
     pair: hasPair && <Card title={`${hereWord} and ${thereWord === "Protein" ? "protein" : thereWord} side by side in ${tissueLabel(f.tissue).toLowerCase()}`}
-      chips={[human ? "Human · one exercise bout" : "Rat · endurance training", f.contrast === ALL ? "All contrasts" : CATEGORY[f.contrast], ...(large ? [listSize] : []), "Same molecules, same comparisons", ...(directed ? ["↑ ↓ = direction in your list"] : [])]}
+      chips={[...provChips, human ? "Human · one exercise bout" : "Rat · endurance training", f.contrast === ALL ? "All contrasts" : CATEGORY[f.contrast], ...(large ? [listSize] : []), "Same molecules, same comparisons", ...(directed ? ["↑ ↓ = direction in your list"] : [])]}
       stat={`${changedHere}/${rows.length} · ${changedThere}/${thereRows.length}`} caption={`${hereWord} · ${thereWord}: change significantly at ≥ 1 time (${RULE_LABEL[rule]})`}
       foot={<><span className="lr-hint">Each value is MoTrPAC's published result for that layer and comparison; BH is within each comparison.</span>
         <button type="button" className="lr-ghost" onClick={() => csvDownload(`${hereWord}_${thereWord}_side_by_side.csv`.toLowerCase(), rows.flatMap((i) => paired.map(({ c, pj }) => {
           const a = valueAt.get(`${i}|${colIndex.get(c)}`), b = partnerValue(i, pj);
-          return { molecule: molecules[i].name, species: c.species, tissue: c.tissue_label, contrast: c.category, time: c.time_label, sex: c.sex,
+          return { molecule: molecules[i].name, species: c.species, study_label: c.study_label, tissue: c.tissue_label, contrast: c.category, time: c.time_label, sex: c.species === "human" ? "all" : c.sex,
             [`${hereWord}_log2fc`]: a?.[2], [`${hereWord}_bh_q`]: a?.[4], [`${thereWord}_log2fc`]: b?.[2], [`${thereWord}_bh_q`]: b?.[4] };
         })))}>CSV</button><PngButton svgRef={refPair} name={`${layer.id}_side_by_side.png`} /></>}>
       <HeatGrid svgRef={refPair} rows={rows.map(rowName)} groups={pairGroups} rowLabelWidth={170} cell={pairCell} minScale={0.5} labels={["lower after exercise", "higher"]} />
@@ -318,7 +407,7 @@ function LayerView({ layer, partner, directed, ranked, rule, hint }: {
       <SmallMultiples svgRef={refPairTime} panels={pairPanels} xLabels={pairTimes.map((t) => shortTime(timeLabel(t)))} yLabel={human ? "log2 FC vs control" : "log2 FC trained vs sedentary"} />
     </Card>,
     overview: (overviewRows.length > 0 && <Card title="Every MoTrPAC comparison"
-      chips={[human ? "Human · one exercise bout" : "Rat · endurance training", ranked ? "Rank correlation with your scores" : "Set-level test of your list (cameraPR)", "Click a cell to open it"]}
+      chips={[...provChips, human ? "Human · one exercise bout" : "Rat · endurance training", ranked ? "Rank correlation with your scores" : "Set-level test of your list (cameraPR)", "Click a cell to open it"]}
       stat={`${overviewSig}/${tested.length}`} caption={`comparisons pass ${RULE_LABEL[rule]}`}
       foot={<><span className="lr-hint">One multiple-testing family: {layer.family?.scope}{layer.family?.n_tests ? ` · ${layer.family.n_tests} tests` : ""}.{ranked ? " Rank-correlation P values treat genes as independent, so read ρ as descriptive." : ""}</span><PngButton svgRef={refOverview} name={`${layer.id}_overview.png`} /></>}>
       <HeatGrid svgRef={refOverview} rows={overviewRows.map(overviewLabel)} rowLabelWidth={300} groups={overviewGroups} labels={setLabels}
@@ -328,12 +417,12 @@ function LayerView({ layer, partner, directed, ranked, rule, hint }: {
           if (c) setF({ ...f, species: c.species, tissue: c.tissue, contrast: c.category, sex: human ? ALL : c.sex, time: ALL }); }} />
     </Card>),
     molecules: (<Card title={`Your ${isMetab ? "metabolites" : "molecules"} in ${tissueLabel(f.tissue).toLowerCase()}`}
-      chips={[f.contrast === ALL ? "All contrasts" : CATEGORY[f.contrast], listSize, ...(directed ? ["↑ ↓ = direction in your list"] : [])]}
+      chips={[...provChips, f.contrast === ALL ? "All contrasts" : CATEGORY[f.contrast], listSize, ...(directed ? ["↑ ↓ = direction in your list"] : [])]}
       stat={selected.length ? `${changed}/${rows.length}` : undefined} caption={`change significantly at ≥ 1 time (${RULE_LABEL[rule]})`}
       foot={<><span className="lr-hint">{layer.molecule_rule}</span>
         <button type="button" className="lr-ghost" onClick={() => csvDownload(`${layer.id}_molecules.csv`, values.map((v) => {
           const c = cols[v[1]];
-          return { molecule: molecules[v[0]].name, list_direction: molecules[v[0]].dir, species: c.species, tissue: c.tissue_label, layer: c.layer, contrast: c.category, time: c.time_label, sex: c.sex, log2fc: v[2], raw_p: v[3], bh_q: v[4], bonferroni: v[5] };
+          return { molecule: molecules[v[0]].name, list_direction: molecules[v[0]].dir, species: c.species, study_label: c.study_label, tissue: c.tissue_label, layer: c.layer, contrast: c.category, time: c.time_label, sex: c.species === "human" ? "all" : c.sex, log2fc: v[2], raw_p: v[3], bh_q: v[4], bonferroni: v[5] };
         }))}>CSV</button><PngButton svgRef={refMolecules} name={`${layer.id}_molecules.png`} /></>}>
       {selected.length && moleculeGroups.length ? <HeatGrid svgRef={refMolecules} rows={rows.map(rowName)} groups={moleculeGroups} rowLabelWidth={isMetab ? 220 : 170}
         cell={moleculeCell} minScale={0.5} labels={["lower after exercise", "higher"]} /> : <div className="lr-empty">No MoTrPAC comparison matches these filters.</div>}
@@ -357,9 +446,9 @@ function LayerView({ layer, partner, directed, ranked, rule, hint }: {
       </div>
     </Card>),
     bars: (barItems.length > 0 && <Card title={ranked ? "Does MoTrPAC rank genes like your list?" : "Does the whole set shift?"}
-      chips={[tissueLabel(f.tissue), f.contrast === ALL ? "All contrasts" : CATEGORY[f.contrast], cameraNote]}
+      chips={[...provChips, tissueLabel(f.tissue), f.contrast === ALL ? "All contrasts" : CATEGORY[f.contrast], cameraNote]}
       foot={<><button type="button" className="lr-ghost" onClick={() => csvDownload(`${layer.id}_comparisons.csv`, cols.map((c) => ({
-        species: c.species, tissue: c.tissue_label, layer: c.layer, contrast: c.category, time: c.time_label, sex: c.sex, n_measured: c.n_measured,
+        species: c.species, study_label: c.study_label, tissue: c.tissue_label, layer: c.layer, contrast: c.category, time: c.time_label, sex: c.species === "human" ? "all" : c.sex, n_measured: c.n_measured,
         set_t: c.set_t, set_p: c.set_p, set_bh: c.set_bh, set_bonferroni: c.set_bonferroni, n_same: c.n_same, n_opposite: c.n_opposite,
         n_up: c.n_up, n_down: c.n_down, rho: c.rho, rho_p: c.rho_p, rho_bh: c.rho_bh, rho_bonferroni: c.rho_bonferroni })))}>CSV of all comparisons</button>
         <PngButton svgRef={refBars} name={`${layer.id}_set.png`} /></>}>
@@ -392,10 +481,14 @@ function LayerView({ layer, partner, directed, ranked, rule, hint }: {
 
 // ---- pathways ------------------------------------------------------------------------------------------
 
-function PathwayView({ layer, rule }: { layer: ExplorerLayer; rule: Significance }) {
+function PathwayView({ layer, rule, filters, onFiltersChange }: {
+  layer: ExplorerLayer; rule: Significance; filters: Filters; onFiltersChange: (next: Filters) => void;
+}) {
   const cols = layer.columns ?? [], values = layer.values ?? [], pathways = layer.molecules ?? [];
   const tissues = uniq(cols.map((c) => c.tissue));
-  const [f, setF] = useState<Filters>({ species: "human", tissue: tissues.includes("blood") ? "blood" : tissues[0], layer: "RNA", contrast: "VS-CON", sex: ALL, time: ALL });
+  // Filters are lifted to the parent; this view is controlled via props (setF → onFiltersChange).
+  const f = filters;
+  const setF = onFiltersChange;
   const ref = useRef<SVGSVGElement>(null);
   const layers = uniq(cols.filter((c) => c.tissue === f.tissue).map((c) => c.layer));
   const selected = cols.filter((c) => c.tissue === f.tissue && c.layer === f.layer && inContrast(c, f.contrast));
@@ -409,6 +502,10 @@ function PathwayView({ layer, rule }: { layer: ExplorerLayer; rule: Significance
   const positive = cells.filter((v) => (v[2] ?? 0) > 0).length;
   const label = (i: number) => `${pathways[i].name}${pathways[i].dir > 0 ? "  ↑" : pathways[i].dir < 0 ? "  ↓" : ""}`;
   const tissueLabel = (t: string) => cols.find((c) => c.tissue === t)?.tissue_label ?? t;
+  // Provenance chip for the pathway panel's current context (R5.1, R5.2, R5.4): the study/dataset token is the
+  // store-sourced study_label of the selected columns (R5.5); pathways are human-only, so sex renders `all` (R5.3).
+  const provColumn = selected[0] ?? cols.find((c) => c.tissue === f.tissue) ?? cols[0];
+  const provChips = provColumn ? [provenanceLabel(provColumn)] : [];
   return <>
     <div className="xp-filters">
       <Pick label="Tissue" value={f.tissue} onChange={(v) => setF({ ...f, tissue: v, layer: cols.some((c) => c.tissue === v && c.layer === f.layer) ? f.layer : cols.find((c) => c.tissue === v)!.layer })}
@@ -418,12 +515,12 @@ function PathwayView({ layer, rule }: { layer: ExplorerLayer; rule: Significance
         options={[{ value: "VS-CON", label: CATEGORY["VS-CON"] }, { value: ALL, label: "All" }, ...CATEGORY_ORDER.filter((c) => c !== "TRAIN-SED").map((c) => ({ value: c, label: CATEGORY[c] }))]} />
     </div>
     <Card title={`Your pathways in healthy ${tissueLabel(f.tissue).toLowerCase()} after exercise`}
-      chips={[`${f.layer} · MoTrPAC pathway tests (CAMERA)`, `${pathways.length} pathways matched`, "Human · one exercise bout", "↑ ↓ = direction in your list"]}
+      chips={[...provChips, `${f.layer} · MoTrPAC pathway tests (CAMERA)`, `${pathways.length} pathways matched`, "Human · one exercise bout", "↑ ↓ = direction in your list"]}
       stat={`${up}/${cells.length}`} caption={`pathway × time points rise significantly · ${down} fall · ${positive} point upward`}
       foot={<><span className="lr-hint">{layer.molecule_rule}</span>
         <button type="button" className="lr-ghost" onClick={() => csvDownload("pathways.csv", values.map((v) => {
           const c = cols[v[1]];
-          return { pathway: pathways[v[0]].name, motrpac_set: pathways[v[0]].set, tissue: c.tissue_label, layer: c.layer, contrast: c.category, time: c.time_label, camera_z: v[2], raw_p: v[3], bh_q: v[4], bonferroni: v[5] };
+          return { pathway: pathways[v[0]].name, motrpac_set: pathways[v[0]].set, species: "human", study_label: c.study_label, tissue: c.tissue_label, layer: c.layer, contrast: c.category, time: c.time_label, sex: "all", camera_z: v[2], raw_p: v[3], bh_q: v[4], bonferroni: v[5] };
         }))}>CSV</button><PngButton svgRef={ref} name="pathways_dotplot.png" /></>}>
       {groups.length ? <DotPlot svgRef={ref} rows={pathways.map((_, i) => label(i))} groups={groups} labels={["lower after exercise", "higher"]}
         cell={(row, key) => { const i = pathways.findIndex((_, k) => label(k) === row); const v = valueAt.get(`${i}|${key}`);
@@ -441,6 +538,9 @@ export default function MotrpacExplorer() {
   const [result, setResult] = useState<Load<ExplorerResponse>>({ kind: "idle" });
   const [rule, setRule] = useState<Significance>("bh");
   const [tab, setTab] = useState(0);
+  const [mode, setMode] = useState<Mode>("tabs"); // default Tabs Mode (R1.2)
+  const [filters, setFilters] = useState<Filters | null>(null); // lifted from LayerView/PathwayView (R2.2)
+  const seededForRef = useRef<string | null>(null); // identity of the layer the current filters were seeded from
   const resultsRef = useRef<HTMLDivElement>(null);
 
   // Examples and their saved results ship with the website, so they work without the API.
@@ -469,6 +569,38 @@ export default function MotrpacExplorer() {
   const data = result.kind === "ready" ? result.data : null;
   const layer = data?.layers[tab];
   const input = layer && layer.input !== null ? data!.inputs[layer.input] : null;
+  const hint = input?.name;
+
+  // The active input drives Compare-All: its available layers become the grid units, all sharing one Filters object.
+  const activeInput = layer && layer.input !== null ? layer.input : null;
+  const units = data && activeInput !== null ? unitsFor(data.layers, activeInput) : [];
+  // In Compare-All Mode there is no single tab; seed the shared filters from a stable primary layer of the active input
+  // so every unit shares one context (Tabs Mode keeps seeding from the active tab's layer, unchanged).
+  const primaryLayer = data && activeInput !== null ? primaryLayerOf(data.layers, activeInput) : undefined;
+  const seedLayer = mode === "compare" ? primaryLayer : layer;
+
+  // Seed the shared filters from the seed layer when a result loads or the active input/tab/mode changes (hoisted from
+  // each view's per-mount seed). Done synchronously during render — like the old `useState(() => defaults(...))` keyed
+  // remount — so a panel never renders with a previous context's filters.
+  const activeKey = seedLayer?.available
+    ? (mode === "compare" ? `compare-${activeInput}-${seedLayer.id}` : `${seedLayer.id}-${tab}`)
+    : null;
+  if (activeKey && seededForRef.current !== activeKey) {
+    seededForRef.current = activeKey;
+    setFilters(seedFilters(seedLayer!, hint));
+  }
+  // During the transitional render right after a re-seed, `filters` still holds the previous context's value; fall back
+  // to a fresh seed so a panel never renders with another layer's filters.
+  const effectiveFilters = seedLayer?.available
+    ? (seededForRef.current === activeKey && filters ? filters : seedFilters(seedLayer, hint))
+    : null;
+
+  // Every panel receives the resolved shared filters; the resolver applies the species-rebuild / tissue-reset centrally,
+  // relative to the seed layer (the active tab in Tabs Mode, the primary layer in Compare-All Mode).
+  const onFiltersChange = (next: Filters) => {
+    if (!seedLayer?.available) return;
+    setFilters((prev) => resolveFilters(prev ?? seedFilters(seedLayer, hint), next, seedLayer, hint));
+  };
 
   return <section className="view lr">
     <header className="lr-hero">
@@ -485,19 +617,37 @@ export default function MotrpacExplorer() {
       </div>)}</div>
       <div className="lr-bar">
         <nav className="lr-tabs" aria-label="Omic layers">
-          {data.layers.map((l, i) => <button type="button" key={`${l.id}-${i}`} disabled={!l.available} title={l.available ? undefined : l.reason}
-            className={"lr-tab" + (tab === i ? " is-active" : "") + (!l.available ? " is-off" : "")} onClick={() => l.available && setTab(i)}>
+          {data.layers.map((l, i) => <button type="button" key={`${l.id}-${i}`} disabled={!l.available || mode === "compare"} title={l.available ? undefined : l.reason}
+            className={"lr-tab" + (tab === i && mode === "tabs" ? " is-active" : "") + (!l.available ? " is-off" : "")} onClick={() => l.available && setTab(i)}>
             {l.label}{l.available ? <span>{l.n_matched > 999 ? `${Math.round(l.n_matched / 1000)}k` : l.n_matched}</span> : <em>{l.id === "epigenomics" ? "not loaded" : "no match"}</em>}
           </button>)}
         </nav>
+        <div className="lr-switch xp-mode" role="group" aria-label="View mode">
+          <button type="button" aria-pressed={mode === "tabs"} onClick={() => setMode("tabs")}>Tabs</button>
+          <button type="button" aria-pressed={mode === "compare"} onClick={() => setMode("compare")}>Compare all layers</button>
+        </div>
       </div>
-      <div className="lr-cards">
-        {layer?.available ? (layer.id === "pathways" ? <PathwayView key={`p-${tab}`} layer={layer} rule={rule} />
-          : <LayerView key={`${layer.id}-${tab}`} layer={layer} directed={!!input?.directed} ranked={!!input?.ranked} rule={rule} hint={input?.name}
-              partner={layer.id === "transcriptomics" || layer.id === "proteomics" ? data!.layers.find((l) => l.available && l.input === layer.input
-                && l.id === (layer.id === "transcriptomics" ? "proteomics" : "transcriptomics")) : undefined} />)
-          : <div className="lr-empty">{layer?.reason}</div>}
-      </div>
+      {mode === "compare"
+        // Compare-All Mode: one grid cell per unit, every unit driven by the same shared filters. The xp-grid CSS is
+        // added by task 5.2; until then the DOM renders unstyled but correct. RNA+protein render as one fused pair unit.
+        ? <div className="lr-cards xp-grid">
+            {effectiveFilters && units.length ? units.map((u) => <div key={`${u.kind}-${u.layer.id}`}>
+              {u.kind === "pathways"
+                ? <PathwayView layer={u.layer} rule={rule} filters={effectiveFilters} onFiltersChange={onFiltersChange} />
+                : <LayerView layer={u.layer} directed={!!input?.directed} ranked={!!input?.ranked} rule={rule}
+                    filters={effectiveFilters} onFiltersChange={onFiltersChange}
+                    partner={u.kind === "pair" ? u.partner : undefined} />}
+            </div>) : <div className="lr-empty">{layer?.reason ?? "No layers available for this input."}</div>}
+          </div>
+        : <div className="lr-cards">
+            {layer?.available && effectiveFilters ? (layer.id === "pathways"
+              ? <PathwayView key={`p-${tab}`} layer={layer} rule={rule} filters={effectiveFilters} onFiltersChange={onFiltersChange} />
+              : <LayerView key={`${layer.id}-${tab}`} layer={layer} directed={!!input?.directed} ranked={!!input?.ranked} rule={rule}
+                  filters={effectiveFilters} onFiltersChange={onFiltersChange}
+                  partner={layer.id === "transcriptomics" || layer.id === "proteomics" ? data!.layers.find((l) => l.available && l.input === layer.input
+                    && l.id === (layer.id === "transcriptomics" ? "proteomics" : "transcriptomics")) : undefined} />)
+              : <div className="lr-empty">{layer?.reason}</div>}
+          </div>}
       {input?.source && <p className="lr-footnote">Example source: {input.source}.</p>}
       <p className="lr-footnote">MoTrPAC values are published summary statistics (human: MotrpacHumanPreSuspensionAnalysis 2.0.8; rat: MotrpacRatTraining6moData 2.0.0). MoTrPAC participants and rats are healthy; comparisons with other studies describe association, not treatment effects.</p>
     </div>}

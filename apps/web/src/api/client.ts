@@ -411,7 +411,7 @@ export interface ExplorerInput {
 }
 export interface ExplorerColumn {
   id: string; species: string; tissue: string; tissue_label: string; layer: string; category: string; exercise: string;
-  time: string; time_label: string; time_rank: number; sex: string; n_tested?: number; n_measured?: number;
+  time: string; time_label: string; time_rank: number; sex: string; dataset: string; study_label: string; n_tested?: number; n_measured?: number;
   set_t?: number | null; set_p?: number | null; set_bh?: number | null; set_bonferroni?: number | null;
   n_opposite?: number; n_same?: number; n_up?: number; n_down?: number;
   rho?: number | null; rho_p?: number | null; rho_bh?: number | null; rho_bonferroni?: number | null; rho_n?: number;

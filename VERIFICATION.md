@@ -1106,3 +1106,46 @@ reproduce live within tolerance. Building that R artifact and regenerating the s
 
 Result: motrpac-explorer integrated; Discordance + Explorer coexist; full battery green
 (engine 123/34, apps/api 81, web 38 + build, golden hash OK).
+
+### multiomic-comparison-view checkpoint — full battery (PASS)
+Feature: the generalized multi-omic Compare-All view + shared filter bar (UI-only, Feature A′) and the
+B2 store-sourced `dataset`/`study_label` labels on every `ExplorerColumn` (see ADR-0024). This checkpoint
+records the EXACT commands run and their REAL results (verify-before-claiming, R11.4).
+
+Files changed by the feature (context; this checkpoint is DOCS ONLY):
+- `apps/api/motrpac_probe_service/explorer.py` — `_study_label()` / `_dataset_for_species()` /
+  `_provenance()` helpers; `dataset`+`study_label` emitted from `_layer()` and `_pathway_layer()`.
+- `apps/web/src/api/client.ts` — `ExplorerColumn` gains `dataset: string; study_label: string;`.
+- `apps/web/src/components/MotrpacExplorer.tsx` — `Mode` toggle + `unitsFor` unit model + `xp-grid`
+  render; `Filters` lifted into the parent (`filters` state + `resolveFilters`) and passed as props to a
+  now-controlled `LayerView`/`PathwayView`; `provenanceLabel` chips; `study_label` in every CSV builder.
+- `apps/web/src/components/LiveDashboard.css` — `.lr-cards.xp-grid` even-split responsive modifier.
+- `apps/web/public/examples/*.json` — regenerated via `apps/api/scripts_save_examples.py` (task 7.1).
+
+Commands run — venv `hackathon/tool/.venv` (verify-before-claiming, R11.4):
+- apps/api: from `hackathon/tool`, `.venv/bin/python -m pytest -q ../../apps/api/tests` → **81 passed**
+  (2 deprecation warnings). Includes the explorer suite; the tolerant, artifact-aware saved-vs-live
+  cross-check `test_saved_example_results_match_the_live_analysis` PASSES after the saved JSONs were
+  regenerated (task 7.1) so they carry the new `dataset`/`study_label` fields.
+- web: from `apps/web`, `pnpm run build` → **OK** (dist emitted); `pnpm test` → **38 passed** (9 files).
+
+Engine suite (honest scope note): the `motrpac_probe` engine suite is UNTOUCHED by this feature — NO
+engine files changed — so it was NOT re-run as part of this feature's battery. It remains at its last
+recorded **123 passed / 34 skipped** from the ADR-0023 motrpac-explorer merge checkpoint.
+
+Environment notes (honest):
+- `openpyxl` (required by the explorer `.xlsx` tests) is installed via the `apps/api[api]`/`[test]`
+  extras.
+- The R-built MoTrPAC pathway table `apps/api/data/motrpac_camera_pathways.csv.gz`
+  (`Rscript apps/api/scripts_build_pathways.R`) is gitignored and NOT present in this checkout, so the
+  live pathways layer is "unavailable" here and `blood_pathway_6`'s pathway layer is skip-on-missing-
+  artifact in the saved-vs-live cross-check; the muscle/metabolite examples reproduce live within
+  tolerance.
+
+Scope note (honest): this is the traceability task (task 9, DOCS ONLY) — it records the feature's ADR
+(ADR-0024), this checkpoint, and the `REQUIREMENTS_TRACEABILITY.md` rows, and altered NO runtime source,
+CI, or test. The counts above (`apps/api` 81 passed, web build OK + 38 passed) were actually run by the
+orchestrator and are recorded here as observed, not fabricated.
+
+Result: multiomic-comparison-view verified — apps/api 81 passed (saved-vs-live cross-check green/skip-on-
+missing-artifact after regeneration), web build OK + 38 passed; engine suite untouched (remains 123/34).
