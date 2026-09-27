@@ -40,11 +40,14 @@ Tools are required to reliably query publicly available OMICS datasets to accele
 Is there a relationship between exercise and disease outcomes?
 
 #### Problem:
-, hypothesis or objective, scope, and success criteria
+, hypothesis or objective, scope, and 
 
+##### success criteria
+Visualizations for the OMICS layers 
+Side-by-side comparison of transcriptomics & proteomics 
 
 ### Workflow 
-#### 
+#### See WORKFLOWS.md
 
 ### Setup 
 #### Prerequisites + versions
@@ -53,15 +56,24 @@ Is there a relationship between exercise and disease outcomes?
 #### Containers or notebooks 
 
 
-### Inputs & Outputs 
+### Inputs & Outputs
+Input is a list of disease signatures 
+Output is visualization (heatmaps, line charts, dot plots) from MoTrPAC data. 
+
 #### Quick start
-#### accessions, CSVs, FASTQ, API terms 
-#### tables, plots, JSON, dashboards 
+#### See BOOTSTRAP.md
+
+#### FastAPI  
+#### Dashboards: See DESIGN_PROVENANCE.md 
 
 ### Methods
-#### Analysis Approach, Datasets + access dates, APIs, models, versions, external code + AI use, Citations & License 
+#### FastAPI to connect to MoTrPAC; live query, Codex, Kiro, Claude, & ChatGPT. 
+#### License: MIT License 
 
 ### Validation 
-#### Small test dataset/data subset, Expected Output, screenshots or plots, known failure modes 
+#### Small test dataset/data subset, Expected Output, screenshots or plots, 
 
-### Reuse
+##### Failure Modes 
+No output generated for certain gene lists 
+
+
