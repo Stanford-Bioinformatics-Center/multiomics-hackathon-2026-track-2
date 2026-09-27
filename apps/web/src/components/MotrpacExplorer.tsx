@@ -149,7 +149,9 @@ function defaults(cols: ExplorerColumn[], values: ExplorerValue[], allCols: Expl
   return { species: sp, tissue: hinted ?? tissues[0] ?? ALL, contrast: cats.includes("EE-CON") ? "EE-CON" : cats[0] ?? ALL, sex: ALL, time: ALL, layer: ALL };
 }
 
-function LayerView({ layer, directed, ranked, rule, hint }: { layer: ExplorerLayer; directed: boolean; ranked: boolean; rule: Significance; hint?: string }) {
+function LayerView({ layer, partner, directed, ranked, rule, hint }: {
+  layer: ExplorerLayer; partner?: ExplorerLayer; directed: boolean; ranked: boolean; rule: Significance; hint?: string;
+}) {
   const cols = layer.columns ?? [];
   const values = layer.values ?? [];
   const molecules = layer.molecules ?? [];
@@ -157,6 +159,7 @@ function LayerView({ layer, directed, ranked, rule, hint }: { layer: ExplorerLay
   useEffect(() => setF(defaults(cols, values, cols, undefined, hint)), [layer]); // eslint-disable-line react-hooks/exhaustive-deps
   const refOverview = useRef<SVGSVGElement>(null), refMolecules = useRef<SVGSVGElement>(null), refTime = useRef<SVGSVGElement>(null);
   const refContext = useRef<SVGSVGElement>(null), refBars = useRef<SVGSVGElement>(null);
+  const refPair = useRef<SVGSVGElement>(null), refPairTime = useRef<SVGSVGElement>(null);
 
   const colIndex = useMemo(() => new Map(cols.map((c, j) => [c, j])), [cols]);
   const valueAt = useMemo(() => { const m = new Map<string, ExplorerValue>(); for (const v of values) m.set(`${v[0]}|${v[1]}`, v); return m; }, [values]);
@@ -221,6 +224,53 @@ function LayerView({ layer, directed, ranked, rule, hint }: { layer: ExplorerLay
     }) })),
   }));
 
+  // RNA and protein side by side: the same molecules in the partner layer's matching comparisons
+  const NONE: ExplorerValue = [0, 0, null, null, null, null];
+  const pCols = partner?.columns ?? [], pValues = partner?.values ?? [], pMols = partner?.molecules ?? [];
+  const pKey = (c: ExplorerColumn) => `${c.species}|${c.tissue}|${c.category}|${c.time}|${c.sex}`;
+  const pColIndex = useMemo(() => new Map(pCols.map((c, j) => [pKey(c), j])), [partner]); // eslint-disable-line react-hooks/exhaustive-deps
+  const pMolIndex = useMemo(() => new Map(pMols.map((m, i) => [m.name, i])), [partner]); // eslint-disable-line react-hooks/exhaustive-deps
+  const pValueAt = useMemo(() => { const m = new Map<string, ExplorerValue>(); for (const v of pValues) m.set(`${v[0]}|${v[1]}`, v); return m; }, [partner]); // eslint-disable-line react-hooks/exhaustive-deps
+  const paired = partner ? selected.flatMap((c) => { const pj = pColIndex.get(pKey(c)); return pj === undefined ? [] : [{ c, pj }]; }) : [];
+  const word = (l?: ExplorerLayer) => l?.id === "transcriptomics" ? "RNA" : l?.id === "proteomics" ? "Protein" : l?.label ?? "";
+  const hereWord = word(layer), thereWord = word(partner);
+  const layerColour = (l: ExplorerLayer | undefined, light: boolean) => l?.id === "transcriptomics" ? (light ? "#c9788d" : COLOURS.warm) : (light ? "#86a6c6" : COLOURS.cool);
+  const partnerValue = (i: number, pj: number) => { const pi = pMolIndex.get(molecules[i].name); return pi === undefined ? undefined : pValueAt.get(`${pi}|${pj}`); };
+  const subKey = (c: ExplorerColumn) => !human && f.sex === ALL ? c.sex : f.contrast === ALL || f.contrast === "VS-CON" ? c.category : "";
+  const subLabel = (k: string) => k === "female" ? "female" : k === "male" ? "male" : k ? CATEGORY[k] : "";
+  const subs = uniq(paired.map(({ c }) => subKey(c)));
+  const pairGroups = (["here", "there"] as const).flatMap((which) => subs.map((sub) => ({
+    title: `${which === "here" ? hereWord : thereWord}${sub ? " · " + subLabel(sub) : ""}`,
+    cols: paired.filter(({ c }) => subKey(c) === sub).sort((a, b) => a.c.time_rank - b.c.time_rank)
+      .map(({ c, pj }) => ({ key: `${which}|${colIndex.get(c)}|${pj}`, label: shortTime(c.time_label) })),
+  }))).filter((g) => g.cols.length);
+  const pairCell = (row: string, key: string): Cell => {
+    const i = rows.find((k) => rowName(k) === row)!;
+    const [which, j, pj] = key.split("|");
+    const v = which === "here" ? valueAt.get(`${i}|${j}`) : partnerValue(i, Number(pj));
+    if (!v) return null;
+    return { value: v[2], pass: passes(valueP(v, rule)), title: `${molecules[i].name} · ${which === "here" ? hereWord : thereWord} · ${describe(cols[Number(j)])}\nlog2 FC ${fmt(v[2])} · raw P ${fmt(v[3])} · BH q ${fmt(v[4])} · Bonferroni ${fmt(v[5])}` };
+  };
+  const changedHere = rows.filter((i) => paired.some(({ c }) => passes(valueP(valueAt.get(`${i}|${colIndex.get(c)}`) ?? NONE, rule)))).length;
+  const thereRows = rows.filter((i) => pMolIndex.has(molecules[i].name));
+  const changedThere = thereRows.filter((i) => paired.some(({ pj }) => passes(valueP(partnerValue(i, pj) ?? NONE, rule)))).length;
+  const pairTimes = timesOf(paired.map(({ c }) => c));
+  const pairSeries = (["here", "there"] as const).flatMap((which) => subs.map((sub, k) => ({ which, sub, k })));
+  const pairPanels = rows.slice(0, 12).map((i) => ({
+    title: molecules[i].name,
+    series: pairSeries.map(({ which, sub, k }): Series => ({
+      name: `${which === "here" ? hereWord : thereWord}${sub ? " · " + subLabel(sub) : ""}`,
+      colour: layerColour(which === "here" ? layer : partner, k === 1),
+      points: pairTimes.map((t, x) => {
+        const hit = paired.find(({ c }) => c.time === t && subKey(c) === sub);
+        const v = hit ? (which === "here" ? valueAt.get(`${i}|${colIndex.get(hit.c)}`) : partnerValue(i, hit.pj)) : undefined;
+        return { x, y: v ? v[2] : null, pass: v ? passes(valueP(v, rule)) : null,
+          title: hit && v ? `${molecules[i].name} · ${which === "here" ? hereWord : thereWord} · ${describe(hit.c)}\nlog2 FC ${fmt(v[2])} · ${RULE_LABEL[rule].split(" <")[0]} ${fmt(valueP(v, rule))}` : "" };
+      }),
+    })),
+  }));
+  const hasPair = !!partner && paired.length > 0;
+
   // metabolites in healthy people: exercise effect vs drift in resting controls
   const context = useMemo(() => {
     if (!isMetab || !human) return null;
@@ -251,6 +301,22 @@ function LayerView({ layer, directed, ranked, rule, hint }: { layer: ExplorerLay
   const cameraNote = ranked ? "Spearman ρ across shared genes" : directed ? "cameraPR t · positive = opposite to your list" : "cameraPR t · positive = up";
 
   const cards: Record<string, ReactNode> = {
+    pair: hasPair && <Card title={`${hereWord} and ${thereWord === "Protein" ? "protein" : thereWord} side by side in ${tissueLabel(f.tissue).toLowerCase()}`}
+      chips={[human ? "Human · one exercise bout" : "Rat · endurance training", f.contrast === ALL ? "All contrasts" : CATEGORY[f.contrast], ...(large ? [listSize] : []), "Same molecules, same comparisons", ...(directed ? ["↑ ↓ = direction in your list"] : [])]}
+      stat={`${changedHere}/${rows.length} · ${changedThere}/${thereRows.length}`} caption={`${hereWord} · ${thereWord}: change significantly at ≥ 1 time (${RULE_LABEL[rule]})`}
+      foot={<><span className="lr-hint">Each value is MoTrPAC's published result for that layer and comparison; BH is within each comparison.</span>
+        <button type="button" className="lr-ghost" onClick={() => csvDownload(`${hereWord}_${thereWord}_side_by_side.csv`.toLowerCase(), rows.flatMap((i) => paired.map(({ c, pj }) => {
+          const a = valueAt.get(`${i}|${colIndex.get(c)}`), b = partnerValue(i, pj);
+          return { molecule: molecules[i].name, species: c.species, tissue: c.tissue_label, contrast: c.category, time: c.time_label, sex: c.sex,
+            [`${hereWord}_log2fc`]: a?.[2], [`${hereWord}_bh_q`]: a?.[4], [`${thereWord}_log2fc`]: b?.[2], [`${thereWord}_bh_q`]: b?.[4] };
+        })))}>CSV</button><PngButton svgRef={refPair} name={`${layer.id}_side_by_side.png`} /></>}>
+      <HeatGrid svgRef={refPair} rows={rows.map(rowName)} groups={pairGroups} rowLabelWidth={170} cell={pairCell} minScale={0.5} labels={["lower after exercise", "higher"]} />
+    </Card>,
+    pairTime: hasPair && pairTimes.length > 1 && <Card title="Over time, both layers"
+      chips={[tissueLabel(f.tissue), human ? (f.contrast === ALL ? "All contrasts" : CATEGORY[f.contrast]) : "Trained vs sedentary", rows.length > 12 ? "First 12 molecules" : `${rows.length} molecules`]}
+      foot={<PngButton svgRef={refPairTime} name={`${layer.id}_both_layers_over_time.png`} />}>
+      <SmallMultiples svgRef={refPairTime} panels={pairPanels} xLabels={pairTimes.map((t) => shortTime(timeLabel(t)))} yLabel={human ? "log2 FC vs control" : "log2 FC trained vs sedentary"} />
+    </Card>,
     overview: (overviewRows.length > 0 && <Card title="Every MoTrPAC comparison"
       chips={[human ? "Human · one exercise bout" : "Rat · endurance training", ranked ? "Rank correlation with your scores" : "Set-level test of your list (cameraPR)", "Click a cell to open it"]}
       stat={`${overviewSig}/${tested.length}`} caption={`comparisons pass ${RULE_LABEL[rule]}`}
@@ -302,6 +368,7 @@ function LayerView({ layer, directed, ranked, rule, hint }: { layer: ExplorerLay
   };
   // Long lists lead with the set-level views; only the first rows fit in the heat map.
   const order = isMetab && human ? ["context", "molecules", "time", "overview", "bars"]
+    : hasPair ? (large ? ["overview", "bars", "pair", "pairTime"] : ["pair", "pairTime", "overview", "bars"])
     : large ? ["overview", "bars", "molecules", "time"] : ["molecules", "time", "overview", "bars"];
 
   return <>
@@ -413,7 +480,7 @@ export default function MotrpacExplorer() {
     {data && <div ref={resultsRef}>
       <div className="xp-inputs">{data.inputs.map((i) => <div key={i.id} className="xp-input-summary">
         <strong>{i.name}<em className={"xp-source" + (data.saved ? " is-saved" : "")}>{data.saved ? `Saved result · ${data.saved.generated_at}` : "Live analysis"}</em></strong>
-        <span>{i.n_mapped} of {i.n_rows} matched{i.n_names && i.n_names !== i.n_mapped ? ` (${i.n_names} MoTrPAC names)` : ""}{i.directed ? " · with direction" : ""}{i.ranked ? " · ranked" : ""}</span>
+        <span>{i.n_mapped} of {i.n_rows} matched{i.directed ? " · with direction" : ""}{i.ranked ? " · ranked" : ""}</span>
         {i.unmapped.length > 0 && <details><summary>{i.unmapped.length}{i.unmapped.length === 50 ? "+" : ""} not found in MoTrPAC</summary><p>{i.unmapped.join(" · ")}</p></details>}
       </div>)}</div>
       <div className="lr-bar">
@@ -426,7 +493,9 @@ export default function MotrpacExplorer() {
       </div>
       <div className="lr-cards">
         {layer?.available ? (layer.id === "pathways" ? <PathwayView key={`p-${tab}`} layer={layer} rule={rule} />
-          : <LayerView key={`${layer.id}-${tab}`} layer={layer} directed={!!input?.directed} ranked={!!input?.ranked} rule={rule} hint={input?.name} />)
+          : <LayerView key={`${layer.id}-${tab}`} layer={layer} directed={!!input?.directed} ranked={!!input?.ranked} rule={rule} hint={input?.name}
+              partner={layer.id === "transcriptomics" || layer.id === "proteomics" ? data!.layers.find((l) => l.available && l.input === layer.input
+                && l.id === (layer.id === "transcriptomics" ? "proteomics" : "transcriptomics")) : undefined} />)
           : <div className="lr-empty">{layer?.reason}</div>}
       </div>
       {input?.source && <p className="lr-footnote">Example source: {input.source}.</p>}
