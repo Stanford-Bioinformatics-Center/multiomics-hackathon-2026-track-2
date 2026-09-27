@@ -41,3 +41,9 @@ traceable. Status: TODO / IN PROGRESS / DONE / BLOCKED.
 | R-FC-1 | Fresh-clone: install, build, tests pass; image + routes load without original repo/LFS | `.github/workflows/ci.yml` web job | CI | DONE |
 | R-CI-1 | `pytest -q -rs` with expected-skip allowlist | `.github/workflows/ci.yml` python job | CI | DONE |
 | R-GAL-1 | Gallery regen from clean commit records current SHA (stale 5e2cde3 documented) | `scripts_regenerate_gallery.md` | manual verify (a1dbfc4) | DONE (procedure; regen is its own commit) |
+| R-MET-1 | Metabolomics as SEPARATE read-only case-study analysis type (Option-1 adapter, module = source of truth) | `metab_casestudy.py` + catalog ANALYSIS_TYPES | `test_metabolomics.py` | DONE |
+| R-MET-2 | Adapter counts match committed 06_context_summary.json; JSON-safe | `metab_casestudy.build_case_study` | `test_case_study_matches_committed_summary`, `test_case_study_is_json_safe` | DONE |
+| R-MET-3 | Honest conclusion (setting/scleroderma not PAH; null acute) + both contrasts + EE-EE caveat + separate-cohort in API/UI/export | `metab_casestudy` + `MetabolomicsCaseStudy.tsx` + export | `test_case_study_preserves_conclusion_and_contrasts` | DONE |
+| R-MET-4 | Convergence: module MoTrPAC export == engine METAB store on unambiguous EE-CON cells | `convergence.cross_check` | `test_convergence_identical_on_unambiguous_subset` | DONE |
+| R-MET-5 | Separate top-level UI view (never blended with muscle/rat) | `App.tsx` + `MetabolomicsCaseStudy.tsx` | web build | DONE |
+| R-MET-6 | Engine live metabolite scoring (Option 2) documented as follow-on, not exposed | `catalog.CAPABILITY_MATRIX` + METABOLOMICS.md | n/a (deferred) | DEFERRED |

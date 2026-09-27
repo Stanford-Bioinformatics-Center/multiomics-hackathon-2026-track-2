@@ -35,6 +35,26 @@ CAPABILITY_MATRIX = {
     "epigenomics":         {"engine": False, "api": False, "react": False, "demo_validated": False},
 }
 
+# Analysis types the app exposes. The directed-signature path (run_analysis) scores a gene/protein
+# signature against the MoTrPAC family. The metabolomics case study is a SEPARATE, read-only analysis
+# type: the standalone ST000763 module's committed outputs served via an Option-1 adapter. This is why
+# the metabolomics *engine live-scoring* row above stays api/react False while the case study is
+# exposed - they are different analyses, not the same one toggled on.
+ANALYSIS_TYPES = {
+    "directed_signature": {
+        "label": "Directed disease signature vs exercise",
+        "cohort": "Malenfant vastus-lateralis PAH proteins (muscle) vs MoTrPAC exercise",
+        "engine": "motrpac_probe (run_analysis)",
+        "api": True, "react": True,
+    },
+    "metabolomics_case_study": {
+        "label": "Metabolomics case study (ST000763)",
+        "cohort": "Human SSc-PAH plasma (Metabolomics Workbench ST000763) - SEPARATE cohort",
+        "engine": "standalone MoTrPAC Hackathon/Metabolomics module (read-only adapter)",
+        "api": True, "react": True,
+    },
+}
+
 
 def _exercise_columns(S):
     c = S.cols
@@ -73,6 +93,7 @@ def build_catalog(S=None) -> dict:
         "supported_source_species": list(SUPPORTED_SOURCE_SPECIES),
         "unsupported_source_species": list(UNSUPPORTED_SOURCE_SPECIES),
         "store_hash": __import__("motrpac_probe.store", fromlist=["store_hash"]).store_hash(),
+        "analysis_types": ANALYSIS_TYPES,
     }
 
 

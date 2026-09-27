@@ -132,6 +132,55 @@ export interface AnalysisResponse {
   provenance: Record<string, unknown>;
 }
 
+export interface MetabHit {
+  evidence_id: string;
+  refmet_name: string;
+  pah_direction: string;
+  pah_log2_effect: number | null;
+  pah_q_value: number | null;
+  context_label: string;
+  motrpac_blood_match_basis: string;
+  blood_ee_con_logfc_20min: number | null;
+  blood_peak_logfc: number | null;
+  blood_max_abs_control_logfc: number | null;
+  pah_effect_over_control_drift: number | null;
+  exercise_vs_pah_direction: string;
+  caveat: string;
+}
+
+export interface MetabCaseStudy {
+  run_id: string;
+  schema_version: string;
+  analysis_type: string;
+  case_study_id: string;
+  cohort_label: string;
+  title: string;
+  n_hits: number;
+  n_hits_matched_blood: number;
+  n_background_matched_blood: number;
+  hit_labels: Record<string, number>;
+  null_result: Record<string, Record<string, number>>;
+  median_pah_effect_over_control_drift: number | null;
+  contrasts: Record<string, Record<string, string>>;
+  conclusion: string;
+  caveats: string[];
+  hits: MetabHit[];
+  provenance: Record<string, unknown>;
+}
+
+export interface MetabConvergence {
+  contrast: string;
+  motrpac_package_version: string;
+  source_collection: string;
+  unambiguous_matched_cells: number;
+  n_within_tol: number;
+  max_abs_diff: number;
+  identical: boolean;
+  excluded_ambiguous_module_rows: number;
+  excluded_ambiguous_engine_rows: number;
+  note: string;
+}
+
 export interface SignatureRowInput {
   gene_symbol?: string;
   uniprot?: string;
@@ -199,4 +248,7 @@ export const api = {
   provenance: (runId: string) => getJSON<Record<string, unknown>>(`/comparisons/${runId}/provenance`),
   reportUrl: (runId: string) => `${BASE}/comparisons/${runId}/report`,
   exportUrl: (runId: string) => `${BASE}/comparisons/${runId}/export`,
+  metabCaseStudy: () => getJSON<MetabCaseStudy>("/metabolomics/casestudy"),
+  metabConvergence: () => getJSON<MetabConvergence>("/metabolomics/convergence"),
+  metabExportUrl: () => `${BASE}/metabolomics/casestudy/export`,
 };

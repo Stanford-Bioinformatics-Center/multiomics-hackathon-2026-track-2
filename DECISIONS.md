@@ -167,3 +167,27 @@ actions"), a stated judging criterion. Newest at the bottom.
   large churn); regenerating the gallery now (large teammate-owned diff mixed into feature work).
 - **Consequences.** 31 api tests + 18 web tests; live round-trip verified over HTTP; CI runs both.
   Point -> evidence -> source enforced at the API level (browser e2e is a future add).
+
+## ADR-0011 — Metabolomics wired in as a separate read-only case-study analysis type (Option-1 adapter)
+- **Context.** origin/main merged a standalone `MoTrPAC Hackathon/Metabolomics/` module (ST000763
+  SSc-PAH plasma, mapped to MoTrPAC). The engine also has a METAB layer (`metab.py`). These are
+  complementary — case study vs reusable scorer — not competing sources of truth (they compute
+  different comparisons on different data). The task was to surface metabolomics in the app.
+- **Decision.** (a) Expose the module as a SEPARATE analysis type `metabolomics_case_study` via an
+  Option-1 adapter (`metab_casestudy.py`): read the module's committed outputs, normalize to the
+  service evidence/provenance schema, no stats and no R at request time; the module stays the source
+  of truth. (b) Give it its own top-level UI view, never a tab in the muscle-protein dashboard, so
+  the SSc-PAH plasma cohort is never blended with the Malenfant muscle signature or rat exercise data.
+  (c) Add a convergence cross-check (`convergence.py`) reconciling the module's MoTrPAC export against
+  the engine METAB store on shared EE-CON cells. (d) Keep the engine's live directed-signature
+  metabolite scoring (Option 2) as a documented follow-on (capability matrix api/react False).
+- **Reasons.** Fastest honest path to the metabolomics story without R-at-request-time; preserves the
+  module's authorship and its cautionary conclusion; the cross-check is an integrity win (two
+  independent pipelines agree on the MoTrPAC side).
+- **Alternatives rejected.** Route metabolite signatures through the engine live (Option 2) first —
+  answers a different question and needs more work; reimplement the module in mprobe — forks a second
+  source of truth.
+- **Consequences.** 7 metabolomics tests (adapter counts match 06_context_summary.json; convergence
+  identical 1156/1156 cells, max diff 0.0; endpoints; export bundle; catalog analysis type). api suite
+  38 passed; web 18 passed + build OK; engine golden byte-identical (adapter-only, no engine change).
+  Honest conclusion (setting/scleroderma, not PAH; null acute response) carried verbatim to UI+export.

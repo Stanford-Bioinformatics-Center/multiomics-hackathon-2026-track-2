@@ -235,3 +235,32 @@ headline anywhere; it would only appear as an explicitly labeled sensitivity ana
 - Note: the new Metabolomics module is the deferred "Track 2 blood/pathway"-adjacent work maturing on
   main; it is NOT yet wired into the app (metabolomics remains engine-supported / UI-not-exposed per
   the capability matrix, ADR-0009). Wiring it into the API/UI is a future, separate task.
+
+### Metabolomics integration checkpoint — case-study adapter + convergence (PASS)
+Files added / changed:
+- `apps/api/motrpac_probe_service/metab_casestudy.py` (Option-1 adapter), `convergence.py`
+  (cross-check), `app.py` (+3 endpoints), `catalog.py` (+ANALYSIS_TYPES), `__init__.py` (exports)
+- `apps/api/tests/test_metabolomics.py` (7 tests)
+- `apps/web/src/api/client.ts` (metab types+methods), `src/components/MetabolomicsCaseStudy.tsx`
+  (separate top-level view), `src/App.tsx` (+ "Metabolomics (ST000763)" view)
+- `METABOLOMICS.md` (module<->engine relationship, integration, cross-check, caveat)
+
+Why: surface the merged standalone metabolomics module (2140f9b) as a SEPARATE read-only case-study
+analysis type, without blending it with the muscle/rat PAH work and without recomputing it in the
+service (module stays source of truth; ADR-0011).
+
+Verified:
+- Adapter payload matches `06_context_summary.json`: 41 hits, 27 matched blood, hit_labels
+  {stable 24, no-match 14, drifts 3}, exercise-sensitive hits 0% (Fisher p 0.609), median drift 3.09.
+  JSON-safe (json.dumps allow_nan=False).
+- Convergence cross-check: module 04 MoTrPAC export vs engine METAB store, EE-CON, on the unambiguous
+  RefMet-name subset -> IDENTICAL, 1156/1156 cells, max abs diff 0.0 (both 2.0.8 / c2.0). Ambiguous
+  blank/duplicate-RefMet cells excluded and counted (key ambiguity, not disagreement).
+- API endpoints (via FastAPI TestClient): /api/metabolomics/casestudy 200, /convergence identical,
+  /casestudy/export zip {summary,hits,conclusion,provenance}; catalog analysis_types includes
+  metabolomics_case_study (api+react true, "SEPARATE cohort").
+- Test totals after this pass: api 38 passed; web 18 passed + build OK; engine 122/34 UNCHANGED;
+  `python analysis.py` byte-identical to the pre-existing golden baseline (adapter-only).
+- UI: separate top-level "Metabolomics (ST000763)" view; honest conclusion + both contrasts + EE-EE
+  caveat + separate-cohort banner + convergence badge + export all rendered. Engine live metabolite
+  scoring (Option 2) remains a documented follow-on.

@@ -21,6 +21,8 @@ from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field, model_validator
 
 from . import catalog as _catalog
+from . import convergence as _convergence
+from . import metab_casestudy as _metab
 from . import export as _export
 from .schema import AnalysisRequest as _AnalysisRequest
 from .schema import SignatureRow as _SignatureRow
@@ -215,3 +217,42 @@ def get_export(run_id: str):
     buf.seek(0)
     return StreamingResponse(buf, media_type="application/zip",
                              headers={"Content-Disposition": f'attachment; filename="evidence_bundle_{run_id}.zip"'})
+
+
+# ---- metabolomics case study (ST000763): a SEPARATE, read-only analysis type -----------------------
+
+@app.get("/api/metabolomics/casestudy")
+def get_metab_casestudy():
+    if not _metab.available():
+        raise HTTPException(status_code=404,
+                            detail="metabolomics module outputs not present (run the Metabolomics pipeline)")
+    return asdict(_metab.build_case_study())
+
+
+@app.get("/api/metabolomics/casestudy/export")
+def get_metab_casestudy_export():
+    if not _metab.available():
+        raise HTTPException(status_code=404, detail="metabolomics module outputs not present")
+    resp = _metab.build_case_study()
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+        z.writestr("summary.json", json.dumps({
+            "run_id": resp.run_id, "cohort": resp.cohort_label, "n_hits": resp.n_hits,
+            "n_hits_matched_blood": resp.n_hits_matched_blood, "hit_labels": resp.hit_labels,
+            "null_result": resp.null_result, "contrasts": resp.contrasts}, indent=2))
+        z.writestr("hits.json", json.dumps(resp.hits, indent=2))
+        z.writestr("conclusion.txt", resp.conclusion + "\n\n" + "\n".join(f"- {c}" for c in resp.caveats))
+        z.writestr("provenance.json", json.dumps(resp.provenance, indent=2, default=str))
+    buf.seek(0)
+    return StreamingResponse(buf, media_type="application/zip",
+                             headers={"Content-Disposition":
+                                      f'attachment; filename="metabolomics_casestudy_{resp.run_id}.zip"'})
+
+
+@app.get("/api/metabolomics/convergence")
+def get_metab_convergence():
+    """Integrity cross-check: module MoTrPAC export vs engine METAB store on shared EE-CON cells."""
+    try:
+        return _convergence.cross_check()
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
