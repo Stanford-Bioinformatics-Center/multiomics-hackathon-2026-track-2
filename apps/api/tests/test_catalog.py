@@ -23,13 +23,13 @@ def test_catalog_built_from_store_species_design_derived():
     assert species["rat"]["study_design"] == "chronic"
 
 
-def test_skmgn_has_three_layers_skmvl_rna_only():
-    """The exact bug the React constants had: SKM-VL is RNA-only; SKM-GN has RNA+PROT+PHOSPHO."""
+def test_skmgn_has_protein_and_ptm_skmvl_lacks_them():
+    """The METAB index adds a separate layer, but SKM-VL still lacks protein/PTM."""
     cat = build_catalog()
     skmgn = _tissue(cat, "rat", "SKM-GN")
     skmvl = _tissue(cat, "rat", "SKM-VL")
-    assert set(skmgn["layers"]) == {"RNA", "PROT", "PHOSPHO"}
-    assert skmvl["layers"] == ["RNA"], f"SKM-VL must be RNA only, got {skmvl['layers']}"
+    assert set(skmgn["layers"]) == {"RNA", "PROT", "PHOSPHO", "METAB"}
+    assert set(skmvl["layers"]) == {"RNA", "METAB"}
     assert "proteomics" not in skmvl["omics"]
     assert "proteomics" in skmgn["omics"] and "transcriptomics" in skmgn["omics"]
 
@@ -45,6 +45,37 @@ def test_availability_full_for_skmgn():
     res = resolve_availability("rat", ["transcriptomics", "proteomics"], tissue="SKM-GN")
     assert res["status"] == "available"
     assert set(res["available_omics"]) == {"transcriptomics", "proteomics"}
+
+
+def test_catalog_exposes_exact_store_combinations():
+    cat = build_catalog()
+    combos = cat["combinations"]
+    assert any(c["species"] == "human" and c["tissue"] == "BLOOD" and c["layer"] == "RNA"
+               and c["contrast_category"] == "EE-CON" and c["timepoint"] == "20m-during" for c in combos)
+    assert not any(c["species"] == "human" and c["tissue"] == "BLOOD"
+                   and c["exercise_type"] == "resistance" and c["timepoint"] == "20m-during" for c in combos)
+    assert any(c["species"] == "rat" and c["contrast_category"] == "TRAIN-SED"
+               and c["exercise_type"] == "endurance" for c in combos)
+    assert any(c["layer"] == "METAB" for c in combos)
+
+
+def test_availability_filters_axes_jointly():
+    yes = resolve_availability("human", ["transcriptomics"], tissue="BLOOD", timepoint="20m-during",
+                               contrast_category="EE-CON", exercise_type="endurance")
+    assert yes["status"] == "available"
+    no = resolve_availability("human", ["transcriptomics"], tissue="BLOOD", timepoint="20m-during",
+                              contrast_category="RE-CON", exercise_type="resistance")
+    assert no["status"] == "no_matching_context" and no["available_omics"] == []
+    rat_no = resolve_availability("rat", ["proteomics"], tissue="SKM-GN", sex="female", timepoint="8w",
+                                  exercise_type="resistance")
+    assert rat_no["status"] == "no_matching_context"
+
+
+def test_measured_metabolomics_distinguished_from_live_api_support():
+    res = resolve_availability("human", ["metabolomics"], tissue="BLOOD", timepoint="20m-during",
+                               contrast_category="EE-CON")
+    assert res["status"] == "unsupported_omics"
+    assert "Measured in MoTrPAC" in res["unavailable_reasons"]["metabolomics"]
 
 
 def test_availability_empty_state_is_not_an_error():

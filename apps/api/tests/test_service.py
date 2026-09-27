@@ -44,11 +44,19 @@ def test_multiplicity_family_recorded():
     resp = run_analysis(_full19())
     fam = resp.multiplicity_family
     assert fam.method == "BH"
+    assert fam.methods == ["BH", "Bonferroni"]
     assert fam.family_size == len(fam.column_ids) >= 40
     assert fam.n_tests >= 1
     assert fam.threshold == 0.05
     # provenance mirrors it
     assert resp.provenance["multiplicity_family"]["family_size"] == fam.family_size
+    assert resp.provenance["multiplicity_family"]["methods"] == fam.methods
+    assert resp.provenance["multiplicity_family"]["n_tests"] == fam.n_tests
+    for col in resp.columns:
+        if col.camera_p is None:
+            assert col.camera_bonferroni is None
+        else:
+            assert col.camera_bonferroni == pytest.approx(min(1.0, col.camera_p * fam.n_tests))
 
 
 def test_headline_male_rat_skmgn_protein_8wk_not_significant():
@@ -92,6 +100,18 @@ def test_guardrails_and_contrasts_present():
     c = resp.contrasts["rat_train"]
     assert c["exercise_numerator"] == "trained rat" and c["exercise_denominator"] == "sex-matched sedentary rat"
     assert "healthy" not in c["exercise_numerator"].lower()  # never "healthy gene set"
+
+
+def test_disease_contrast_uses_fixture_metadata_or_generic_upload_label():
+    from motrpac_probe_service.service import _disease_contrast
+
+    pah = _disease_contrast(_full19())
+    assert "PAH" in pah[0] and "control" in pah[1]
+    t2d = _disease_contrast(AnalysisRequest(example_name="type2_diabetes_muscle_mootha2003"))
+    assert "diabetes" in t2d[0] and "glucose" in t2d[1]
+    assert "PAH" not in " ".join(t2d)
+    uploaded = _disease_contrast(AnalysisRequest(signature_csv_text="gene_symbol,direction\nMYH7,-1\n"))
+    assert "source comparator as supplied" == uploaded[1]
 
 
 def test_signature_rows_input_path_is_content_addressed():

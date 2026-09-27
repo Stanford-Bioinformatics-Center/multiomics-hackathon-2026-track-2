@@ -192,6 +192,13 @@ def score_columns(S, cids, sig, **kw):
         if ok.any():
             q[ok] = false_discovery_control(df.loc[ok, col], method="bh")
         df[col.replace("_p", "_fdr")] = q
+    # The same pre-filter, non-missing cameraPR family used for BH also defines the
+    # Bonferroni denominator. Display filtering must never adjust this column again.
+    bonf = np.full(len(df), np.nan)
+    ok = df.camera_p.notna().to_numpy()
+    if ok.any():
+        bonf[ok] = np.minimum(df.loc[ok, "camera_p"].to_numpy(float) * int(ok.sum()), 1.0)
+    df["camera_bonferroni"] = bonf
     return df
 
 

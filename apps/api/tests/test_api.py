@@ -26,7 +26,7 @@ def test_catalog_endpoint(client):
     cat = client.get("/api/catalog").json()
     rat = next(c for c in cat["contexts"] if c["species"] == "rat")
     skmvl = next(t for t in rat["tissues"] if t["tissue"] == "SKM-VL")
-    assert skmvl["layers"] == ["RNA"]           # store-derived, not React constants
+    assert set(skmvl["layers"]) == {"RNA", "METAB"}  # both store indices, no protein/PTM
     assert "capability_matrix" in cat
 
 
@@ -68,7 +68,8 @@ def test_comparisons_and_subresources(client):
     prov = client.get(f"/api/comparisons/{run_id}/provenance").json()
     assert prov["run_id"] == run_id and prov["multiplicity_family"]["family_size"] >= 40
     rep = client.get(f"/api/comparisons/{run_id}/report")
-    assert rep.status_code == 200 and "not evidence that exercise treats PAH" in rep.text
+    assert rep.status_code == 200 and "not a disease treatment-effect test" in rep.text
+    assert "Bonferroni p (family)" in rep.text
 
 
 def test_export_bundle_contents(client):
