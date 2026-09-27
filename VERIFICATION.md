@@ -264,3 +264,22 @@ Verified:
 - UI: separate top-level "Metabolomics (ST000763)" view; honest conclusion + both contrasts + EE-EE
   caveat + separate-cohort banner + convergence badge + export all rendered. Engine live metabolite
   scoring (Option 2) remains a documented follow-on.
+
+### Merge + generalized-pipeline replication checkpoint (PASS)
+- Merged origin/main 0882687 "Add generalized Track 2 backend" (merge e61c9a8). Additive module
+  `MoTrPAC Hackathon/generalized/` (query_core engine, discordance, pathways, plots, signatures);
+  does NOT touch hackathon/tool/ or apps/. Clean merge, README auto-merged.
+- App suites after merge: engine 122 passed / 34 skipped; api 38 passed; web 18 + build OK;
+  `python analysis.py` byte-identical to golden baseline.
+- generalized query_core tests: 8 passed.
+- REPLICATION (hardcoded -> generalized): ran the PAH blood signature through query_core against the
+  bundled MoTrPAC reference:
+    python -m query_core.cli --disease examples/signatures/pah_blood_rna.csv.gz \
+      --reference query_core/motrpac_reference.csv.gz --out <out> --tissue blood \
+      --reference-contrast-category EE-CON
+  RNA-layer Spearman rho (13,055 shared genes) reproduces the legacy hardcoded pipeline exactly:
+    during_20_min -0.0788, during_40_min -0.0286, post_10_min +0.0601,
+    post_15_30_45_min +0.1247, post_3.5_4_hr +0.1161, post_24_hr +0.0899.
+  Matches the legacy values (-0.079, -0.029, +0.060, +0.125, +0.116, +0.090) to the decimal:
+  same input + same MoTrPAC reference + generalized engine -> identical result. This is the
+  "generalize the hardcoded pipeline" confirmation.
