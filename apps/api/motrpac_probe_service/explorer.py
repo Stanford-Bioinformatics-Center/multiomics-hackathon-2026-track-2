@@ -34,10 +34,10 @@ MAX_ROWS_SHOWN = 40
 # ---- examples: neutral names; the source is shown only as a citation ------------------------------
 EXAMPLES = {
     "muscle_protein_9": dict(kind="genes", label="Muscle protein set · 9 proteins",
-                             file=REPO / "hackathon/tool/examples/pah_muscle_lower9_malenfant2015.csv",
+                             file=REPO / "MoTrPAC Hackathon/demo_inputs/3_Malenfant2015_Table2_muscle_down_proteins.xlsx",
                              source="Malenfant et al. 2015, J Mol Med, Table 2 (lower in the source group)"),
     "muscle_gene_87": dict(kind="genes", label="Muscle gene set · 87 genes",
-                           file=REPO / "hackathon/tool/examples/type2_diabetes_muscle_mootha2003.csv",
+                           file=REPO / "MoTrPAC Hackathon/demo_inputs/4_Mootha2003_T2D_muscle_OXPHOS_genes.xlsx",
                            source="Mootha et al. 2003, Nat Genet (MSigDB MOOTHA_VOXPHOS)"),
     "blood_gene_22": dict(kind="genes", label="Blood gene set · 22 genes",
                           file=REPO / "hackathon/tool/examples/pah_blood_cheadle2012_eds.csv",
@@ -46,15 +46,25 @@ EXAMPLES = {
                          file=REPO / "hackathon/tool/examples/pah_blood_gse33463_ranked.csv.gz",
                          source="GEO GSE33463, group comparison re-analysed with limma (moderated t)"),
     "blood_pathway_6": dict(kind="pathways", label="Blood pathway set · 8 pathways (6 BioCarta)",
-                            file=API_ROOT / "data/examples/blood_pathway_set_6.csv",
+                            file=REPO / "MoTrPAC Hackathon/demo_inputs/1_Cheadle2012_Table2_pathways.xlsx",
                             source="Cheadle et al. 2012, PLoS ONE, Table 2 selected pathways (lower in the source group)"),
     "plasma_metabolite_41": dict(kind="metabolites", label="Plasma metabolite set · 41 metabolites",
-                                 file=API_ROOT / "data/examples/plasma_metabolite_set_41.csv",
+                                 file=REPO / "MoTrPAC Hackathon/demo_inputs/2_ST000763_plasma_metabolites.xlsx",
                                  source="Metabolomics Workbench ST000763, resting group difference (MoTrPAC Hackathon/Metabolomics)"),
     "tca_demo": dict(kind="metabolites", label="TCA intermediates · 10 metabolites (demo)",
                      file=REPO / "hackathon/tool/examples/tca_intermediates_demo.csv",
                      source="Synthetic demonstration list"),
 }
+
+
+def example_text(path) -> str:
+    """An example file as CSV text; spreadsheets are read exactly as an upload would be."""
+    path = Path(path)
+    if path.suffix in (".xlsx", ".xls"):
+        return read_upload(path.name, path.read_bytes())["text"]
+    if path.suffix == ".gz":
+        return pd.read_csv(path).to_csv(index=False)
+    return path.read_text(encoding="utf-8")
 
 
 def list_examples() -> list[dict]:
@@ -396,8 +406,7 @@ def analyse(lists: list[dict]) -> dict:
             ex = EXAMPLES.get(item["example"])
             if ex is None:
                 raise ValueError(f"Unknown example '{item['example']}'.")
-            path = Path(ex["file"])
-            text = (pd.read_csv(path).to_csv(index=False) if path.suffix == ".gz" else path.read_text(encoding="utf-8"))
+            text = example_text(ex["file"])
             name, source, kind = ex["label"], ex["source"], ex["kind"]
         t = _read(kind, text or "")
         if kind == "pathways":

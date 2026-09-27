@@ -38,6 +38,16 @@ Rscript apps/api/scripts_build_pathways.R
 
 It writes `apps/api/data/motrpac_camera_pathways.csv.gz` (not committed; about 32 MB). Without it, gene/protein and metabolite lists still work and the Pathways tab explains how to build it.
 
+## Saved example results
+
+Examples in the explorer load results saved in `apps/web/public/examples/`, so they work even if the API is down; uploaded or pasted lists always run the live analysis. After changing the explorer code, the examples or the MoTrPAC data, refresh them from the repository root:
+
+```
+hackathon/tool/.venv/Scripts/python.exe apps/api/scripts_save_examples.py
+```
+
+`apps/api/tests/test_explorer.py` fails if the saved results no longer match a live run.
+
 ## Terminal A — the API
 
 ```

@@ -424,7 +424,7 @@ export interface ExplorerLayer {
   columns?: ExplorerColumn[]; values?: ExplorerValue[]; value_unit?: string;
   family?: { n_tests: number | null; scope: string; methods: string[] }; molecule_rule?: string;
 }
-export interface ExplorerResponse { inputs: ExplorerInput[]; layers: ExplorerLayer[] }
+export interface ExplorerResponse { inputs: ExplorerInput[]; layers: ExplorerLayer[]; saved?: { generated_at: string; example: string; note: string } }
 
 export interface SignatureRowInput {
   gene_symbol?: string;
