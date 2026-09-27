@@ -189,7 +189,8 @@ gate in [VERIFICATION.md](VERIFICATION.md):
 **Screenshots / plots.** <!-- SCREENSHOT PLACEHOLDER: insert Explorer + Discordance demo
 screenshots here (user-provided). Reference committed figures such as
 MoTrPAC Hackathon/generalized/discordance/demo_muscle_ee/discordance_overview.png if useful. -->
-_Figures to be inserted by the team._
+<img width="2372" height="1192" alt="image" src="https://github.com/user-attachments/assets/0b62961c-bf4b-49ef-a2c9-1bf834b5e34f" />
+
 
 **Known failure modes / fragile spots.**
 - The Explorer's *Pathways* input needs the R-built table
