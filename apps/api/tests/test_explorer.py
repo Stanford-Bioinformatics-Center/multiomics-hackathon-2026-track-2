@@ -40,3 +40,15 @@ def test_plain_list_without_direction_and_unmapped_ids():
     inp = r["inputs"][0]
     assert inp["directed"] is False and inp["n_mapped"] == 2 and inp["unmapped"] == ["NOTAGENE"]
     assert _layer(r, "epigenomics")["available"] is False
+
+
+def test_saved_example_results_match_the_live_analysis():
+    """The website's saved example results must equal a fresh live run (rerun scripts_save_examples.py if not)."""
+    import json
+    from pathlib import Path
+    saved_dir = Path(explorer.REPO) / "apps" / "web" / "public" / "examples"
+    for example_id in ("blood_pathway_6", "muscle_protein_9", "plasma_metabolite_41"):
+        saved = json.loads((saved_dir / f"{example_id}.json").read_text(encoding="utf-8"))
+        live = explorer.analyse([{"kind": explorer.EXAMPLES[example_id]["kind"], "example": example_id}])
+        saved.pop("saved")
+        assert json.loads(json.dumps(live, allow_nan=False)) == saved, f"{example_id}: rerun apps/api/scripts_save_examples.py"

@@ -90,7 +90,7 @@ function InputPanel({ examples, drafts, setDrafts, onRun, running }: {
           : <>
               {draft.file && <div className="xp-file"><strong>{draft.file}</strong><button type="button" className="lr-link" onClick={() => update(EMPTY)}>Clear</button></div>}
               <textarea className="lr-textarea" value={draft.text} placeholder={meta.placeholder} spellCheck={false}
-                aria-label={meta.label} onChange={(e) => update({ ...draft, text: e.target.value, example: null })} rows={8} />
+                aria-label={meta.label} onChange={(e) => setDrafts({ genes: EMPTY, metabolites: EMPTY, pathways: EMPTY, [kind]: { ...draft, text: e.target.value, example: null } })} rows={8} />
             </>}
         <p className="lr-hint">{meta.hint}</p>
         {uploadError && <p className="lr-error">{uploadError}</p>}
@@ -246,7 +246,8 @@ function LayerView({ layer, directed, ranked, rule, hint }: { layer: ExplorerLay
   }));
   const pick = (key: keyof Filters, value: string) => setF(key === "species" ? defaults(cols.filter((c) => c.species === value), values, cols, value, hint)
     : { ...f, [key]: value, ...(key === "tissue" ? { time: ALL } : {}) });
-  const listSize = `${layer.n_shown}${layer.n_matched > (layer.n_shown ?? 0) ? ` of ${layer.n_matched.toLocaleString()} (largest scores)` : ""} molecules`;
+  const large = layer.n_matched > (layer.n_shown ?? 0);
+  const listSize = `${layer.n_shown}${large ? ` of ${layer.n_matched.toLocaleString()} (${ranked ? "largest scores" : "first in your list"})` : ""} molecules`;
   const cameraNote = ranked ? "Spearman ρ across shared genes" : directed ? "cameraPR t · positive = opposite to your list" : "cameraPR t · positive = up";
 
   const cards: Record<string, ReactNode> = {
@@ -299,7 +300,9 @@ function LayerView({ layer, directed, ranked, rule, hint }: { layer: ExplorerLay
       <Bars svgRef={refBars} unit={ranked ? "Spearman ρ" : "cameraPR t"} labels={setLabels} items={barItems} />
     </Card>),
   };
-  const order = isMetab && human ? ["context", "molecules", "time", "overview", "bars"] : ["molecules", "time", "overview", "bars"];
+  // Long lists lead with the set-level views; only the first rows fit in the heat map.
+  const order = isMetab && human ? ["context", "molecules", "time", "overview", "bars"]
+    : large ? ["overview", "bars", "molecules", "time"] : ["molecules", "time", "overview", "bars"];
 
   return <>
     <div className="xp-filters">
@@ -373,16 +376,28 @@ export default function MotrpacExplorer() {
   const [tab, setTab] = useState(0);
   const resultsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { api.explorerExamples().then((r) => setExamples(r.examples)).catch(() => undefined); }, []);
+  // Examples and their saved results ship with the website, so they work without the API.
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}examples/index.json`).then((r) => r.ok ? r.json() : Promise.reject(r.status))
+      .then((r: { examples: ExplorerExample[] }) => setExamples(r.examples))
+      .catch(() => api.explorerExamples().then((r) => setExamples(r.examples)).catch(() => undefined));
+  }, []);
+  const show = (data: ExplorerResponse) => {
+    setResult({ kind: "ready", data });
+    setTab(Math.max(0, data.layers.findIndex((l) => l.available)));
+    window.setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+  };
   const run = () => {
-    const lists = KINDS.filter((k) => drafts[k.id].example || drafts[k.id].text.trim()).map((k) => drafts[k.id].example
+    const ready = KINDS.filter((k) => drafts[k.id].example || drafts[k.id].text.trim());
+    const lists = ready.map((k) => drafts[k.id].example
       ? { kind: k.id, example: drafts[k.id].example!.id } : { kind: k.id, text: drafts[k.id].text, name: drafts[k.id].name ?? `Your ${k.label.toLowerCase()}` });
     setResult({ kind: "loading" });
-    api.explorerAnalyse({ lists }).then((data) => {
-      setResult({ kind: "ready", data });
-      setTab(Math.max(0, data.layers.findIndex((l) => l.available)));
-      window.setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-    }).catch((e) => setResult({ kind: "error", message: errorText(e) }));
+    const live = () => api.explorerAnalyse({ lists }).then(show).catch((e) => setResult({ kind: "error", message: errorText(e) }));
+    const example = ready.length === 1 ? drafts[ready[0].id].example : null;
+    if (!example) { live(); return; }
+    // An example loads its saved result; only if that file is missing does it fall back to the live analysis.
+    fetch(`${import.meta.env.BASE_URL}examples/${example.id}.json`).then((r) => r.ok ? r.json() : Promise.reject(r.status))
+      .then((data: ExplorerResponse) => show(data)).catch(live);
   };
   const data = result.kind === "ready" ? result.data : null;
   const layer = data?.layers[tab];
@@ -397,7 +412,7 @@ export default function MotrpacExplorer() {
     {result.kind === "error" && <div className="lr-empty">{result.message}</div>}
     {data && <div ref={resultsRef}>
       <div className="xp-inputs">{data.inputs.map((i) => <div key={i.id} className="xp-input-summary">
-        <strong>{i.name}</strong>
+        <strong>{i.name}<em className={"xp-source" + (data.saved ? " is-saved" : "")}>{data.saved ? `Saved result · ${data.saved.generated_at}` : "Live analysis"}</em></strong>
         <span>{i.n_mapped} of {i.n_rows} matched{i.n_names && i.n_names !== i.n_mapped ? ` (${i.n_names} MoTrPAC names)` : ""}{i.directed ? " · with direction" : ""}{i.ranked ? " · ranked" : ""}</span>
         {i.unmapped.length > 0 && <details><summary>{i.unmapped.length}{i.unmapped.length === 50 ? "+" : ""} not found in MoTrPAC</summary><p>{i.unmapped.join(" · ")}</p></details>}
       </div>)}</div>

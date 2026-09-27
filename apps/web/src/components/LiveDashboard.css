@@ -172,3 +172,5 @@
 .xp-context .lr-tiles { width: 100%; max-width: 820px; }
 .lr-switch button:disabled { opacity: .4; cursor: not-allowed; }
 .xp-species { margin-right: 6px; }
+.xp-source { margin-left: 10px; padding: 2px 8px; border-radius: 999px; background: #eef3ee; color: #2f6b4f; font-style: normal; font-size: 11px; font-weight: 600; vertical-align: middle; }
+.xp-source.is-saved { background: var(--accent-soft); color: var(--accent); }
