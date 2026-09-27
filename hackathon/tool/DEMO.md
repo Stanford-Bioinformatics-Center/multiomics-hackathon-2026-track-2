@@ -7,48 +7,26 @@ Setup before the talk (from `hackathon/tool/`, env `~/miniconda3/envs/mprobe` on
 
 Numbers below are from the current build (`make all`); every one is in the reports' tables.
 
-**0:00. Gallery, first row: all disease signatures side by side (`mprobe compare`).**
-- Say: "Any disease signature in, MoTrPAC out, by layer and time. Blue = exercise pushes the disease genes back."
-- The two mitochondria-down diseases are opposed in a median 54% of columns, the others in 4%:
-  - type 2 diabetes (Mootha 2003) is opposed in 8 of 12 columns: human RNA EE 24 h t +10.7, rat gastrocnemius
-    protein F 8 wk t +11.6;
-  - PAH muscle (Malenfant 2015) in 5 of 12.
-- Heart failure, aging (Liu 2013), septic shock and PAH blood are flat.
-- Controls: Hostrup HIIT is red everywhere (same direction, t −9.1 in rat protein F 8 wk, as a positive control
-  should be); the random abundance-matched set is flat.
+**0:00. The app, the team's PAH analysis** (`marimo run app.py`; default example "PAH, 9 lower muscle proteins").
+- Time course tab: the team's rat plot, generalised. All nine proteins rise above sedentary by 8 weeks of training
+  (6 of 9 at FDR < 0.05, orange), while RNA (blue) barely moves for most: protein and RNA disagree.
+- "Do RNA and protein agree?": per gene, protein-only responses; the detection columns show every gene is well
+  measured in both assays, so this is not a detection artefact.
+- Switch "Exercise data" to Human: after one bout it is the reverse, RNA up at 24 h and protein flat.
+- Drag the FDR slider to 0.10: stars and classes update live.
 
-**0:30. PAH muscle report.**
-- Headline table:
-  - human RNA at EE 24 h is opposed (15/18 genes, t +4.2);
-  - human protein at RE 24 h goes the disease's way (2/19 opposed, t −4.1);
-  - rat gastrocnemius protein is opposed by week 4 (F 4 wk 16/19, t +4.8).
-- Section E sentence: "At EE–CON 24 h, RNA opposed 15/18 and protein 4/18; genome-wide RNA–protein agreement here is
-  ρ = 0.09."
-- Click a gene in the interactive grid: its trajectory in both layers.
-- Section G: the caveat block and the guardrails table.
+**1:15. Generalisable: pick another disease** in the Example menu, e.g. "Type 2 diabetes, skeletal muscle
+(Mootha 2003)": same page, 87 genes, 12 panels; or paste any list (`GENE,-1` per line).
+- "Is it specific?": each cell shows cameraPR t and the class-null percentile. PAH's nine proteins sit around the
+  75th–95th percentile of random mitochondrial sets: exercise raises mitochondria in general.
 
-**1:15. The specificity lesson, live.**
-- In the app, paste the ten-line random MitoCarta list from `examples/random_mito9.csv` (or run
-  `mprobe run --signature examples/random_mito9.csv --name demo`, about 15 s).
-- 7 of 9 random mitochondrial genes are opposed in rat protein F 8 wk: 99th–100th percentile of the abundance null,
-  but only the 31st percentile of the pathway-class null.
-- PAH at the same comparison: 91st percentile of the class null; type 2 diabetes: 98th.
-- Say: "Exercise raises mitochondria. The class null tells you whether your disease adds anything beyond its
-  pathway class."
+**2:00. Several diseases at once** (gallery first row, `mprobe compare`): mitochondria-down signatures (PAH, type 2
+diabetes) are opposed, heart failure / aging / sepsis are not; the positive control (HIIT proteome) moves the same way.
 
-**2:00. Discordance view, rat gastrocnemius** (gallery row "Layer discordance: rat SKM-GN", or
-`mprobe discord --species rat --tissue SKM-GN`):
-- timescale: RNA moves early, protein accumulates over weeks;
-- agreement by timepoint;
-- detection power: which layer responded is predicted with AUC 0.67 from detection alone (baseline mRNA,
-  proteomics missing values) vs 0.73 for the full model (shuffled labels 0.49). Say: "much of 'which layer
-  responded' is which assay could see the gene."
-- the three-layer pathway panel: TCA and other pathways in RNA, protein and metabolites (pools, not flux).
+**2:40. Discordance report** (gallery row "Layer discordance: rat SKM-GN", `mprobe discord`): per timepoint the
+share of each layer that changes, RNA–protein ρ, and the detection-power result (AUC 0.67 from detection alone vs
+0.73 full).
 
-**3:00. Library.**
-- `mprobe library query --signature examples/pah_muscle_malenfant2015.csv` ranks every MoTrPAC contrast:
-  - top opposed: rat vastus lateralis RNA, female 4 wk;
-  - top concordant: rat brown adipose RNA, male 8 wk.
-- `store/library/motrpac_library.gmt` loads into Enrichr-style tools.
-
-**3:30. README guardrails table.** Safe statement vs unsafe upgrade. End.
+**3:20. Library and the team's blood analysis**: `mprobe library query ...` ranks every MoTrPAC contrast;
+`mprobe run --signature examples/pah_blood_gse33463_ranked.csv.gz` reproduces the team's blood rank correlations and
+27 / 13 GO:BP concordance exactly. Close on the README guardrails table.

@@ -1,5 +1,14 @@
 [
  {
+  "name": "pah_muscle_lower9_malenfant2015",
+  "file": "pah_muscle_lower9_malenfant2015.csv",
+  "title": "PAH, 9 lower muscle proteins (Malenfant 2015; team rat pipeline input)",
+  "kind": "disease",
+  "tissue_hint": "muscle",
+  "description": "The nine downregulated proteins of Malenfant 2015 Table 2 exactly as the team's rat protein pipeline uses them (paper symbols ATP5L / ATP5B mapped through UniProt).",
+  "run_args": []
+ },
+ {
   "name": "pah_muscle_malenfant2015",
   "file": "pah_muscle_malenfant2015.csv",
   "title": "PAH, skeletal muscle proteome (Malenfant 2015)",

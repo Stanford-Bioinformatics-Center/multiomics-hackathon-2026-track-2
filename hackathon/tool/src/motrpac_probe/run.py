@@ -21,7 +21,7 @@ from .paths import OUT
 
 DEFAULTS = dict(cutoff=0.05, cap=4.0, nboot=1000, seed=20260926, nperm=2000, exact_symbols=False, context_groups=("phenotype",), min_n=10,
                 tissues=CORE_TISSUES, universe="all", pool_sets=(), pool_groups=(), sections=None)
-SECTIONS = ["coverage", "grid", "camera", "nulls", "layers", "pathways", "everywhere", "caveats", "sensitivity"]
+SECTIONS = ["timecourse", "coverage", "grid", "camera", "nulls", "layers", "pathways", "everywhere", "caveats", "sensitivity"]
 METAB_EXTRA_TISSUES = ("PLASMA", "BLOOD")   # metabolite signatures: also rat plasma and human blood
 PATHWAY_PANELS = [("SKM-GN", "rat"), ("VL", "human")]
 
@@ -255,6 +255,19 @@ def write(R, outdir, command="", toggles=None):
                 show.append((m.label.iloc[0], (m.rna.iloc[0], m.prot.iloc[0])))
         if len(d):
             svg["layers"] = fig("layers", figures.discordance(d, R["disc_genes"], show))
+        # time course per signature gene (rat gastrocnemius training; human vastus lateralis after one bout)
+        dirs = dict(zip(sig.shown, sig.shown_dirs))
+        for key, tis, sp in [("traj_rat", "SKM-GN", "rat"), ("traj_human", "VL", "human")]:
+            if R.get("metab_mode"):
+                break
+            Tt = core.trajectory_table(S, sig.shown, tis, species=sp, cutoff=cut)
+            if len(Tt):
+                gs = [g for g in sig.shown if g in set(Tt.gene)]
+                if len(gs) > 12:
+                    mx = Tt.groupby("gene").logFC.apply(lambda v: v.abs().max())
+                    gs = [g for g in gs if g in set(mx.nlargest(12).index)]
+                svg[key] = fig(key, figures.trajectories(Tt, gs, dirs, tis, species=sp))
+                tab(key, Tt)
         if R.get("ranked_mode"):
             ref = R["rank_all"].merge(S.cols.reset_index(drop=True)[["column_id", "dataset", "tissue", "layer", "kind"]], on="column_id")
             svg["rank_assoc"] = fig("rank_assoc", figures.rank_association(
@@ -666,6 +679,17 @@ def context(R, svg, tables, cw, fp, command, outdir):
 
     if R.get("ranked_mode"):
         sections[1:1] = ranked_sections(R, tables, cw, fp, T, F, num2, cut)
+    titems = [F(k, t, "Line = exercise effect per gene (log2 fold change vs sedentary rats / resting controls), band = "
+                      "95% CI from the published test; blue RNA, orange protein; filled point = BH FDR < "
+                      f"{cut}; dashed line = no change. Rat: female and male pooled by inverse-variance weighting. "
+                      "Up to 12 genes (largest effects); every gene is in the CSV.")
+              for k, t in [("traj_rat", "Each signature gene over 1–8 weeks of training (rat gastrocnemius)"),
+                           ("traj_human", "Each signature gene after one bout (human vastus lateralis; EE solid, "
+                                          "RE dashed)")] if k in svg]
+    if titems:
+        sections.insert(0, dict(id="timecourse", title="Time course of each signature gene, RNA and protein",
+                                intro=["The team's rat training-course plot, generalised to any signature, both "
+                                       "layers and both species."], items=titems))
 
     meta = [("Signature", sig.name), ("Genes counted", str(len(sig.genes))), ("Rows in file", str(n_in)),
             ("Run", dt.datetime.now().strftime("%Y-%m-%d %H:%M")), ("Store", store.store_hash()),

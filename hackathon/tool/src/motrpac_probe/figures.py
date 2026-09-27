@@ -262,3 +262,53 @@ def pathway_counts(S, sm):
     ax.legend(fontsize=8.5, frameon=False, loc="upper left", bbox_to_anchor=(0, -0.42), ncol=2)
     fig.tight_layout()
     return fig
+
+
+def trajectories(T, genes, dirs, tissue, max_genes=12, ncol=3, species=None, panel=(3.0, 2.0)):
+    """Small multiples, one panel per signature gene: the exercise effect over time in RNA and protein with 95% CI.
+    Dashed line at 0 = the sedentary (rat) or control (human) reference. Filled points: BH FDR < 0.05."""
+    genes = [g for g in genes if g in set(T.gene)][:max_genes]
+    n = max(1, len(genes))
+    nrow = int(np.ceil(n / ncol))
+    fig, axes = plt.subplots(nrow, ncol, figsize=(panel[0] * ncol, panel[1] * nrow + 0.6), squeeze=False)
+    dmap = dict(zip(*dirs)) if isinstance(dirs, tuple) else dirs
+    rat = (species or ("human" if tissue == "VL" else "rat")) == "rat"
+    for ax, g in zip(axes.flat, genes):
+        d = T[T.gene == g]
+        for (layer, series), s in d.groupby(["layer", "series"], sort=False):
+            s = s.sort_values("x")
+            col = LAYER_COLORS.get(layer, INK)
+            ls = "--" if series == "RE" else "-"
+            off = {"RNA": -0.08, "PROT": 0.08}.get(layer, 0) * (1 if rat else 0.6)
+            ax.fill_between(s.x + off, s.lo, s.hi, color=col, alpha=0.10, lw=0)
+            ax.plot(s.x + off, s.logFC, color=col, ls=ls, lw=1.8)
+            ax.scatter(s.x + off, s.logFC, s=28, zorder=3, color=[col if v else "white" for v in s.significant],
+                       edgecolor=col, lw=1.3)
+        ax.axhline(0, color="#1f4e79", lw=1.2, ls=(0, (4, 3)))
+        arrow = "down" if dmap.get(g, 0) < 0 else "up"
+        ax.set_title(f"{g}  ({arrow} in disease)", fontsize=11, loc="left")
+        if rat:
+            ax.set_xticks([1, 2, 4, 8])
+        else:
+            ax.set_xticks([0, 1, 2], ["15–45 min", "3.5–4 h", "24 h"], fontsize=9)
+        ax.tick_params(labelsize=9)
+    for ax in list(axes.flat)[n:]:
+        ax.axis("off")
+    for ax in axes[:, 0]:
+        ax.set_ylabel("log2 FC vs sedentary" if rat else "log2 FC vs control", fontsize=10)
+    if rat:
+        for ax in axes[-1, :]:
+            ax.set_xlabel("training (weeks)", fontsize=10)
+    from matplotlib.lines import Line2D
+    handles = [Line2D([], [], color=LAYER_COLORS["RNA"], lw=2, label="RNA"),
+               Line2D([], [], color=LAYER_COLORS["PROT"], lw=2, label="protein"),
+               Line2D([], [], color="#1f4e79", lw=1.2, ls=(0, (4, 3)), label="sedentary / control = 0"),
+               Line2D([], [], marker="o", color=INK, ls="", mfc=INK, label="BH FDR < 0.05"),
+               Line2D([], [], marker="o", color=INK, ls="", mfc="white", label="not significant")]
+    if not rat:
+        handles += [Line2D([], [], color=INK, lw=1.5, label="endurance (EE)"),
+                    Line2D([], [], color=INK, lw=1.5, ls="--", label="resistance (RE)")]
+    fig.legend(handles=handles, loc="lower center", ncol=min(len(handles), 4), fontsize=9.5, frameon=False,
+               bbox_to_anchor=(0.5, 0.0))
+    fig.tight_layout(rect=(0, 0.09 if len(handles) > 4 else 0.05, 1, 1))
+    return fig

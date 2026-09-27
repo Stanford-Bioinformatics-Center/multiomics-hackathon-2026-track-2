@@ -259,3 +259,59 @@ def spearman(x, y):
         return np.nan, np.nan, int(ok.sum())
     r, p = spearmanr(x[ok], y[ok])
     return float(r), float(p), int(ok.sum())
+
+
+# --------------------------------------------------------------------------------------------- time course
+RAT_WEEKS = [("1w", 1), ("2w", 2), ("4w", 4), ("8w", 8)]
+HUMAN_TIMES = [("15to45min", "15–45 min"), ("3.5to4h", "3.5–4 h"), ("24h", "24 h")]
+
+
+def trajectory_table(S, genes, tissue="SKM-GN", layers=("RNA", "PROT"), species=None, cutoff=0.05):
+    """Each gene's exercise effect over time, per layer, with a 95% CI (SE = |logFC / stat| from the published test).
+    Rat: trained vs sedentary at 1/2/4/8 weeks, female and male pooled by inverse-variance weighting (sedentary = 0).
+    Human: exercise vs control at 15-45 min, 3.5-4 h and 24 h, endurance (EE) and resistance (RE).
+    `significant` = BH FDR < cutoff in any contributing comparison."""
+    rows = []
+    rat = (species or ("human" if tissue == "VL" else "rat")) == "rat"
+    for layer in layers:
+        if rat:
+            points = [(w, x, [f"rat_train|{tissue}|{layer}|{s}_{w}" for s in "FM"], "trained, F+M pooled")
+                      for w, x in RAT_WEEKS]
+        else:
+            points = [(lab, i, [f"human_acute|{tissue}|{layer}|{g}_vs_CON_{t}"], g)
+                      for g in ("EE", "RE") for i, (t, lab) in enumerate(HUMAN_TIMES)]
+        for xlab, x, cids, series in points:
+            parts = [S.frame(c) for c in cids if c in S.pos]
+            if not parts:
+                continue
+            d = pd.concat(parts)
+            d = d[d.gene_symbol_human.isin(genes)][["gene_symbol_human", "logFC", "stat", "fdr_bh"]].copy()
+            d["se"] = (d.logFC / d.stat).abs()
+            for g, dd in d.dropna(subset=["se"]).groupby("gene_symbol_human", observed=True):
+                w = 1 / dd.se.clip(lower=1e-6) ** 2
+                m, se = float((w * dd.logFC).sum() / w.sum()), float(1 / np.sqrt(w.sum()))
+                rows.append(dict(gene=str(g), layer=layer, x=x, time=xlab, series=series, logFC=m, se=se,
+                                 lo=m - 1.96 * se, hi=m + 1.96 * se, fdr_min=float(dd.fdr_bh.min()),
+                                 significant=bool((dd.fdr_bh < cutoff).any())))
+    return pd.DataFrame(rows)
+
+
+def lookup_table(T, dirs):
+    """Readable gene x time table from trajectory_table: '+0.46*' (* = significant at the chosen FDR), plus the
+    direction relative to the disease at the last time point (opposed / same as disease)."""
+    if not len(T):
+        return pd.DataFrame()
+    t = T.copy()
+    t["cell"] = [f"{v:+.2f}{'*' if s else ''}" for v, s in zip(t.logFC, t.significant)]
+    t["col"] = (t.series.replace({"trained, F+M pooled": ""}) + " " + t.time).str.strip()
+    order = list(dict.fromkeys(t.sort_values(["series", "x"]).col))
+    w = t.pivot_table(index=["gene", "layer"], columns="col", values="cell", aggfunc="first")[order].reset_index()
+    last = t.sort_values(["series", "x"]).groupby(["gene", "layer"]).tail(1).set_index(["gene", "layer"])
+    lab = []
+    for g, l in zip(w.gene, w.layer):
+        v = last.loc[(g, l)]
+        opp = np.sign(v.logFC) * dirs.get(g, 0) < 0
+        lab.append(("opposed" if opp else "same as disease") + ("" if v.significant else " (n.s.)"))
+    w[f"Direction at {order[-1]}"] = lab
+    w["layer"] = w.layer.map(LAYER_WORDS).fillna(w.layer)
+    return w.rename(columns={"gene": "Gene", "layer": "Layer"})
