@@ -243,8 +243,10 @@ test.describe("R9 AC5 — browser-level point → evidence → source chain", ()
     // ── SOURCE ────────────────────────────────────────────────────────────────────────────────
     // The source-of-truth leg: (1) every measured feature carries a store-backed source_feature_id,
     // and (2) the report the page links to is the human-readable source that states the honest
-    // framing verbatim (the same string the API test asserts: "not evidence that exercise treats
-    // PAH"). Fetch the linked report from the browser and assert that source text is present.
+    // framing verbatim. The directed report is disease-agnostic (it is not PAH-specific), so it
+    // states the framing as "Cross-cohort association for hypothesis generation; not a disease
+    // treatment-effect test." (see export.render_report_html). Fetch the linked report from the
+    // browser and assert that source text is present.
     for (const f of measured.slice(0, 25)) {
       expect(f.source_feature_id, `feature ${f.evidence_id} resolves to a store source_feature_id`).toBeTruthy();
     }
@@ -255,7 +257,7 @@ test.describe("R9 AC5 — browser-level point → evidence → source chain", ()
     expect(reportResp.ok(), "the linked HTML report (source) must load").toBeTruthy();
     const reportText = await reportResp.text();
     expect(
-      reportText.includes("not evidence that exercise treats PAH"),
+      reportText.includes("not a disease treatment-effect test"),
       "the report source states the honest framing verbatim",
     ).toBeTruthy();
 

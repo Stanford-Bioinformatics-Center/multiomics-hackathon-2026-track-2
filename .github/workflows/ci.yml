@@ -49,7 +49,16 @@ jobs:
           pip install -e "../../apps/api[test]"
           pip install "fastapi>=0.110" "httpx>=0.27"
       - name: Fetch the prebuilt store
-        run: mprobe store fetch
+        # The store bundle is a release asset. In a private repo the unauthenticated
+        # releases/download URL used by `mprobe store fetch` returns HTTP 404, so download the
+        # asset with the authenticated gh CLI (GITHUB_TOKEN) and hand the local zip to the CLI —
+        # `store.fetch` accepts a local path and still verifies every file's sha256.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download mprobe-store-v1 --repo "$GITHUB_REPOSITORY" \
+            --pattern mprobe_store_v1.zip --dir "$RUNNER_TEMP" --clobber
+          mprobe store fetch --url "$RUNNER_TEMP/mprobe_store_v1.zip"
       - name: Engine tests (full-battery gate — EXACTLY 123 passed / 34 skipped)
         # R9 AC7/AC8: the verification battery is complete ONLY when the engine suite reports
         # EXACTLY 123 passed and 34 skipped. Any deviation (more/fewer passes, more/fewer skips,
@@ -120,7 +129,14 @@ jobs:
           pip install -e "../../apps/api[api,test]"
       - name: Fetch the prebuilt store
         working-directory: hackathon/tool
-        run: mprobe store fetch
+        # Authenticated download (see the python job's note): the private-repo release asset 404s
+        # over the unauthenticated URL, so fetch it with gh and pass the local zip to the CLI.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download mprobe-store-v1 --repo "$GITHUB_REPOSITORY" \
+            --pattern mprobe_store_v1.zip --dir "$RUNNER_TEMP" --clobber
+          mprobe store fetch --url "$RUNNER_TEMP/mprobe_store_v1.zip"
 
       # --- Node 22 + pnpm (matching the web job) ---
       - uses: pnpm/action-setup@v4
