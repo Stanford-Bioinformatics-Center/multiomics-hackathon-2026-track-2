@@ -2,6 +2,8 @@
 
 This repository compares **resting PAH measurements** with **acute endurance-exercise results in a separate, generally healthy MoTrPAC cohort**. It has two modules: skeletal-muscle proteins/RNA and PBMC/whole-blood RNA. The comparisons generate hypotheses; they do not test whether exercise treats PAH.
 
+**Generalized backend (Track 2).** [`generalized/README.md`](generalized/README.md) describes a reusable, disease-agnostic version of these analyses: it accepts any processed disease signature (IDs, effects, P values, tissue, species, contrast), matches it to compatible human or rat MoTrPAC layers and times with coverage/ambiguity audits and plots, and includes the within-MoTrPAC RNA–protein discordance catalog and predictive pilot. It needs the Python packages in `generalized/requirements.txt`. The numbered scripts below are preserved unchanged as the PAH worked example; the generalized package reruns them as five demo jobs (`generalized/examples/pah_jobs.example.json`).
+
 ## Run it
 
 Use Python 3.10 or newer and R 4.4 or newer. The Python scripts use only the standard library. The R scripts require `limma`, `dplyr`, and `MotrpacHumanPreSuspensionAnalysis` **2.0.8**, which carries MoTrPAC data collection **c2.0**. The [MoTrPAC package installation guide](https://github.com/MoTrPAC/MotrpacHumanPreSuspensionAnalysis#installation) explains which Bioconductor version goes with each R version. The local verification used R 4.4.2 and package 2.0.8 from official tag commit `b7695e540d1ee0c169c67732076b1da9574b98f7` (25 September 2026). Package 2.0.8 requires `MotrpacBicQC` 2.0.0 or newer. After setting up Bioconductor as described in the installation guide, install the pinned source with:

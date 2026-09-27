@@ -1,0 +1,63 @@
+{
+  "input": "C:\\Users\\vanes\\Downloads\\MoTrPAC\\generalization_staging\\discordance\\demo_reference_effects.csv.gz",
+  "tissue": "muscle",
+  "contrast_category": "EE-CON",
+  "contrast_type": "exercise_with_controls",
+  "target_time": "post_24_hr",
+  "earlier_times": [
+    "post_15_30_45_min",
+    "post_3.5_4_hr"
+  ],
+  "alpha": 0.05,
+  "min_effect": 0.2,
+  "equivalence_margin": 0.2,
+  "catalog_classes": {
+    "no_protein_measurement": 9228,
+    "indeterminate": 5642,
+    "rna_response_protein_equivalent": 285,
+    "no_rna_measurement": 255,
+    "supported_concordant": 1
+  },
+  "mapping_audit": {
+    "input_rows": 122652,
+    "selected_rows_before_mapping_checks": 122652,
+    "rows_with_missing_or_multi_token_mapping": 4803,
+    "ambiguous_feature_mapping_rows": 0,
+    "exact_duplicate_rows_removed": 0,
+    "usable_rows": 117849,
+    "chosen_times": [
+      "post_24_hr",
+      "post_15_30_45_min",
+      "post_3.5_4_hr"
+    ],
+    "source_package_versions": [
+      "2.0.8"
+    ]
+  },
+  "earlier_feature_coverage": {
+    "rna_early_1_log2_fc": 14972,
+    "ptm_early_1_site_minus_parent_maxabs": 2463,
+    "rna_early_2_log2_fc": 14972,
+    "ptm_early_2_site_minus_parent_maxabs": 2463
+  },
+  "model": {
+    "eligible_rows": 5586,
+    "eligible_genes": 5586,
+    "model_status": "fitted",
+    "temporal_features": [
+      "rna_early_1_log2_fc",
+      "ptm_early_1_site_minus_parent_maxabs",
+      "rna_early_2_log2_fc",
+      "ptm_early_2_site_minus_parent_maxabs"
+    ],
+    "rna_responsive_eligible_genes": 420,
+    "rna_responsive_evaluation": "reported_from_same_all-gene_out_of_fold_predictions"
+  },
+  "limitations": [
+    "Summary-level effects cannot establish participant-level RNA-protein covariance or causality.",
+    "Same-time q-values are adjusted within source assays; catalog classes are descriptive, not joint-FDR claims.",
+    "Site-minus-parent protein log2 FC is descriptive, not measured phosphosite occupancy.",
+    "One representative RNA/protein feature per gene or gene/UniProt is chosen by time coverage and abundance, never by response strength.",
+    "The temporal model is associative and its coefficients are not mechanistic rate estimates."
+  ]
+}
