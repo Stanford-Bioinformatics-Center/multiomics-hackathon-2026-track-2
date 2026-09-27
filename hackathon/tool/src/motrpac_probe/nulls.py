@@ -32,7 +32,7 @@ def _strata_abundance(S, cid, pos):
 
 def _strata_class(S, pos):
     genes = S.genes[S.gcode[pos]]
-    a = S.ann.reindex(genes)[CLASS_FLAGS].fillna(False).to_numpy(bool)
+    a = S.ann.reindex(genes)[CLASS_FLAGS].astype("boolean").fillna(False).to_numpy(bool)
     return a[:, 0] * 4 + a[:, 1] * 2 + a[:, 2] * 1
 
 

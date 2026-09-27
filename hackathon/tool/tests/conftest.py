@@ -21,7 +21,7 @@ from motrpac_probe import store as _store
 _store.ensure_store()            # fresh clone: download the public store once (MPROBE_NO_FETCH=1 to skip)
 HAVE_STORE = paths.CONTRASTS.exists()
 HAVE_HACKATHON = paths.JOIN.exists() and paths.DECK.exists()
-NEEDS_HACKATHON = ("paths.RAW", "paths.JOIN", "paths.DECK", "paths.HACK", "deck")   # names in a test's source
+NEEDS_HACKATHON = ("paths.RAW", "paths.JOIN", "paths.DECK", "paths.HACK", "deck", "RAW_METAB")   # names in a test's source
 
 
 def pytest_collection_modifyitems(config, items):

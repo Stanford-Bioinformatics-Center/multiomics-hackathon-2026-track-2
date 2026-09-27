@@ -220,7 +220,7 @@ def write(R, outdir, command="", toggles=None):
         sc[f"pct_{lab}"] = sc.column_id.map(d.pct_t)
         sc[f"stratum_{lab}"] = sc.column_id.map(d.stratum)
     sc["verdict"] = [verdict(t, q, cut) for t, q in zip(sc.camera_t, sc.camera_fdr)]
-    sc["early_flag"] = sc.column_id.map(S.cols.early_human_muscle).fillna(False).astype(bool)
+    sc["early_flag"] = sc.column_id.map(S.cols.early_human_muscle).astype("boolean").fillna(False).astype(bool)
     tab("column_scores", sc)
     tab("grid_long", R["grid"].assign(comparison=R["grid"].column_id.map(cw)))
     tab("nulls", nl.drop(columns=[c for c in nl.columns if c.startswith("_")]).assign(comparison=nl.column_id.map(cw)))
@@ -503,7 +503,7 @@ def context(R, svg, tables, cw, fp, command, outdir):
     nv = nv.rename(columns={"comparison": "Comparison", "camera_t": "Observed t", "median_abund": "Abundance null median t",
                             "pct_abund": "Abundance null percentile", "stratum_abund": "Abundance measure",
                             "median_class": "Class null median t", "pct_class": "Class null percentile"})
-    cls = S.ann.reindex(sig.genes)[nulls.CLASS_FLAGS].fillna(False)
+    cls = S.ann.reindex(sig.genes)[nulls.CLASS_FLAGS].astype("boolean").fillna(False)
     comp = (f"Signature composition (counted genes): {int(cls.mitocarta3.sum())} MitoCarta3.0, "
             f"{int(cls.go_any_complex.sum())} GO:CC complex subunits, {int(cls.secreted_proxy.sum())} secreted/"
             f"extracellular (GO:CC proxy), of {len(sig.genes)}.")
@@ -630,7 +630,7 @@ def context(R, svg, tables, cw, fp, command, outdir):
     myh = tables["fibre_markers"]
     mv = myh.assign(Comparison=myh.column_id.map(cw))[["Comparison", "MYH7", "MYH2", "MYH1", "MYH4"]].rename(columns={
         "MYH7": "MYH7 (type I)", "MYH2": "MYH2 (IIa)", "MYH1": "MYH1 (IIx)", "MYH4": "MYH4 (IIb)"})
-    n_contr = int(S.ann.reindex(sig.genes).go_contractile_fiber.fillna(False).sum())
+    n_contr = int(S.ann.reindex(sig.genes).go_contractile_fiber.astype("boolean").fillna(False).sum())
     cav = fixed_caveats() + [
         f"Human 15–45 min comparisons are flagged: a shared RNA + protein drop of myofibre programs with a rise of "
         f"blood-derived programs (NARRATIVE R2) means these columns partly measure biopsy composition. This "

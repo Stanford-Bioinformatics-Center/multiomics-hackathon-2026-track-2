@@ -128,9 +128,9 @@ def gene_properties(S, tissue, genes):
     from .store import GTEX_TISSUE
     gt = GTEX_TISSUE.get(tissue)
     p = pd.DataFrame(index=pd.Index(genes, name="gene"))
-    p["mitocarta3"] = ann.mitocarta3.fillna(False).astype(int).to_numpy()
-    p["stable_complex"] = ann.stable_complex.fillna(False).astype(int).to_numpy()
-    p["secreted"] = ann.secreted_proxy.fillna(False).astype(int).to_numpy()
+    p["mitocarta3"] = ann.mitocarta3.astype("boolean").fillna(False).astype(int).to_numpy()
+    p["stable_complex"] = ann.stable_complex.astype("boolean").fillna(False).astype(int).to_numpy()
+    p["secreted"] = ann.secreted_proxy.astype("boolean").fillna(False).astype(int).to_numpy()
     p["gtex_log2_tpm"] = np.log2(ann[f"gtex_tpm|{gt}"].to_numpy(float) + 1) if gt else np.nan
     # phosphosites: number of phospho features collapsed into the gene in this tissue (0 if in proteome only)
     c = S.cols

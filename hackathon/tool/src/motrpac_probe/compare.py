@@ -42,7 +42,7 @@ def compute(paths, titles=None, nboot=1000, seed=20260926, cutoff=0.05, kinds=No
         sc = core.score_columns(S, cids, sig, cutoff=cutoff).set_index("column_id")
         nl = nulls.run_nulls(S, cids, sig, B=nboot, seed=seed)
         ann = S.ann.reindex(sig.genes)
-        mito = float(ann.mitocarta3.fillna(False).mean()) if len(sig.genes) else np.nan
+        mito = float(ann.mitocarta3.astype("boolean").fillna(False).mean()) if len(sig.genes) else np.nan
         infl = S.gs.get("HALLMARK_INFLAMMATORY_RESPONSE", set()) | S.gs.get("HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION", set())
         for cid, lab in COLUMNS:
             a = nl[(nl.column_id == cid) & (nl.null == "abundance")].iloc[0]
