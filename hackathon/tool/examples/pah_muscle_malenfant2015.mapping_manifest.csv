@@ -1,0 +1,26 @@
+input_row,input_id,selected_symbol,selected_method,status,n_candidates,ambiguous,candidates
+0,NDUFA9,NDUFA9,human symbol,mapped,1,False,NDUFA9
+1,UQCRC2,UQCRC2,human symbol,mapped,1,False,UQCRC2
+2,UQCRC1,UQCRC1,human symbol,mapped,1,False,UQCRC1
+3,ATP5MG,ATP5MG,human symbol,mapped,1,False,ATP5MG
+4,ATP5F1B,ATP5F1B,human symbol,mapped,1,False,ATP5F1B
+5,IDH2,IDH2,human symbol,mapped,1,False,IDH2
+6,OGDH,OGDH,human symbol,mapped,1,False,OGDH
+7,SLC25A4,SLC25A4,human symbol,mapped,1,False,SLC25A4
+8,ECH1,ECH1,human symbol,mapped,1,False,ECH1
+9,GLO1,GLO1,human symbol,mapped,1,False,GLO1
+10,FBP2,FBP2,human symbol,mapped,1,False,FBP2
+11,PEBP1,PEBP1,human symbol,mapped,1,False,PEBP1
+12,ATP2A1,ATP2A1,human symbol,mapped,1,False,ATP2A1
+13,MYH1,MYH1,human symbol,mapped,1,False,MYH1
+14,MYH2,MYH2,human symbol,mapped,1,False,MYH2
+15,MYH7,MYH7,human symbol,mapped,1,False,MYH7
+16,MYLPF,MYLPF,human symbol,mapped,1,False,MYLPF
+17,APOA1,APOA1,human symbol,mapped,1,False,APOA1
+18,PDLIM3,PDLIM3,human symbol,mapped,1,False,PDLIM3
+19,CS,CS,human symbol,mapped,1,False,CS
+20,TFAM,TFAM,human symbol,mapped,1,False,TFAM
+21,PDHA1,PDHA1,human symbol,mapped,1,False,PDHA1
+22,PDHB,PDHB,human symbol,mapped,1,False,PDHB
+23,LDHA,LDHA,human symbol,mapped,1,False,LDHA
+24,LDHB,LDHB,human symbol,mapped,1,False,LDHB

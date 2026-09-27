@@ -8,11 +8,14 @@ traceable. Status: TODO / IN PROGRESS / DONE / BLOCKED.
 | R-ENG-1 | mprobe is the only scientific engine (no stats in API/React) | `hackathon/tool/src/motrpac_probe/*`; `apps/api` calls only | parity test (R-PAR-1) | IN PROGRESS |
 | R-BRANCH-1 | Integration branch off tool branch, merge main | git history (`09ae0d7`) | VERIFICATION.md | DONE |
 | R-IMP-1 | React imported via subtree, history preserved, LFS-independent | `apps/web/` | fresh-clone build (R-FC-1) | DONE |
-| R-FIX-1 | Full-19 fixture enriched (paper+canonical ids, ratio, log2fc, p-text, corrections) | `hackathon/tool/examples/pah_muscle_malenfant2015.csv` (+companion) | Table-2 validation (R-FIX-2) | TODO |
-| R-FIX-2 | Table-2 validation test for all 19 records | `hackathon/tool/tests/` | pytest | TODO |
-| R-FIX-3 | Lower-9 regression fixture unchanged | `examples/pah_muscle_lower9_malenfant2015.csv` | golden test | TODO |
-| R-MAP-1 | Mapper exposes all candidates before selection (no silent first-wins) | `signature.py` mapping | mapping-audit test | TODO |
-| R-MAP-2 | Mapping audit reconciles row counts before/after every join/collapse | audit module | reconciliation test | TODO |
+| R-FIX-1 | Full-19 fixture enriched (paper+canonical ids, ratio, log2fc, p-text, corrections) | `examples/pah_muscle_malenfant2015.provenance.csv` (companion) | `test_pah_fixture_table2.py` | DONE |
+| R-FIX-2 | Table-2 validation test for all 19 records | `tests/test_pah_fixture_table2.py` | pytest (8 tests) | DONE |
+| R-FIX-3 | Lower-9 regression fixture unchanged | `examples/pah_muscle_lower9_malenfant2015.csv` | `test_lower9_regression_fixture_unchanged` | DONE |
+| R-MAP-1 | Mapper exposes all candidates before selection (no silent first-wins) | `signature.candidates_for` / `mapping_audit` | `test_mapping_candidates.py` | DONE |
+| R-MAP-2 | Mapping audit reconciles row counts before/after every join/collapse | `signature.mapping_audit` | `test_audit_conserves_rows_with_duplicates` | DONE |
+| R-FIX-4 | Enrichment causes NO scientific drift (analysis.py byte-identical) | golden baseline diff | manual (VERIFICATION Gate 2) | DONE |
+| R-SENS-1 | Predefined sensitivity views (full19/lower9/upper10/fibre); planned not post-hoc | `examples/pah_muscle_sensitivity_views.json` | `test_sensitivity_views_partition_and_membership` | DONE |
+| R-MAN-1 | Committed mapping manifest for built-in fixture; uploads still need confirmation | `examples/*.mapping_manifest.{csv,json}` | manifest generation | DONE |
 | R-SVC-1 | `run_analysis(request)` returns JSON-safe typed response (no DataFrames/Store/Timer) | `apps/api` service | schema test | TODO |
 | R-SVC-2 | `_path` KeyError fixed via content-addressed input; no client file paths | service adapter | unit test | TODO |
 | R-SVC-3 | Deterministic run_id (content+params+family+cols+mapping+store+code+seed+schema) | service | unit test | TODO |

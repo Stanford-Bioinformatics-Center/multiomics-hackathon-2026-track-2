@@ -97,3 +97,21 @@ actions"), a stated judging criterion. Newest at the bottom.
 - **Reasons.** One generator, no hand-mirrored drift between Python and TypeScript.
 - **Alternatives rejected.** Hand-mirror Pydantic ↔ TS types — drifts silently.
 - **Consequences.** Type changes flow from one place; the client is regenerated in CI.
+
+## ADR-0007 — Enrich the fixture via a companion table; expose mapping candidates additively
+- **Context.** `signature.load()` consumes the fixture's `weight` column and has committed golden
+  outputs; editing the fixture risks scientific drift. Separately, `_maps()` does
+  `drop_duplicates("id")` (first-wins) and per-row mapping picks the first candidate — 176 Ensembl
+  ids in the released ID map resolve to >1 human symbol, so ambiguity is silently resolved.
+- **Decision.** (a) Add provenance as a *companion* CSV (`*.provenance.csv`) and leave
+  `pah_muscle_malenfant2015.csv` byte-identical; verified `python analysis.py` output is unchanged.
+  (b) Add `candidates_for()` and `mapping_audit()` that expose ALL candidates and conserve input-row
+  counts, WITHOUT modifying `map_genes()`/`load()` (so the scoring path and golden outputs are
+  untouched). The audit is what the mapping-confirmation gate will consume.
+- **Reasons.** Preserve the regression baseline and paper provenance simultaneously; make ambiguity
+  visible for researcher confirmation without changing the science.
+- **Alternatives rejected.** Editing the fixture in place (drift risk); changing `map_genes` to
+  return candidates (would alter the golden path).
+- **Consequences.** 12 new tests (Table-2 validation + mapping candidates + sensitivity partition);
+  full suite 122 passed / 34 skipped; no drift. New uploads still require interactive confirmation;
+  the built-in fixture ships a committed mapping manifest (all 25 rows unambiguous).

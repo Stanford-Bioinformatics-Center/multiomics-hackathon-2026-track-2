@@ -9,3 +9,4 @@ __pycache__/
 site/app/
 store/camera_pkg_gobp.csv.gz
 store/mprobe_store_v1.zip
+.venv/
