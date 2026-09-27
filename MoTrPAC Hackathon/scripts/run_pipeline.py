@@ -6,6 +6,7 @@ Examples:
 """
 
 import argparse
+import os
 import shutil
 import subprocess
 import sys
@@ -56,15 +57,23 @@ def main() -> None:
     parser.add_argument("--module", choices=("all", "muscle", "blood"),
                         default="all")
     parser.add_argument("--rscript", help="Path to Rscript, if it is not on PATH")
+    parser.add_argument("--r-library", help="Optional R library containing MoTrPAC 2.0.8")
     args = parser.parse_args()
     rscript = find_rscript(args.rscript)
+    run_env = os.environ.copy()
+    if args.r_library:
+        library = Path(args.r_library).expanduser().resolve()
+        if not library.is_dir():
+            raise FileNotFoundError(f"R library was not found at {library}")
+        run_env["R_LIBS"] = os.pathsep.join(
+            (str(library), run_env["R_LIBS"])) if run_env.get("R_LIBS") else str(library)
     steps = (MUSCLE if args.module == "muscle" else
              BLOOD if args.module == "blood" else MUSCLE + BLOOD)
     for index, name in enumerate(steps, 1):
         script = SCRIPTS / name
         executable = sys.executable if script.suffix == ".py" else rscript
         print(f"[{index}/{len(steps)}] {name}", flush=True)
-        subprocess.run((executable, str(script)), cwd=ROOT, check=True)
+        subprocess.run((executable, str(script)), cwd=ROOT, env=run_env, check=True)
     print("Pipeline completed successfully.", flush=True)
 
 

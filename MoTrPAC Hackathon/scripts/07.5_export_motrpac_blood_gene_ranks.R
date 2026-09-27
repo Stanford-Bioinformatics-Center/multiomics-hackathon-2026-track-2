@@ -16,11 +16,11 @@ project_root <- dirname(dirname(script_path))
 package_name <- "MotrpacHumanPreSuspensionAnalysis"
 if (!requireNamespace(package_name, quietly = TRUE) ||
     !requireNamespace("dplyr", quietly = TRUE)) {
-  stop("Install MotrpacHumanPreSuspensionAnalysis 0.2.4 and dplyr first.")
+  stop("Install MotrpacHumanPreSuspensionAnalysis 2.0.8 and dplyr first.")
 }
 package_version <- as.character(utils::packageVersion(package_name))
-if (package_version != "0.2.4") {
-  stop("Expected MotrpacHumanPreSuspensionAnalysis 0.2.4; found ",
+if (package_version != "2.0.8") {
+  stop("Expected MotrpacHumanPreSuspensionAnalysis 2.0.8; found ",
        package_version)
 }
 suppressPackageStartupMessages(library(MotrpacHumanPreSuspensionAnalysis))
@@ -74,6 +74,8 @@ ranked <- da %>%
          ensembl_gene, uniprot, feature_id, source_feature_count,
          logFC, z.std, abs_z, p_value, adj_p_value, rank_signed,
          rank_absolute, contrast_short)
+ranked$source_package_version <- package_version
+ranked$source_collection <- "c2.0"
 
 per_assay_time <- table(ranked$assay, ranked$Timepoint)
 if (nrow(ranked) != 110274L ||

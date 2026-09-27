@@ -15,8 +15,8 @@ if (!requireNamespace(package_name, quietly = TRUE)) {
   stop("Install MotrpacHumanPreSuspensionAnalysis before running this script.")
 }
 package_version <- as.character(utils::packageVersion(package_name))
-if (package_version != "0.2.4") {
-  stop("Expected MotrpacHumanPreSuspensionAnalysis 0.2.4; found ", package_version)
+if (package_version != "2.0.8") {
+  stop("Expected MotrpacHumanPreSuspensionAnalysis 2.0.8; found ", package_version)
 }
 suppressPackageStartupMessages(library(MotrpacHumanPreSuspensionAnalysis))
 
@@ -37,12 +37,13 @@ results <- results[keep, , drop = FALSE]
 if (nrow(results) != 16509L) stop("Unexpected number of 24-hour RNA features.")
 if (anyDuplicated(results$feature_id)) stop("Duplicate RNA feature IDs.")
 results$source_package_version <- package_version
+results$source_collection <- "c2.0"
 
 columns <- c(
   "tissue", "assay", "contrast_type", "contrast_category", "contrast", "contrast_short",
   "Timepoint", "feature_id", "gene_symbol", "ensembl_gene",
   "logFC", "z.std", "p_value", "adj_p_value", "full_model",
-  "source_package_version"
+  "source_package_version", "source_collection"
 )
 output <- results[, columns, drop = FALSE]
 output_dir <- file.path(project_root, "data", "processed")

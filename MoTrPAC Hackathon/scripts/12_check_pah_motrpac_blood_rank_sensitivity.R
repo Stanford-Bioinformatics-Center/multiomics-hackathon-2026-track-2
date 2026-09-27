@@ -7,7 +7,7 @@
 #
 # Inputs: outputs/PAH blood/ probe and gene rankings (script 07)
 #         data/processed/blood_gene_ranked.csv.gz (script 07.5 output)
-#         MotrpacHumanPreSuspensionAnalysis 0.2.4 GOBP memberships
+#         MotrpacHumanPreSuspensionAnalysis 2.0.8 GOBP memberships
 # Output: outputs/PAH blood/pah_motrpac_blood_rank_sensitivity.csv
 #
 # These checks test two specific analysis choices. They do not adjust for
@@ -21,11 +21,11 @@ output_dir <- file.path(project_root, "outputs", "PAH blood")
 
 package_name <- "MotrpacHumanPreSuspensionAnalysis"
 if (!requireNamespace(package_name, quietly = TRUE)) {
-  stop("Install MotrpacHumanPreSuspensionAnalysis 0.2.4 first.")
+  stop("Install MotrpacHumanPreSuspensionAnalysis 2.0.8 first.")
 }
 package_version <- as.character(utils::packageVersion(package_name))
-if (package_version != "0.2.4") {
-  stop("Expected MotrpacHumanPreSuspensionAnalysis 0.2.4; found ",
+if (package_version != "2.0.8") {
+  stop("Expected MotrpacHumanPreSuspensionAnalysis 2.0.8; found ",
        package_version)
 }
 

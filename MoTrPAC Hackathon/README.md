@@ -4,17 +4,17 @@ This repository compares **resting PAH measurements** with **acute endurance-exe
 
 ## Run it
 
-Use Python 3.10 or newer and R 4.4 or newer. The Python scripts use only the standard library. The R scripts require `limma`, `dplyr`, and `MotrpacHumanPreSuspensionAnalysis` **0.2.4**. The [MoTrPAC package installation guide](https://github.com/MoTrPAC/MotrpacHumanPreSuspensionAnalysis#installation) explains which Bioconductor version goes with each R version. The local verification used R 4.4.2, limma 3.62.2, and package 0.2.4. The local package source checkout is MoTrPAC commit `17a60dbe2e506c8ae912653a7bf979ff35656e6d` (20 July 2026). After setting up Bioconductor as described in that guide, the same source can be installed in R with:
+Use Python 3.10 or newer and R 4.4 or newer. The Python scripts use only the standard library. The R scripts require `limma`, `dplyr`, and `MotrpacHumanPreSuspensionAnalysis` **2.0.8**, which carries MoTrPAC data collection **c2.0**. The [MoTrPAC package installation guide](https://github.com/MoTrPAC/MotrpacHumanPreSuspensionAnalysis#installation) explains which Bioconductor version goes with each R version. The local verification used R 4.4.2 and package 2.0.8 from official tag commit `b7695e540d1ee0c169c67732076b1da9574b98f7` (25 September 2026). Package 2.0.8 requires `MotrpacBicQC` 2.0.0 or newer. After setting up Bioconductor as described in the installation guide, install the pinned source with:
 
 ```r
 BiocManager::install("limma")
-pak::pak("MoTrPAC/MotrpacHumanPreSuspensionAnalysis@17a60dbe2e506c8ae912653a7bf979ff35656e6d")
+pak::pak("MoTrPAC/MotrpacHumanPreSuspensionAnalysis@b7695e540d1ee0c169c67732076b1da9574b98f7")
 ```
 
 Check the installed version with:
 
 ```sh
-Rscript -e 'stopifnot(as.character(packageVersion("MotrpacHumanPreSuspensionAnalysis")) == "0.2.4")'
+Rscript -e 'stopifnot(as.character(packageVersion("MotrpacHumanPreSuspensionAnalysis")) == "2.0.8")'
 ```
 
 From this folder:
@@ -25,9 +25,17 @@ python scripts/run_pipeline.py --module muscle
 python scripts/run_pipeline.py --module blood
 ```
 
-The runner finds `Rscript` on `PATH` or in a standard Windows R installation. Use `--rscript /path/to/Rscript` if needed. Each numbered script also runs by itself. Run dependencies in the order below. The runner stops on the first error; it never downloads data or installs packages.
+The runner finds `Rscript` on `PATH` or in a standard Windows R installation. Use `--rscript /path/to/Rscript` if needed. If package 2.0.8 is installed in a separate library, pass `--r-library /path/to/R/library`. For this local project, the verified command is `python scripts/run_pipeline.py --r-library ../reference_code/R-library-c2`; that library is outside this portable folder and is not required when 2.0.8 is installed normally. Each numbered script also runs by itself. Run dependencies in the order below. The runner stops on the first error; it never downloads data or installs packages.
 
 The required GEO matrix, platform annotation, and curated PAH protein table are already in `data/`. The package supplies published MoTrPAC summaries and GO definitions. Script 07.5 regenerates `data/processed/blood_gene_ranked.csv.gz`; it is an input to scripts 08 and 12. The existing result files are grouped under `outputs/PAH protein/` and `outputs/PAH blood/` and are overwritten by a rerun.
+
+### MoTrPAC release update
+
+This folder was rerun on 26 September 2026 with collection c2.0. The [official 2.0.8 release notes](https://github.com/MoTrPAC/MotrpacHumanPreSuspensionAnalysis/blob/b7695e540d1ee0c169c67732076b1da9574b98f7/NEWS.md) describe corrected sample alignment in transcriptomics and Olink plus corrected averaging of repeated muscle proteomics measurements. The package-derived exports now identify both `source_package_version = 2.0.8` and `source_collection = c2.0`. Earlier c1.3 files are retained outside this portable folder in the local source project's `outputs/motrpac-c2-update/baseline-hackathon-c1.3/` backup.
+
+The exported muscle protein table grew from 18,591 to 18,633 rows, and the blood GO table from 28,368 to 28,374 rows. Across the 16,509 matched 24-hour muscle RNA rows, 326 fold-change signs flipped and 56 gained / 34 lost BH q < 0.05. Among 8,388 shared blood Olink gene-time rows, 656 signs flipped and 68 gained / 3 lost BH q < 0.05; the 101,844 matched blood RNA rows had no sign flips or BH threshold crossings. These are row-level changes in the separate healthy exercise cohort, not independent biological findings.
+
+The headline PAH comparisons hold: 9/9 matched muscle RNAs remain positive at 24 hours, seven pass BH q < 0.05, and none of the nine matched proteins passes BH q < 0.05 at the three sampled times. The blood rank-correlation signs and six-decimal values remain the same; the 40 jointly significant PAH/MoTrPAC GO set-time rows still divide into 27 same-direction and 13 opposite-direction results. Individual MoTrPAC estimates did change, so use these c2.0 outputs rather than mixing them with old c1.3 tables. For example, the broad muscle OXPHOS RNA result remains down early and up at 24 hours, but its BH q values are now 1.36 × 10⁻⁶ and 2.94 × 10⁻²⁰, respectively. These findings compare separate cohorts and do not measure an exercise effect in PAH patients.
 
 | Script | What it does | Main product |
 | --- | --- | --- |

@@ -6,7 +6,7 @@
 #   Rscript scripts/00_audit_pah_muscle_rna_timepoints.R
 #
 # Inputs: data/from paper/pah_lower_proteins_malenfant2015.csv and the published
-# MotrpacHumanPreSuspensionAnalysis 0.2.4 differential-analysis summaries.
+# MotrpacHumanPreSuspensionAnalysis 2.0.8 differential-analysis summaries.
 # No statistical model is fitted by this script. Each MoTrPAC BH q value was
 # calculated by the source package within its full tissue/assay/contrast set.
 
@@ -20,8 +20,8 @@ if (!requireNamespace(package_name, quietly = TRUE)) {
   stop("Install MotrpacHumanPreSuspensionAnalysis before running this script.")
 }
 package_version <- as.character(utils::packageVersion(package_name))
-if (package_version != "0.2.4") {
-  stop("Expected MotrpacHumanPreSuspensionAnalysis 0.2.4; found ", package_version)
+if (package_version != "2.0.8") {
+  stop("Expected MotrpacHumanPreSuspensionAnalysis 2.0.8; found ", package_version)
 }
 suppressPackageStartupMessages(library(MotrpacHumanPreSuspensionAnalysis))
 
