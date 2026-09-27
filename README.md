@@ -219,10 +219,12 @@ merged.
     the generalized `query_core` backend, and the discordance catalog / PTM-parent audit).
   - Root docs: WORKFLOWS, DECISIONS, VERIFICATION, METABOLOMICS, RUN_LOCAL, BOOTSTRAP,
     MERGE_PLAN, JUDGING_CRITERIA, HANDOFF_NEXT_FEATURES.
-- **Contributors & roles.** Jimmy Zhen, Nur-Taz Rahman, Sheng-Ya Wu, and additional
-  contributors (`dani`, `StanchPillow55`) across engineering, scientific analysis, and
-  documentation. _Specific per-person role assignments to be confirmed by the team before
-  submission._
+- **Contributors & roles.**
+  - ##### Sheng-Ye Wang: AI Engineer  
+  - ##### Christopher Thai: Team Lead
+  - ##### Bradley Haraguchi: Chief Developer 
+  - ##### Daniyal Rahman: Project Manager
+  - ##### Nur-Taz Rahman: Quality Assurance/Resident Mom
 - **License & citation.** MIT — see [LICENSE](LICENSE) (© 2026 Stanford Bioinformatics
   Center). Cite the MoTrPAC data releases and the external datasets listed in
   [Methods & provenance](#6-methods--provenance).
