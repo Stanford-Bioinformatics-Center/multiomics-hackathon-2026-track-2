@@ -115,3 +115,19 @@ actions"), a stated judging criterion. Newest at the bottom.
 - **Consequences.** 12 new tests (Table-2 validation + mapping candidates + sensitivity partition);
   full suite 122 passed / 34 skipped; no drift. New uploads still require interactive confirmation;
   the built-in fixture ships a committed mapping manifest (all 25 rows unambiguous).
+
+## ADR-0008 — Service wraps compute(); content-addressed input; run_id excludes presentation options
+- **Context.** `run.compute()` returns a dict with DataFrames, a Store, a Timer, and NaN/NumPy
+  values; `run.provenance()` reads `opts['_path']` which only `main_run` set (KeyError otherwise).
+- **Decision.** `apps/api` exposes `run_analysis(request) -> AnalysisResponse` that: (a) materializes
+  the signature to a temp file whose name embeds its sha256 (content-addressed; no client file
+  paths); (b) sets `R["opts"]["_path"]` to that file before calling `provenance()`; (c) extracts only
+  JSON-safe scalars (NaN/inf -> None, numpy -> python); (d) computes a deterministic `run_id` over
+  signature bytes + analysis params + ordered family column IDs + mapping/store/code versions + seed
+  + schema version, EXCLUDING presentation-only fields (include_nonsignificant, display filters).
+- **Reasons.** A stable, safe, serializable contract with real provenance; the run_id changes only
+  when the science changes; the path fix also closes a path-traversal hole.
+- **Alternatives rejected.** Shelling out to the `mprobe` CLI (opaque, unserializable, slow);
+  returning the raw compute() dict (non-serializable, leaks internals).
+- **Consequences.** 8 service tests; family size recorded as 52 (engine `core_cols`), not a hardcoded
+  53; headline q=0.0584 computed. The service is the single seam React (Gate 5) and Marimo call.

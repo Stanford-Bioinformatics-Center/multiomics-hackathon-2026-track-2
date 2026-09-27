@@ -16,10 +16,14 @@ traceable. Status: TODO / IN PROGRESS / DONE / BLOCKED.
 | R-FIX-4 | Enrichment causes NO scientific drift (analysis.py byte-identical) | golden baseline diff | manual (VERIFICATION Gate 2) | DONE |
 | R-SENS-1 | Predefined sensitivity views (full19/lower9/upper10/fibre); planned not post-hoc | `examples/pah_muscle_sensitivity_views.json` | `test_sensitivity_views_partition_and_membership` | DONE |
 | R-MAN-1 | Committed mapping manifest for built-in fixture; uploads still need confirmation | `examples/*.mapping_manifest.{csv,json}` | manifest generation | DONE |
-| R-SVC-1 | `run_analysis(request)` returns JSON-safe typed response (no DataFrames/Store/Timer) | `apps/api` service | schema test | TODO |
-| R-SVC-2 | `_path` KeyError fixed via content-addressed input; no client file paths | service adapter | unit test | TODO |
-| R-SVC-3 | Deterministic run_id (content+params+family+cols+mapping+store+code+seed+schema) | service | unit test | TODO |
-| R-PROV-1 | Provenance records all 53 column IDs, family size, n_tests, BH n, method, threshold, per-feature p/q/effect | `run.provenance` + service | provenance-completeness test | TODO |
+| R-SVC-1 | `run_analysis(request)` returns JSON-safe typed response (no DataFrames/Store/Timer) | `apps/api/.../service.py` | `test_runs_and_is_json_safe` | DONE |
+| R-SVC-2 | `_path` KeyError fixed via content-addressed input; no client file paths | `service._materialize_signature` | `test_path_keyerror_is_fixed_provenance_present`, `test_signature_rows_input_path_is_content_addressed` | DONE |
+| R-SVC-3 | Deterministic run_id (content+params+family+cols+mapping+store+code+seed+schema) | `service._run_id` | `test_run_id_deterministic_and_excludes_presentation_options` | DONE |
+| R-PROV-1 | Provenance records family column IDs, family size, n_tests, method, threshold, per-feature p/q/effect | `run.provenance` + `service` | `test_multiplicity_family_recorded` | DONE |
+| R-HEAD-1 (part) | Headline male rat SKM-GN prot 8wk = q=0.0584 (computed), not significant | `service._headline` | `test_headline_male_rat_skmgn_protein_8wk_not_significant` | DONE (service; UI in Gate 5) |
+| R-RUN-1 (part) | FDR threshold in run_id; include-nonsignificant NOT in run_id | `service._run_id` | `test_run_id_deterministic_...` | DONE (service; UI in Gate 5) |
+| R-LIN-1 (part) | evidence_id on every feature row; traces to a column | `service` FeatureEvidence | `test_features_have_lineage_and_trace_to_columns` | DONE (service; browser test Gate 5) |
+| R-UI-2 (part) | Both contrasts first-class; never "healthy gene set" | `service` ContrastPair | `test_guardrails_and_contrasts_present` | DONE (service; UI in Gate 5) |
 | R-CAT-1 | Catalog/availability from store.columns, not React constants; SKM-VL RNA-only fixed | `apps/api` catalog | availability test | TODO |
 | R-CAT-2 | Unsupported source species (mouse/other) disabled or explicit unsupported | catalog + UI | unit test | TODO |
 | R-LIN-1 | evidence_id, mapping_decision_id, selected+candidate features, aggregation method on every evidence row | service | point→source test (R-PTS-1) | TODO |

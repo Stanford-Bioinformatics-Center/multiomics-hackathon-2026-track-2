@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "motrpac-probe-service"
+version = "0.1.0"
+description = "UI-independent service adapter over the motrpac_probe engine (Exercise Signature Explorer backend)"
+requires-python = ">=3.11"
+# motrpac-probe is installed from ../../hackathon/tool (editable) in dev; not re-declared here to
+# avoid a second source of truth for the engine's own dependency pins.
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+api = ["fastapi>=0.110", "uvicorn>=0.29", "pydantic>=2.6"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["motrpac_probe_service*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

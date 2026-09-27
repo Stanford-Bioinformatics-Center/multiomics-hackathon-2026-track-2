@@ -1,0 +1,103 @@
+"""run_analysis(): JSON-safe typed response, _path fix, deterministic run_id, frozen family."""
+import json
+
+import pytest
+
+from motrpac_probe_service import AnalysisRequest, SignatureRow, run_analysis, SCHEMA_VERSION
+from motrpac_probe_service.schema import AnalysisResponse
+
+pytestmark = pytest.mark.skipif(
+    __import__("motrpac_probe.paths", fromlist=["CONTRASTS"]).CONTRASTS.exists() is False,
+    reason="no mprobe store: run `mprobe store fetch`")
+
+
+def _full19():
+    return AnalysisRequest(example_name="pah_muscle_malenfant2015", target_species="rat")
+
+
+def _to_jsonable(resp: AnalysisResponse):
+    from dataclasses import asdict
+    return asdict(resp)
+
+
+def test_runs_and_is_json_safe():
+    resp = run_analysis(_full19())
+    assert isinstance(resp, AnalysisResponse)
+    # the whole response must serialize with the stdlib json encoder (no DataFrame/Store/Timer/NaN/np)
+    text = json.dumps(_to_jsonable(resp), allow_nan=False)
+    assert len(text) > 1000
+    assert resp.schema_version == SCHEMA_VERSION
+    assert resp.status == "ok"
+    assert resp.n_counted_genes == 19
+    assert resp.n_input_rows == 25
+
+
+def test_path_keyerror_is_fixed_provenance_present():
+    resp = run_analysis(_full19())
+    # provenance() reads opts['_path']; if unfixed this whole call would have raised KeyError('_path')
+    assert "signature" in resp.provenance and "sha256_16" in resp.provenance["signature"]
+    assert resp.provenance["run_id"] == resp.run_id
+    assert "store" in resp.provenance and resp.provenance["store"]["contrasts_parquet_sha256_16"]
+
+
+def test_multiplicity_family_recorded():
+    resp = run_analysis(_full19())
+    fam = resp.multiplicity_family
+    assert fam.method == "BH"
+    assert fam.family_size == len(fam.column_ids) >= 40
+    assert fam.n_tests >= 1
+    assert fam.threshold == 0.05
+    # provenance mirrors it
+    assert resp.provenance["multiplicity_family"]["family_size"] == fam.family_size
+
+
+def test_headline_male_rat_skmgn_protein_8wk_not_significant():
+    resp = run_analysis(_full19())
+    h = resp.headline["male_rat_skm_gn_protein_8wk"]
+    assert h["n_opposed"] == 13 and h["n_measured"] == 19
+    assert abs(h["camera_t"] - 2.2295) < 1e-3
+    assert abs(h["camera_fdr_family"] - 0.0584) < 5e-4       # computed, not hardcoded
+    assert h["significant_at_threshold"] is False
+    assert h["interpretation"] in ("same direction", "no set-level shift")
+
+
+def test_run_id_deterministic_and_excludes_presentation_options():
+    a = run_analysis(_full19())
+    b = run_analysis(_full19())
+    assert a.run_id == b.run_id  # deterministic for identical inputs
+    # presentation-only options must NOT change the run_id
+    r_pres = AnalysisRequest(example_name="pah_muscle_malenfant2015", target_species="rat",
+                             include_nonsignificant=False, tissue="SKM-GN", sex="male", timepoint="8w")
+    assert run_analysis(r_pres).run_id == a.run_id
+    # an analysis parameter (FDR threshold) MUST change the run_id
+    r_fdr = AnalysisRequest(example_name="pah_muscle_malenfant2015", target_species="rat", fdr_threshold=0.10)
+    assert run_analysis(r_fdr).run_id != a.run_id
+
+
+def test_features_have_lineage_and_trace_to_columns():
+    resp = run_analysis(_full19())
+    col_ids = {c.column_id for c in resp.columns}
+    assert resp.features, "must return per-feature evidence"
+    for f in resp.features[:50]:
+        assert f.evidence_id.startswith(resp.run_id)
+        assert f.column_id in col_ids           # every feature row traces to a returned column
+        if f.measured:
+            assert f.opposed in (True, False)
+
+
+def test_guardrails_and_contrasts_present():
+    resp = run_analysis(_full19())
+    assert len(resp.guardrails) == 7 and all("safe" in g and "unsafe" in g for g in resp.guardrails)
+    assert "rat_train" in resp.contrasts
+    c = resp.contrasts["rat_train"]
+    assert c["exercise_numerator"] == "trained rat" and c["exercise_denominator"] == "sex-matched sedentary rat"
+    assert "healthy" not in c["exercise_numerator"].lower()  # never "healthy gene set"
+
+
+def test_signature_rows_input_path_is_content_addressed():
+    # supplying rows directly must not require a server file path and must still work
+    rows = [SignatureRow(gene_symbol="NDUFA9", direction="-1"),
+            SignatureRow(gene_symbol="MYH7", direction="1")]
+    resp = run_analysis(AnalysisRequest(signature_rows=rows, target_species="rat", signature_name="tiny"))
+    assert resp.status == "ok"
+    assert resp.n_counted_genes == 2

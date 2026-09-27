@@ -109,3 +109,35 @@ Fixture provenance / integrity notes:
   released ID map; new uploads still require interactive confirmation.
 - MYH1 correction recorded: paper prints Q9UKX2 (which is MYH2); canonical MYH1 = P12882. Both
   preserved. Isoform suffixes dropped for GLO1 (Q04760-2→Q04760) and ATP2A1 (O14983-2→O14983).
+
+### Gate 3 checkpoint — Scientific service run_analysis() (PASS)
+Files added:
+- `apps/api/motrpac_probe_service/{__init__,schema,service}.py` (the service adapter)
+- `apps/api/pyproject.toml`, `apps/api/README.md`, `apps/api/tests/test_service.py` (8 tests)
+
+Why:
+- One UI-independent entry point `run_analysis(request) -> AnalysisResponse` wrapping
+  `motrpac_probe.run.compute()`; performs no statistics; returns only JSON-safe values.
+- Content-addressed input (temp file named by sha256 of the signature bytes); the service never
+  accepts a client-supplied server path. This also fixes the confirmed KeyError('_path') by setting
+  `R["opts"]["_path"]` before calling `run.provenance()`.
+- Deterministic `run_id = sha256(signature bytes + analysis params + ordered family column IDs +
+  mapping version + store hash + code version + seed + schema version)[:24]`. Presentation-only
+  options (include_nonsignificant, display tissue/sex/timepoint) are excluded; FDR threshold is
+  included.
+- Multiplicity family reported from the engine's core columns; BH already applied across the whole
+  family inside compute(); the service never re-runs BH. Provenance records method, family_size,
+  n_tests, threshold, and all ordered column IDs.
+
+Verified numbers:
+- Family size = 52 columns (engine `core_cols`); n_tests = non-missing cameraPR tests.
+- Headline male rat SKM-GN protein 8 wk: camera_t = +2.2295, camera_p = 0.0258,
+  camera_fdr (52-col BH) = 0.0584 -> NOT significant at q<0.05; 13/19 opposed. COMPUTED by the
+  service and asserted to |.-0.0584|<5e-4 (not hardcoded).
+- run_id identical across repeated identical requests and across presentation-only changes;
+  differs when fdr_threshold changes 0.05 -> 0.10.
+- Whole response serializes with `json.dumps(..., allow_nan=False)`.
+
+Commands:
+- `pip install -e apps/api[test]` (editable, alongside the editable engine)
+- `python -m pytest apps/api/tests/test_service.py -v` -> 8 passed
