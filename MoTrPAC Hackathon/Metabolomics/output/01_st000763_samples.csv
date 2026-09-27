@@ -1,0 +1,219 @@
+sample_id,exercise,group,sex,setting,sample_num,pair_status
+S00021257,No,Borderline Pressures,Female,Cath,21257,rest in pair
+S00021258,Yes,Borderline Pressures,Female,Cath,21258,peak in pair
+S00021259,No,PAH,Female,Cath,21259,rest in pair
+S00021260,Yes,PAH,Female,Cath,21260,peak in pair
+S00021261,No,Normal Pressures,Female,Cath,21261,rest in pair
+S00021262,Yes,Normal Pressures,Female,Cath,21262,peak in pair
+S00021263,No,Normal Pressures,Female,Cath,21263,rest in pair
+S00021264,Yes,Normal Pressures,Female,Cath,21264,peak in pair
+S00021265,No,Borderline Pressures,Female,Cath,21265,rest in pair
+S00021266,Yes,Borderline Pressures,Female,Cath,21266,peak in pair
+S00021267,No,Borderline Pressures,Female,Cath,21267,rest in pair
+S00021268,Yes,Borderline Pressures,Female,Cath,21268,peak in pair
+S00021269,No,Borderline Pressures,Female,Cath,21269,rest in pair
+S00021270,Yes,Borderline Pressures,Female,Cath,21270,peak in pair
+S00021271,No,Borderline Pressures,Female,Cath,21271,rest in pair
+S00021272,Yes,Borderline Pressures,Female,Cath,21272,peak in pair
+S00021273,No,Healthy,Female,Non-invasive,21273,rest in pair
+S00021274,Yes,Healthy,Female,Non-invasive,21274,peak in pair
+S00021275,No,Healthy,Female,Non-invasive,21275,rest in pair
+S00021276,Yes,Healthy,Female,Non-invasive,21276,peak in pair
+S00021277,No,Healthy,Male,Non-invasive,21277,rest in pair
+S00021278,Yes,Healthy,Male,Non-invasive,21278,peak in pair
+S00021279,No,Borderline Pressures,Female,Cath,21279,rest in pair
+S00021280,Yes,Borderline Pressures,Female,Cath,21280,peak in pair
+S00021281,No,PAH,Female,Cath,21281,rest in pair
+S00021282,Yes,PAH,Female,Cath,21282,peak in pair
+S00021283,No,PAH,Female,Cath,21283,rest in pair
+S00021284,Yes,PAH,Female,Cath,21284,peak in pair
+S00021285,No,Borderline Pressures,Female,Cath,21285,rest in pair
+S00021286,Yes,Borderline Pressures,Female,Cath,21286,peak in pair
+S00021287,No,LowRisk,Female,Non-invasive,21287,rest in pair
+S00021288,Yes,LowRisk,Female,Non-invasive,21288,peak in pair
+S00021289,No,Normal Pressures,Male,Cath,21289,rest in pair
+S00021290,Yes,Normal Pressures,Male,Cath,21290,peak in pair
+S00021291,No,Borderline Pressures,Female,Cath,21291,rest in pair
+S00021292,Yes,Borderline Pressures,Female,Cath,21292,peak in pair
+S00021293,No,LowRisk,Female,Non-invasive,21293,rest in pair
+S00021294,Yes,LowRisk,Female,Non-invasive,21294,peak in pair
+S00021295,No,PAH,Female,Cath,21295,rest in pair
+S00021296,Yes,PAH,Female,Cath,21296,peak in pair
+S00021297,No,PAH,Female,Cath,21297,rest in pair
+S00021298,Yes,PAH,Female,Cath,21298,peak in pair
+S00021299,No,Normal Pressures,Female,Cath,21299,rest in pair
+S00021300,Yes,Normal Pressures,Female,Cath,21300,peak in pair
+S00021301,No,Borderline Pressures,Male,Cath,21301,rest in pair
+S00021302,Yes,Borderline Pressures,Male,Cath,21302,peak in pair
+S00021303,No,Normal Pressures,Female,Cath,21303,rest in pair
+S00021304,Yes,Normal Pressures,Female,Cath,21304,peak in pair
+S00021305,No,Borderline Pressures,Male,Cath,21305,rest in pair
+S00021306,Yes,Borderline Pressures,Male,Cath,21306,peak in pair
+S00021307,No,PAH,Female,Cath,21307,rest in pair
+S00021308,Yes,PAH,Female,Cath,21308,peak in pair
+S00021309,No,Healthy,Female,Non-invasive,21309,rest in pair
+S00021310,Yes,Healthy,Female,Non-invasive,21310,peak in pair
+S00021311,No,Healthy,Female,Non-invasive,21311,rest in pair
+S00021312,Yes,Healthy,Female,Non-invasive,21312,peak in pair
+S00021313,No,Healthy,Female,Non-invasive,21313,rest in pair
+S00021314,Yes,Healthy,Female,Non-invasive,21314,peak in pair
+S00021315,No,Healthy,Female,Non-invasive,21315,rest in pair
+S00021316,Yes,Healthy,Female,Non-invasive,21316,peak in pair
+S00021317,No,Healthy,Female,Non-invasive,21317,rest in pair
+S00021318,Yes,Healthy,Female,Non-invasive,21318,peak in pair
+S00021319,No,Healthy,Male,Non-invasive,21319,rest in pair
+S00021320,Yes,Healthy,Male,Non-invasive,21320,peak in pair
+S00021321,No,Healthy,Female,Non-invasive,21321,rest in pair
+S00021322,Yes,Healthy,Female,Non-invasive,21322,peak in pair
+S00021323,No,Healthy,Female,Non-invasive,21323,rest in pair
+S00021324,Yes,Healthy,Female,Non-invasive,21324,peak in pair
+S00021325,No,Healthy,Female,Non-invasive,21325,rest in pair
+S00021326,Yes,Healthy,Female,Non-invasive,21326,peak in pair
+S00021327,No,Healthy,Female,Non-invasive,21327,rest in pair
+S00021328,Yes,Healthy,Female,Non-invasive,21328,peak in pair
+S00021329,No,Healthy,Female,Non-invasive,21329,rest in pair
+S00021330,Yes,Healthy,Female,Non-invasive,21330,peak in pair
+S00021331,No,Healthy,Female,Non-invasive,21331,rest in pair
+S00021332,Yes,Healthy,Female,Non-invasive,21332,peak in pair
+S00021333,No,Healthy,Female,Non-invasive,21333,rest in pair
+S00021334,Yes,Healthy,Female,Non-invasive,21334,peak in pair
+S00021335,No,Healthy,Male,Non-invasive,21335,rest in pair
+S00021336,Yes,Healthy,Male,Non-invasive,21336,peak in pair
+S00021337,No,Healthy,Female,Non-invasive,21337,rest in pair
+S00021338,Yes,Healthy,Female,Non-invasive,21338,peak in pair
+S00021339,No,Healthy,Female,Non-invasive,21339,rest in pair
+S00021340,Yes,Healthy,Female,Non-invasive,21340,peak in pair
+S00021341,No,PAH,Female,Cath,21341,rest in pair
+S00021342,Yes,PAH,Female,Cath,21342,peak in pair
+S00021343,No,PAH,Female,Cath,21343,rest in pair
+S00021344,Yes,PAH,Female,Cath,21344,peak in pair
+S00021345,No,Borderline Pressures,Female,Cath,21345,rest in pair
+S00021346,Yes,Borderline Pressures,Female,Cath,21346,peak in pair
+S00021347,No,PAH,Male,Cath,21347,rest in pair
+S00021348,Yes,PAH,Male,Cath,21348,peak in pair
+S00021349,No,Borderline Pressures,Female,Cath,21349,rest in pair
+S00021350,Yes,Borderline Pressures,Female,Cath,21350,peak in pair
+S00021351,No,Normal Pressures,Female,Cath,21351,rest in pair
+S00021352,Yes,Normal Pressures,Female,Cath,21352,peak in pair
+S00021353,No,PAH,Female,Cath,21353,unpaired
+S00021354,No,Healthy,Male,Non-invasive,21354,rest in pair
+S00021355,Yes,Healthy,Male,Non-invasive,21355,peak in pair
+S00021356,No,Healthy,Female,Non-invasive,21356,rest in pair
+S00021357,Yes,Healthy,Female,Non-invasive,21357,peak in pair
+S00021358,No,Borderline Pressures,Female,Cath,21358,rest in pair
+S00021359,Yes,Borderline Pressures,Female,Cath,21359,peak in pair
+S00021360,No,PAH,Male,Cath,21360,rest in pair
+S00021361,Yes,PAH,Male,Cath,21361,peak in pair
+S00021362,No,Healthy,Female,Non-invasive,21362,rest in pair
+S00021363,Yes,Healthy,Female,Non-invasive,21363,peak in pair
+S00021364,No,Borderline Pressures,Female,Cath,21364,rest in pair
+S00021365,Yes,Borderline Pressures,Female,Cath,21365,peak in pair
+S00021366,No,LowRisk,Female,Non-invasive,21366,rest in pair
+S00021367,Yes,LowRisk,Female,Non-invasive,21367,peak in pair
+S00021368,No,Borderline Pressures,Female,Cath,21368,rest in pair
+S00021369,Yes,Borderline Pressures,Female,Cath,21369,peak in pair
+S00021370,No,Normal Pressures,Female,Cath,21370,rest in pair
+S00021371,Yes,Normal Pressures,Female,Cath,21371,peak in pair
+S00021372,No,LowRisk,Female,Non-invasive,21372,rest in pair
+S00021373,Yes,LowRisk,Female,Non-invasive,21373,peak in pair
+S00021374,No,Borderline Pressures,Male,Cath,21374,rest in pair
+S00021375,Yes,Borderline Pressures,Male,Cath,21375,peak in pair
+S00021376,No,LowRisk,Female,Non-invasive,21376,rest in pair
+S00021377,Yes,LowRisk,Female,Non-invasive,21377,peak in pair
+S00021378,No,Borderline Pressures,Female,Cath,21378,rest in pair
+S00021379,Yes,Borderline Pressures,Female,Cath,21379,peak in pair
+S00021380,No,Normal Pressures,Female,Cath,21380,rest in pair
+S00021381,Yes,Normal Pressures,Female,Cath,21381,peak in pair
+S00021382,No,LowRisk,Female,Non-invasive,21382,rest in pair
+S00021383,Yes,LowRisk,Female,Non-invasive,21383,peak in pair
+S00021384,No,PAH,Female,Cath,21384,rest in pair
+S00021385,Yes,PAH,Female,Cath,21385,peak in pair
+S00021386,No,PAH,Female,Cath,21386,unpaired
+S00021387,No,Healthy,Female,Non-invasive,21387,rest in pair
+S00021388,Yes,Healthy,Female,Non-invasive,21388,peak in pair
+S00021389,No,Healthy,Female,Non-invasive,21389,rest in pair
+S00021390,Yes,Healthy,Female,Non-invasive,21390,peak in pair
+S00021391,No,Healthy,Female,Non-invasive,21391,rest in pair
+S00021392,Yes,Healthy,Female,Non-invasive,21392,peak in pair
+S00021393,No,LowRisk,Female,Non-invasive,21393,rest in pair
+S00021394,Yes,LowRisk,Female,Non-invasive,21394,peak in pair
+S00021395,No,LowRisk,Female,Non-invasive,21395,rest in pair
+S00021396,Yes,LowRisk,Female,Non-invasive,21396,peak in pair
+S00021397,No,Healthy,Female,Non-invasive,21397,rest in pair
+S00021398,Yes,Healthy,Female,Non-invasive,21398,peak in pair
+S00021399,No,Healthy,Female,Non-invasive,21399,rest in pair
+S00021400,Yes,Healthy,Female,Non-invasive,21400,peak in pair
+S00021401,No,Healthy,Female,Non-invasive,21401,rest in pair
+S00021402,Yes,Healthy,Female,Non-invasive,21402,peak in pair
+S00021403,No,Healthy,Female,Non-invasive,21403,rest in pair
+S00021404,Yes,Healthy,Female,Non-invasive,21404,peak in pair
+S00021405,No,LowRisk,Male,Non-invasive,21405,rest in pair
+S00021406,Yes,LowRisk,Male,Non-invasive,21406,peak in pair
+S00021407,No,PAH,Female,Cath,21407,rest in pair
+S00021408,Yes,PAH,Female,Cath,21408,peak in pair
+S00021409,No,Normal Pressures,Female,Cath,21409,rest in pair
+S00021410,Yes,Normal Pressures,Female,Cath,21410,peak in pair
+S00021411,No,Borderline Pressures,Female,Cath,21411,rest in pair
+S00021412,Yes,Borderline Pressures,Female,Cath,21412,peak in pair
+S00021413,No,LowRisk,Female,Non-invasive,21413,rest in pair
+S00021414,Yes,LowRisk,Female,Non-invasive,21414,peak in pair
+S00021415,No,Healthy,Female,Non-invasive,21415,rest in pair
+S00021416,Yes,Healthy,Female,Non-invasive,21416,peak in pair
+S00021417,No,PAH,Male,Cath,21417,rest in pair
+S00021418,Yes,PAH,Male,Cath,21418,peak in pair
+S00021419,No,PAH,Female,Cath,21419,rest in pair
+S00021420,Yes,PAH,Female,Cath,21420,peak in pair
+S00021421,No,Normal Pressures,Female,Cath,21421,rest in pair
+S00021422,Yes,Normal Pressures,Female,Cath,21422,peak in pair
+S00021423,No,Healthy,Female,Non-invasive,21423,rest in pair
+S00021424,Yes,Healthy,Female,Non-invasive,21424,peak in pair
+S00021425,No,Healthy,Female,Non-invasive,21425,rest in pair
+S00021426,Yes,Healthy,Female,Non-invasive,21426,peak in pair
+S00021427,No,Healthy,Female,Non-invasive,21427,rest in pair
+S00021428,Yes,Healthy,Female,Non-invasive,21428,peak in pair
+S00021429,No,Healthy,Female,Non-invasive,21429,rest in pair
+S00021430,Yes,Healthy,Female,Non-invasive,21430,peak in pair
+S00021431,No,LowRisk,Female,Non-invasive,21431,rest in pair
+S00021432,Yes,LowRisk,Female,Non-invasive,21432,peak in pair
+S00021433,No,LowRisk,Female,Non-invasive,21433,rest in pair
+S00021434,Yes,LowRisk,Female,Non-invasive,21434,peak in pair
+S00021435,No,Healthy,Female,Non-invasive,21435,rest in pair
+S00021436,Yes,Healthy,Female,Non-invasive,21436,peak in pair
+S00021437,No,Healthy,Female,Non-invasive,21437,rest in pair
+S00021438,Yes,Healthy,Female,Non-invasive,21438,peak in pair
+S00021439,No,PAH,Female,Cath,21439,rest in pair
+S00021440,Yes,PAH,Female,Cath,21440,peak in pair
+S00021441,No,LowRisk,Female,Non-invasive,21441,rest in pair
+S00021442,Yes,LowRisk,Female,Non-invasive,21442,peak in pair
+S00021443,No,PAH,Female,Cath,21443,rest in pair
+S00021444,Yes,PAH,Female,Cath,21444,peak in pair
+S00021445,No,LowRisk,Female,Non-invasive,21445,rest in pair
+S00021446,Yes,LowRisk,Female,Non-invasive,21446,peak in pair
+S00021447,No,Borderline Pressures,Female,Cath,21447,rest in pair
+S00021448,Yes,Borderline Pressures,Female,Cath,21448,peak in pair
+S00021449,No,Borderline Pressures,Female,Cath,21449,rest in pair
+S00021450,Yes,Borderline Pressures,Female,Cath,21450,peak in pair
+S00021451,No,PAH,Female,Cath,21451,rest in pair
+S00021452,Yes,PAH,Female,Cath,21452,peak in pair
+S00021453,No,Borderline Pressures,Female,Cath,21453,rest in pair
+S00021454,Yes,Borderline Pressures,Female,Cath,21454,peak in pair
+S00021455,No,LowRisk,Female,Non-invasive,21455,rest in pair
+S00021456,Yes,LowRisk,Female,Non-invasive,21456,peak in pair
+S00021457,No,LowRisk,Female,Non-invasive,21457,rest in pair
+S00021458,Yes,LowRisk,Female,Non-invasive,21458,peak in pair
+S00021459,No,LowRisk,Female,Non-invasive,21459,rest in pair
+S00021460,Yes,LowRisk,Female,Non-invasive,21460,peak in pair
+S00021461,No,LowRisk,Female,Non-invasive,21461,rest in pair
+S00021462,Yes,LowRisk,Female,Non-invasive,21462,peak in pair
+S00021463,No,PAH,Female,Cath,21463,rest in pair
+S00021464,Yes,PAH,Female,Cath,21464,peak in pair
+S00021465,No,LowRisk,Female,Non-invasive,21465,rest in pair
+S00021466,Yes,LowRisk,Female,Non-invasive,21466,peak in pair
+S00021467,No,LowRisk,Female,Non-invasive,21467,rest in pair
+S00021468,Yes,LowRisk,Female,Non-invasive,21468,peak in pair
+S00021469,No,Healthy,Female,Non-invasive,21469,rest in pair
+S00021470,Yes,Healthy,Female,Non-invasive,21470,peak in pair
+S00021471,No,LowRisk,Female,Non-invasive,21471,rest in pair
+S00021472,Yes,LowRisk,Female,Non-invasive,21472,peak in pair
+S00021473,No,LowRisk,Male,Non-invasive,21473,rest in pair
+S00021474,Yes,LowRisk,Male,Non-invasive,21474,peak in pair

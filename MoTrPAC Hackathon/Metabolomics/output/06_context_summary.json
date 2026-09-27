@@ -1,0 +1,27 @@
+{
+  "motrpac_package_version": "2.0.8",
+  "label_rule": "BH q < 0.05 and |log2 FC| >= 0.5",
+  "lists": {
+    "st000763_rest_pah_vs_healthy": {
+      "n_hits": 41,
+      "n_hits_matched_blood": 27,
+      "n_background_matched_blood": 296,
+      "hit_labels": {
+        "stable in MoTrPAC blood": 24,
+        "no MoTrPAC blood match": 14,
+        "drifts without exercise": 3
+      },
+      "median_pah_effect_over_control_drift_hits": 3.0915882707822293,
+      "blood_exercise_sensitive": {
+        "hits_fraction": 0.0,
+        "background_fraction": 0.041,
+        "fisher_p": 0.609
+      },
+      "blood_control_drift": {
+        "hits_fraction": 0.111,
+        "background_fraction": 0.068,
+        "fisher_p": 0.424
+      }
+    }
+  }
+}
