@@ -203,13 +203,15 @@ def _map(kind: str, t: pd.DataFrame):
         m = signature.map_genes(work, _store().genes)
         ok = m[m.status == "mapped"]
         rows_mapped = len(ok)
-        out = pd.DataFrame({"name": ok.gene, "dir": ok._dir if directed else 0, "score": ok._score})
+        out = pd.DataFrame({"name": ok.gene, "dir": ok._dir if directed else 0, "score": ok._score, "row": ok.index})
         unmapped = m.loc[m.status.str.startswith("unmapped"), [c for c in ID_COLUMNS["genes"] if c in m.columns]]
     else:
         m = metab.map_metabolites(work)
         rows_mapped = int((m.status == "mapped").sum())
-        ok = m[m.status == "mapped"].assign(name=lambda d: d.refmet.str.split("; ")).explode("name")
-        out = pd.DataFrame({"name": ok.name, "dir": ok._dir if directed else 0, "score": ok._score})
+        # One input row can match several MoTrPAC spellings of the same metabolite (human "CAR 3:0",
+        # rat "CAR(3:0)"); `row` keeps them together as one molecule.
+        ok = m[m.status == "mapped"].assign(name=lambda d: d.refmet.str.split("; "), row=lambda d: d.index).explode("name")
+        out = pd.DataFrame({"name": ok.name, "dir": ok._dir if directed else 0, "score": ok._score, "row": ok.row})
         unmapped = m.loc[m.status.str.startswith("unmapped"), [c for c in ID_COLUMNS["metabolites"] if c in m.columns]]
     out = out.drop_duplicates("name").reset_index(drop=True)
     misses = [str(v) for v in unmapped.bfill(axis=1).iloc[:, 0].tolist()] if len(unmapped) else []
@@ -233,12 +235,14 @@ def _layer(layer_id: str, mapped: pd.DataFrame, directed: bool, ranked: bool) ->
     cols = _columns(codes)
     names = set(S.genes)
     present = mapped[mapped.name.isin(names)]
-    # Keep only molecules measured in at least one column of this layer.
-    measured = set()
-    for cid in cols.column_id:
-        pos = S.col(cid)
-        measured.update(S.genes[np.unique(S.gcode[pos])])
-    present = present[present.name.isin(measured)]
+    # Keep only molecules measured in at least one column of this layer; count where each spelling occurs.
+    seen_all, seen_human = {}, {}
+    for cid, species in zip(cols.column_id, cols.species):
+        for name in S.genes[np.unique(S.gcode[S.col(cid)])]:
+            seen_all[name] = seen_all.get(name, 0) + 1
+            if species == "human":
+                seen_human[name] = seen_human.get(name, 0) + 1
+    present = present[present.name.isin(seen_all.keys())]
     if present.empty:
         return {"id": layer_id, "label": label, "available": False, "n_matched": 0,
                 "reason": "None of the list's molecules is measured in this MoTrPAC layer."}
@@ -251,9 +255,15 @@ def _layer(layer_id: str, mapped: pd.DataFrame, directed: bool, ranked: bool) ->
             scores[f] = np.nan
     bh, bonf = _family(scores.camera_p.to_numpy(float))
 
-    order = present.reindex(present.score.abs().sort_values(ascending=False).index) if ranked else present
-    shown = order.head(MAX_ROWS_SHOWN)
-    shown_codes = S.codes(shown.name.tolist())
+    # One displayed molecule per input row; its label is the spelling used most in human data.
+    molecules = []
+    for row_id, group in present.groupby("row", sort=False):
+        names = sorted(group.name, key=lambda n: (-seen_human.get(n, 0), -seen_all.get(n, 0), n))
+        molecules.append({"name": names[0], "dir": int(group.dir.iloc[0]), "score": _f(group.score.iloc[0]),
+                          "codes": [int(c) for c in S.codes(names) if c >= 0]})
+    if ranked:
+        molecules.sort(key=lambda m: -abs(m["score"] or 0))
+    shown = molecules[:MAX_ROWS_SHOWN]
     score_map = dict(zip(present.name, present.score)) if ranked else {}
     columns, values = [], []
     for j, c in enumerate(cols.itertuples()):
@@ -277,8 +287,8 @@ def _layer(layer_id: str, mapped: pd.DataFrame, directed: bool, ranked: bool) ->
             row.update(rho=_f(rho), rho_p=_f(p), rho_n=n)
         columns.append(row)
         idx = {code: k for k, code in enumerate(g)}
-        for i, code in enumerate(shown_codes):
-            k = idx.get(code)
+        for i, mol in enumerate(shown):
+            k = next((idx[code] for code in mol["codes"] if code in idx), None)
             if k is None:
                 continue
             at = pos[k]
@@ -290,8 +300,8 @@ def _layer(layer_id: str, mapped: pd.DataFrame, directed: bool, ranked: bool) ->
         for c, q, b in zip(columns, rbh, rbonf):
             c.update(rho_bh=_f(q), rho_bonferroni=_f(b))
     return {
-        "id": layer_id, "label": label, "available": True, "n_matched": int(len(present)),
-        "molecules": [{"name": r.name, "dir": int(r.dir), "score": _f(r.score)} for r in shown.itertuples()],
+        "id": layer_id, "label": label, "available": True, "n_matched": len(molecules),
+        "molecules": [{k: v for k, v in m.items() if k != "codes"} for m in shown],
         "n_shown": int(len(shown)), "columns": columns, "values": values,
         "family": {"n_tests": int(np.isfinite(scores.camera_p.to_numpy(float)).sum()) if not ranked else len(columns),
                    "scope": f"every MoTrPAC {label.lower()} comparison (human and rat, all tissues, times and contrasts)",
