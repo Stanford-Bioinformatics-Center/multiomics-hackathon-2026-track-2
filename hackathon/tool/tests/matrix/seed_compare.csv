@@ -1,0 +1,11 @@
+signature,quantity,kind,max_abs_diff,median_abs_diff
+pah_muscle_malenfant2015,camera_t,non-null,0.0,0.0
+pah_muscle_malenfant2015,n_opposed,non-null,0.0,0.0
+pah_muscle_malenfant2015,sign_p,non-null,0.0,0.0
+pah_muscle_malenfant2015,pct_abund,null-based,5.100000000000001,0.5
+pah_muscle_malenfant2015,pct_class,null-based,4.800000000000011,1.0500000000000043
+random_matched,camera_t,non-null,0.0,0.0
+random_matched,n_opposed,non-null,0.0,0.0
+random_matched,sign_p,non-null,0.0,0.0
+random_matched,pct_abund,null-based,6.799999999999997,1.0500000000000007
+random_matched,pct_class,null-based,5.799999999999997,1.3499999999999979

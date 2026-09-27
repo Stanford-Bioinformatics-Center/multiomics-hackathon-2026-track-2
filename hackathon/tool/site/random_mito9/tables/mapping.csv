@@ -1,0 +1,10 @@
+gene_symbol,direction,group,weight,source,gene,map_method,direction_parsed,status,weight_num
+LARS2,-1,random MitoCarta,,"random draw of 9 MitoCarta3.0 genes, seed 20260928; all marked -1 (down in 'disease') on purpose",LARS2,human symbol,-1,mapped,
+STX17,-1,random MitoCarta,,"random draw of 9 MitoCarta3.0 genes, seed 20260928; all marked -1 (down in 'disease') on purpose",STX17,human symbol,-1,mapped,
+FUNDC1,-1,random MitoCarta,,"random draw of 9 MitoCarta3.0 genes, seed 20260928; all marked -1 (down in 'disease') on purpose",FUNDC1,human symbol,-1,mapped,
+MTRES1,-1,random MitoCarta,,"random draw of 9 MitoCarta3.0 genes, seed 20260928; all marked -1 (down in 'disease') on purpose",MTRES1,human symbol,-1,mapped,
+COX6A1,-1,random MitoCarta,,"random draw of 9 MitoCarta3.0 genes, seed 20260928; all marked -1 (down in 'disease') on purpose",COX6A1,human symbol,-1,mapped,
+MRPL35,-1,random MitoCarta,,"random draw of 9 MitoCarta3.0 genes, seed 20260928; all marked -1 (down in 'disease') on purpose",MRPL35,human symbol,-1,mapped,
+TIMM8A,-1,random MitoCarta,,"random draw of 9 MitoCarta3.0 genes, seed 20260928; all marked -1 (down in 'disease') on purpose",TIMM8A,human symbol,-1,mapped,
+AHCYL1,-1,random MitoCarta,,"random draw of 9 MitoCarta3.0 genes, seed 20260928; all marked -1 (down in 'disease') on purpose",AHCYL1,human symbol,-1,mapped,
+MMAA,-1,random MitoCarta,,"random draw of 9 MitoCarta3.0 genes, seed 20260928; all marked -1 (down in 'disease') on purpose",MMAA,human symbol,-1,mapped,

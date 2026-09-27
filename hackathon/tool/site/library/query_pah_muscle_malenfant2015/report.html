@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="motrpac_probe 0.1.0">
+<title>MoTrPAC library query: pah_muscle_malenfant2015</title>
+<style>
+/* motrpac_probe report stylesheet.
+   Every colour and font used by the HTML report lives here; edit the
+   variables below to restyle. Figure colours (matplotlib) are set in
+   render.py (ACCENT, INK, MUTED, DIVERGING, LAYER_COLORS). */
+
+:root {
+  --font-body: Inter, Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --ink: #111111;        /* body text */
+  --muted: #555555;      /* secondary text, captions */
+  --paper: #ffffff;      /* background */
+  --accent: #2f5f8a;     /* links, section rules, active states */
+  --rule: #d0d0d0;       /* table and hairline rules */
+  --rule-strong: #888888;
+  --zebra: #f6f6f6;      /* alternate table rows */
+  --flag: #fbf3dc;       /* rows flagged via row_class="flag" */
+  --missing: #c00000;    /* marker for an empty figure title or how-to-read line */
+  --size-base: 16px;
+  --size-table: 14px;
+  --size-small: 14px;
+  --content-width: 1280px;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  line-height: 1.5;
+}
+
+main, .page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 24px 32px 48px 32px;
+}
+
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+a:hover, a:focus { color: var(--ink); }
+
+h1 { font-size: 28px; font-weight: 600; margin: 8px 0 4px 0; line-height: 1.25; }
+h2 {
+  font-size: 22px; font-weight: 600; margin: 40px 0 12px 0;
+  padding-top: 10px; border-top: 2px solid var(--accent);
+}
+h3 { font-size: 17px; font-weight: 600; margin: 24px 0 8px 0; }
+
+p { margin: 6px 0 10px 0; max-width: 95ch; }
+
+code, pre, .mono { font-family: var(--font-mono); font-size: 14px; }
+
+/* Title block */
+.subtitle { color: var(--muted); font-size: 18px; margin: 0 0 8px 0; }
+.meta { color: var(--muted); font-size: var(--size-small); margin: 0 0 16px 0; line-height: 1.6; }
+.meta .k { color: var(--ink); font-weight: 600; }
+.meta .sep { color: var(--rule-strong); padding: 0 6px; }
+
+/* Headline block: first thing after the title */
+.headline { border-top: 2px solid var(--accent); border-bottom: 1px solid var(--rule); padding: 10px 0 12px 0; margin: 8px 0 12px 0; }
+.headline h2 { border-top: none; margin: 0 0 6px 0; padding-top: 0; }
+.headline .sentences { margin: 8px 0 0 0; padding-left: 20px; }
+.headline .sentences li { margin: 2px 0; }
+.first-screen { margin: 8px 0 0 0; padding: 0; list-style: none; color: var(--ink); }
+.first-screen li { margin: 2px 0; padding-left: 10px; border-left: 3px solid var(--rule-strong); }
+
+/* Table of contents: one line of anchor links */
+nav.toc { font-size: var(--size-small); margin: 16px 0 0 0; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+nav.toc .label { font-weight: 600; margin-right: 8px; }
+nav.toc a { margin-right: 14px; white-space: nowrap; }
+
+/* "How to read" lines and captions */
+.how { color: var(--ink); font-size: var(--size-small); margin: 4px 0 6px 0; }
+.how .lbl { font-weight: 600; }
+.caption { color: var(--muted); font-size: var(--size-small); margin: 2px 0 6px 0; }
+.intro p { margin: 4px 0 8px 0; }
+.missing { color: var(--missing); font-weight: 700; }
+.links { font-size: 13px; margin: 2px 0 12px 0; }
+.links a { margin-right: 10px; }
+.note { color: var(--muted); font-size: 13px; margin: 4px 0; }
+
+/* Figures */
+figure { margin: 12px 0 20px 0; padding: 0; break-inside: avoid; page-break-inside: avoid; }
+figure .fig-title { margin: 0 0 6px 0; }
+figure svg { display: block; width: 100%; max-width: 100%; height: auto; }
+figure.w-narrow svg { max-width: 720px; }
+.vega-target { width: 100%; max-width: 100%; overflow-x: auto; }
+.vega-fallback { display: none; }
+.vega-fallback.show { display: block; }
+
+/* Tables */
+.table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 6px 0 4px 0; }
+table {
+  border-collapse: collapse; font-size: var(--size-table);
+  font-variant-numeric: tabular-nums; min-width: 40%;
+}
+caption { caption-side: top; text-align: left; color: var(--muted); font-size: var(--size-small); padding: 0 0 4px 0; }
+th, td { padding: 4px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; text-align: left; }
+thead th { border-bottom: 2px solid var(--rule-strong); font-weight: 600; white-space: nowrap; background: var(--paper); }
+tbody tr:nth-child(even) td { background: var(--zebra); }
+tbody tr.flag td { background: var(--flag); }
+td.num, th.num { text-align: right; }
+td .na, .na { color: var(--muted); font-style: italic; }
+table.sortable thead th { cursor: pointer; user-select: none; }
+table.sortable thead th::after { content: ""; display: inline-block; width: 1.1em; color: var(--muted); }
+table.sortable thead th[aria-sort="ascending"]::after { content: " \2191"; color: var(--accent); }
+table.sortable thead th[aria-sort="descending"]::after { content: " \2193"; color: var(--accent); }
+table.sortable thead th:hover { color: var(--accent); }
+
+/* Collapsible blocks */
+details { margin: 10px 0; border-left: 2px solid var(--rule); padding: 2px 0 2px 12px; }
+details > summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+details[open] > summary { margin-bottom: 6px; }
+details pre { white-space: pre-wrap; word-break: break-word; background: var(--zebra); padding: 10px; margin: 6px 0; border: 1px solid var(--rule); }
+
+/* Glossary */
+dl.glossary { display: grid; grid-template-columns: max-content 1fr; column-gap: 20px; row-gap: 4px; margin: 8px 0; }
+dl.glossary dt { font-weight: 600; }
+dl.glossary dd { margin: 0; }
+
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); margin-top: 40px; padding-top: 8px; }
+
+/* Site index */
+.site-intro p { max-width: 95ch; }
+
+@media print {
+  nav.toc { display: none; }
+  body { font-size: 11pt; }
+  main, .page { max-width: none; padding: 0; }
+  figure, table, .table-wrap { break-inside: avoid; page-break-inside: avoid; }
+  h2, h3 { break-after: avoid; page-break-after: avoid; }
+  details { border-left: none; }
+  a { color: var(--ink); }
+  .vega-target { display: none; }
+  .vega-fallback { display: block; }
+}
+
+</style>
+</head>
+<body>
+<main>
+<header class="title-block">
+<h1>MoTrPAC library query: pah_muscle_malenfant2015</h1>
+<p class="subtitle">All MoTrPAC comparison columns ranked by opposition and concordance with the signature.</p><p class="meta"><span class="k">Signature:</span> pah_muscle_malenfant2015<span class="sep">|</span><span class="k">Counted genes:</span> 19 (10 up, 9 down)<span class="sep">|</span><span class="k">Columns:</span> 422<span class="sep">|</span><span class="k">Store:</span> d615c2f0b9aec182<span class="sep">|</span><span class="k">Run:</span> 2026-09-27T00:41:40</p>
+</header>
+
+<section class="headline" id="headline-block">
+<h2>Ranked MoTrPAC comparisons</h2>
+<p class="how"><span class="lbl">How to read:</span> Positive cameraPR t: the comparison moves the signature genes against the signature (opposed); negative: the same way (concordant). FDR is BH over all scored columns. Click a header to sort; the full rankings are in the CSV files.</p><h3>Most opposed (cameraPR t descending)</h3><div class="table-wrap"><table id="library_opposed" class="data sortable"><thead><tr><th scope="col" class="num">Rank</th><th scope="col">Comparison</th><th scope="col">Kind</th><th scope="col" class="num">Genes measured</th><th scope="col" class="num">Opposed</th><th scope="col" class="num">Same</th><th scope="col" class="num">Sign test p</th><th scope="col" class="num">cameraPR t</th><th scope="col" class="num">cameraPR FDR</th><th scope="col" class="num">Overlap opposed</th><th scope="col" class="num">Overlap same</th><th scope="col" class="num">Jaccard opposed</th><th scope="col" class="num">Jaccard same</th><th scope="col" class="num">UP set size</th><th scope="col" class="num">DOWN set size</th></tr></thead><tbody><tr><td class="num">1</td><td>Rat vastus lateralis RNA, female 4 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">15</td><td class="num">2</td><td class="num">0.0023</td><td class="num">6.42</td><td class="num">&lt; 0.001</td><td class="num">3</td><td class="num">0</td><td class="num">0.011</td><td class="num">0.000</td><td class="num">182</td><td class="num">78</td></tr><tr><td class="num">2</td><td>Rat gastrocnemius RNA, male 1 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">15</td><td class="num">2</td><td class="num">0.0023</td><td class="num">5.91</td><td class="num">&lt; 0.001</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">37</td><td class="num">13</td></tr><tr><td class="num">3</td><td>Rat gastrocnemius protein, female 4 wk</td><td>training vs sedentary</td><td class="num">19</td><td class="num">16</td><td class="num">3</td><td class="num">0.0044</td><td class="num">4.77</td><td class="num">&lt; 0.001</td><td class="num">3</td><td class="num">0</td><td class="num">0.016</td><td class="num">0.000</td><td class="num">147</td><td class="num">22</td></tr><tr><td class="num">4</td><td>Rat vastus lateralis RNA, female 8 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">13</td><td class="num">4</td><td class="num">0.049</td><td class="num">4.73</td><td class="num">&lt; 0.001</td><td class="num">3</td><td class="num">0</td><td class="num">0.007</td><td class="num">0.000</td><td class="num">250</td><td class="num">166</td></tr><tr><td class="num">5</td><td>Rat gastrocnemius RNA, female 4 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">16</td><td class="num">1</td><td class="num">&lt; 0.001</td><td class="num">4.72</td><td class="num">&lt; 0.001</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">1</td><td class="num">2</td></tr><tr><td class="num">6</td><td>Rat gastrocnemius protein, female 8 wk</td><td>training vs sedentary</td><td class="num">19</td><td class="num">15</td><td class="num">4</td><td class="num">0.019</td><td class="num">4.62</td><td class="num">&lt; 0.001</td><td class="num">8</td><td class="num">1</td><td class="num">0.020</td><td class="num">0.003</td><td class="num">250</td><td class="num">140</td></tr><tr><td class="num">7</td><td>Rat adrenal RNA, male 1 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">14</td><td class="num">3</td><td class="num">0.013</td><td class="num">4.58</td><td class="num">&lt; 0.001</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">250</td><td class="num">250</td></tr><tr><td class="num">8</td><td>Rat gastrocnemius RNA, female 8 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">16</td><td class="num">1</td><td class="num">&lt; 0.001</td><td class="num">4.54</td><td class="num">&lt; 0.001</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">8</td><td class="num">10</td></tr><tr><td class="num">9</td><td>Rat gastrocnemius RNA, male 4 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">13</td><td class="num">4</td><td class="num">0.049</td><td class="num">4.40</td><td class="num">&lt; 0.001</td><td class="num">1</td><td class="num">0</td><td class="num">0.011</td><td class="num">0.000</td><td class="num">38</td><td class="num">36</td></tr><tr><td class="num">10</td><td>Human vastus lateralis RNA, EE–CON 24 h</td><td>exercise vs control</td><td class="num">18</td><td class="num">15</td><td class="num">3</td><td class="num">0.0075</td><td class="num">4.16</td><td class="num">0.001</td><td class="num">2</td><td class="num">0</td><td class="num">0.004</td><td class="num">0.000</td><td class="num">250</td><td class="num">250</td></tr><tr><td class="num">11</td><td>Rat liver protein, female 4 wk</td><td>training vs sedentary</td><td class="num">19</td><td class="num">16</td><td class="num">3</td><td class="num">0.0044</td><td class="num">4.14</td><td class="num">0.001</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">1</td><td class="num">0</td></tr><tr><td class="num">12</td><td>Human subcutaneous adipose RNA, EE–RE 24 h</td><td>reference (non-exercise)</td><td class="num">15</td><td class="num">13</td><td class="num">2</td><td class="num">0.0074</td><td class="num">4.13</td><td class="num">0.001</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">0</td><td class="num">0</td></tr><tr><td class="num">13</td><td>Human subcutaneous adipose protein, CON post–pre 3.5–4 h</td><td>reference (non-exercise)</td><td class="num">19</td><td class="num">16</td><td class="num">3</td><td class="num">0.0044</td><td class="num">3.95</td><td class="num">0.002</td><td class="num">1</td><td class="num">0</td><td class="num">0.007</td><td class="num">0.000</td><td class="num">75</td><td class="num">60</td></tr><tr><td class="num">14</td><td>Rat subcutaneous WAT protein, male 2 wk</td><td>training vs sedentary</td><td class="num">19</td><td class="num">16</td><td class="num">3</td><td class="num">0.0044</td><td class="num">3.92</td><td class="num">0.0021</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">0</td><td class="num">0</td></tr><tr><td class="num">15</td><td>Rat liver protein, female 8 wk</td><td>training vs sedentary</td><td class="num">19</td><td class="num">15</td><td class="num">4</td><td class="num">0.019</td><td class="num">3.77</td><td class="num">0.0033</td><td class="num">2</td><td class="num">0</td><td class="num">0.012</td><td class="num">0.000</td><td class="num">94</td><td class="num">54</td></tr><tr><td class="num">16</td><td>Rat heart protein, male 2 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">13</td><td class="num">4</td><td class="num">0.049</td><td class="num">3.70</td><td class="num">0.0041</td><td class="num">2</td><td class="num">0</td><td class="num">0.016</td><td class="num">0.000</td><td class="num">83</td><td class="num">27</td></tr><tr><td class="num">17</td><td>Rat subcutaneous WAT protein, male 8 wk</td><td>training vs sedentary</td><td class="num">19</td><td class="num">17</td><td class="num">2</td><td class="num">&lt; 0.001</td><td class="num">3.69</td><td class="num">0.0041</td><td class="num">1</td><td class="num">0</td><td class="num">0.005</td><td class="num">0.000</td><td class="num">121</td><td class="num">50</td></tr><tr><td class="num">18</td><td>Rat vastus lateralis RNA, female 2 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">15</td><td class="num">2</td><td class="num">0.0023</td><td class="num">3.68</td><td class="num">0.0041</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">28</td><td class="num">25</td></tr><tr><td class="num">19</td><td>Human blood plasma protein (Olink), EE–RE 10 min</td><td>reference (non-exercise)</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.5</td><td class="num">3.67</td><td class="num">0.0043</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">0</td><td class="num">0</td></tr><tr><td class="num">20</td><td>Human vastus lateralis RNA, EE post–pre 24 h</td><td>exercise post−pre</td><td class="num">18</td><td class="num">16</td><td class="num">2</td><td class="num">0.0013</td><td class="num">3.60</td><td class="num">0.0049</td><td class="num">2</td><td class="num">0</td><td class="num">0.004</td><td class="num">0.000</td><td class="num">250</td><td class="num">250</td></tr><tr><td class="num">21</td><td>Rat heart RNA, male 2 wk</td><td>training vs sedentary</td><td class="num">16</td><td class="num">12</td><td class="num">4</td><td class="num">0.077</td><td class="num">3.58</td><td class="num">0.0051</td><td class="num">1</td><td class="num">0</td><td class="num">0.007</td><td class="num">0.000</td><td class="num">100</td><td class="num">24</td></tr><tr><td class="num">22</td><td>Rat gastrocnemius protein, female 1 wk</td><td>training vs sedentary</td><td class="num">19</td><td class="num">16</td><td class="num">3</td><td class="num">0.0044</td><td class="num">3.56</td><td class="num">0.0054</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">0</td><td class="num">7</td></tr><tr><td class="num">23</td><td>Rat subcutaneous WAT phosphosite, male 2 wk</td><td>training vs sedentary</td><td class="num">9</td><td class="num">9</td><td class="num">0</td><td class="num">0.0039</td><td class="num">3.49</td><td class="num">0.0064</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">2</td><td class="num">1</td></tr><tr><td class="num">24</td><td>Rat gastrocnemius RNA, male 8 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">14</td><td class="num">3</td><td class="num">0.013</td><td class="num">3.47</td><td class="num">0.0067</td><td class="num">1</td><td class="num">1</td><td class="num">0.002</td><td class="num">0.002</td><td class="num">192</td><td class="num">216</td></tr><tr><td class="num">25</td><td>Human subcutaneous adipose RNA, EE post–pre 24 h</td><td>exercise post−pre</td><td class="num">15</td><td class="num">9</td><td class="num">6</td><td class="num">0.61</td><td class="num">3.45</td><td class="num">0.0069</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">1</td><td class="num">18</td></tr></tbody></table></div><p class="note">Showing 25 of 422 rows; the full table is in <a href="tables/library_opposed.csv">tables/library_opposed.csv</a></p><h3>Most concordant (cameraPR t ascending)</h3><div class="table-wrap"><table id="library_concordant" class="data sortable"><thead><tr><th scope="col" class="num">Rank</th><th scope="col">Comparison</th><th scope="col">Kind</th><th scope="col" class="num">Genes measured</th><th scope="col" class="num">Opposed</th><th scope="col" class="num">Same</th><th scope="col" class="num">Sign test p</th><th scope="col" class="num">cameraPR t</th><th scope="col" class="num">cameraPR FDR</th><th scope="col" class="num">Overlap opposed</th><th scope="col" class="num">Overlap same</th><th scope="col" class="num">Jaccard opposed</th><th scope="col" class="num">Jaccard same</th><th scope="col" class="num">UP set size</th><th scope="col" class="num">DOWN set size</th></tr></thead><tbody><tr><td class="num">1</td><td>Rat brown adipose RNA, male 8 wk</td><td>training vs sedentary</td><td class="num">15</td><td class="num">5</td><td class="num">10</td><td class="num">0.3</td><td class="num">-5.26</td><td class="num">&lt; 0.001</td><td class="num">0</td><td class="num">7</td><td class="num">0.000</td><td class="num">0.014</td><td class="num">250</td><td class="num">250</td></tr><tr><td class="num">2</td><td>Rat adrenal RNA, female 8 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">4</td><td class="num">13</td><td class="num">0.049</td><td class="num">-4.35</td><td class="num">&lt; 0.001</td><td class="num">0</td><td class="num">1</td><td class="num">0.000</td><td class="num">0.002</td><td class="num">250</td><td class="num">250</td></tr><tr><td class="num">3</td><td>Rat brown adipose RNA, male 4 wk</td><td>training vs sedentary</td><td class="num">18</td><td class="num">1</td><td class="num">17</td><td class="num">&lt; 0.001</td><td class="num">-4.29</td><td class="num">&lt; 0.001</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">32</td><td class="num">19</td></tr><tr><td class="num">4</td><td>Human vastus lateralis protein, RE–CON 24 h</td><td>exercise vs control</td><td class="num">19</td><td class="num">2</td><td class="num">17</td><td class="num">&lt; 0.001</td><td class="num">-4.12</td><td class="num">0.001</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">16</td><td class="num">5</td></tr><tr><td class="num">5</td><td>Rat lung protein, male 8 wk</td><td>training vs sedentary</td><td class="num">19</td><td class="num">3</td><td class="num">16</td><td class="num">0.0044</td><td class="num">-3.84</td><td class="num">0.0028</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">38</td><td class="num">51</td></tr><tr><td class="num">6</td><td>Rat adrenal RNA, female 4 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">3</td><td class="num">14</td><td class="num">0.013</td><td class="num">-3.77</td><td class="num">0.0033</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">8</td><td class="num">10</td></tr><tr><td class="num">7</td><td>Rat brown adipose RNA, female 8 wk</td><td>training vs sedentary</td><td class="num">18</td><td class="num">6</td><td class="num">12</td><td class="num">0.24</td><td class="num">-3.62</td><td class="num">0.0048</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">15</td><td class="num">5</td></tr><tr><td class="num">8</td><td>Human subcutaneous adipose protein, EE–CON 3.5–4 h</td><td>exercise vs control</td><td class="num">19</td><td class="num">3</td><td class="num">16</td><td class="num">0.0044</td><td class="num">-3.54</td><td class="num">0.0057</td><td class="num">0</td><td class="num">2</td><td class="num">0.000</td><td class="num">0.006</td><td class="num">172</td><td class="num">131</td></tr><tr><td class="num">9</td><td>Rat brown adipose RNA, female 2 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">1</td><td class="num">16</td><td class="num">&lt; 0.001</td><td class="num">-3.53</td><td class="num">0.0057</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">37</td><td class="num">164</td></tr><tr><td class="num">10</td><td>Rat cortex RNA, male 8 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">5</td><td class="num">12</td><td class="num">0.14</td><td class="num">-3.36</td><td class="num">0.0091</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">0</td><td class="num">0</td></tr><tr><td class="num">11</td><td>Rat adrenal RNA, female 2 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">3</td><td class="num">14</td><td class="num">0.013</td><td class="num">-3.16</td><td class="num">0.016</td><td class="num">0</td><td class="num">1</td><td class="num">0.000</td><td class="num">0.002</td><td class="num">250</td><td class="num">250</td></tr><tr><td class="num">12</td><td>Human blood plasma protein (Olink), RE post–pre 10 min</td><td>exercise post−pre</td><td class="num">2</td><td class="num">0</td><td class="num">2</td><td class="num">0.5</td><td class="num">-3.06</td><td class="num">0.019</td><td class="num">0</td><td class="num">1</td><td class="num">0.000</td><td class="num">0.004</td><td class="num">187</td><td class="num">56</td></tr><tr><td class="num">13</td><td>Rat adrenal RNA, female 1 wk</td><td>training vs sedentary</td><td class="num">17</td><td class="num">5</td><td class="num">12</td><td class="num">0.14</td><td class="num">-2.86</td><td class="num">0.03</td><td class="num">1</td><td class="num">1</td><td class="num">0.002</td><td class="num">0.002</td><td class="num">250</td><td class="num">250</td></tr><tr><td class="num">14</td><td>Human blood plasma protein (Olink), RE–CON 10 min</td><td>exercise vs control</td><td class="num">2</td><td class="num">0</td><td class="num">2</td><td class="num">0.5</td><td class="num">-2.61</td><td class="num">0.054</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">28</td><td class="num">15</td></tr><tr><td class="num">15</td><td>Human subcutaneous adipose RNA, RE–CON 24 h</td><td>exercise vs control</td><td class="num">15</td><td class="num">5</td><td class="num">10</td><td class="num">0.3</td><td class="num">-2.58</td><td class="num">0.058</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">0</td><td class="num">0</td></tr><tr><td class="num">16</td><td>Human subcutaneous adipose protein, RE–CON 3.5–4 h</td><td>exercise vs control</td><td class="num">19</td><td class="num">5</td><td class="num">14</td><td class="num">0.064</td><td class="num">-2.56</td><td class="num">0.061</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">1</td><td class="num">1</td></tr><tr><td class="num">17</td><td>Rat brown adipose RNA, female 4 wk</td><td>training vs sedentary</td><td class="num">18</td><td class="num">3</td><td class="num">15</td><td class="num">0.0075</td><td class="num">-2.53</td><td class="num">0.066</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">12</td><td class="num">71</td></tr><tr><td class="num">18</td><td>Human vastus lateralis protein, EE–CON 15–45 min</td><td>exercise vs control</td><td class="num">19</td><td class="num">4</td><td class="num">15</td><td class="num">0.019</td><td class="num">-2.49</td><td class="num">0.072</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">1</td><td class="num">0</td></tr><tr><td class="num">19</td><td>Human vastus lateralis protein, RE post–pre 3.5–4 h</td><td>exercise post−pre</td><td class="num">19</td><td class="num">2</td><td class="num">17</td><td class="num">&lt; 0.001</td><td class="num">-2.44</td><td class="num">0.079</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">15</td><td class="num">6</td></tr><tr><td class="num">20</td><td>Rat brown adipose RNA, female 1 wk</td><td>training vs sedentary</td><td class="num">18</td><td class="num">5</td><td class="num">13</td><td class="num">0.096</td><td class="num">-2.38</td><td class="num">0.091</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">50</td><td class="num">128</td></tr><tr><td class="num">21</td><td>Human vastus lateralis phosphosite, RE–CON 24 h</td><td>exercise vs control</td><td class="num">16</td><td class="num">3</td><td class="num">13</td><td class="num">0.021</td><td class="num">-2.30</td><td class="num">0.11</td><td class="num">1</td><td class="num">3</td><td class="num">0.009</td><td class="num">0.027</td><td class="num">72</td><td class="num">23</td></tr><tr><td class="num">22</td><td>Human vastus lateralis protein, RE post–pre 24 h</td><td>exercise post−pre</td><td class="num">19</td><td class="num">3</td><td class="num">16</td><td class="num">0.0044</td><td class="num">-2.29</td><td class="num">0.11</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">70</td><td class="num">63</td></tr><tr><td class="num">23</td><td>Human vastus lateralis protein, RE–CON 15–45 min</td><td>exercise vs control</td><td class="num">19</td><td class="num">5</td><td class="num">14</td><td class="num">0.064</td><td class="num">-2.17</td><td class="num">0.14</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">0</td><td class="num">0</td></tr><tr><td class="num">24</td><td>Human subcutaneous adipose protein, EE–RE 3.5–4 h</td><td>reference (non-exercise)</td><td class="num">19</td><td class="num">6</td><td class="num">13</td><td class="num">0.17</td><td class="num">-2.09</td><td class="num">0.16</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">4</td><td class="num">8</td></tr><tr><td class="num">25</td><td>Rat lung phosphosite, female 1 wk</td><td>training vs sedentary</td><td class="num">10</td><td class="num">2</td><td class="num">8</td><td class="num">0.11</td><td class="num">-2.04</td><td class="num">0.18</td><td class="num">0</td><td class="num">0</td><td class="num">0.000</td><td class="num">0.000</td><td class="num">1</td><td class="num">2</td></tr></tbody></table></div><p class="note">Showing 25 of 422 rows; the full table is in <a href="tables/library_concordant.csv">tables/library_concordant.csv</a></p><ul class="sentences">
+<li>54 of 422 scored columns are opposed at cameraPR FDR &lt; 0.05 and 13 are concordant.</li>
+</ul>
+</section>
+
+<nav class="toc" aria-label="Contents"><span class="label">Contents</span><a href="#method">Method</a><a href="#provenance">Provenance</a></nav>
+
+<section id="method">
+<h2>Method</h2>
+<div class="text"><p>Every MoTrPAC comparison column in the store (all kinds and layers) is scored against the counted signature genes. cameraPR t is the signed pre-ranked CAMERA statistic on the column's full moderated-statistic ranking (inter-gene correlation 0.01); signature member statistics are multiplied by minus the signature direction, so a positive t means the column moves the signature genes against the signature (opposed) and a negative t means it moves them the same way (concordant). cameraPR FDR is Benjamini-Hochberg over all columns with a score. Opposed / Same count measured signature genes whose logFC sign is against / with the signature.</p><p>Set overlap uses the column's library sets: UP = genes with BH FDR &lt; 0.05 and logFC &gt; 0, DOWN = BH FDR &lt; 0.05 and logFC &lt; 0, each ranked by |stat| and capped at 250 genes. With sig_up / sig_down the counted signature genes by direction: Overlap same = |sig_up &cap; UP| + |sig_down &cap; DOWN|; Overlap opposed = |sig_up &cap; DOWN| + |sig_down &cap; UP|; both Jaccard indices divide by |(sig_up &cup; sig_down) &cup; (UP &cup; DOWN)|. Because the sets depend on the FDR cutoff and the cap, overlap is a coarse secondary view; the ranking uses cameraPR t (ties broken by the matching Jaccard index). Columns with fewer than 2 measured signature genes have no cameraPR t and are listed last.</p></div>
+
+</section>
+
+
+<section id="provenance">
+<h2>Provenance</h2>
+<details>
+<summary>Run provenance (JSON)</summary>
+<pre>{
+  &#34;command&#34;: &#34;mprobe library query --signature examples/pah_muscle_malenfant2015.csv&#34;,
+  &#34;signature&#34;: &#34;examples/pah_muscle_malenfant2015.csv&#34;,
+  &#34;n_counted_genes&#34;: 19,
+  &#34;n_columns&#34;: 422,
+  &#34;store_sha256_16&#34;: &#34;d615c2f0b9aec182&#34;,
+  &#34;store_built_at&#34;: &#34;2026-09-26T23:50:44&#34;,
+  &#34;MotrpacRatTraining6moData&#34;: &#34;2.0.0&#34;,
+  &#34;MotrpacHumanPreSuspensionAnalysis&#34;: &#34;2.0.8&#34;,
+  &#34;join_table_version&#34;: &#34;join_table_v2 (scripts/03_join.py v2: rat RNA on/off rows dropped)&#34;,
+  &#34;built_at&#34;: &#34;2026-09-27T00:41:40&#34;,
+  &#34;cutoff&#34;: 0.05,
+  &#34;cap&#34;: 250
+}</pre>
+</details>
+</section>
+
+<footer>Generated by motrpac_probe 0.1.0. Single-file report; figures are inline SVG, tables sort by clicking a column header.</footer>
+</main>
+<script>
+/* Sortable tables: click a header of any table.sortable. Numeric-aware;
+   "not measured" / NA sort last; "< 0.001" sorts as 0.0009. */
+(function () {
+  function key(td) {
+    var t = (td.getAttribute('data-sort') || td.textContent).trim();
+    if (t === '' || t === 'not measured' || t === 'NA') return [2, 0];
+    var m = t.match(/^<\s*([\d.]+)$/);
+    if (m) return [0, parseFloat(m[1]) * 0.9];
+    var s = t.replace(/,/g, '').replace(/−/g, '-').replace(/%$/, '');
+    if (/^[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?$/i.test(s)) return [0, parseFloat(s)];
+    return [1, t.toLowerCase()];
+  }
+  document.querySelectorAll('table.sortable').forEach(function (tb) {
+    if (!tb.tHead || !tb.tBodies.length) return;
+    var ths = tb.tHead.rows[0].cells;
+    Array.prototype.forEach.call(ths, function (th, i) {
+      th.tabIndex = 0;
+      function go() {
+        var asc = th.getAttribute('aria-sort') !== 'ascending';
+        Array.prototype.forEach.call(ths, function (h) { h.removeAttribute('aria-sort'); });
+        th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+        var body = tb.tBodies[0], rows = Array.prototype.slice.call(body.rows);
+        rows.sort(function (a, b) {
+          var x = key(a.cells[i]), y = key(b.cells[i]);
+          if (x[0] !== y[0]) return (x[0] === 2) ? 1 : (y[0] === 2) ? -1 : (asc ? x[0] - y[0] : y[0] - x[0]);
+          var c = x[1] < y[1] ? -1 : x[1] > y[1] ? 1 : 0;
+          return asc ? c : -c;
+        });
+        rows.forEach(function (r) { body.appendChild(r); });
+      }
+      th.addEventListener('click', go);
+      th.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+    });
+  });
+})();
+</script>
+</body>
+</html>

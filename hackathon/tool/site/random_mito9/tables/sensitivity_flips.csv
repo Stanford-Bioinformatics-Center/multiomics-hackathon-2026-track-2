@@ -1,0 +1,12 @@
+Comparison,Setting changed,Conclusion,Default,Alternative
+"Human vastus lateralis RNA, EE–CON 24 h",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Human vastus lateralis protein, RE–CON 24 h",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,same direction
+"Rat gastrocnemius RNA, male 2 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat gastrocnemius protein, female 4 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat gastrocnemius protein, female 8 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat vastus lateralis RNA, female 1 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat vastus lateralis RNA, female 4 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat vastus lateralis RNA, female 8 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat heart protein, female 1 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat heart protein, female 2 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat heart protein, female 4 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift

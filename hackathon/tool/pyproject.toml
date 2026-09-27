@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "motrpac-probe"
+version = "0.1.0"
+description = "Probe MoTrPAC exercise contrasts with any disease signature, by omic layer and time"
+requires-python = ">=3.11"
+dependencies = ["pandas", "numpy", "scipy", "matplotlib", "jinja2", "pyarrow"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+mprobe = "motrpac_probe.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+motrpac_probe = ["templates/*", "vendor/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

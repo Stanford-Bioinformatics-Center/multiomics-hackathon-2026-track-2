@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="motrpac_probe 0.1.0">
+<title>MoTrPAC discordance: Human vastus lateralis</title>
+<style>
+/* motrpac_probe report stylesheet.
+   Every colour and font used by the HTML report lives here; edit the
+   variables below to restyle. Figure colours (matplotlib) are set in
+   render.py (ACCENT, INK, MUTED, DIVERGING, LAYER_COLORS). */
+
+:root {
+  --font-body: Inter, Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --ink: #111111;        /* body text */
+  --muted: #555555;      /* secondary text, captions */
+  --paper: #ffffff;      /* background */
+  --accent: #2f5f8a;     /* links, section rules, active states */
+  --rule: #d0d0d0;       /* table and hairline rules */
+  --rule-strong: #888888;
+  --zebra: #f6f6f6;      /* alternate table rows */
+  --flag: #fbf3dc;       /* rows flagged via row_class="flag" */
+  --missing: #c00000;    /* marker for an empty figure title or how-to-read line */
+  --size-base: 16px;
+  --size-table: 14px;
+  --size-small: 14px;
+  --content-width: 1280px;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  line-height: 1.5;
+}
+
+main, .page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 24px 32px 48px 32px;
+}
+
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+a:hover, a:focus { color: var(--ink); }
+
+h1 { font-size: 28px; font-weight: 600; margin: 8px 0 4px 0; line-height: 1.25; }
+h2 {
+  font-size: 22px; font-weight: 600; margin: 40px 0 12px 0;
+  padding-top: 10px; border-top: 2px solid var(--accent);
+}
+h3 { font-size: 17px; font-weight: 600; margin: 24px 0 8px 0; }
+
+p { margin: 6px 0 10px 0; max-width: 95ch; }
+
+code, pre, .mono { font-family: var(--font-mono); font-size: 14px; }
+
+/* Title block */
+.subtitle { color: var(--muted); font-size: 18px; margin: 0 0 8px 0; }
+.meta { color: var(--muted); font-size: var(--size-small); margin: 0 0 16px 0; line-height: 1.6; }
+.meta .k { color: var(--ink); font-weight: 600; }
+.meta .sep { color: var(--rule-strong); padding: 0 6px; }
+
+/* Headline block: first thing after the title */
+.headline { border-top: 2px solid var(--accent); border-bottom: 1px solid var(--rule); padding: 10px 0 12px 0; margin: 8px 0 12px 0; }
+.headline h2 { border-top: none; margin: 0 0 6px 0; padding-top: 0; }
+.headline .sentences { margin: 8px 0 0 0; padding-left: 20px; }
+.headline .sentences li { margin: 2px 0; }
+.first-screen { margin: 8px 0 0 0; padding: 0; list-style: none; color: var(--ink); }
+.first-screen li { margin: 2px 0; padding-left: 10px; border-left: 3px solid var(--rule-strong); }
+
+/* Table of contents: one line of anchor links */
+nav.toc { font-size: var(--size-small); margin: 16px 0 0 0; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+nav.toc .label { font-weight: 600; margin-right: 8px; }
+nav.toc a { margin-right: 14px; white-space: nowrap; }
+
+/* "How to read" lines and captions */
+.how { color: var(--ink); font-size: var(--size-small); margin: 4px 0 6px 0; }
+.how .lbl { font-weight: 600; }
+.caption { color: var(--muted); font-size: var(--size-small); margin: 2px 0 6px 0; }
+.intro p { margin: 4px 0 8px 0; }
+.missing { color: var(--missing); font-weight: 700; }
+.links { font-size: 13px; margin: 2px 0 12px 0; }
+.links a { margin-right: 10px; }
+.note { color: var(--muted); font-size: 13px; margin: 4px 0; }
+
+/* Figures */
+figure { margin: 12px 0 20px 0; padding: 0; break-inside: avoid; page-break-inside: avoid; }
+figure .fig-title { margin: 0 0 6px 0; }
+figure svg { display: block; width: 100%; max-width: 100%; height: auto; }
+figure.w-narrow svg { max-width: 720px; }
+.vega-target { width: 100%; max-width: 100%; overflow-x: auto; }
+.vega-fallback { display: none; }
+.vega-fallback.show { display: block; }
+
+/* Tables */
+.table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 6px 0 4px 0; }
+table {
+  border-collapse: collapse; font-size: var(--size-table);
+  font-variant-numeric: tabular-nums; min-width: 40%;
+}
+caption { caption-side: top; text-align: left; color: var(--muted); font-size: var(--size-small); padding: 0 0 4px 0; }
+th, td { padding: 4px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; text-align: left; }
+thead th { border-bottom: 2px solid var(--rule-strong); font-weight: 600; white-space: nowrap; background: var(--paper); }
+tbody tr:nth-child(even) td { background: var(--zebra); }
+tbody tr.flag td { background: var(--flag); }
+td.num, th.num { text-align: right; }
+td .na, .na { color: var(--muted); font-style: italic; }
+table.sortable thead th { cursor: pointer; user-select: none; }
+table.sortable thead th::after { content: ""; display: inline-block; width: 1.1em; color: var(--muted); }
+table.sortable thead th[aria-sort="ascending"]::after { content: " \2191"; color: var(--accent); }
+table.sortable thead th[aria-sort="descending"]::after { content: " \2193"; color: var(--accent); }
+table.sortable thead th:hover { color: var(--accent); }
+
+/* Collapsible blocks */
+details { margin: 10px 0; border-left: 2px solid var(--rule); padding: 2px 0 2px 12px; }
+details > summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+details[open] > summary { margin-bottom: 6px; }
+details pre { white-space: pre-wrap; word-break: break-word; background: var(--zebra); padding: 10px; margin: 6px 0; border: 1px solid var(--rule); }
+
+/* Glossary */
+dl.glossary { display: grid; grid-template-columns: max-content 1fr; column-gap: 20px; row-gap: 4px; margin: 8px 0; }
+dl.glossary dt { font-weight: 600; }
+dl.glossary dd { margin: 0; }
+
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); margin-top: 40px; padding-top: 8px; }
+
+/* Site index */
+.site-intro p { max-width: 95ch; }
+
+@media print {
+  nav.toc { display: none; }
+  body { font-size: 11pt; }
+  main, .page { max-width: none; padding: 0; }
+  figure, table, .table-wrap { break-inside: avoid; page-break-inside: avoid; }
+  h2, h3 { break-after: avoid; page-break-after: avoid; }
+  details { border-left: none; }
+  a { color: var(--ink); }
+  .vega-target { display: none; }
+  .vega-fallback { display: block; }
+}
+
+</style>
+</head>
+<body>
+<main>
+<header class="title-block">
+<h1>MoTrPAC discordance: Human vastus lateralis</h1>
+<p class="subtitle">Which omic layer responds to exercise, when, and why they disagree</p><p class="meta"><span class="k">Species:</span> human<span class="sep">|</span><span class="k">Tissue:</span> VL<span class="sep">|</span><span class="k">Cutoff:</span> 0.05<span class="sep">|</span><span class="k">Store:</span> d615c2f0b9aec182<span class="sep">|</span><span class="k">Command:</span> mprobe discord --quiet --species human --tissue VL</p>
+</header>
+
+<section class="headline" id="headline-block">
+<h2>Human vastus lateralis: how discordant are the layers, and why?</h2>
+<p class="how"><span class="lbl">How to read:</span> Panels a–b answer &#39;when does each layer move and how well do they agree&#39;; panel d answers &#39;how much of the disagreement is detection power&#39;.</p><ul class="sentences">
+<li>Genome-wide RNA–protein ρ ranges 0.04 to 0.23 across 6 timepoints.</li>
+</ul>
+<ul class="first-screen">
+<li>Human vastus lateralis: 24 exercise comparisons across layers RNA, protein, phosphosite, metabolite.</li>
+<li>Much of &#39;which layer responded&#39; is which assay could see the gene (panel d).</li>
+</ul>
+</section>
+
+<nav class="toc" aria-label="Contents"><span class="label">Contents</span><a href="#timescale">a. Timescale: how much of each layer changes, and when</a><a href="#agreement">b. RNA–protein agreement by timepoint</a><a href="#properties">c. Agreement by gene property</a><a href="#which">d. Which layer responded, and why</a><a href="#protonly">e. Protein-without-RNA calls</a><a href="#lag">f. Does early RNA predict later protein?</a><a href="#sex">g. Sex without thresholds</a><a href="#pathways">Metabolic pathways across three layers</a><a href="#caveats">h. Caveats</a><a href="#glossary">Glossary</a><a href="#provenance">Provenance</a></nav>
+
+<section id="timescale">
+<h2>a. Timescale: how much of each layer changes, and when</h2>
+<div class="intro">
+<p>Largest fraction significant per layer: metabolite 0.0584; phosphosite 0.365; protein 0.0035; RNA 0.345.</p>
+</div>
+<figure id="fig-timescale">
+<h3 class="fig-title">Human vastus lateralis: fraction of features changed per layer and time</h3>
+<svg class="mpl-fig" role="img" style="max-width:707px" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 529.972139 305.659016" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <defs>
+  <style type="text/css">.mpl-fig *{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="ff930b913-figure_1">
+  <g id="ff930b913-patch_1">
+   <path d="M 0 305.659016 
+L 529.972139 305.659016 
+L 529.972139 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="ff930b913-axes_1">
+   <g id="ff930b913-patch_2">
+    <path d="M 54.695938 266.167141 
+L 522.772139 266.167141 
+L 522.772139 11.379141 
+L 54.695938 11.379141 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="ff930b913-PathCollection_1"/>
+   <g id="ff930b913-PathCollection_2"/>
+   <g id="ff930b913-PathCollection_3"/>
+   <g id="ff930b913-PathCollection_4">
+    <defs>
+     <path id="ff930b913-md50acc83e8" d="M -0 2.44949 
+L 2.44949 -2.44949 
+L -2.44949 -2.44949 
+z
+" style="stroke: #c26a2e"/>
+    </defs>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-md50acc83e8" x="75.972128" y="248.334475" style="fill: #c26a2e; stroke: #c26a2e"/>
+    </g>
+   </g>
+   <g id="ff930b913-PathCollection_5"/>
+   <g id="ff930b913-PathCollection_6"/>
+   <g id="ff930b913-PathCollection_7">
+    <defs>
+     <path id="ff930b913-me0809a0585" d="M -0 2.44949 
+L 2.44949 -2.44949 
+L -2.44949 -2.44949 
+z
+" style="stroke: #7a5195"/>
+    </defs>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-me0809a0585" x="501.495948" y="248.334475" style="fill: #7a5195; stroke: #7a5195"/>
+    </g>
+   </g>
+   <g id="ff930b913-PathCollection_8"/>
+   <g id="ff930b913-matplotlib.axis_1">
+    <g id="ff930b913-xtick_1">
+     <g id="ff930b913-line2d_1">
+      <defs>
+       <path id="ff930b913-m4d7275ce58" d="M 0 0 
+L 0 3.5 
+" style="stroke: #111111; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ff930b913-m4d7275ce58" x="75.972128" y="266.167141" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="ff930b913-text_1">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="75.972128" y="281.525422" transform="rotate(-0 75.972128 281.525422)">15–45 min</text>
+     </g>
+    </g>
+    <g id="ff930b913-xtick_2">
+     <g id="ff930b913-line2d_2">
+      <g>
+       <use xlink:href="#ff930b913-m4d7275ce58" x="288.734038" y="266.167141" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="ff930b913-text_2">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="288.734038" y="281.525422" transform="rotate(-0 288.734038 281.525422)">3.5–4 h</text>
+     </g>
+    </g>
+    <g id="ff930b913-xtick_3">
+     <g id="ff930b913-line2d_3">
+      <g>
+       <use xlink:href="#ff930b913-m4d7275ce58" x="501.495948" y="266.167141" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="ff930b913-text_3">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="501.495948" y="281.525422" transform="rotate(-0 501.495948 281.525422)">24 h</text>
+     </g>
+    </g>
+    <g id="ff930b913-text_4">
+     <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="288.734038" y="296.171359" transform="rotate(-0 288.734038 296.171359)">time after bout</text>
+    </g>
+   </g>
+   <g id="ff930b913-matplotlib.axis_2">
+    <g id="ff930b913-ytick_1">
+     <g id="ff930b913-line2d_4">
+      <defs>
+       <path id="ff930b913-m31c596923b" d="M 0 0 
+L -3.5 0 
+" style="stroke: #111111; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ff930b913-m31c596923b" x="54.695938" y="248.334475" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="ff930b913-text_5">
+      
+      <g style="fill: #111111" transform="translate(21.845938 252.513615)">
+       <text>
+        <tspan x="0" y="-0.178125" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">1</tspan>
+        <tspan x="6.998535" y="-0.178125" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">0</tspan>
+        <tspan x="14.102344" y="-4.389063" style="font-size: 7.7px; font-family: 'DejaVu Sans'; fill: #111111">−</tspan>
+        <tspan x="20.554102" y="-4.389063" style="font-size: 7.7px; font-family: 'DejaVu Sans'; fill: #111111">4</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_2">
+     <g id="ff930b913-line2d_5">
+      <g>
+       <use xlink:href="#ff930b913-m31c596923b" x="54.695938" y="189.095641" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="ff930b913-text_6">
+      
+      <g style="fill: #111111" transform="translate(21.845938 193.274782)">
+       <text>
+        <tspan x="0" y="-0.06875" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">1</tspan>
+        <tspan x="6.998535" y="-0.06875" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">0</tspan>
+        <tspan x="14.102344" y="-4.279688" style="font-size: 7.7px; font-family: 'DejaVu Sans'; fill: #111111">−</tspan>
+        <tspan x="20.554102" y="-4.279688" style="font-size: 7.7px; font-family: 'DejaVu Sans'; fill: #111111">3</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_3">
+     <g id="ff930b913-line2d_6">
+      <g>
+       <use xlink:href="#ff930b913-m31c596923b" x="54.695938" y="129.856808" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="ff930b913-text_7">
+      
+      <g style="fill: #111111" transform="translate(21.845938 134.035948)">
+       <text>
+        <tspan x="0" y="-0.06875" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">1</tspan>
+        <tspan x="6.998535" y="-0.06875" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">0</tspan>
+        <tspan x="14.102344" y="-4.279688" style="font-size: 7.7px; font-family: 'DejaVu Sans'; fill: #111111">−</tspan>
+        <tspan x="20.554102" y="-4.279688" style="font-size: 7.7px; font-family: 'DejaVu Sans'; fill: #111111">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_4">
+     <g id="ff930b913-line2d_7">
+      <g>
+       <use xlink:href="#ff930b913-m31c596923b" x="54.695938" y="70.617974" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="ff930b913-text_8">
+      
+      <g style="fill: #111111" transform="translate(21.845938 74.797115)">
+       <text>
+        <tspan x="0" y="-0.178125" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">1</tspan>
+        <tspan x="6.998535" y="-0.178125" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">0</tspan>
+        <tspan x="14.102344" y="-4.389063" style="font-size: 7.7px; font-family: 'DejaVu Sans'; fill: #111111">−</tspan>
+        <tspan x="20.554102" y="-4.389063" style="font-size: 7.7px; font-family: 'DejaVu Sans'; fill: #111111">1</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_5">
+     <g id="ff930b913-line2d_8">
+      <g>
+       <use xlink:href="#ff930b913-m31c596923b" x="54.695938" y="11.379141" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="ff930b913-text_9">
+      
+      <g style="fill: #111111" transform="translate(28.335938 15.558281)">
+       <text>
+        <tspan x="0" y="-0.06875" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">1</tspan>
+        <tspan x="6.998535" y="-0.06875" style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111">0</tspan>
+        <tspan x="14.102344" y="-4.279688" style="font-size: 7.7px; font-family: 'DejaVu Sans'; fill: #111111">0</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_6">
+     <g id="ff930b913-line2d_9">
+      <defs>
+       <path id="ff930b913-md37c001d9d" d="M 0 0 
+L -2 0 
+" style="stroke: #111111; stroke-width: 0.6"/>
+      </defs>
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="266.167141" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_7">
+     <g id="ff930b913-line2d_10">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="261.476536" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_8">
+     <g id="ff930b913-line2d_11">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="257.510686" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_9">
+     <g id="ff930b913-line2d_12">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="254.075311" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_10">
+     <g id="ff930b913-line2d_13">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="251.045095" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_11">
+     <g id="ff930b913-line2d_14">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="230.501809" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_12">
+     <g id="ff930b913-line2d_15">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="220.070368" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_13">
+     <g id="ff930b913-line2d_16">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="212.669143" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_14">
+     <g id="ff930b913-line2d_17">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="206.928307" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_15">
+     <g id="ff930b913-line2d_18">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="202.237702" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_16">
+     <g id="ff930b913-line2d_19">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="198.271853" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_17">
+     <g id="ff930b913-line2d_20">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="194.836477" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_18">
+     <g id="ff930b913-line2d_21">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="191.806262" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_19">
+     <g id="ff930b913-line2d_22">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="171.262975" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_20">
+     <g id="ff930b913-line2d_23">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="160.831535" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_21">
+     <g id="ff930b913-line2d_24">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="153.43031" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_22">
+     <g id="ff930b913-line2d_25">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="147.689474" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_23">
+     <g id="ff930b913-line2d_26">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="142.998869" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_24">
+     <g id="ff930b913-line2d_27">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="139.033019" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_25">
+     <g id="ff930b913-line2d_28">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="135.597644" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_26">
+     <g id="ff930b913-line2d_29">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="132.567428" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_27">
+     <g id="ff930b913-line2d_30">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="112.024142" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_28">
+     <g id="ff930b913-line2d_31">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="101.592701" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_29">
+     <g id="ff930b913-line2d_32">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="94.191476" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_30">
+     <g id="ff930b913-line2d_33">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="88.45064" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_31">
+     <g id="ff930b913-line2d_34">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="83.760035" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_32">
+     <g id="ff930b913-line2d_35">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="79.794186" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_33">
+     <g id="ff930b913-line2d_36">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="76.35881" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_34">
+     <g id="ff930b913-line2d_37">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="73.328595" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_35">
+     <g id="ff930b913-line2d_38">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="52.785308" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_36">
+     <g id="ff930b913-line2d_39">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="42.353868" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_37">
+     <g id="ff930b913-line2d_40">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="34.952643" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_38">
+     <g id="ff930b913-line2d_41">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="29.211806" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_39">
+     <g id="ff930b913-line2d_42">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="24.521202" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_40">
+     <g id="ff930b913-line2d_43">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="20.555352" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_41">
+     <g id="ff930b913-line2d_44">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="17.119977" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-ytick_42">
+     <g id="ff930b913-line2d_45">
+      <g>
+       <use xlink:href="#ff930b913-md37c001d9d" x="54.695938" y="14.089761" style="fill: #111111; stroke: #111111; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ff930b913-text_10">
+     <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="15.558281" y="138.773141" transform="rotate(-90 15.558281 138.773141)">fraction of measured features at BH FDR &lt; cutoff</text>
+    </g>
+   </g>
+   <g id="ff930b913-line2d_46">
+    <path d="M 75.972128 84.08629 
+L 288.734038 61.332023 
+L 501.495948 74.8724 
+" clip-path="url(#ff930b913-pb2560eca36)" style="fill: none; stroke: #2f5f8a; stroke-width: 1.6; stroke-linecap: square"/>
+    <defs>
+     <path id="ff930b913-mf42dbfb9d2" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #2f5f8a"/>
+    </defs>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-mf42dbfb9d2" x="75.972128" y="84.08629" style="fill: #2f5f8a; stroke: #2f5f8a"/>
+     <use xlink:href="#ff930b913-mf42dbfb9d2" x="288.734038" y="61.332023" style="fill: #2f5f8a; stroke: #2f5f8a"/>
+     <use xlink:href="#ff930b913-mf42dbfb9d2" x="501.495948" y="74.8724" style="fill: #2f5f8a; stroke: #2f5f8a"/>
+    </g>
+   </g>
+   <g id="ff930b913-line2d_47">
+    <path d="M 75.972128 86.83884 
+L 288.734038 38.779824 
+L 501.495948 50.441581 
+" clip-path="url(#ff930b913-pb2560eca36)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #2f5f8a; stroke-width: 1.6"/>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-mf42dbfb9d2" x="75.972128" y="86.83884" style="fill: #2f5f8a; stroke: #2f5f8a"/>
+     <use xlink:href="#ff930b913-mf42dbfb9d2" x="288.734038" y="38.779824" style="fill: #2f5f8a; stroke: #2f5f8a"/>
+     <use xlink:href="#ff930b913-mf42dbfb9d2" x="501.495948" y="50.441581" style="fill: #2f5f8a; stroke: #2f5f8a"/>
+    </g>
+   </g>
+   <g id="ff930b913-line2d_48">
+    <path d="M 75.972128 235.183837 
+L 288.734038 206.91973 
+L 501.495948 235.183837 
+" clip-path="url(#ff930b913-pb2560eca36)" style="fill: none; stroke: #c26a2e; stroke-width: 1.6; stroke-linecap: square"/>
+    <defs>
+     <path id="ff930b913-m8ab905fa98" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #c26a2e"/>
+    </defs>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-m8ab905fa98" x="75.972128" y="235.183837" style="fill: #c26a2e; stroke: #c26a2e"/>
+     <use xlink:href="#ff930b913-m8ab905fa98" x="288.734038" y="206.91973" style="fill: #c26a2e; stroke: #c26a2e"/>
+     <use xlink:href="#ff930b913-m8ab905fa98" x="501.495948" y="235.183837" style="fill: #c26a2e; stroke: #c26a2e"/>
+    </g>
+   </g>
+   <g id="ff930b913-line2d_49">
+    <path d="M 288.734038 173.492949 
+L 501.495948 156.857108 
+" clip-path="url(#ff930b913-pb2560eca36)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #c26a2e; stroke-width: 1.6"/>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-m8ab905fa98" x="288.734038" y="173.492949" style="fill: #c26a2e; stroke: #c26a2e"/>
+     <use xlink:href="#ff930b913-m8ab905fa98" x="501.495948" y="156.857108" style="fill: #c26a2e; stroke: #c26a2e"/>
+    </g>
+   </g>
+   <g id="ff930b913-line2d_50">
+    <path d="M 75.972128 54.700909 
+L 288.734038 157.484216 
+L 501.495948 193.149547 
+" clip-path="url(#ff930b913-pb2560eca36)" style="fill: none; stroke: #6b8e23; stroke-width: 1.6; stroke-linecap: square"/>
+    <defs>
+     <path id="ff930b913-m9b5a054cfc" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #6b8e23"/>
+    </defs>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-m9b5a054cfc" x="75.972128" y="54.700909" style="fill: #6b8e23; stroke: #6b8e23"/>
+     <use xlink:href="#ff930b913-m9b5a054cfc" x="288.734038" y="157.484216" style="fill: #6b8e23; stroke: #6b8e23"/>
+     <use xlink:href="#ff930b913-m9b5a054cfc" x="501.495948" y="193.149547" style="fill: #6b8e23; stroke: #6b8e23"/>
+    </g>
+   </g>
+   <g id="ff930b913-line2d_51">
+    <path d="M 75.972128 37.285932 
+L 288.734038 65.650496 
+L 501.495948 104.255614 
+" clip-path="url(#ff930b913-pb2560eca36)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #6b8e23; stroke-width: 1.6"/>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-m9b5a054cfc" x="75.972128" y="37.285932" style="fill: #6b8e23; stroke: #6b8e23"/>
+     <use xlink:href="#ff930b913-m9b5a054cfc" x="288.734038" y="65.650496" style="fill: #6b8e23; stroke: #6b8e23"/>
+     <use xlink:href="#ff930b913-m9b5a054cfc" x="501.495948" y="104.255614" style="fill: #6b8e23; stroke: #6b8e23"/>
+    </g>
+   </g>
+   <g id="ff930b913-line2d_52">
+    <path d="M 75.972128 92.541917 
+L 288.734038 140.029683 
+" clip-path="url(#ff930b913-pb2560eca36)" style="fill: none; stroke: #7a5195; stroke-width: 1.6; stroke-linecap: square"/>
+    <defs>
+     <path id="ff930b913-mab88e330f6" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #7a5195"/>
+    </defs>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-mab88e330f6" x="75.972128" y="92.541917" style="fill: #7a5195; stroke: #7a5195"/>
+     <use xlink:href="#ff930b913-mab88e330f6" x="288.734038" y="140.029683" style="fill: #7a5195; stroke: #7a5195"/>
+    </g>
+   </g>
+   <g id="ff930b913-line2d_53">
+    <path d="M 75.972128 84.472418 
+L 288.734038 136.063833 
+L 501.495948 132.628458 
+" clip-path="url(#ff930b913-pb2560eca36)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #7a5195; stroke-width: 1.6"/>
+    <g clip-path="url(#ff930b913-pb2560eca36)">
+     <use xlink:href="#ff930b913-mab88e330f6" x="75.972128" y="84.472418" style="fill: #7a5195; stroke: #7a5195"/>
+     <use xlink:href="#ff930b913-mab88e330f6" x="288.734038" y="136.063833" style="fill: #7a5195; stroke: #7a5195"/>
+     <use xlink:href="#ff930b913-mab88e330f6" x="501.495948" y="132.628458" style="fill: #7a5195; stroke: #7a5195"/>
+    </g>
+   </g>
+   <g id="ff930b913-patch_3">
+    <path d="M 54.695938 266.167141 
+L 54.695938 11.379141 
+" style="fill: none; stroke: #111111; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="ff930b913-patch_4">
+    <path d="M 54.695938 266.167141 
+L 522.772139 266.167141 
+" style="fill: none; stroke: #111111; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="ff930b913-legend_1">
+    <g id="ff930b913-line2d_54">
+     <path d="M 193.483101 213.414484 
+L 202.483101 213.414484 
+L 211.483101 213.414484 
+" style="fill: none; stroke: #2f5f8a; stroke-width: 1.6; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#ff930b913-mf42dbfb9d2" x="202.483101" y="213.414484" style="fill: #2f5f8a; stroke: #2f5f8a"/>
+     </g>
+    </g>
+    <g id="ff930b913-text_11">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="218.683101" y="216.564484" transform="rotate(-0 218.683101 216.564484)">RNA, EE</text>
+    </g>
+    <g id="ff930b913-line2d_55">
+     <path d="M 193.483101 226.624797 
+L 202.483101 226.624797 
+L 211.483101 226.624797 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #2f5f8a; stroke-width: 1.6"/>
+     <g>
+      <use xlink:href="#ff930b913-mf42dbfb9d2" x="202.483101" y="226.624797" style="fill: #2f5f8a; stroke: #2f5f8a"/>
+     </g>
+    </g>
+    <g id="ff930b913-text_12">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="218.683101" y="229.774797" transform="rotate(-0 218.683101 229.774797)">RNA, RE</text>
+    </g>
+    <g id="ff930b913-line2d_56">
+     <path d="M 193.483101 239.835109 
+L 202.483101 239.835109 
+L 211.483101 239.835109 
+" style="fill: none; stroke: #c26a2e; stroke-width: 1.6; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#ff930b913-m8ab905fa98" x="202.483101" y="239.835109" style="fill: #c26a2e; stroke: #c26a2e"/>
+     </g>
+    </g>
+    <g id="ff930b913-text_13">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="218.683101" y="242.985109" transform="rotate(-0 218.683101 242.985109)">protein, EE</text>
+    </g>
+    <g id="ff930b913-line2d_57">
+     <path d="M 193.483101 253.045422 
+L 202.483101 253.045422 
+L 211.483101 253.045422 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #c26a2e; stroke-width: 1.6"/>
+     <g>
+      <use xlink:href="#ff930b913-m8ab905fa98" x="202.483101" y="253.045422" style="fill: #c26a2e; stroke: #c26a2e"/>
+     </g>
+    </g>
+    <g id="ff930b913-text_14">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="218.683101" y="256.195422" transform="rotate(-0 218.683101 256.195422)">protein, RE</text>
+    </g>
+    <g id="ff930b913-line2d_58">
+     <path d="M 286.332163 213.414484 
+L 295.332163 213.414484 
+L 304.332163 213.414484 
+" style="fill: none; stroke: #6b8e23; stroke-width: 1.6; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#ff930b913-m9b5a054cfc" x="295.332163" y="213.414484" style="fill: #6b8e23; stroke: #6b8e23"/>
+     </g>
+    </g>
+    <g id="ff930b913-text_15">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="311.532163" y="216.564484" transform="rotate(-0 311.532163 216.564484)">phosphosite, EE</text>
+    </g>
+    <g id="ff930b913-line2d_59">
+     <path d="M 286.332163 226.624797 
+L 295.332163 226.624797 
+L 304.332163 226.624797 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #6b8e23; stroke-width: 1.6"/>
+     <g>
+      <use xlink:href="#ff930b913-m9b5a054cfc" x="295.332163" y="226.624797" style="fill: #6b8e23; stroke: #6b8e23"/>
+     </g>
+    </g>
+    <g id="ff930b913-text_16">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="311.532163" y="229.774797" transform="rotate(-0 311.532163 229.774797)">phosphosite, RE</text>
+    </g>
+    <g id="ff930b913-line2d_60">
+     <path d="M 286.332163 239.835109 
+L 295.332163 239.835109 
+L 304.332163 239.835109 
+" style="fill: none; stroke: #7a5195; stroke-width: 1.6; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#ff930b913-mab88e330f6" x="295.332163" y="239.835109" style="fill: #7a5195; stroke: #7a5195"/>
+     </g>
+    </g>
+    <g id="ff930b913-text_17">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="311.532163" y="242.985109" transform="rotate(-0 311.532163 242.985109)">metabolite, EE</text>
+    </g>
+    <g id="ff930b913-line2d_61">
+     <path d="M 286.332163 253.045422 
+L 295.332163 253.045422 
+L 304.332163 253.045422 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #7a5195; stroke-width: 1.6"/>
+     <g>
+      <use xlink:href="#ff930b913-mab88e330f6" x="295.332163" y="253.045422" style="fill: #7a5195; stroke: #7a5195"/>
+     </g>
+    </g>
+    <g id="ff930b913-text_18">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="311.532163" y="256.195422" transform="rotate(-0 311.532163 256.195422)">metabolite, RE</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="ff930b913-pb2560eca36">
+   <rect x="54.695938" y="11.379141" width="468.076202" height="254.788"/>
+  </clipPath>
+ </defs>
+</svg>
+<p class="how"><span class="lbl">How to read:</span> Fraction of measured features with BH FDR &lt; 0.05 (fdr_bh, within comparison), log scale; solid = EE, dashed = RE; ▼ at the bottom = none significant. Expected shape: RNA responds in hours, protein in weeks.</p>
+<p class="links"><a href="figures/timescale.png">PNG</a></p></figure>
+<div class="table-item">
+<h3>Features changed per layer and time</h3>
+<div class="table-wrap"><table id="timescale_table" class="data sortable"><thead><tr><th scope="col">Layer</th><th scope="col">Group / sex</th><th scope="col">Time</th><th scope="col" class="num">Features measured</th><th scope="col" class="num">Features at BH FDR &lt; 0.05</th><th scope="col" class="num">Fraction</th></tr></thead><tbody><tr><td>RNA</td><td>EE</td><td>15–45 min</td><td class="num">14972</td><td class="num">887</td><td class="num">0.0592</td></tr><tr><td>RNA</td><td>EE</td><td>3.5–4 h</td><td class="num">14972</td><td class="num">2148</td><td class="num">0.1435</td></tr><tr><td>RNA</td><td>EE</td><td>24 h</td><td class="num">14972</td><td class="num">1269</td><td class="num">0.0848</td></tr><tr><td>RNA</td><td>RE</td><td>15–45 min</td><td class="num">14972</td><td class="num">797</td><td class="num">0.0532</td></tr><tr><td>RNA</td><td>RE</td><td>3.5–4 h</td><td class="num">14972</td><td class="num">5161</td><td class="num">0.3447</td></tr><tr><td>RNA</td><td>RE</td><td>24 h</td><td class="num">14972</td><td class="num">3280</td><td class="num">0.2191</td></tr><tr><td>protein</td><td>EE</td><td>15–45 min</td><td class="num">5998</td><td class="num">1</td><td class="num">0.0002</td></tr><tr><td>protein</td><td>EE</td><td>3.5–4 h</td><td class="num">5998</td><td class="num">3</td><td class="num">0.0005</td></tr><tr><td>protein</td><td>EE</td><td>24 h</td><td class="num">5998</td><td class="num">1</td><td class="num">0.0002</td></tr><tr><td>protein</td><td>RE</td><td>15–45 min</td><td class="num">5998</td><td class="num">0</td><td class="num">0.0000</td></tr><tr><td>protein</td><td>RE</td><td>3.5–4 h</td><td class="num">5998</td><td class="num">11</td><td class="num">0.0018</td></tr><tr><td>protein</td><td>RE</td><td>24 h</td><td class="num">5998</td><td class="num">21</td><td class="num">0.0035</td></tr><tr><td>phosphosite</td><td>EE</td><td>15–45 min</td><td class="num">3512</td><td class="num">652</td><td class="num">0.1856</td></tr><tr><td>phosphosite</td><td>EE</td><td>3.5–4 h</td><td class="num">3512</td><td class="num">12</td><td class="num">0.0034</td></tr><tr><td>phosphosite</td><td>EE</td><td>24 h</td><td class="num">3512</td><td class="num">3</td><td class="num">0.0009</td></tr><tr><td>phosphosite</td><td>RE</td><td>15–45 min</td><td class="num">3512</td><td class="num">1283</td><td class="num">0.3653</td></tr><tr><td>phosphosite</td><td>RE</td><td>3.5–4 h</td><td class="num">3512</td><td class="num">426</td><td class="num">0.1213</td></tr><tr><td>phosphosite</td><td>RE</td><td>24 h</td><td class="num">3512</td><td class="num">95</td><td class="num">0.0271</td></tr><tr><td>metabolite</td><td>EE</td><td>15–45 min</td><td class="num">891</td><td class="num">38</td><td class="num">0.0426</td></tr><tr><td>metabolite</td><td>EE</td><td>3.5–4 h</td><td class="num">891</td><td class="num">6</td><td class="num">0.0067</td></tr><tr><td>metabolite</td><td>EE</td><td>24 h</td><td class="num">891</td><td class="num">0</td><td class="num">0.0000</td></tr><tr><td>metabolite</td><td>RE</td><td>15–45 min</td><td class="num">891</td><td class="num">52</td><td class="num">0.0584</td></tr><tr><td>metabolite</td><td>RE</td><td>3.5–4 h</td><td class="num">891</td><td class="num">7</td><td class="num">0.0079</td></tr><tr><td>metabolite</td><td>RE</td><td>24 h</td><td class="num">891</td><td class="num">8</td><td class="num">0.0090</td></tr></tbody></table></div>
+<p class="links"><a href="tables/timescale_table.csv">CSV</a></p></div>
+
+</section>
+<section id="agreement">
+<h2>b. RNA–protein agreement by timepoint</h2>
+<figure id="fig-agreement">
+<h3 class="fig-title">Human vastus lateralis: RNA vs protein agreement per timepoint</h3>
+<svg class="mpl-fig" role="img" style="max-width:708px" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 530.678125 292.885937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <defs>
+  <style type="text/css">.mpl-fig *{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="f822ede2c-figure_1">
+  <g id="f822ede2c-patch_1">
+   <path d="M 0 292.885937 
+L 530.678125 292.885937 
+L 530.678125 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="f822ede2c-axes_1">
+   <g id="f822ede2c-patch_2">
+    <path d="M 53.338125 268.04 
+L 523.478125 268.04 
+L 523.478125 7.2 
+L 53.338125 7.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="f822ede2c-matplotlib.axis_1">
+    <g id="f822ede2c-xtick_1">
+     <g id="f822ede2c-line2d_1">
+      <defs>
+       <path id="f822ede2c-ma764c3052d" d="M 0 0 
+L 0 3.5 
+" style="stroke: #111111; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#f822ede2c-ma764c3052d" x="90.537755" y="268.04" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f822ede2c-text_1">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="90.537755" y="283.398281" transform="rotate(-0 90.537755 283.398281)">15–45 min</text>
+     </g>
+    </g>
+    <g id="f822ede2c-xtick_2">
+     <g id="f822ede2c-line2d_2">
+      <g>
+       <use xlink:href="#f822ede2c-ma764c3052d" x="288.408125" y="268.04" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f822ede2c-text_2">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="288.408125" y="283.398281" transform="rotate(-0 288.408125 283.398281)">3.5–4 h</text>
+     </g>
+    </g>
+    <g id="f822ede2c-xtick_3">
+     <g id="f822ede2c-line2d_3">
+      <g>
+       <use xlink:href="#f822ede2c-ma764c3052d" x="486.278495" y="268.04" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f822ede2c-text_3">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="486.278495" y="283.398281" transform="rotate(-0 486.278495 283.398281)">24 h</text>
+     </g>
+    </g>
+   </g>
+   <g id="f822ede2c-matplotlib.axis_2">
+    <g id="f822ede2c-ytick_1">
+     <g id="f822ede2c-line2d_4">
+      <defs>
+       <path id="f822ede2c-m6dbf2e8dda" d="M 0 0 
+L -3.5 0 
+" style="stroke: #111111; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#f822ede2c-m6dbf2e8dda" x="53.338125" y="256.183636" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f822ede2c-text_4">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #111111" x="46.338125" y="260.362777" transform="rotate(-0 46.338125 260.362777)">0.00</text>
+     </g>
+    </g>
+    <g id="f822ede2c-ytick_2">
+     <g id="f822ede2c-line2d_5">
+      <g>
+       <use xlink:href="#f822ede2c-m6dbf2e8dda" x="53.338125" y="210.688544" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f822ede2c-text_5">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #111111" x="46.338125" y="214.867685" transform="rotate(-0 46.338125 214.867685)">0.05</text>
+     </g>
+    </g>
+    <g id="f822ede2c-ytick_3">
+     <g id="f822ede2c-line2d_6">
+      <g>
+       <use xlink:href="#f822ede2c-m6dbf2e8dda" x="53.338125" y="165.193453" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f822ede2c-text_6">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #111111" x="46.338125" y="169.372593" transform="rotate(-0 46.338125 169.372593)">0.10</text>
+     </g>
+    </g>
+    <g id="f822ede2c-ytick_4">
+     <g id="f822ede2c-line2d_7">
+      <g>
+       <use xlink:href="#f822ede2c-m6dbf2e8dda" x="53.338125" y="119.698361" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f822ede2c-text_7">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #111111" x="46.338125" y="123.877501" transform="rotate(-0 46.338125 123.877501)">0.15</text>
+     </g>
+    </g>
+    <g id="f822ede2c-ytick_5">
+     <g id="f822ede2c-line2d_8">
+      <g>
+       <use xlink:href="#f822ede2c-m6dbf2e8dda" x="53.338125" y="74.203269" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f822ede2c-text_8">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #111111" x="46.338125" y="78.382409" transform="rotate(-0 46.338125 78.382409)">0.20</text>
+     </g>
+    </g>
+    <g id="f822ede2c-ytick_6">
+     <g id="f822ede2c-line2d_9">
+      <g>
+       <use xlink:href="#f822ede2c-m6dbf2e8dda" x="53.338125" y="28.708177" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f822ede2c-text_9">
+      <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #111111" x="46.338125" y="32.887317" transform="rotate(-0 46.338125 32.887317)">0.25</text>
+     </g>
+    </g>
+    <g id="f822ede2c-text_10">
+     <text style="font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="15.558281" y="137.62" transform="rotate(-90 15.558281 137.62)">Spearman ρ, RNA vs protein stat</text>
+    </g>
+   </g>
+   <g id="f822ede2c-LineCollection_1">
+    <path d="M 74.708125 103.943042 
+L 74.708125 59.556702 
+" clip-path="url(#f822ede2c-pc81e7009d1)" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6"/>
+    <path d="M 272.578495 241.42476 
+L 272.578495 196.157301 
+" clip-path="url(#f822ede2c-pc81e7009d1)" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6"/>
+    <path d="M 470.448866 192.859226 
+L 470.448866 149.353384 
+" clip-path="url(#f822ede2c-pc81e7009d1)" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6"/>
+   </g>
+   <g id="f822ede2c-line2d_10">
+    <defs>
+     <path id="f822ede2c-m28f036656c" d="M 2 0 
+L -2 -0 
+" style="stroke: #6b6b6b"/>
+    </defs>
+    <g clip-path="url(#f822ede2c-pc81e7009d1)">
+     <use xlink:href="#f822ede2c-m28f036656c" x="74.708125" y="103.943042" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m28f036656c" x="272.578495" y="241.42476" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m28f036656c" x="470.448866" y="192.859226" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+    </g>
+   </g>
+   <g id="f822ede2c-line2d_11">
+    <g clip-path="url(#f822ede2c-pc81e7009d1)">
+     <use xlink:href="#f822ede2c-m28f036656c" x="74.708125" y="59.556702" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m28f036656c" x="272.578495" y="196.157301" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m28f036656c" x="470.448866" y="149.353384" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+    </g>
+   </g>
+   <g id="f822ede2c-LineCollection_2">
+    <path d="M 106.367384 64.080459 
+L 106.367384 19.056364 
+" clip-path="url(#f822ede2c-pc81e7009d1)" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6"/>
+    <path d="M 304.237755 162.887458 
+L 304.237755 115.878388 
+" clip-path="url(#f822ede2c-pc81e7009d1)" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6"/>
+    <path d="M 502.108125 224.762005 
+L 502.108125 180.244131 
+" clip-path="url(#f822ede2c-pc81e7009d1)" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6"/>
+   </g>
+   <g id="f822ede2c-line2d_12">
+    <g clip-path="url(#f822ede2c-pc81e7009d1)">
+     <use xlink:href="#f822ede2c-m28f036656c" x="106.367384" y="64.080459" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m28f036656c" x="304.237755" y="162.887458" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m28f036656c" x="502.108125" y="224.762005" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+    </g>
+   </g>
+   <g id="f822ede2c-line2d_13">
+    <g clip-path="url(#f822ede2c-pc81e7009d1)">
+     <use xlink:href="#f822ede2c-m28f036656c" x="106.367384" y="19.056364" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m28f036656c" x="304.237755" y="115.878388" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m28f036656c" x="502.108125" y="180.244131" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+    </g>
+   </g>
+   <g id="f822ede2c-line2d_14">
+    <path d="M 53.338125 256.183636 
+L 523.478125 256.183636 
+" clip-path="url(#f822ede2c-pc81e7009d1)" style="fill: none; stroke: #111111; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="f822ede2c-line2d_15">
+    <path d="M 74.708125 80.918918 
+L 272.578495 217.328856 
+L 470.448866 172.269439 
+" clip-path="url(#f822ede2c-pc81e7009d1)" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6; stroke-linecap: square"/>
+    <defs>
+     <path id="f822ede2c-m9836302b9b" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #6b6b6b"/>
+    </defs>
+    <g clip-path="url(#f822ede2c-pc81e7009d1)">
+     <use xlink:href="#f822ede2c-m9836302b9b" x="74.708125" y="80.918918" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m9836302b9b" x="272.578495" y="217.328856" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m9836302b9b" x="470.448866" y="172.269439" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+    </g>
+   </g>
+   <g id="f822ede2c-line2d_16">
+    <path d="M 106.367384 42.940956 
+L 304.237755 140.218602 
+L 502.108125 202.496446 
+" clip-path="url(#f822ede2c-pc81e7009d1)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #6b6b6b; stroke-width: 1.6"/>
+    <g clip-path="url(#f822ede2c-pc81e7009d1)">
+     <use xlink:href="#f822ede2c-m9836302b9b" x="106.367384" y="42.940956" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m9836302b9b" x="304.237755" y="140.218602" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     <use xlink:href="#f822ede2c-m9836302b9b" x="502.108125" y="202.496446" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+    </g>
+   </g>
+   <g id="f822ede2c-patch_3">
+    <path d="M 53.338125 268.04 
+L 53.338125 7.2 
+" style="fill: none; stroke: #111111; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="f822ede2c-patch_4">
+    <path d="M 53.338125 268.04 
+L 523.478125 268.04 
+" style="fill: none; stroke: #111111; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="f822ede2c-legend_1">
+    <g id="f822ede2c-LineCollection_3">
+     <path d="M 440.959375 23.488594 
+L 440.959375 14.488594 
+" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6"/>
+    </g>
+    <g id="f822ede2c-line2d_17">
+     <g>
+      <use xlink:href="#f822ede2c-m28f036656c" x="440.959375" y="23.488594" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     </g>
+    </g>
+    <g id="f822ede2c-line2d_18">
+     <g>
+      <use xlink:href="#f822ede2c-m28f036656c" x="440.959375" y="14.488594" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     </g>
+    </g>
+    <g id="f822ede2c-line2d_19">
+     <path d="M 431.959375 18.988594 
+L 449.959375 18.988594 
+" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="f822ede2c-line2d_20">
+     <g>
+      <use xlink:href="#f822ede2c-m9836302b9b" x="440.959375" y="18.988594" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     </g>
+    </g>
+    <g id="f822ede2c-text_11">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="457.159375" y="22.138594" transform="rotate(-0 457.159375 22.138594)">all genes, EE</text>
+    </g>
+    <g id="f822ede2c-LineCollection_4">
+     <path d="M 440.959375 36.698906 
+L 440.959375 27.698906 
+" style="fill: none; stroke: #6b6b6b; stroke-width: 1.6"/>
+    </g>
+    <g id="f822ede2c-line2d_21">
+     <g>
+      <use xlink:href="#f822ede2c-m28f036656c" x="440.959375" y="36.698906" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     </g>
+    </g>
+    <g id="f822ede2c-line2d_22">
+     <g>
+      <use xlink:href="#f822ede2c-m28f036656c" x="440.959375" y="27.698906" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     </g>
+    </g>
+    <g id="f822ede2c-line2d_23">
+     <path d="M 431.959375 32.198906 
+L 449.959375 32.198906 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #6b6b6b; stroke-width: 1.6"/>
+    </g>
+    <g id="f822ede2c-line2d_24">
+     <g>
+      <use xlink:href="#f822ede2c-m9836302b9b" x="440.959375" y="32.198906" style="fill: #6b6b6b; stroke: #6b6b6b"/>
+     </g>
+    </g>
+    <g id="f822ede2c-text_12">
+     <text style="font-size: 9px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="457.159375" y="35.348906" transform="rotate(-0 457.159375 35.348906)">all genes, RE</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="f822ede2c-pc81e7009d1">
+   <rect x="53.338125" y="7.2" width="470.14" height="260.84"/>
+  </clipPath>
+ </defs>
+</svg>
+<p class="how"><span class="lbl">How to read:</span> Spearman ρ of gene-level RNA and protein statistics over genes measured in both layers; bars = 95% bootstrap CI over genes (B = 300, scripts/08); blue = signature genes only, if given.</p>
+<p class="links"><a href="figures/agreement.png">PNG</a></p></figure>
+<div class="table-item">
+<h3>Agreement per timepoint</h3>
+<div class="table-wrap"><table id="agreement_table" class="data sortable"><thead><tr><th scope="col">Genes</th><th scope="col">Group / sex</th><th scope="col">Time</th><th scope="col" class="num">n genes</th><th scope="col" class="num">Spearman ρ</th><th scope="col" class="num">95% CI low</th><th scope="col" class="num">95% CI high</th></tr></thead><tbody><tr><td>all genes</td><td>EE</td><td>15–45 min</td><td class="num">5744</td><td class="num">0.193</td><td class="num">0.167</td><td class="num">0.216</td></tr><tr><td>all genes</td><td>EE</td><td>3.5–4 h</td><td class="num">5744</td><td class="num">0.043</td><td class="num">0.016</td><td class="num">0.066</td></tr><tr><td>all genes</td><td>EE</td><td>24 h</td><td class="num">5744</td><td class="num">0.092</td><td class="num">0.070</td><td class="num">0.117</td></tr><tr><td>all genes</td><td>RE</td><td>15–45 min</td><td class="num">5744</td><td class="num">0.234</td><td class="num">0.211</td><td class="num">0.261</td></tr><tr><td>all genes</td><td>RE</td><td>3.5–4 h</td><td class="num">5744</td><td class="num">0.127</td><td class="num">0.103</td><td class="num">0.154</td></tr><tr><td>all genes</td><td>RE</td><td>24 h</td><td class="num">5744</td><td class="num">0.059</td><td class="num">0.035</td><td class="num">0.083</td></tr></tbody></table></div>
+<p class="links"><a href="tables/agreement_table.csv">CSV</a></p></div>
+
+</section>
+<section id="properties">
+<h2>c. Agreement by gene property</h2>
+<div class="intro">
+<p>Stratified Spearman ρ between RNA and protein statistics (scripts/08): within each level of a gene property, with 95% bootstrap CI over genes, and the difference from the reference level (first level) with a paired bootstrap CI. Shown for the later timepoints.</p>
+</div>
+<div class="table-item">
+<h3>Stratified RNA–protein agreement</h3>
+<p class="caption">Levels with &lt; 10 genes are not estimated.</p><div class="table-wrap"><table id="stratified_rho" class="data sortable"><thead><tr><th scope="col">Comparison</th><th scope="col">Gene property</th><th scope="col">Level</th><th scope="col" class="num">n genes</th><th scope="col" class="num">ρ</th><th scope="col" class="num">CI low</th><th scope="col" class="num">CI high</th><th scope="col" class="num">Δρ vs reference</th><th scope="col" class="num">Δ CI low</th><th scope="col" class="num">Δ CI high</th></tr></thead><tbody><tr><td>EE–CON 3.5–4 h</td><td>all genes</td><td>all</td><td class="num">5744</td><td class="num">0.043</td><td class="num">0.015</td><td class="num">0.069</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 3.5–4 h</td><td>mitochondrial (MitoCarta3.0)</td><td>no</td><td class="num">4846</td><td class="num">0.051</td><td class="num">0.025</td><td class="num">0.078</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 3.5–4 h</td><td>mitochondrial (MitoCarta3.0)</td><td>yes</td><td class="num">898</td><td class="num">-0.019</td><td class="num">-0.080</td><td class="num">0.042</td><td class="num">-0.070</td><td class="num">-0.141</td><td class="num">0.001</td></tr><tr><td>EE–CON 3.5–4 h</td><td>stable-complex subunit (GO:CC)</td><td>no</td><td class="num">5235</td><td class="num">0.048</td><td class="num">0.020</td><td class="num">0.075</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 3.5–4 h</td><td>stable-complex subunit (GO:CC)</td><td>yes</td><td class="num">509</td><td class="num">-0.028</td><td class="num">-0.118</td><td class="num">0.052</td><td class="num">-0.077</td><td class="num">-0.185</td><td class="num">0.011</td></tr><tr><td>EE–CON 3.5–4 h</td><td>secreted/extracellular (GO:CC proxy)</td><td>no</td><td class="num">5481</td><td class="num">0.042</td><td class="num">0.018</td><td class="num">0.069</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 3.5–4 h</td><td>secreted/extracellular (GO:CC proxy)</td><td>yes</td><td class="num">263</td><td class="num">0.018</td><td class="num">-0.106</td><td class="num">0.159</td><td class="num">-0.024</td><td class="num">-0.157</td><td class="num">0.111</td></tr><tr><td>EE–CON 3.5–4 h</td><td>GTEx abundance tertile (matched tissue)</td><td>low</td><td class="num">1912</td><td class="num">0.032</td><td class="num">-0.020</td><td class="num">0.085</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 3.5–4 h</td><td>GTEx abundance tertile (matched tissue)</td><td>mid</td><td class="num">1912</td><td class="num">0.018</td><td class="num">-0.027</td><td class="num">0.063</td><td class="num">-0.014</td><td class="num">-0.075</td><td class="num">0.059</td></tr><tr><td>EE–CON 3.5–4 h</td><td>GTEx abundance tertile (matched tissue)</td><td>high</td><td class="num">1912</td><td class="num">0.071</td><td class="num">0.018</td><td class="num">0.118</td><td class="num">0.038</td><td class="num">-0.029</td><td class="num">0.106</td></tr><tr><td>EE–CON 3.5–4 h</td><td>baseline RNA tertile (this dataset)</td><td>low</td><td class="num">1915</td><td class="num">0.058</td><td class="num">0.015</td><td class="num">0.102</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 3.5–4 h</td><td>baseline RNA tertile (this dataset)</td><td>mid</td><td class="num">1914</td><td class="num">0.001</td><td class="num">-0.048</td><td class="num">0.043</td><td class="num">-0.057</td><td class="num">-0.122</td><td class="num">-0.000</td></tr><tr><td>EE–CON 3.5–4 h</td><td>baseline RNA tertile (this dataset)</td><td>high</td><td class="num">1915</td><td class="num">0.059</td><td class="num">0.011</td><td class="num">0.100</td><td class="num">0.001</td><td class="num">-0.057</td><td class="num">0.062</td></tr><tr><td>EE–CON 3.5–4 h</td><td>phosphosites detected</td><td>0</td><td class="num">3223</td><td class="num">0.042</td><td class="num">0.003</td><td class="num">0.078</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 3.5–4 h</td><td>phosphosites detected</td><td>1-3</td><td class="num">1616</td><td class="num">0.017</td><td class="num">-0.034</td><td class="num">0.069</td><td class="num">-0.025</td><td class="num">-0.092</td><td class="num">0.038</td></tr><tr><td>EE–CON 3.5–4 h</td><td>phosphosites detected</td><td>&gt;3</td><td class="num">905</td><td class="num">0.097</td><td class="num">0.035</td><td class="num">0.167</td><td class="num">0.056</td><td class="num">-0.021</td><td class="num">0.146</td></tr><tr><td>EE–CON 24 h</td><td>all genes</td><td>all</td><td class="num">5744</td><td class="num">0.092</td><td class="num">0.068</td><td class="num">0.119</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 24 h</td><td>mitochondrial (MitoCarta3.0)</td><td>no</td><td class="num">4846</td><td class="num">0.122</td><td class="num">0.094</td><td class="num">0.146</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 24 h</td><td>mitochondrial (MitoCarta3.0)</td><td>yes</td><td class="num">898</td><td class="num">0.043</td><td class="num">-0.013</td><td class="num">0.102</td><td class="num">-0.079</td><td class="num">-0.140</td><td class="num">-0.004</td></tr><tr><td>EE–CON 24 h</td><td>stable-complex subunit (GO:CC)</td><td>no</td><td class="num">5235</td><td class="num">0.102</td><td class="num">0.075</td><td class="num">0.128</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 24 h</td><td>stable-complex subunit (GO:CC)</td><td>yes</td><td class="num">509</td><td class="num">-0.043</td><td class="num">-0.132</td><td class="num">0.038</td><td class="num">-0.145</td><td class="num">-0.231</td><td class="num">-0.055</td></tr><tr><td>EE–CON 24 h</td><td>secreted/extracellular (GO:CC proxy)</td><td>no</td><td class="num">5481</td><td class="num">0.087</td><td class="num">0.066</td><td class="num">0.113</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 24 h</td><td>secreted/extracellular (GO:CC proxy)</td><td>yes</td><td class="num">263</td><td class="num">0.165</td><td class="num">0.036</td><td class="num">0.282</td><td class="num">0.078</td><td class="num">-0.057</td><td class="num">0.197</td></tr><tr><td>EE–CON 24 h</td><td>GTEx abundance tertile (matched tissue)</td><td>low</td><td class="num">1912</td><td class="num">0.067</td><td class="num">0.023</td><td class="num">0.109</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 24 h</td><td>GTEx abundance tertile (matched tissue)</td><td>mid</td><td class="num">1912</td><td class="num">0.109</td><td class="num">0.063</td><td class="num">0.152</td><td class="num">0.042</td><td class="num">-0.017</td><td class="num">0.104</td></tr><tr><td>EE–CON 24 h</td><td>GTEx abundance tertile (matched tissue)</td><td>high</td><td class="num">1912</td><td class="num">0.083</td><td class="num">0.040</td><td class="num">0.127</td><td class="num">0.016</td><td class="num">-0.051</td><td class="num">0.080</td></tr><tr><td>EE–CON 24 h</td><td>baseline RNA tertile (this dataset)</td><td>low</td><td class="num">1915</td><td class="num">0.080</td><td class="num">0.035</td><td class="num">0.120</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 24 h</td><td>baseline RNA tertile (this dataset)</td><td>mid</td><td class="num">1914</td><td class="num">0.111</td><td class="num">0.072</td><td class="num">0.152</td><td class="num">0.030</td><td class="num">-0.021</td><td class="num">0.095</td></tr><tr><td>EE–CON 24 h</td><td>baseline RNA tertile (this dataset)</td><td>high</td><td class="num">1915</td><td class="num">0.089</td><td class="num">0.050</td><td class="num">0.131</td><td class="num">0.009</td><td class="num">-0.045</td><td class="num">0.066</td></tr><tr><td>EE–CON 24 h</td><td>phosphosites detected</td><td>0</td><td class="num">3223</td><td class="num">0.078</td><td class="num">0.045</td><td class="num">0.113</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>EE–CON 24 h</td><td>phosphosites detected</td><td>1-3</td><td class="num">1616</td><td class="num">0.098</td><td class="num">0.051</td><td class="num">0.140</td><td class="num">0.020</td><td class="num">-0.043</td><td class="num">0.071</td></tr><tr><td>EE–CON 24 h</td><td>phosphosites detected</td><td>&gt;3</td><td class="num">905</td><td class="num">0.127</td><td class="num">0.066</td><td class="num">0.180</td><td class="num">0.049</td><td class="num">-0.021</td><td class="num">0.109</td></tr><tr><td>RE–CON 3.5–4 h</td><td>all genes</td><td>all</td><td class="num">5744</td><td class="num">0.127</td><td class="num">0.101</td><td class="num">0.154</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 3.5–4 h</td><td>mitochondrial (MitoCarta3.0)</td><td>no</td><td class="num">4846</td><td class="num">0.134</td><td class="num">0.105</td><td class="num">0.162</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 3.5–4 h</td><td>mitochondrial (MitoCarta3.0)</td><td>yes</td><td class="num">898</td><td class="num">0.039</td><td class="num">-0.026</td><td class="num">0.120</td><td class="num">-0.095</td><td class="num">-0.166</td><td class="num">-0.012</td></tr><tr><td>RE–CON 3.5–4 h</td><td>stable-complex subunit (GO:CC)</td><td>no</td><td class="num">5235</td><td class="num">0.122</td><td class="num">0.094</td><td class="num">0.148</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 3.5–4 h</td><td>stable-complex subunit (GO:CC)</td><td>yes</td><td class="num">509</td><td class="num">0.186</td><td class="num">0.098</td><td class="num">0.273</td><td class="num">0.064</td><td class="num">-0.033</td><td class="num">0.148</td></tr><tr><td>RE–CON 3.5–4 h</td><td>secreted/extracellular (GO:CC proxy)</td><td>no</td><td class="num">5481</td><td class="num">0.131</td><td class="num">0.102</td><td class="num">0.157</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 3.5–4 h</td><td>secreted/extracellular (GO:CC proxy)</td><td>yes</td><td class="num">263</td><td class="num">0.032</td><td class="num">-0.090</td><td class="num">0.171</td><td class="num">-0.099</td><td class="num">-0.226</td><td class="num">0.034</td></tr><tr><td>RE–CON 3.5–4 h</td><td>GTEx abundance tertile (matched tissue)</td><td>low</td><td class="num">1912</td><td class="num">0.020</td><td class="num">-0.027</td><td class="num">0.067</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 3.5–4 h</td><td>GTEx abundance tertile (matched tissue)</td><td>mid</td><td class="num">1912</td><td class="num">0.081</td><td class="num">0.038</td><td class="num">0.125</td><td class="num">0.061</td><td class="num">0.002</td><td class="num">0.123</td></tr><tr><td>RE–CON 3.5–4 h</td><td>GTEx abundance tertile (matched tissue)</td><td>high</td><td class="num">1912</td><td class="num">0.235</td><td class="num">0.194</td><td class="num">0.277</td><td class="num">0.215</td><td class="num">0.151</td><td class="num">0.279</td></tr><tr><td>RE–CON 3.5–4 h</td><td>baseline RNA tertile (this dataset)</td><td>low</td><td class="num">1915</td><td class="num">0.036</td><td class="num">-0.007</td><td class="num">0.081</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 3.5–4 h</td><td>baseline RNA tertile (this dataset)</td><td>mid</td><td class="num">1914</td><td class="num">0.075</td><td class="num">0.035</td><td class="num">0.113</td><td class="num">0.039</td><td class="num">-0.026</td><td class="num">0.100</td></tr><tr><td>RE–CON 3.5–4 h</td><td>baseline RNA tertile (this dataset)</td><td>high</td><td class="num">1915</td><td class="num">0.228</td><td class="num">0.184</td><td class="num">0.268</td><td class="num">0.192</td><td class="num">0.127</td><td class="num">0.264</td></tr><tr><td>RE–CON 3.5–4 h</td><td>phosphosites detected</td><td>0</td><td class="num">3223</td><td class="num">0.090</td><td class="num">0.052</td><td class="num">0.124</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 3.5–4 h</td><td>phosphosites detected</td><td>1-3</td><td class="num">1616</td><td class="num">0.109</td><td class="num">0.057</td><td class="num">0.153</td><td class="num">0.019</td><td class="num">-0.043</td><td class="num">0.082</td></tr><tr><td>RE–CON 3.5–4 h</td><td>phosphosites detected</td><td>&gt;3</td><td class="num">905</td><td class="num">0.267</td><td class="num">0.200</td><td class="num">0.325</td><td class="num">0.177</td><td class="num">0.102</td><td class="num">0.246</td></tr><tr><td>RE–CON 24 h</td><td>all genes</td><td>all</td><td class="num">5744</td><td class="num">0.059</td><td class="num">0.034</td><td class="num">0.087</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 24 h</td><td>mitochondrial (MitoCarta3.0)</td><td>no</td><td class="num">4846</td><td class="num">0.091</td><td class="num">0.063</td><td class="num">0.122</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 24 h</td><td>mitochondrial (MitoCarta3.0)</td><td>yes</td><td class="num">898</td><td class="num">0.087</td><td class="num">0.015</td><td class="num">0.149</td><td class="num">-0.004</td><td class="num">-0.078</td><td class="num">0.064</td></tr><tr><td>RE–CON 24 h</td><td>stable-complex subunit (GO:CC)</td><td>no</td><td class="num">5235</td><td class="num">0.071</td><td class="num">0.043</td><td class="num">0.098</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 24 h</td><td>stable-complex subunit (GO:CC)</td><td>yes</td><td class="num">509</td><td class="num">-0.043</td><td class="num">-0.125</td><td class="num">0.034</td><td class="num">-0.114</td><td class="num">-0.207</td><td class="num">-0.032</td></tr><tr><td>RE–CON 24 h</td><td>secreted/extracellular (GO:CC proxy)</td><td>no</td><td class="num">5481</td><td class="num">0.063</td><td class="num">0.038</td><td class="num">0.090</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 24 h</td><td>secreted/extracellular (GO:CC proxy)</td><td>yes</td><td class="num">263</td><td class="num">-0.054</td><td class="num">-0.193</td><td class="num">0.069</td><td class="num">-0.117</td><td class="num">-0.257</td><td class="num">0.008</td></tr><tr><td>RE–CON 24 h</td><td>GTEx abundance tertile (matched tissue)</td><td>low</td><td class="num">1912</td><td class="num">0.023</td><td class="num">-0.023</td><td class="num">0.064</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 24 h</td><td>GTEx abundance tertile (matched tissue)</td><td>mid</td><td class="num">1912</td><td class="num">0.069</td><td class="num">0.025</td><td class="num">0.114</td><td class="num">0.046</td><td class="num">-0.008</td><td class="num">0.106</td></tr><tr><td>RE–CON 24 h</td><td>GTEx abundance tertile (matched tissue)</td><td>high</td><td class="num">1912</td><td class="num">0.079</td><td class="num">0.037</td><td class="num">0.128</td><td class="num">0.056</td><td class="num">-0.007</td><td class="num">0.118</td></tr><tr><td>RE–CON 24 h</td><td>baseline RNA tertile (this dataset)</td><td>low</td><td class="num">1915</td><td class="num">0.032</td><td class="num">-0.011</td><td class="num">0.077</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 24 h</td><td>baseline RNA tertile (this dataset)</td><td>mid</td><td class="num">1914</td><td class="num">0.039</td><td class="num">-0.011</td><td class="num">0.084</td><td class="num">0.007</td><td class="num">-0.062</td><td class="num">0.067</td></tr><tr><td>RE–CON 24 h</td><td>baseline RNA tertile (this dataset)</td><td>high</td><td class="num">1915</td><td class="num">0.106</td><td class="num">0.058</td><td class="num">0.149</td><td class="num">0.075</td><td class="num">0.004</td><td class="num">0.134</td></tr><tr><td>RE–CON 24 h</td><td>phosphosites detected</td><td>0</td><td class="num">3223</td><td class="num">0.052</td><td class="num">0.020</td><td class="num">0.084</td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td><td class="num"><span class="na">not measured</span></td></tr><tr><td>RE–CON 24 h</td><td>phosphosites detected</td><td>1-3</td><td class="num">1616</td><td class="num">0.081</td><td class="num">0.033</td><td class="num">0.126</td><td class="num">0.028</td><td class="num">-0.033</td><td class="num">0.093</td></tr><tr><td>RE–CON 24 h</td><td>phosphosites detected</td><td>&gt;3</td><td class="num">905</td><td class="num">0.077</td><td class="num">0.019</td><td class="num">0.138</td><td class="num">0.024</td><td class="num">-0.043</td><td class="num">0.089</td></tr></tbody></table></div>
+<p class="links"><a href="tables/stratified_rho.csv">CSV</a></p></div>
+
+</section>
+<section id="which">
+<h2>d. Which layer responded, and why</h2>
+<div class="intro">
+<p>Much of &#39;which layer responded&#39; is which assay could see the gene.</p>
+</div>
+<div class="table-item">
+<h3>Layer classes per comparison</h3>
+<p class="caption">BH FDR &lt; 0.05 in each layer: concordant = both, same sign; opposite = both, opposite sign (scripts/08 rule).</p><div class="table-wrap"><table id="layer_classes" class="data sortable"><thead><tr><th scope="col">Comparison</th><th scope="col">Group / sex</th><th scope="col" class="num">Genes in both layers</th><th scope="col" class="num">Concordant</th><th scope="col" class="num">RNA only</th><th scope="col" class="num">Protein only</th><th scope="col" class="num">Opposite</th><th scope="col" class="num">Neither</th></tr></thead><tbody><tr><td>EE–CON 15–45 min</td><td>EE</td><td class="num">5744</td><td class="num">0</td><td class="num">275</td><td class="num">1</td><td class="num">0</td><td class="num">5468</td></tr><tr><td>EE–CON 3.5–4 h</td><td>EE</td><td class="num">5744</td><td class="num">2</td><td class="num">706</td><td class="num">1</td><td class="num">0</td><td class="num">5035</td></tr><tr><td>EE–CON 24 h</td><td>EE</td><td class="num">5744</td><td class="num">1</td><td class="num">755</td><td class="num">0</td><td class="num">0</td><td class="num">4988</td></tr><tr><td>RE–CON 15–45 min</td><td>RE</td><td class="num">5744</td><td class="num">0</td><td class="num">218</td><td class="num">0</td><td class="num">0</td><td class="num">5526</td></tr><tr><td>RE–CON 3.5–4 h</td><td>RE</td><td class="num">5744</td><td class="num">9</td><td class="num">1919</td><td class="num">2</td><td class="num">0</td><td class="num">3814</td></tr><tr><td>RE–CON 24 h</td><td>RE</td><td class="num">5744</td><td class="num">14</td><td class="num">1642</td><td class="num">6</td><td class="num">1</td><td class="num">4081</td></tr></tbody></table></div>
+<p class="links"><a href="tables/layer_classes.csv">CSV</a></p></div>
+<div class="table-item">
+<h3>Detection-power decomposition</h3>
+<p class="caption">L2 logistic regression (class-balanced; median imputation with missing indicators; standardised; 5-fold CV with folds by gene; scripts/08 LogReg_L2), pooled over comparisons.</p><div class="table-wrap"><table id="detection_model" class="data sortable"><thead><tr><th scope="col">Quantity</th><th scope="col">Value</th></tr></thead><tbody><tr><td>RNA-only vs protein-only rows</td><td>5525</td></tr><tr><td>RNA only</td><td>5515</td></tr><tr><td>Protein only</td><td>10</td></tr><tr><td>Detection-only features</td><td>rna_baseline, gtex_log2_tpm</td></tr><tr><td>Full-model features</td><td>rna_baseline, gtex_log2_tpm, mitocarta3, stable_complex, secreted, n_collapsed_rna, n_collapsed_prot, phosphosites</td></tr><tr><td>Model</td><td>a class has &lt; 30 gene x comparison rows; model not fitted (scripts/08 rule)</td></tr></tbody></table></div>
+<p class="links"><a href="tables/detection_model.csv">CSV</a></p></div>
+<div class="table-item">
+<h3>RNA-only share by detection stratum</h3>
+<p class="caption">Rows = RNA-only or protein-only gene × comparison calls.</p><div class="table-wrap"><table id="detection_strata" class="data sortable"><thead><tr><th scope="col">Property</th><th scope="col">Level</th><th scope="col" class="num">n rows</th><th scope="col" class="num">Fraction RNA-only</th></tr></thead><tbody><tr><td>RNA baseline tertile</td><td>high</td><td class="num">1842</td><td class="num">1.00</td></tr><tr><td>RNA baseline tertile</td><td>low</td><td class="num">1842</td><td class="num">1.00</td></tr><tr><td>RNA baseline tertile</td><td>mid</td><td class="num">1841</td><td class="num">1.00</td></tr></tbody></table></div>
+<p class="links"><a href="tables/detection_strata.csv">CSV</a></p></div>
+
+</section>
+<section id="protonly">
+<h2>e. Protein-without-RNA calls</h2>
+<div class="intro">
+<p>Rat only (needs the training time course).</p>
+</div>
+
+</section>
+<section id="lag">
+<h2>f. Does early RNA predict later protein?</h2>
+<div class="intro">
+<p>Rat only (needs the training time course).</p>
+</div>
+
+</section>
+<section id="sex">
+<h2>g. Sex without thresholds</h2>
+<div class="intro">
+<p>The human acute study reports exercise-vs-control contrasts pooled over sexes; no sex contrast is available in the public summary statistics.</p>
+</div>
+
+</section>
+<section id="pathways">
+<h2>Metabolic pathways across three layers</h2>
+<div class="intro">
+<p>Metabolite pools are not flux. The pathway map is many-to-many (tool/store/pathway_map.csv); genes and metabolites are never matched one-to-one.</p>
+</div>
+<figure id="fig-pathways">
+<h3 class="fig-title">Human vastus lateralis: pathway response in RNA, protein and metabolites</h3>
+<svg class="mpl-fig" role="img" style="max-width:1194px" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 895.167408 358.667812" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <defs>
+  <style type="text/css">.mpl-fig *{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="f328569b9-figure_1">
+  <g id="f328569b9-patch_1">
+   <path d="M 0 358.667812 
+L 895.167408 358.667812 
+L 895.167408 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="f328569b9-axes_1">
+   <g id="f328569b9-patch_2">
+    <path d="M 233.471875 279.038125 
+L 815.710493 279.038125 
+L 815.710493 42.318125 
+L 233.471875 42.318125 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g clip-path="url(#f328569b9-p59374613ed)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAykAAAFJCAYAAACfAWIZAAAKBElEQVR4nO3Zza6dZR2HYTbd7baw6QdNqZU2oAY/IiZqVQxGB8z9mJhwAIZT8ACI0XgQThlIgtE4c6BiSAxGIhaJIhUQhVK1JdCW7rbUqdNn9L8Xua4j+GXlWWs99/tunX3ptVu3bZgTxw5NT1i2ffny9IRlr165Pj1h2b3Hj0xPWHZwa+O+grf9+8re9IQl7165Nj1h2em7dqYnLNs7sHmb/3nh0vSEZbsHN+9zPn5kd3rCsutvvjU9YdmbW/unJyy77+7NOxtXN/BsXD169/SEZbdPDwAAAPh/IgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAICU7f3b+6Y3LNvZvz09Yd3OgekFy+7Z+dD0hGU7N29MT1h26/bNe1awe/nd6QlLru3fvLN85V/npycsu/PUyekJy/b2Nu834/jhg9MTlv33mWenJyw79NCZ6QnLXnrub9MTlm39+unpCcs++ui3picse+75c9MTlm3e7QgAAPhAEykAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkbP/0N89Pb1j22Le/Oj1h2bkfPzE9YdnZB89MT1j2nUc+Pz1h2YuvvDk9YdnPnj47PWHJd7/58PSEZf/Yf8f0hGW/eOqZ6QnLHvniJ6YnLPvBk7+dnrDsGy//cXrCsmNf+Oz0hGVf/sx90xOW3dy6Oj1h2U9+tXnn+eq169MTlnmTAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUrY/fOzQ9IZlt29tTU9Ytnfx0vSEZfcc3Z2esOzWjZvTE5bde/zI9IRlp08cnZ6w5Mp7e9MTlh3ePTg9YdkmnuWd/dvTE5Y9+LGPTE9Y9soPH5+esGxre9/0hGWvPPnz6QnL3nj8+9MTlj368WPTE5b9/ns/mp6wzJsUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUrb+c/HtW9MjVm1fe296wrILv/vD9IRluw8/ND1h2Z0bmN233n9/esKyvYtvT09YcnHn4PSEZbsX3pqesOyOUyenJyzbd9fu9IRl185fmJ6w7ujR6QXL3rmyeXeN6zduTk9YtnPu3PSEZZfuPT09Ydnh3c37H9zAKx0AAPBBJlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABI2f7La+enNyz73AOnpics+/sTT01PWHbg1P3TE5Z96ZOnpycse+fcq9MTlv31xr7pCUvOnDo5PWHZC+9enZ6w7PU/vz49Ydmn7j8xPWHZL599eXrCsq+9sXmbT3z9K9MTll07emx6wrKLf3pxesKy+z/9wPSEZS+cvzQ9YZk3KQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIEWkAAAAKSIFAABIESkAAECKSAEAAFJECgAAkCJSAACAFJECAACkiBQAACBFpAAAACkiBQAASBEpAABAikgBAABSRAoAAJAiUgAAgBSRAgAApIgUAAAgRaQAAAApIgUAAEgRKQAAQIpIAQAAUkQKAACQIlIAAIAUkQIAAKSIFAAAIOV/KBKfDj356qoAAAAASUVORK5CYII=" id="f328569b9-imagec8bff47221" transform="scale(1 -1) translate(0 -236.88)" x="233.471875" y="-42.158125" width="582.48" height="236.88"/>
+   </g>
+   <g id="f328569b9-matplotlib.axis_1">
+    <g id="f328569b9-xtick_1">
+     <g id="f328569b9-line2d_1"/>
+     <g id="f328569b9-text_1">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(252.404545 350.838125) rotate(-90)">EE 15–45 min</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_2">
+     <g id="f328569b9-line2d_2"/>
+     <g id="f328569b9-text_2">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(284.751135 335.135) rotate(-90)">EE 3.5–4 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_3">
+     <g id="f328569b9-line2d_3"/>
+     <g id="f328569b9-text_3">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(317.097725 320.594375) rotate(-90)">EE 24 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_4">
+     <g id="f328569b9-line2d_4"/>
+     <g id="f328569b9-text_4">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(349.444315 351.467812) rotate(-90)">RE 15–45 min</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_5">
+     <g id="f328569b9-line2d_5"/>
+     <g id="f328569b9-text_5">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(381.790904 335.764687) rotate(-90)">RE 3.5–4 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_6">
+     <g id="f328569b9-line2d_6"/>
+     <g id="f328569b9-text_6">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(414.137494 321.224062) rotate(-90)">RE 24 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_7">
+     <g id="f328569b9-line2d_7"/>
+     <g id="f328569b9-text_7">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(446.484084 350.838125) rotate(-90)">EE 15–45 min</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_8">
+     <g id="f328569b9-line2d_8"/>
+     <g id="f328569b9-text_8">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(478.830674 335.135) rotate(-90)">EE 3.5–4 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_9">
+     <g id="f328569b9-line2d_9"/>
+     <g id="f328569b9-text_9">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(511.177264 320.594375) rotate(-90)">EE 24 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_10">
+     <g id="f328569b9-line2d_10"/>
+     <g id="f328569b9-text_10">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(543.523854 351.467812) rotate(-90)">RE 15–45 min</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_11">
+     <g id="f328569b9-line2d_11"/>
+     <g id="f328569b9-text_11">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(575.870444 335.764687) rotate(-90)">RE 3.5–4 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_12">
+     <g id="f328569b9-line2d_12"/>
+     <g id="f328569b9-text_12">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(608.217033 321.224062) rotate(-90)">RE 24 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_13">
+     <g id="f328569b9-line2d_13"/>
+     <g id="f328569b9-text_13">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(640.563623 350.838125) rotate(-90)">EE 15–45 min</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_14">
+     <g id="f328569b9-line2d_14"/>
+     <g id="f328569b9-text_14">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(672.910213 335.135) rotate(-90)">EE 3.5–4 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_15">
+     <g id="f328569b9-line2d_15"/>
+     <g id="f328569b9-text_15">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(705.256803 320.594375) rotate(-90)">EE 24 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_16">
+     <g id="f328569b9-line2d_16"/>
+     <g id="f328569b9-text_16">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(737.603393 351.467812) rotate(-90)">RE 15–45 min</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_17">
+     <g id="f328569b9-line2d_17"/>
+     <g id="f328569b9-text_17">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(769.949983 335.764687) rotate(-90)">RE 3.5–4 h</text>
+     </g>
+    </g>
+    <g id="f328569b9-xtick_18">
+     <g id="f328569b9-line2d_18"/>
+     <g id="f328569b9-text_18">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(802.296573 321.224062) rotate(-90)">RE 24 h</text>
+     </g>
+    </g>
+   </g>
+   <g id="f328569b9-matplotlib.axis_2">
+    <g id="f328569b9-ytick_1">
+     <g id="f328569b9-line2d_19"/>
+     <g id="f328569b9-text_19">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(181.603125 61.004948)">TCA cycle</text>
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(19.925 72.20276)">29 RNA / 28 protein genes · 9 metabolites</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_2">
+     <g id="f328569b9-line2d_20"/>
+     <g id="f328569b9-text_20">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(86.410938 100.458281)">Glycolysis / gluconeogenesis</text>
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(13.5625 111.656094)">45 RNA / 48 protein genes · 10 metabolites</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_3">
+     <g id="f328569b9-line2d_21"/>
+     <g id="f328569b9-text_21">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(105.401563 139.911615)">Fatty-acid beta-oxidation</text>
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(13.5625 151.109427)">36 RNA / 32 protein genes · 53 metabolites</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_4">
+     <g id="f328569b9-line2d_22"/>
+     <g id="f328569b9-text_22">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(144.520312 179.364948)">BCAA catabolism</text>
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(13.5625 190.56276)">42 RNA / 40 protein genes · 10 metabolites</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_5">
+     <g id="f328569b9-line2d_23"/>
+     <g id="f328569b9-text_23">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(136.30625 218.818281)">Purine metabolism</text>
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(7.2 230.016094)">135 RNA / 83 protein genes · 21 metabolites</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_6">
+     <g id="f328569b9-line2d_24"/>
+     <g id="f328569b9-text_24">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(114.904688 258.271615)">Pyrimidine metabolism</text>
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; fill: #111111" transform="translate(13.5625 269.469427)">91 RNA / 54 protein genes · 15 metabolites</text>
+     </g>
+    </g>
+   </g>
+   <g id="f328569b9-line2d_25">
+    <path d="M 427.551414 279.038125 
+L 427.551414 42.318125 
+" clip-path="url(#f328569b9-p59374613ed)" style="fill: none; stroke: #ffffff; stroke-width: 4; stroke-linecap: square"/>
+   </g>
+   <g id="f328569b9-line2d_26">
+    <path d="M 621.630953 279.038125 
+L 621.630953 42.318125 
+" clip-path="url(#f328569b9-p59374613ed)" style="fill: none; stroke: #ffffff; stroke-width: 4; stroke-linecap: square"/>
+   </g>
+   <g id="f328569b9-text_25">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="249.64517" y="64.804167" transform="rotate(-0 249.64517 64.804167)">-2.3</text>
+   </g>
+   <g id="f328569b9-text_26">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="281.99176" y="64.804167" transform="rotate(-0 281.99176 64.804167)">-0.0</text>
+   </g>
+   <g id="f328569b9-text_27">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="314.33835" y="64.804167" transform="rotate(-0 314.33835 64.804167)">7.5</text>
+   </g>
+   <g id="f328569b9-text_28">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="346.68494" y="64.804167" transform="rotate(-0 346.68494 64.804167)">-2.5</text>
+   </g>
+   <g id="f328569b9-text_29">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="379.031529" y="64.804167" transform="rotate(-0 379.031529 64.804167)">0.1</text>
+   </g>
+   <g id="f328569b9-text_30">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="411.378119" y="64.804167" transform="rotate(-0 411.378119 64.804167)">1.8</text>
+   </g>
+   <g id="f328569b9-text_31">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="443.724709" y="64.804167" transform="rotate(-0 443.724709 64.804167)">-2.4</text>
+   </g>
+   <g id="f328569b9-text_32">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="476.071299" y="64.804167" transform="rotate(-0 476.071299 64.804167)">-0.1</text>
+   </g>
+   <g id="f328569b9-text_33">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="508.417889" y="64.804167" transform="rotate(-0 508.417889 64.804167)">-2.1</text>
+   </g>
+   <g id="f328569b9-text_34">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="540.764479" y="64.804167" transform="rotate(-0 540.764479 64.804167)">-3.4</text>
+   </g>
+   <g id="f328569b9-text_35">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="573.111069" y="64.804167" transform="rotate(-0 573.111069 64.804167)">-1.5</text>
+   </g>
+   <g id="f328569b9-text_36">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="605.457658" y="64.804167" transform="rotate(-0 605.457658 64.804167)">-4.7</text>
+   </g>
+   <g id="f328569b9-text_37">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="637.804248" y="64.804167" transform="rotate(-0 637.804248 64.804167)">4.9</text>
+   </g>
+   <g id="f328569b9-text_38">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="670.150838" y="64.804167" transform="rotate(-0 670.150838 64.804167)">1.9</text>
+   </g>
+   <g id="f328569b9-text_39">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="702.497428" y="64.804167" transform="rotate(-0 702.497428 64.804167)">-1.4</text>
+   </g>
+   <g id="f328569b9-text_40">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="734.844018" y="64.804167" transform="rotate(-0 734.844018 64.804167)">4.8</text>
+   </g>
+   <g id="f328569b9-text_41">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="767.190608" y="64.804167" transform="rotate(-0 767.190608 64.804167)">0.7</text>
+   </g>
+   <g id="f328569b9-text_42">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="799.537198" y="64.804167" transform="rotate(-0 799.537198 64.804167)">-2.3</text>
+   </g>
+   <g id="f328569b9-text_43">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="249.64517" y="104.2575" transform="rotate(-0 249.64517 104.2575)">-0.4</text>
+   </g>
+   <g id="f328569b9-text_44">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="281.99176" y="104.2575" transform="rotate(-0 281.99176 104.2575)">0.7</text>
+   </g>
+   <g id="f328569b9-text_45">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="314.33835" y="104.2575" transform="rotate(-0 314.33835 104.2575)">3.3</text>
+   </g>
+   <g id="f328569b9-text_46">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="346.68494" y="104.2575" transform="rotate(-0 346.68494 104.2575)">-0.7</text>
+   </g>
+   <g id="f328569b9-text_47">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="379.031529" y="104.2575" transform="rotate(-0 379.031529 104.2575)">0.4</text>
+   </g>
+   <g id="f328569b9-text_48">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="411.378119" y="104.2575" transform="rotate(-0 411.378119 104.2575)">0.5</text>
+   </g>
+   <g id="f328569b9-text_49">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="443.724709" y="104.2575" transform="rotate(-0 443.724709 104.2575)">1.3</text>
+   </g>
+   <g id="f328569b9-text_50">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="476.071299" y="104.2575" transform="rotate(-0 476.071299 104.2575)">-1.3</text>
+   </g>
+   <g id="f328569b9-text_51">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="508.417889" y="104.2575" transform="rotate(-0 508.417889 104.2575)">2.0</text>
+   </g>
+   <g id="f328569b9-text_52">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="540.764479" y="104.2575" transform="rotate(-0 540.764479 104.2575)">0.7</text>
+   </g>
+   <g id="f328569b9-text_53">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="573.111069" y="104.2575" transform="rotate(-0 573.111069 104.2575)">-0.1</text>
+   </g>
+   <g id="f328569b9-text_54">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="605.457658" y="104.2575" transform="rotate(-0 605.457658 104.2575)">1.2</text>
+   </g>
+   <g id="f328569b9-text_55">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="637.804248" y="104.2575" transform="rotate(-0 637.804248 104.2575)">-0.4</text>
+   </g>
+   <g id="f328569b9-text_56">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="670.150838" y="104.2575" transform="rotate(-0 670.150838 104.2575)">-1.1</text>
+   </g>
+   <g id="f328569b9-text_57">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="702.497428" y="104.2575" transform="rotate(-0 702.497428 104.2575)">-1.3</text>
+   </g>
+   <g id="f328569b9-text_58">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="734.844018" y="104.2575" transform="rotate(-0 734.844018 104.2575)">2.6</text>
+   </g>
+   <g id="f328569b9-text_59">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="767.190608" y="104.2575" transform="rotate(-0 767.190608 104.2575)">-1.7</text>
+   </g>
+   <g id="f328569b9-text_60">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="799.537198" y="104.2575" transform="rotate(-0 799.537198 104.2575)">-1.0</text>
+   </g>
+   <g id="f328569b9-text_61">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="249.64517" y="143.710833" transform="rotate(-0 249.64517 143.710833)">-4.1</text>
+   </g>
+   <g id="f328569b9-text_62">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="281.99176" y="143.710833" transform="rotate(-0 281.99176 143.710833)">-0.3</text>
+   </g>
+   <g id="f328569b9-text_63">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="314.33835" y="143.710833" transform="rotate(-0 314.33835 143.710833)">6.0</text>
+   </g>
+   <g id="f328569b9-text_64">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="346.68494" y="143.710833" transform="rotate(-0 346.68494 143.710833)">-3.1</text>
+   </g>
+   <g id="f328569b9-text_65">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="379.031529" y="143.710833" transform="rotate(-0 379.031529 143.710833)">0.2</text>
+   </g>
+   <g id="f328569b9-text_66">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="411.378119" y="143.710833" transform="rotate(-0 411.378119 143.710833)">-0.7</text>
+   </g>
+   <g id="f328569b9-text_67">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="443.724709" y="143.710833" transform="rotate(-0 443.724709 143.710833)">-4.3</text>
+   </g>
+   <g id="f328569b9-text_68">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="476.071299" y="143.710833" transform="rotate(-0 476.071299 143.710833)">-1.5</text>
+   </g>
+   <g id="f328569b9-text_69">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="508.417889" y="143.710833" transform="rotate(-0 508.417889 143.710833)">-1.4</text>
+   </g>
+   <g id="f328569b9-text_70">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="540.764479" y="143.710833" transform="rotate(-0 540.764479 143.710833)">-4.4</text>
+   </g>
+   <g id="f328569b9-text_71">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="573.111069" y="143.710833" transform="rotate(-0 573.111069 143.710833)">-2.2</text>
+   </g>
+   <g id="f328569b9-text_72">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="605.457658" y="143.710833" transform="rotate(-0 605.457658 143.710833)">-3.9</text>
+   </g>
+   <g id="f328569b9-text_73">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="637.804248" y="143.710833" transform="rotate(-0 637.804248 143.710833)">10.4</text>
+   </g>
+   <g id="f328569b9-text_74">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="670.150838" y="143.710833" transform="rotate(-0 670.150838 143.710833)">6.1</text>
+   </g>
+   <g id="f328569b9-text_75">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="702.497428" y="143.710833" transform="rotate(-0 702.497428 143.710833)">10.2</text>
+   </g>
+   <g id="f328569b9-text_76">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="734.844018" y="143.710833" transform="rotate(-0 734.844018 143.710833)">-5.1</text>
+   </g>
+   <g id="f328569b9-text_77">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="767.190608" y="143.710833" transform="rotate(-0 767.190608 143.710833)">2.2</text>
+   </g>
+   <g id="f328569b9-text_78">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="799.537198" y="143.710833" transform="rotate(-0 799.537198 143.710833)">8.7</text>
+   </g>
+   <g id="f328569b9-text_79">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="249.64517" y="183.164167" transform="rotate(-0 249.64517 183.164167)">-5.3</text>
+   </g>
+   <g id="f328569b9-text_80">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="281.99176" y="183.164167" transform="rotate(-0 281.99176 183.164167)">-0.4</text>
+   </g>
+   <g id="f328569b9-text_81">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="314.33835" y="183.164167" transform="rotate(-0 314.33835 183.164167)">5.3</text>
+   </g>
+   <g id="f328569b9-text_82">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="346.68494" y="183.164167" transform="rotate(-0 346.68494 183.164167)">-4.1</text>
+   </g>
+   <g id="f328569b9-text_83">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="379.031529" y="183.164167" transform="rotate(-0 379.031529 183.164167)">-0.1</text>
+   </g>
+   <g id="f328569b9-text_84">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="411.378119" y="183.164167" transform="rotate(-0 411.378119 183.164167)">-2.0</text>
+   </g>
+   <g id="f328569b9-text_85">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="443.724709" y="183.164167" transform="rotate(-0 443.724709 183.164167)">-5.7</text>
+   </g>
+   <g id="f328569b9-text_86">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="476.071299" y="183.164167" transform="rotate(-0 476.071299 183.164167)">-0.9</text>
+   </g>
+   <g id="f328569b9-text_87">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="508.417889" y="183.164167" transform="rotate(-0 508.417889 183.164167)">-2.1</text>
+   </g>
+   <g id="f328569b9-text_88">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="540.764479" y="183.164167" transform="rotate(-0 540.764479 183.164167)">-5.7</text>
+   </g>
+   <g id="f328569b9-text_89">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="573.111069" y="183.164167" transform="rotate(-0 573.111069 183.164167)">-2.6</text>
+   </g>
+   <g id="f328569b9-text_90">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="605.457658" y="183.164167" transform="rotate(-0 605.457658 183.164167)">-6.0</text>
+   </g>
+   <g id="f328569b9-text_91">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="637.804248" y="183.164167" transform="rotate(-0 637.804248 183.164167)">6.3</text>
+   </g>
+   <g id="f328569b9-text_92">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="670.150838" y="183.164167" transform="rotate(-0 670.150838 183.164167)">0.6</text>
+   </g>
+   <g id="f328569b9-text_93">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="702.497428" y="183.164167" transform="rotate(-0 702.497428 183.164167)">-0.8</text>
+   </g>
+   <g id="f328569b9-text_94">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="734.844018" y="183.164167" transform="rotate(-0 734.844018 183.164167)">2.6</text>
+   </g>
+   <g id="f328569b9-text_95">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="767.190608" y="183.164167" transform="rotate(-0 767.190608 183.164167)">-4.1</text>
+   </g>
+   <g id="f328569b9-text_96">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="799.537198" y="183.164167" transform="rotate(-0 799.537198 183.164167)">-4.5</text>
+   </g>
+   <g id="f328569b9-text_97">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="249.64517" y="222.6175" transform="rotate(-0 249.64517 222.6175)">-1.4</text>
+   </g>
+   <g id="f328569b9-text_98">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="281.99176" y="222.6175" transform="rotate(-0 281.99176 222.6175)">-0.2</text>
+   </g>
+   <g id="f328569b9-text_99">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="314.33835" y="222.6175" transform="rotate(-0 314.33835 222.6175)">0.6</text>
+   </g>
+   <g id="f328569b9-text_100">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="346.68494" y="222.6175" transform="rotate(-0 346.68494 222.6175)">-0.8</text>
+   </g>
+   <g id="f328569b9-text_101">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="379.031529" y="222.6175" transform="rotate(-0 379.031529 222.6175)">0.5</text>
+   </g>
+   <g id="f328569b9-text_102">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="411.378119" y="222.6175" transform="rotate(-0 411.378119 222.6175)">0.4</text>
+   </g>
+   <g id="f328569b9-text_103">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="443.724709" y="222.6175" transform="rotate(-0 443.724709 222.6175)">1.3</text>
+   </g>
+   <g id="f328569b9-text_104">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="476.071299" y="222.6175" transform="rotate(-0 476.071299 222.6175)">-1.4</text>
+   </g>
+   <g id="f328569b9-text_105">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="508.417889" y="222.6175" transform="rotate(-0 508.417889 222.6175)">1.9</text>
+   </g>
+   <g id="f328569b9-text_106">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="540.764479" y="222.6175" transform="rotate(-0 540.764479 222.6175)">0.6</text>
+   </g>
+   <g id="f328569b9-text_107">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="573.111069" y="222.6175" transform="rotate(-0 573.111069 222.6175)">-2.2</text>
+   </g>
+   <g id="f328569b9-text_108">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="605.457658" y="222.6175" transform="rotate(-0 605.457658 222.6175)">0.7</text>
+   </g>
+   <g id="f328569b9-text_109">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="637.804248" y="222.6175" transform="rotate(-0 637.804248 222.6175)">3.0</text>
+   </g>
+   <g id="f328569b9-text_110">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="670.150838" y="222.6175" transform="rotate(-0 670.150838 222.6175)">-0.5</text>
+   </g>
+   <g id="f328569b9-text_111">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="702.497428" y="222.6175" transform="rotate(-0 702.497428 222.6175)">-3.5</text>
+   </g>
+   <g id="f328569b9-text_112">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="734.844018" y="222.6175" transform="rotate(-0 734.844018 222.6175)">4.3</text>
+   </g>
+   <g id="f328569b9-text_113">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="767.190608" y="222.6175" transform="rotate(-0 767.190608 222.6175)">0.1</text>
+   </g>
+   <g id="f328569b9-text_114">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="799.537198" y="222.6175" transform="rotate(-0 799.537198 222.6175)">-3.0</text>
+   </g>
+   <g id="f328569b9-text_115">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="249.64517" y="262.070833" transform="rotate(-0 249.64517 262.070833)">-1.7</text>
+   </g>
+   <g id="f328569b9-text_116">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="281.99176" y="262.070833" transform="rotate(-0 281.99176 262.070833)">-0.5</text>
+   </g>
+   <g id="f328569b9-text_117">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="314.33835" y="262.070833" transform="rotate(-0 314.33835 262.070833)">0.9</text>
+   </g>
+   <g id="f328569b9-text_118">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="346.68494" y="262.070833" transform="rotate(-0 346.68494 262.070833)">-1.9</text>
+   </g>
+   <g id="f328569b9-text_119">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="379.031529" y="262.070833" transform="rotate(-0 379.031529 262.070833)">-0.5</text>
+   </g>
+   <g id="f328569b9-text_120">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="411.378119" y="262.070833" transform="rotate(-0 411.378119 262.070833)">0.4</text>
+   </g>
+   <g id="f328569b9-text_121">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="443.724709" y="262.070833" transform="rotate(-0 443.724709 262.070833)">-1.1</text>
+   </g>
+   <g id="f328569b9-text_122">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="476.071299" y="262.070833" transform="rotate(-0 476.071299 262.070833)">-1.7</text>
+   </g>
+   <g id="f328569b9-text_123">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="508.417889" y="262.070833" transform="rotate(-0 508.417889 262.070833)">0.7</text>
+   </g>
+   <g id="f328569b9-text_124">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="540.764479" y="262.070833" transform="rotate(-0 540.764479 262.070833)">-0.6</text>
+   </g>
+   <g id="f328569b9-text_125">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="573.111069" y="262.070833" transform="rotate(-0 573.111069 262.070833)">-1.8</text>
+   </g>
+   <g id="f328569b9-text_126">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="605.457658" y="262.070833" transform="rotate(-0 605.457658 262.070833)">-1.2</text>
+   </g>
+   <g id="f328569b9-text_127">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="637.804248" y="262.070833" transform="rotate(-0 637.804248 262.070833)">-0.2</text>
+   </g>
+   <g id="f328569b9-text_128">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="670.150838" y="262.070833" transform="rotate(-0 670.150838 262.070833)">1.4</text>
+   </g>
+   <g id="f328569b9-text_129">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="702.497428" y="262.070833" transform="rotate(-0 702.497428 262.070833)">-1.7</text>
+   </g>
+   <g id="f328569b9-text_130">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="734.844018" y="262.070833" transform="rotate(-0 734.844018 262.070833)">0.5</text>
+   </g>
+   <g id="f328569b9-text_131">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="767.190608" y="262.070833" transform="rotate(-0 767.190608 262.070833)">1.6</text>
+   </g>
+   <g id="f328569b9-text_132">
+    <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="799.537198" y="262.070833" transform="rotate(-0 799.537198 262.070833)">-1.0</text>
+   </g>
+   <g id="f328569b9-text_133">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #2f5f8a" x="330.511645" y="30.167135" transform="rotate(-0 330.511645 30.167135)">RNA</text>
+   </g>
+   <g id="f328569b9-text_134">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #c26a2e" x="524.591184" y="30.167135" transform="rotate(-0 524.591184 30.167135)">protein</text>
+   </g>
+   <g id="f328569b9-text_135">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #7a5195" x="718.670723" y="30.167135" transform="rotate(-0 718.670723 30.167135)">metabolite</text>
+   </g>
+   <g id="f328569b9-text_136">
+    <text style="font-size: 12px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="233.471875" y="16.318125" transform="rotate(-0 233.471875 16.318125)">Human vastus lateralis: pathway gene sets and metabolite sets</text>
+   </g>
+  </g>
+  <g id="f328569b9-axes_2">
+   <g id="f328569b9-patch_3">
+    <path d="M 824.807971 279.038125 
+L 836.643971 279.038125 
+L 836.643971 42.318125 
+L 824.807971 42.318125 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAABAAAAFICAYAAABZWX5PAAABX0lEQVR4nO2awQ0DIRADlxN9pKP0k+aPFGGkHdDkD1pGtuWNbny+v1XBbz5jJOdrjie8IJ3giU7vmEAGVfNJGYx4gn6IMriAQfyEHKIMdqSyEGVwBQNArOcQZdDPIH4CoB/IoGZ4HrDyAPqBDAAMALEuA0LFaW9pgFiXAYCBEAl5QGjrMuhnQGjr7Qz6E8nVlxDrMgAwAMR6e8Vx9XXtq5JBFYEBAWJ3zSMwUEgbiqYMLjAToCPJ4AYGhI0ljvWKPtGsud7sgpzBWm92QYVPmOsNJ0ifkEPsZ5BOABBS6oVZ5wsJwOB8IfW7ca1uiBt0YCLpxhvcKAOEkOp4NwKE1M4AIKQb3Gg/AAjp/EQCCGlDTzxeSCYSI5GOL5o3JJJuBAgptbP9AOHGfiFVKiT7gYlUkEQ6HqKJxEik4yES3CgD3bilJ8rARAK4kfBfmv0A4MZ+IbV/CWMimUhVBDf+AaqxV42NGC8QAAAAAElFTkSuQmCC" id="f328569b9-image47567ee7b3" transform="scale(1 -1) translate(0 -236.16)" x="825.12" y="-42.48" width="11.52" height="236.16"/>
+   <g id="f328569b9-matplotlib.axis_3"/>
+   <g id="f328569b9-matplotlib.axis_4">
+    <g id="f328569b9-ytick_7">
+     <g id="f328569b9-line2d_27">
+      <defs>
+       <path id="f328569b9-m19317148e7" d="M 0 0 
+L 3.5 0 
+" style="stroke: #111111; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#f328569b9-m19317148e7" x="836.643971" y="274.222129" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f328569b9-text_137">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="843.643971" y="278.021347" transform="rotate(-0 843.643971 278.021347)">−10.0</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_8">
+     <g id="f328569b9-line2d_28">
+      <g>
+       <use xlink:href="#f328569b9-m19317148e7" x="836.643971" y="245.836128" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f328569b9-text_138">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="843.643971" y="249.635346" transform="rotate(-0 843.643971 249.635346)">−7.5</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_9">
+     <g id="f328569b9-line2d_29">
+      <g>
+       <use xlink:href="#f328569b9-m19317148e7" x="836.643971" y="217.450127" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f328569b9-text_139">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="843.643971" y="221.249346" transform="rotate(-0 843.643971 221.249346)">−5.0</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_10">
+     <g id="f328569b9-line2d_30">
+      <g>
+       <use xlink:href="#f328569b9-m19317148e7" x="836.643971" y="189.064126" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f328569b9-text_140">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="843.643971" y="192.863345" transform="rotate(-0 843.643971 192.863345)">−2.5</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_11">
+     <g id="f328569b9-line2d_31">
+      <g>
+       <use xlink:href="#f328569b9-m19317148e7" x="836.643971" y="160.678125" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f328569b9-text_141">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="843.643971" y="164.477344" transform="rotate(-0 843.643971 164.477344)">0.0</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_12">
+     <g id="f328569b9-line2d_32">
+      <g>
+       <use xlink:href="#f328569b9-m19317148e7" x="836.643971" y="132.292124" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f328569b9-text_142">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="843.643971" y="136.091343" transform="rotate(-0 843.643971 136.091343)">2.5</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_13">
+     <g id="f328569b9-line2d_33">
+      <g>
+       <use xlink:href="#f328569b9-m19317148e7" x="836.643971" y="103.906123" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f328569b9-text_143">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="843.643971" y="107.705342" transform="rotate(-0 843.643971 107.705342)">5.0</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_14">
+     <g id="f328569b9-line2d_34">
+      <g>
+       <use xlink:href="#f328569b9-m19317148e7" x="836.643971" y="75.520122" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f328569b9-text_144">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="843.643971" y="79.319341" transform="rotate(-0 843.643971 79.319341)">7.5</text>
+     </g>
+    </g>
+    <g id="f328569b9-ytick_15">
+     <g id="f328569b9-line2d_35">
+      <g>
+       <use xlink:href="#f328569b9-m19317148e7" x="836.643971" y="47.134121" style="fill: #111111; stroke: #111111; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="f328569b9-text_145">
+      <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="843.643971" y="50.93334" transform="rotate(-0 843.643971 50.93334)">10.0</text>
+     </g>
+    </g>
+    <g id="f328569b9-text_146">
+     <text style="font-size: 10px; font-family: 'Inter', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="885.887721" y="160.678125" transform="rotate(-90 885.887721 160.678125)">cameraPR t (+ = set up with exercise)</text>
+    </g>
+   </g>
+   <g id="f328569b9-LineCollection_1"/>
+   <g id="f328569b9-patch_4">
+    <path d="M 824.807971 279.038125 
+L 830.725971 279.038125 
+L 836.643971 279.038125 
+L 836.643971 42.318125 
+L 830.725971 42.318125 
+L 824.807971 42.318125 
+L 824.807971 279.038125 
+z
+" style="fill: none; stroke: #111111; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="f328569b9-p59374613ed">
+   <rect x="233.471875" y="42.318125" width="582.238618" height="236.72"/>
+  </clipPath>
+ </defs>
+</svg>
+<p class="how"><span class="lbl">How to read:</span> Cell = cameraPR t (limma cameraPR, inter-gene correlation 0.01) of the pathway&#39;s gene set (RNA, protein) or metabolite set (metabolites) against every other feature measured in that comparison column; t &gt; 0 = the set moves up with exercise relative to the rest of the column, grey = fewer than 3 members measured. Row labels give the number of genes / metabolites measured (maximum over columns). Metabolite pools are not flux: a higher concentration can mean more production or less consumption. The pathway map is many-to-many (store/pathway_map.csv: gene side from msigdbr KEGG legacy sets, metabolite side from RefMet classes and curated names); genes and metabolites are never matched one-to-one.</p>
+<p class="links"><a href="figures/pathways.png">PNG</a></p></figure>
+<div class="table-item">
+<h3>Pathway cameraPR t per layer and time</h3>
+<div class="table-wrap"><table id="pathways_table" class="data sortable"><thead><tr><th scope="col">pathway</th><th scope="col">layer</th><th scope="col">dataset</th><th scope="col">tissue</th><th scope="col">contrast</th><th scope="col">time</th><th scope="col" class="num">n_in_set</th><th scope="col" class="num">n_universe</th><th scope="col" class="num">t</th><th scope="col" class="num">p</th><th scope="col">column_id</th></tr></thead><tbody><tr><td>TCA cycle</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">29</td><td class="num">14972</td><td class="num">-2.33</td><td class="num">0.0198</td><td>human_acute|VL|RNA|EE_vs_CON_15to45min</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">45</td><td class="num">14972</td><td class="num">-0.413</td><td class="num">0.68</td><td>human_acute|VL|RNA|EE_vs_CON_15to45min</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">36</td><td class="num">14972</td><td class="num">-4.12</td><td class="num">3.76e-05</td><td>human_acute|VL|RNA|EE_vs_CON_15to45min</td></tr><tr><td>BCAA catabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">42</td><td class="num">14972</td><td class="num">-5.28</td><td class="num">1.31e-07</td><td>human_acute|VL|RNA|EE_vs_CON_15to45min</td></tr><tr><td>Purine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">135</td><td class="num">14972</td><td class="num">-1.40</td><td class="num">0.163</td><td>human_acute|VL|RNA|EE_vs_CON_15to45min</td></tr><tr><td>Pyrimidine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">91</td><td class="num">14972</td><td class="num">-1.70</td><td class="num">0.089</td><td>human_acute|VL|RNA|EE_vs_CON_15to45min</td></tr><tr><td>TCA cycle</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">29</td><td class="num">14972</td><td class="num">-0.0326</td><td class="num">0.974</td><td>human_acute|VL|RNA|EE_vs_CON_3.5to4h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">45</td><td class="num">14972</td><td class="num">0.702</td><td class="num">0.483</td><td>human_acute|VL|RNA|EE_vs_CON_3.5to4h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">36</td><td class="num">14972</td><td class="num">-0.293</td><td class="num">0.769</td><td>human_acute|VL|RNA|EE_vs_CON_3.5to4h</td></tr><tr><td>BCAA catabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">42</td><td class="num">14972</td><td class="num">-0.379</td><td class="num">0.705</td><td>human_acute|VL|RNA|EE_vs_CON_3.5to4h</td></tr><tr><td>Purine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">135</td><td class="num">14972</td><td class="num">-0.223</td><td class="num">0.823</td><td>human_acute|VL|RNA|EE_vs_CON_3.5to4h</td></tr><tr><td>Pyrimidine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">91</td><td class="num">14972</td><td class="num">-0.546</td><td class="num">0.585</td><td>human_acute|VL|RNA|EE_vs_CON_3.5to4h</td></tr><tr><td>TCA cycle</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">29</td><td class="num">14972</td><td class="num">7.52</td><td class="num">5.87e-14</td><td>human_acute|VL|RNA|EE_vs_CON_24h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">45</td><td class="num">14972</td><td class="num">3.32</td><td class="num">0.000901</td><td>human_acute|VL|RNA|EE_vs_CON_24h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">36</td><td class="num">14972</td><td class="num">6.03</td><td class="num">1.71e-09</td><td>human_acute|VL|RNA|EE_vs_CON_24h</td></tr><tr><td>BCAA catabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">42</td><td class="num">14972</td><td class="num">5.26</td><td class="num">1.5e-07</td><td>human_acute|VL|RNA|EE_vs_CON_24h</td></tr><tr><td>Purine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">135</td><td class="num">14972</td><td class="num">0.603</td><td class="num">0.547</td><td>human_acute|VL|RNA|EE_vs_CON_24h</td></tr><tr><td>Pyrimidine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">91</td><td class="num">14972</td><td class="num">0.931</td><td class="num">0.352</td><td>human_acute|VL|RNA|EE_vs_CON_24h</td></tr><tr><td>TCA cycle</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">29</td><td class="num">14972</td><td class="num">-2.54</td><td class="num">0.0112</td><td>human_acute|VL|RNA|RE_vs_CON_15to45min</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">45</td><td class="num">14972</td><td class="num">-0.726</td><td class="num">0.468</td><td>human_acute|VL|RNA|RE_vs_CON_15to45min</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">36</td><td class="num">14972</td><td class="num">-3.08</td><td class="num">0.0021</td><td>human_acute|VL|RNA|RE_vs_CON_15to45min</td></tr><tr><td>BCAA catabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">42</td><td class="num">14972</td><td class="num">-4.12</td><td class="num">3.86e-05</td><td>human_acute|VL|RNA|RE_vs_CON_15to45min</td></tr><tr><td>Purine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">135</td><td class="num">14972</td><td class="num">-0.795</td><td class="num">0.427</td><td>human_acute|VL|RNA|RE_vs_CON_15to45min</td></tr><tr><td>Pyrimidine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">91</td><td class="num">14972</td><td class="num">-1.86</td><td class="num">0.0626</td><td>human_acute|VL|RNA|RE_vs_CON_15to45min</td></tr><tr><td>TCA cycle</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">29</td><td class="num">14972</td><td class="num">0.136</td><td class="num">0.892</td><td>human_acute|VL|RNA|RE_vs_CON_3.5to4h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">45</td><td class="num">14972</td><td class="num">0.431</td><td class="num">0.666</td><td>human_acute|VL|RNA|RE_vs_CON_3.5to4h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">36</td><td class="num">14972</td><td class="num">0.179</td><td class="num">0.858</td><td>human_acute|VL|RNA|RE_vs_CON_3.5to4h</td></tr><tr><td>BCAA catabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">42</td><td class="num">14972</td><td class="num">-0.0787</td><td class="num">0.937</td><td>human_acute|VL|RNA|RE_vs_CON_3.5to4h</td></tr><tr><td>Purine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">135</td><td class="num">14972</td><td class="num">0.497</td><td class="num">0.619</td><td>human_acute|VL|RNA|RE_vs_CON_3.5to4h</td></tr><tr><td>Pyrimidine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">91</td><td class="num">14972</td><td class="num">-0.506</td><td class="num">0.613</td><td>human_acute|VL|RNA|RE_vs_CON_3.5to4h</td></tr><tr><td>TCA cycle</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">29</td><td class="num">14972</td><td class="num">1.79</td><td class="num">0.0734</td><td>human_acute|VL|RNA|RE_vs_CON_24h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">45</td><td class="num">14972</td><td class="num">0.548</td><td class="num">0.584</td><td>human_acute|VL|RNA|RE_vs_CON_24h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">36</td><td class="num">14972</td><td class="num">-0.721</td><td class="num">0.471</td><td>human_acute|VL|RNA|RE_vs_CON_24h</td></tr><tr><td>BCAA catabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">42</td><td class="num">14972</td><td class="num">-1.97</td><td class="num">0.0483</td><td>human_acute|VL|RNA|RE_vs_CON_24h</td></tr><tr><td>Purine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">135</td><td class="num">14972</td><td class="num">0.441</td><td class="num">0.66</td><td>human_acute|VL|RNA|RE_vs_CON_24h</td></tr><tr><td>Pyrimidine metabolism</td><td>RNA</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">91</td><td class="num">14972</td><td class="num">0.372</td><td class="num">0.71</td><td>human_acute|VL|RNA|RE_vs_CON_24h</td></tr><tr><td>TCA cycle</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">28</td><td class="num">5998</td><td class="num">-2.45</td><td class="num">0.0144</td><td>human_acute|VL|PROT|EE_vs_CON_15to45min</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">48</td><td class="num">5998</td><td class="num">1.35</td><td class="num">0.178</td><td>human_acute|VL|PROT|EE_vs_CON_15to45min</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">32</td><td class="num">5998</td><td class="num">-4.35</td><td class="num">1.41e-05</td><td>human_acute|VL|PROT|EE_vs_CON_15to45min</td></tr><tr><td>BCAA catabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">40</td><td class="num">5998</td><td class="num">-5.71</td><td class="num">1.2e-08</td><td>human_acute|VL|PROT|EE_vs_CON_15to45min</td></tr><tr><td>Purine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">83</td><td class="num">5998</td><td class="num">1.35</td><td class="num">0.178</td><td>human_acute|VL|PROT|EE_vs_CON_15to45min</td></tr><tr><td>Pyrimidine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">54</td><td class="num">5998</td><td class="num">-1.13</td><td class="num">0.257</td><td>human_acute|VL|PROT|EE_vs_CON_15to45min</td></tr><tr><td>TCA cycle</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">28</td><td class="num">5998</td><td class="num">-0.0801</td><td class="num">0.936</td><td>human_acute|VL|PROT|EE_vs_CON_3.5to4h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">48</td><td class="num">5998</td><td class="num">-1.35</td><td class="num">0.178</td><td>human_acute|VL|PROT|EE_vs_CON_3.5to4h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">32</td><td class="num">5998</td><td class="num">-1.46</td><td class="num">0.145</td><td>human_acute|VL|PROT|EE_vs_CON_3.5to4h</td></tr><tr><td>BCAA catabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">40</td><td class="num">5998</td><td class="num">-0.925</td><td class="num">0.355</td><td>human_acute|VL|PROT|EE_vs_CON_3.5to4h</td></tr><tr><td>Purine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">83</td><td class="num">5998</td><td class="num">-1.43</td><td class="num">0.152</td><td>human_acute|VL|PROT|EE_vs_CON_3.5to4h</td></tr><tr><td>Pyrimidine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">54</td><td class="num">5998</td><td class="num">-1.67</td><td class="num">0.0955</td><td>human_acute|VL|PROT|EE_vs_CON_3.5to4h</td></tr><tr><td>TCA cycle</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">28</td><td class="num">5998</td><td class="num">-2.05</td><td class="num">0.0404</td><td>human_acute|VL|PROT|EE_vs_CON_24h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">48</td><td class="num">5998</td><td class="num">1.96</td><td class="num">0.0498</td><td>human_acute|VL|PROT|EE_vs_CON_24h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">32</td><td class="num">5998</td><td class="num">-1.45</td><td class="num">0.148</td><td>human_acute|VL|PROT|EE_vs_CON_24h</td></tr><tr><td>BCAA catabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">40</td><td class="num">5998</td><td class="num">-2.12</td><td class="num">0.0338</td><td>human_acute|VL|PROT|EE_vs_CON_24h</td></tr><tr><td>Purine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">83</td><td class="num">5998</td><td class="num">1.92</td><td class="num">0.055</td><td>human_acute|VL|PROT|EE_vs_CON_24h</td></tr><tr><td>Pyrimidine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">54</td><td class="num">5998</td><td class="num">0.702</td><td class="num">0.483</td><td>human_acute|VL|PROT|EE_vs_CON_24h</td></tr><tr><td>TCA cycle</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">28</td><td class="num">5998</td><td class="num">-3.43</td><td class="num">0.00061</td><td>human_acute|VL|PROT|RE_vs_CON_15to45min</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">48</td><td class="num">5998</td><td class="num">0.686</td><td class="num">0.493</td><td>human_acute|VL|PROT|RE_vs_CON_15to45min</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">32</td><td class="num">5998</td><td class="num">-4.43</td><td class="num">9.68e-06</td><td>human_acute|VL|PROT|RE_vs_CON_15to45min</td></tr><tr><td>BCAA catabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">40</td><td class="num">5998</td><td class="num">-5.71</td><td class="num">1.2e-08</td><td>human_acute|VL|PROT|RE_vs_CON_15to45min</td></tr><tr><td>Purine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">83</td><td class="num">5998</td><td class="num">0.602</td><td class="num">0.547</td><td>human_acute|VL|PROT|RE_vs_CON_15to45min</td></tr><tr><td>Pyrimidine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">54</td><td class="num">5998</td><td class="num">-0.564</td><td class="num">0.573</td><td>human_acute|VL|PROT|RE_vs_CON_15to45min</td></tr><tr><td>TCA cycle</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">28</td><td class="num">5998</td><td class="num">-1.54</td><td class="num">0.123</td><td>human_acute|VL|PROT|RE_vs_CON_3.5to4h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">48</td><td class="num">5998</td><td class="num">-0.0852</td><td class="num">0.932</td><td>human_acute|VL|PROT|RE_vs_CON_3.5to4h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">32</td><td class="num">5998</td><td class="num">-2.21</td><td class="num">0.0274</td><td>human_acute|VL|PROT|RE_vs_CON_3.5to4h</td></tr><tr><td>BCAA catabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">40</td><td class="num">5998</td><td class="num">-2.57</td><td class="num">0.0101</td><td>human_acute|VL|PROT|RE_vs_CON_3.5to4h</td></tr><tr><td>Purine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">83</td><td class="num">5998</td><td class="num">-2.18</td><td class="num">0.0293</td><td>human_acute|VL|PROT|RE_vs_CON_3.5to4h</td></tr><tr><td>Pyrimidine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">54</td><td class="num">5998</td><td class="num">-1.82</td><td class="num">0.0694</td><td>human_acute|VL|PROT|RE_vs_CON_3.5to4h</td></tr><tr><td>TCA cycle</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">28</td><td class="num">5998</td><td class="num">-4.75</td><td class="num">2.09e-06</td><td>human_acute|VL|PROT|RE_vs_CON_24h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">48</td><td class="num">5998</td><td class="num">1.20</td><td class="num">0.231</td><td>human_acute|VL|PROT|RE_vs_CON_24h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">32</td><td class="num">5998</td><td class="num">-3.91</td><td class="num">9.25e-05</td><td>human_acute|VL|PROT|RE_vs_CON_24h</td></tr><tr><td>BCAA catabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">40</td><td class="num">5998</td><td class="num">-6.04</td><td class="num">1.59e-09</td><td>human_acute|VL|PROT|RE_vs_CON_24h</td></tr><tr><td>Purine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">83</td><td class="num">5998</td><td class="num">0.719</td><td class="num">0.472</td><td>human_acute|VL|PROT|RE_vs_CON_24h</td></tr><tr><td>Pyrimidine metabolism</td><td>PROT</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">54</td><td class="num">5998</td><td class="num">-1.23</td><td class="num">0.217</td><td>human_acute|VL|PROT|RE_vs_CON_24h</td></tr><tr><td>TCA cycle</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">9</td><td class="num">891</td><td class="num">4.89</td><td class="num">1.22e-06</td><td>human_acute|VL|METAB|EE_vs_CON_15to45min</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">10</td><td class="num">891</td><td class="num">-0.412</td><td class="num">0.68</td><td>human_acute|VL|METAB|EE_vs_CON_15to45min</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">53</td><td class="num">891</td><td class="num">10.42</td><td class="num">4.4e-24</td><td>human_acute|VL|METAB|EE_vs_CON_15to45min</td></tr><tr><td>BCAA catabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">10</td><td class="num">891</td><td class="num">6.31</td><td class="num">4.53e-10</td><td>human_acute|VL|METAB|EE_vs_CON_15to45min</td></tr><tr><td>Purine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">21</td><td class="num">891</td><td class="num">2.98</td><td class="num">0.00292</td><td>human_acute|VL|METAB|EE_vs_CON_15to45min</td></tr><tr><td>Pyrimidine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_15to45min</td><td>EE 15–45 min</td><td class="num">15</td><td class="num">891</td><td class="num">-0.249</td><td class="num">0.804</td><td>human_acute|VL|METAB|EE_vs_CON_15to45min</td></tr><tr><td>TCA cycle</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">9</td><td class="num">891</td><td class="num">1.89</td><td class="num">0.0587</td><td>human_acute|VL|METAB|EE_vs_CON_3.5to4h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">10</td><td class="num">891</td><td class="num">-1.13</td><td class="num">0.259</td><td>human_acute|VL|METAB|EE_vs_CON_3.5to4h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">53</td><td class="num">891</td><td class="num">6.15</td><td class="num">1.17e-09</td><td>human_acute|VL|METAB|EE_vs_CON_3.5to4h</td></tr><tr><td>BCAA catabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">10</td><td class="num">891</td><td class="num">0.585</td><td class="num">0.558</td><td>human_acute|VL|METAB|EE_vs_CON_3.5to4h</td></tr><tr><td>Purine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">21</td><td class="num">891</td><td class="num">-0.458</td><td class="num">0.647</td><td>human_acute|VL|METAB|EE_vs_CON_3.5to4h</td></tr><tr><td>Pyrimidine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_3.5to4h</td><td>EE 3.5–4 h</td><td class="num">15</td><td class="num">891</td><td class="num">1.38</td><td class="num">0.169</td><td>human_acute|VL|METAB|EE_vs_CON_3.5to4h</td></tr><tr><td>TCA cycle</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">9</td><td class="num">891</td><td class="num">-1.39</td><td class="num">0.164</td><td>human_acute|VL|METAB|EE_vs_CON_24h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">10</td><td class="num">891</td><td class="num">-1.32</td><td class="num">0.188</td><td>human_acute|VL|METAB|EE_vs_CON_24h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">53</td><td class="num">891</td><td class="num">10.18</td><td class="num">4.38e-23</td><td>human_acute|VL|METAB|EE_vs_CON_24h</td></tr><tr><td>BCAA catabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">10</td><td class="num">891</td><td class="num">-0.841</td><td class="num">0.401</td><td>human_acute|VL|METAB|EE_vs_CON_24h</td></tr><tr><td>Purine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">21</td><td class="num">891</td><td class="num">-3.49</td><td class="num">0.000509</td><td>human_acute|VL|METAB|EE_vs_CON_24h</td></tr><tr><td>Pyrimidine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>EE_vs_CON_24h</td><td>EE 24 h</td><td class="num">15</td><td class="num">891</td><td class="num">-1.69</td><td class="num">0.0919</td><td>human_acute|VL|METAB|EE_vs_CON_24h</td></tr><tr><td>TCA cycle</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">9</td><td class="num">891</td><td class="num">4.75</td><td class="num">2.33e-06</td><td>human_acute|VL|METAB|RE_vs_CON_15to45min</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">10</td><td class="num">891</td><td class="num">2.64</td><td class="num">0.00851</td><td>human_acute|VL|METAB|RE_vs_CON_15to45min</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">53</td><td class="num">891</td><td class="num">-5.13</td><td class="num">3.6e-07</td><td>human_acute|VL|METAB|RE_vs_CON_15to45min</td></tr><tr><td>BCAA catabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">10</td><td class="num">891</td><td class="num">2.63</td><td class="num">0.00859</td><td>human_acute|VL|METAB|RE_vs_CON_15to45min</td></tr><tr><td>Purine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">21</td><td class="num">891</td><td class="num">4.27</td><td class="num">2.17e-05</td><td>human_acute|VL|METAB|RE_vs_CON_15to45min</td></tr><tr><td>Pyrimidine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_15to45min</td><td>RE 15–45 min</td><td class="num">15</td><td class="num">891</td><td class="num">0.453</td><td class="num">0.651</td><td>human_acute|VL|METAB|RE_vs_CON_15to45min</td></tr><tr><td>TCA cycle</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">9</td><td class="num">891</td><td class="num">0.67</td><td class="num">0.503</td><td>human_acute|VL|METAB|RE_vs_CON_3.5to4h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">10</td><td class="num">891</td><td class="num">-1.75</td><td class="num">0.0806</td><td>human_acute|VL|METAB|RE_vs_CON_3.5to4h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">53</td><td class="num">891</td><td class="num">2.24</td><td class="num">0.0256</td><td>human_acute|VL|METAB|RE_vs_CON_3.5to4h</td></tr><tr><td>BCAA catabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">10</td><td class="num">891</td><td class="num">-4.10</td><td class="num">4.46e-05</td><td>human_acute|VL|METAB|RE_vs_CON_3.5to4h</td></tr><tr><td>Purine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">21</td><td class="num">891</td><td class="num">0.118</td><td class="num">0.906</td><td>human_acute|VL|METAB|RE_vs_CON_3.5to4h</td></tr><tr><td>Pyrimidine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_3.5to4h</td><td>RE 3.5–4 h</td><td class="num">15</td><td class="num">891</td><td class="num">1.57</td><td class="num">0.116</td><td>human_acute|VL|METAB|RE_vs_CON_3.5to4h</td></tr><tr><td>TCA cycle</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">9</td><td class="num">891</td><td class="num">-2.29</td><td class="num">0.0225</td><td>human_acute|VL|METAB|RE_vs_CON_24h</td></tr><tr><td>Glycolysis / gluconeogenesis</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">10</td><td class="num">891</td><td class="num">-0.991</td><td class="num">0.322</td><td>human_acute|VL|METAB|RE_vs_CON_24h</td></tr><tr><td>Fatty-acid beta-oxidation</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">53</td><td class="num">891</td><td class="num">8.75</td><td class="num">1.06e-17</td><td>human_acute|VL|METAB|RE_vs_CON_24h</td></tr><tr><td>BCAA catabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">10</td><td class="num">891</td><td class="num">-4.50</td><td class="num">7.53e-06</td><td>human_acute|VL|METAB|RE_vs_CON_24h</td></tr><tr><td>Purine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">21</td><td class="num">891</td><td class="num">-2.96</td><td class="num">0.00312</td><td>human_acute|VL|METAB|RE_vs_CON_24h</td></tr><tr><td>Pyrimidine metabolism</td><td>METAB</td><td>human_acute</td><td>VL</td><td>RE_vs_CON_24h</td><td>RE 24 h</td><td class="num">15</td><td class="num">891</td><td class="num">-0.995</td><td class="num">0.32</td><td>human_acute|VL|METAB|RE_vs_CON_24h</td></tr></tbody></table></div>
+<p class="links"><a href="tables/pathways_table.csv">CSV</a></p></div>
+
+</section>
+<section id="caveats">
+<h2>h. Caveats</h2>
+<div class="intro">
+<p>&#39;Opposed&#39; is a sign comparison between a disease-versus-healthy difference and an exercise-versus-control difference in different people or animals. It is not a therapeutic claim.</p>
+<p>All MoTrPAC statistics here are group-level contrasts across genes, not per-person or per-animal measurements: we cannot tell whether the individuals whose RNA rose are those whose protein rose.</p>
+<p>Cross-species and cross-tissue: rat genes are mapped to human orthologs (RGD); rat protein is gastrocnemius while human biopsies are vastus lateralis; rat samples were taken about 48 h after the last training bout (adaptation, not a bout response).</p>
+<p>A random gene set from the same pathway class can look just as opposed (section D). Read the class-null percentile before attributing the result to the disease signature itself.</p>
+<p>All panels are group contrasts across genes, not per-animal or per-person.</p>
+<p>Layer classes depend on the FDR cutoff and on detection power (panel d).</p>
+</div>
+<div class="table-item">
+<h3>Safe statements and the unsafe upgrades to avoid</h3>
+<p class="caption">From the team&#39;s planning workbook, generalised.</p><div class="table-wrap"><table id="guardrails" class="data sortable"><thead><tr><th scope="col">Safe statement</th><th scope="col">Unsafe upgrade</th></tr></thead><tbody><tr><td>A disease-signature pathway is directionally opposed after exercise.</td><td>Exercise reverses or treats the disease.</td></tr><tr><td>Blood and muscle share a pathway label.</td><td>The same genes changed or one tissue signalled to the other.</td></tr><tr><td>An early phosphosite and later target-motif signal are temporally compatible.</td><td>The phosphosite caused the later transcriptional response.</td></tr><tr><td>A plasma protein matches tissue RNA/protein in time and direction.</td><td>The tissue is proven to be the source of the plasma protein.</td></tr><tr><td>A PLIER LV is associated with a pathway prior.</td><td>The pathway caused the LV or independently validates it.</td></tr><tr><td>RNA for a gene rose after one bout.</td><td>The protein rose, or will rise.</td></tr><tr><td>A gene is &quot;protein-only&quot; in one contrast.</td><td>The gene is post-transcriptionally regulated.</td></tr></tbody></table></div>
+<p class="links"><a href="tables/guardrails.csv">CSV</a></p></div>
+
+</section>
+
+<section id="glossary">
+<h2>Glossary</h2>
+<dl class="glossary">
+<dt>logFC</dt><dd>log2 fold change of the exercise comparison (exercise minus control, or trained minus sedentary).</dd>
+<dt>stat</dt><dd>gene-level test statistic of the comparison: human limma/dream moderated t; rat RNA DESeq2 Wald z; rat protein limma t. One feature per gene (max |stat| among features mapping to the gene; scripts/03_join.py).</dd>
+<dt>fdr_bh</dt><dd>Benjamini–Hochberg adjusted p, recomputed within each dataset × tissue × layer × comparison over all tested features (the rat package publishes a more conservative cross-tissue BY).</dd>
+<dt>agreement</dt><dd>sign(exercise logFC) × disease direction. −1 = exercise moves the gene against the disease (&#39;opposed&#39;); +1 = same direction.</dd>
+<dt>cameraPR</dt><dd>limma&#39;s pre-ranked competitive gene-set test (Wu &amp; Smyth 2012), here a validated Python port with inter-gene correlation 0.01; t &gt; 0 = signature opposed.</dd>
+<dt>Abundance null</dt><dd>random gene sets matched gene-by-gene on abundance decile in the same comparison.</dd>
+<dt>Class null</dt><dd>random gene sets matched on MitoCarta3.0 / GO:CC complex / secreted composition.</dd>
+<dt>Effective n</dt><dd>number of independent genes implied by their correlation across comparisons (Nyholt 2004; Li &amp; Ji 2005).</dd>
+<dt>EE, RE, CON</dt><dd>human endurance exercise, resistance exercise, and resting control groups.</dd>
+<dt>EE–CON 24 h</dt><dd>human delta-delta contrast: (EE at 24 h − EE pre) − (CON at 24 h − CON pre).</dd>
+<dt>F 8 wk / M 8 wk</dt><dd>rat female / male, trained for 8 weeks vs sex-matched sedentary controls.</dd>
+<dt>VL, gastroc.</dt><dd>vastus lateralis; gastrocnemius (rat SKM-GN).</dd>
+<dt>RefMet</dt><dd>Metabolomics Workbench reference nomenclature for metabolite names.</dd>
+<dt>Concordant / RNA only / protein only / opposite</dt><dd>per gene and comparison: significant (BH FDR &lt; cutoff) in both layers with the same sign / only RNA / only protein / both with opposite signs.</dd>
+</dl>
+</section>
+
+<section id="provenance">
+<h2>Provenance</h2>
+<details>
+<summary>Run provenance (JSON)</summary>
+<pre>{
+  &#34;tool&#34;: &#34;motrpac_probe 0.1.0&#34;,
+  &#34;timestamp&#34;: &#34;2026-09-27T00:42:16&#34;,
+  &#34;command&#34;: &#34;mprobe discord --quiet --species human --tissue VL&#34;,
+  &#34;repo_git_sha&#34;: &#34;5e2cde37eb418e7085b4988c75ae986a35c04da4&#34;,
+  &#34;store&#34;: &#34;d615c2f0b9aec182&#34;,
+  &#34;legacy_scripts_sha256_16&#34;: {
+    &#34;05_pah_grid.py&#34;: &#34;493558c57ee23f84&#34;,
+    &#34;10_everywhere.py&#34;: &#34;442df6305f226a0f&#34;,
+    &#34;03_join.py&#34;: &#34;95deb2a298b150cd&#34;,
+    &#34;06_discordance.py&#34;: &#34;7ee4ea64378d032a&#34;,
+    &#34;08_discordance_model.py&#34;: &#34;444933effeeba640&#34;
+  },
+  &#34;parameters&#34;: {
+    &#34;species&#34;: &#34;human&#34;,
+    &#34;tissue&#34;: &#34;VL&#34;,
+    &#34;cutoff&#34;: 0.05
+  },
+  &#34;timings_s&#34;: {
+    &#34;store load&#34;: 0.43,
+    &#34;a timescale&#34;: 0.0,
+    &#34;b agreement&#34;: 1.19,
+    &#34;c stratified rho&#34;: 5.75,
+    &#34;d which layer&#34;: 0.08,
+    &#34;g sex&#34;: 0.0,
+    &#34;3-layer pathways&#34;: 0.01,
+    &#34;figures + tables&#34;: 0.56
+  }
+}</pre>
+</details>
+</section>
+
+<footer>Generated by motrpac_probe 0.1.0. Single-file report; figures are inline SVG, tables sort by clicking a column header.</footer>
+</main>
+<script>
+/* Sortable tables: click a header of any table.sortable. Numeric-aware;
+   "not measured" / NA sort last; "< 0.001" sorts as 0.0009. */
+(function () {
+  function key(td) {
+    var t = (td.getAttribute('data-sort') || td.textContent).trim();
+    if (t === '' || t === 'not measured' || t === 'NA') return [2, 0];
+    var m = t.match(/^<\s*([\d.]+)$/);
+    if (m) return [0, parseFloat(m[1]) * 0.9];
+    var s = t.replace(/,/g, '').replace(/−/g, '-').replace(/%$/, '');
+    if (/^[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?$/i.test(s)) return [0, parseFloat(s)];
+    return [1, t.toLowerCase()];
+  }
+  document.querySelectorAll('table.sortable').forEach(function (tb) {
+    if (!tb.tHead || !tb.tBodies.length) return;
+    var ths = tb.tHead.rows[0].cells;
+    Array.prototype.forEach.call(ths, function (th, i) {
+      th.tabIndex = 0;
+      function go() {
+        var asc = th.getAttribute('aria-sort') !== 'ascending';
+        Array.prototype.forEach.call(ths, function (h) { h.removeAttribute('aria-sort'); });
+        th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+        var body = tb.tBodies[0], rows = Array.prototype.slice.call(body.rows);
+        rows.sort(function (a, b) {
+          var x = key(a.cells[i]), y = key(b.cells[i]);
+          if (x[0] !== y[0]) return (x[0] === 2) ? 1 : (y[0] === 2) ? -1 : (asc ? x[0] - y[0] : y[0] - x[0]);
+          var c = x[1] < y[1] ? -1 : x[1] > y[1] ? 1 : 0;
+          return asc ? c : -c;
+        });
+        rows.forEach(function (r) { body.appendChild(r); });
+      }
+      th.addEventListener('click', go);
+      th.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+    });
+  });
+})();
+</script>
+</body>
+</html>

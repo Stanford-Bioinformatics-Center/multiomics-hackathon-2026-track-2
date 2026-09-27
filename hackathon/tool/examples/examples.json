@@ -1,0 +1,97 @@
+[
+  {
+    "name": "pah_muscle_malenfant2015",
+    "file": "pah_muscle_malenfant2015.csv",
+    "title": "PAH, skeletal muscle proteome (Malenfant 2015)",
+    "kind": "disease",
+    "tissue_hint": "muscle",
+    "description": "19 iTRAQ proteins plus 6 phenotype genes from vastus lateralis of IPAH patients vs controls.",
+    "run_args": [
+      "--pool-sets",
+      "KEGG_OXIDATIVE_PHOSPHORYLATION,KEGG_CITRATE_CYCLE_TCA_CYCLE",
+      "--pool-groups",
+      "OXPHOS-down,TCA/transport-down"
+    ]
+  },
+  {
+    "name": "pah_blood_cheadle2012_eds",
+    "file": "pah_blood_cheadle2012_eds.csv",
+    "title": "PAH, blood erythroid signature (Cheadle 2012)",
+    "kind": "disease",
+    "tissue_hint": "blood",
+    "description": "22 erythroid development genes reported up in PAH peripheral blood (GSE33463).",
+    "run_args": []
+  },
+  {
+    "name": "hostrup2022_hiit_proteome",
+    "file": "hostrup2022_hiit_proteome.csv",
+    "title": "HIIT training, muscle proteome (Hostrup 2022)",
+    "kind": "positive control",
+    "tissue_hint": "muscle",
+    "description": "Vastus lateralis proteins changed after 5 weeks of HIIT; should agree with MoTrPAC training.",
+    "run_args": []
+  },
+  {
+    "name": "random_matched",
+    "file": "random_matched.csv",
+    "title": "Random abundance-matched genes",
+    "kind": "negative control",
+    "tissue_hint": "muscle",
+    "description": "25 random genes matched on expression decile to the PAH muscle signature; should score near the null.",
+    "run_args": []
+  },
+  {
+    "name": "random_mito9",
+    "file": "random_mito9.csv",
+    "title": "Random MitoCarta genes marked down",
+    "kind": "pathway-class control",
+    "tissue_hint": "muscle",
+    "description": "9 random mitochondrial genes all set to -1, showing what the pathway class alone scores.",
+    "run_args": []
+  },
+  {
+    "name": "tca_intermediates_demo",
+    "file": "tca_intermediates_demo.csv",
+    "title": "TCA intermediates (synthetic metabolite demo)",
+    "kind": "metabolite demo",
+    "tissue_hint": "muscle",
+    "description": "Synthetic RefMet metabolite list that exercises the metabolomics path; not a published signature.",
+    "run_args": []
+  },
+  {
+    "name": "type2_diabetes_muscle_mootha2003",
+    "file": "type2_diabetes_muscle_mootha2003.csv",
+    "title": "Type 2 diabetes, skeletal muscle (Mootha 2003)",
+    "kind": "disease",
+    "tissue_hint": "muscle",
+    "description": "MSigDB MOOTHA_VOXPHOS, the OXPHOS gene set coordinately down in T2D/IGT vastus lateralis; down-only.",
+    "run_args": []
+  },
+  {
+    "name": "heart_failure_lv_hannenhalli2006",
+    "file": "heart_failure_lv_hannenhalli2006.csv",
+    "title": "Heart failure, left ventricle (Hannenhalli 2006)",
+    "kind": "disease",
+    "tissue_hint": "heart",
+    "description": "Genes up and down in failing vs non-failing human left ventricle (GSE5406), Enrichr crowd GEO signature.",
+    "run_args": []
+  },
+  {
+    "name": "aging_muscle_liu2013",
+    "file": "aging_muscle_liu2013.csv",
+    "title": "Aging, skeletal muscle (Liu 2013)",
+    "kind": "disease",
+    "tissue_hint": "muscle",
+    "description": "Genes up and down in old vs young human biceps brachii (GDS4858/GSE38718), Enrichr crowd GEO signature.",
+    "run_args": []
+  },
+  {
+    "name": "septic_shock_blood_cvijanovich2008",
+    "file": "septic_shock_blood_cvijanovich2008.csv",
+    "title": "Septic shock, whole blood (Cvijanovich 2008)",
+    "kind": "disease",
+    "tissue_hint": "blood",
+    "description": "Genes up and down in pediatric septic shock vs control whole blood (GSE9692), Enrichr crowd GEO signature.",
+    "run_args": []
+  }
+]

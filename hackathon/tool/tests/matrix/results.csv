@@ -1,0 +1,53 @@
+case,group,exit,runtime_s,stderr_tail,validation_problems,n_rows,n_mapped,n_unmapped,n_columns_no_genes,n_opposed_fdr,n_same_fdr,median_pct_abund,median_pct_class,frac_pct_class_outside_2_98,rat_gn_prot_f8_t,n_flips,headline_has_no_genes_cell
+size5_random_half,size x composition,0,5.3,[mprobe] run done in 5.1 s,,5,5,0,0,0,0,56.7,54.2,0.11538461538461539,0.9862030776988976,4,0
+size5_random_up,size x composition,0,5.4,[mprobe] run done in 5.1 s,,5,5,0,0,0,0,89.35,86.30000000000001,0.11538461538461539,0.6792430110930712,1,0
+size5_random_down,size x composition,0,4.3,[mprobe] run done in 4.1 s,,5,5,0,0,0,0,10.649999999999999,13.7,0.11538461538461539,-0.952391561549568,2,0
+size25_random_half,size x composition,0,6.3,[mprobe] run done in 6.0 s,,25,25,0,0,0,0,57.05,58.89999999999999,0.019230769230769232,-0.1429381985309956,0,0
+size25_random_up,size x composition,0,6.3,[mprobe] run done in 6.1 s,,25,25,0,0,0,1,40.85,54.0,0.057692307692307696,-2.116912893289987,20,0
+size25_random_down,size x composition,0,6.5,[mprobe] run done in 6.2 s,,25,25,0,0,1,0,59.15,46.0,0.057692307692307696,1.7244081686414887,3,0
+size100_random_half,size x composition,0,8.2,[mprobe] run done in 7.8 s,,100,100,0,0,0,0,56.3,50.2,0.038461538461538464,0.4386270490862808,1,0
+size100_random_up,size x composition,0,8.0,[mprobe] run done in 7.5 s,,100,100,0,0,0,0,53.2,41.650000000000006,0.07692307692307693,-0.2587002584243666,10,0
+size100_random_down,size x composition,0,8.0,[mprobe] run done in 7.5 s,,100,100,0,0,0,0,46.8,58.349999999999994,0.07692307692307693,-0.4578944887905236,0,0
+size500_random_half,size x composition,0,10.2,[mprobe] run done in 9.8 s,,500,500,0,0,0,0,47.3,42.5,0.038461538461538464,-0.5393622609235927,0,0
+size500_random_up,size x composition,0,8.4,[mprobe] run done in 8.1 s,,500,500,0,0,0,0,57.199999999999996,58.650000000000006,0.038461538461538464,-1.2252321156956183,39,0
+size500_random_down,size x composition,0,9.9,[mprobe] run done in 9.5 s,,500,500,0,0,0,0,42.8,41.349999999999994,0.038461538461538464,0.1496654974560837,1,0
+size5_mito_half,size x composition,0,4.9,[mprobe] run done in 4.6 s,,5,5,0,0,0,0,34.25,45.4,0.0,-1.253050345213104,0,0
+size25_mito_half,size x composition,0,5.5,[mprobe] run done in 5.3 s,,25,25,0,0,0,0,34.2,38.25,0.0,-0.3998783982328869,13,0
+size100_mito_half,size x composition,0,6.6,[mprobe] run done in 6.2 s,,100,100,0,0,0,0,44.099999999999994,48.0,0.019230769230769232,-1.361250916434105,32,0
+size500_mito_half,size x composition,0,9.9,[mprobe] run done in 9.6 s,,500,500,0,0,0,0,74.75,53.900000000000006,0.019230769230769232,0.479200470253615,26,0
+size5_secreted_half,size x composition,0,4.3,[mprobe] run done in 4.1 s,,5,5,0,0,0,0,48.5,51.25,0.019230769230769232,-0.9596868394665736,0,0
+size25_secreted_half,size x composition,0,5.7,[mprobe] run done in 5.4 s,,25,25,0,0,0,0,55.300000000000004,54.550000000000004,0.0,-0.8312273138353417,0,0
+size100_secreted_half,size x composition,0,6.5,[mprobe] run done in 6.2 s,,100,100,0,0,0,0,74.9,77.15,0.057692307692307696,0.4879227684004039,3,0
+size500_secreted_half,size x composition,0,11.0,[mprobe] run done in 10.6 s,,489,489,0,0,0,0,43.599999999999994,56.15,0.1346153846153846,-0.5760284135410982,11,0
+size5_contractile_half,size x composition,0,4.4,[mprobe] run done in 4.1 s,,5,5,0,0,0,0,34.25,33.05,0.019230769230769232,-1.6124370423936083,0,0
+size25_contractile_half,size x composition,0,5.4,[mprobe] run done in 5.1 s,,25,25,0,0,0,0,61.349999999999994,61.0,0.057692307692307696,-0.0104424453715592,6,0
+size100_contractile_half,size x composition,0,6.7,[mprobe] run done in 6.5 s,,100,100,0,0,0,0,62.65,59.650000000000006,0.038461538461538464,-0.3471488224366383,32,0
+size500_contractile_half,size x composition,0,7.5,[mprobe] run done in 7.1 s,,236,236,0,0,0,0,40.900000000000006,39.3,0.057692307692307696,-0.6442016512169403,41,0
+size5_ribosomal_half,size x composition,0,4.9,[mprobe] run done in 4.6 s,,5,5,0,0,0,0,44.150000000000006,50.05,0.019230769230769232,-0.2492256717564278,3,0
+size25_ribosomal_half,size x composition,0,5.4,[mprobe] run done in 5.1 s,,25,25,0,0,0,0,55.45,45.1,0.0,-0.1093943291406442,5,0
+size100_ribosomal_half,size x composition,0,6.6,[mprobe] run done in 6.3 s,,100,100,0,0,0,0,68.35,58.65,0.0,-0.0438196195051574,3,0
+size500_ribosomal_half,size x composition,0,7.8,[mprobe] run done in 7.5 s,,220,220,0,0,0,0,36.45,38.85,0.019230769230769232,-0.9920317573963028,28,0
+id_human_symbols,id types,0,5.3,[mprobe] run done in 4.9 s,,25,25,0,0,0,0,79.45,83.3,0.07692307692307693,0.8694755939184842,2,0
+id_uniprot_column,id types,0,5.2,[mprobe] run done in 5.0 s,,25,16,9,0,0,0,74.25,82.89999999999999,0.07692307692307693,0.8694755939184842,1,0
+id_uniprot_in_symbol,id types,0,5.6,[mprobe] run done in 5.4 s,,25,25,0,0,0,0,79.45,83.3,0.07692307692307693,0.8694755939184842,2,0
+id_ensembl,id types,0,5.5,[mprobe] run done in 5.2 s,,25,25,0,0,0,0,79.45,83.3,0.07692307692307693,0.8694755939184842,2,0
+id_rat_symbols,id types,0,5.3,[mprobe] run done in 5.0 s,,25,25,0,0,0,0,79.45,83.3,0.07692307692307693,0.8694755939184842,2,0
+id_mixed_case,id types,0,5.7,[mprobe] run done in 5.4 s,,25,25,0,0,0,0,79.45,83.3,0.07692307692307693,0.8694755939184842,2,0
+id_duplicates,id types,0,5.8,[mprobe] run done in 5.5 s,,33,22,11,0,0,0,80.05000000000001,82.55,0.1346153846153846,1.6110022535961586,1,0
+id_20pct_unknown,id types,0,5.2,[mprobe] run done in 4.8 s,,30,24,6,0,0,0,80.4,84.55,0.07692307692307693,0.8694755939184842,1,0
+absent_from_proteomics,edge cases,0,5.6,[mprobe] run done in 5.4 s,,25,25,0,6,0,0,74.1,71.65,0.021739130434782608,1.871668244565184,1,1
+empty_overlap_tissue,edge cases,0,4.0,[mprobe] run done in 3.7 s,,8,8,0,46,0,0,,,,,0,1
+weights_present,weights,0,5.8,[mprobe] run done in 5.6 s,,25,25,0,0,0,0,79.45,83.3,0.07692307692307693,0.8694755939184842,2,0
+weights_absent,weights,0,5.9,[mprobe] run done in 5.7 s,,25,25,0,0,0,0,79.45,83.3,0.07692307692307693,0.8694755939184842,2,0
+direction_words,id types,0,5.5,[mprobe] run done in 5.2 s,,25,25,0,0,0,0,79.45,83.3,0.07692307692307693,0.8694755939184842,2,0
+example_pah_muscle_malenfant2015,example: disease,0,7.3,[mprobe] run done in 7.1 s,,25,25,0,0,19,2,90.44999999999999,64.55,0.09615384615384616,4.615384057829352,24,0
+example_pah_blood_cheadle2012_eds,example: disease,0,4.9,[mprobe] run done in 4.6 s,,22,22,0,0,0,1,37.0,48.25,0.21153846153846154,0.8989911230396475,25,0
+example_hostrup2022_hiit_proteome,example: positive control,0,6.7,[mprobe] run done in 6.5 s,,125,123,2,0,2,36,0.0,2.45,0.46153846153846156,-9.11094057306396,11,0
+example_random_matched,example: negative control,0,4.8,[mprobe] run done in 4.5 s,,25,25,0,0,0,0,68.75,61.7,0.07692307692307693,0.9684731270745542,3,0
+example_random_mito9,example: pathway-class control,0,5.1,[mprobe] run done in 4.9 s,,9,9,0,0,4,0,94.05,66.05000000000001,0.07692307692307693,2.75990010325956,11,0
+example_type2_diabetes_muscle_mootha2003,example: disease,0,5.5,[mprobe] run done in 5.4 s,,87,87,0,0,33,8,99.9,92.19999999999999,0.6538461538461539,11.61704761606351,17,0
+example_heart_failure_lv_hannenhalli2006,example: disease,0,8.6,[mprobe] run done in 8.4 s,,600,571,29,0,0,0,98.15,98.8,0.5384615384615384,0.52909321464607,28,0
+example_aging_muscle_liu2013,example: disease,0,8.0,[mprobe] run done in 7.9 s,,600,522,78,0,0,0,89.6,79.0,0.34615384615384615,0.1898123582934296,2,0
+example_septic_shock_blood_cvijanovich2008,example: disease,0,7.2,[mprobe] run done in 7.1 s,,600,510,90,0,0,0,43.75,30.450000000000003,0.28846153846153844,-0.8486079044868436,31,0
+seed2_pah_muscle_malenfant2015,seed,0,6.1,[mprobe] run done in 6.0 s,,25,25,0,0,19,2,89.35,65.30000000000001,0.09615384615384616,4.615384057829352,23,0
+seed2_random_matched,seed,0,4.7,[mprobe] run done in 4.5 s,,25,25,0,0,0,0,65.80000000000001,62.650000000000006,0.07692307692307693,0.9684731270745542,4,0

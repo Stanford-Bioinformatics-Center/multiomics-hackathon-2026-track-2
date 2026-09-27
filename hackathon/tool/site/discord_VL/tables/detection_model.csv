@@ -1,0 +1,7 @@
+Quantity,Value
+RNA-only vs protein-only rows,5525
+RNA only,5515
+Protein only,10
+Detection-only features,"rna_baseline, gtex_log2_tpm"
+Full-model features,"rna_baseline, gtex_log2_tpm, mitocarta3, stable_complex, secreted, n_collapsed_rna, n_collapsed_prot, phosphosites"
+Model,a class has < 30 gene x comparison rows; model not fitted (scripts/08 rule)

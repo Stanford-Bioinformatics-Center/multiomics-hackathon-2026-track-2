@@ -1,0 +1,3 @@
+gene_symbol,direction,group,weight,source,uniprot,gene,map_method,direction_parsed,Status,weight_num
+EEF1E1-BLOC1S5,1,HIIT-up,0.7226,"Hostrup 2022 eLife 11:e69802, VL proteome, n=8 men, 5 wk HIIT, q<0.05",C9J1V9,,,1,unmapped: not found in MoTrPAC gene/protein annotation,0.7226
+LOC102724023,1,HIIT-up,0.3937,"Hostrup 2022 eLife 11:e69802, VL proteome, n=8 men, 5 wk HIIT, q<0.05",A0A096LPI6,,,1,unmapped: not found in MoTrPAC gene/protein annotation,0.3937

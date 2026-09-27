@@ -1,0 +1,182 @@
+{#- motrpac_probe single-file report. Context contract: see render.py docstring. -#}
+{% macro sort_script() -%}
+<script>
+/* Sortable tables: click a header of any table.sortable. Numeric-aware;
+   "not measured" / NA sort last; "< 0.001" sorts as 0.0009. */
+(function () {
+  function key(td) {
+    var t = (td.getAttribute('data-sort') || td.textContent).trim();
+    if (t === '' || t === 'not measured' || t === 'NA') return [2, 0];
+    var m = t.match(/^<\s*([\d.]+)$/);
+    if (m) return [0, parseFloat(m[1]) * 0.9];
+    var s = t.replace(/,/g, '').replace(/−/g, '-').replace(/%$/, '');
+    if (/^[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?$/i.test(s)) return [0, parseFloat(s)];
+    return [1, t.toLowerCase()];
+  }
+  document.querySelectorAll('table.sortable').forEach(function (tb) {
+    if (!tb.tHead || !tb.tBodies.length) return;
+    var ths = tb.tHead.rows[0].cells;
+    Array.prototype.forEach.call(ths, function (th, i) {
+      th.tabIndex = 0;
+      function go() {
+        var asc = th.getAttribute('aria-sort') !== 'ascending';
+        Array.prototype.forEach.call(ths, function (h) { h.removeAttribute('aria-sort'); });
+        th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+        var body = tb.tBodies[0], rows = Array.prototype.slice.call(body.rows);
+        rows.sort(function (a, b) {
+          var x = key(a.cells[i]), y = key(b.cells[i]);
+          if (x[0] !== y[0]) return (x[0] === 2) ? 1 : (y[0] === 2) ? -1 : (asc ? x[0] - y[0] : y[0] - x[0]);
+          var c = x[1] < y[1] ? -1 : x[1] > y[1] ? 1 : 0;
+          return asc ? c : -c;
+        });
+        rows.forEach(function (r) { body.appendChild(r); });
+      }
+      th.addEventListener('click', go);
+      th.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+    });
+  });
+})();
+</script>
+{%- endmacro %}
+{% macro caption_or_missing(text) -%}
+{% if text %}{{ text }}{% else %}<span class="missing">MISSING CAPTION</span>{% endif %}
+{%- endmacro %}
+{% macro render_items(items) -%}
+{% for it in items %}
+{% if it.kind == "figure" %}
+<figure id="{{ it.id }}">
+<h3 class="fig-title">{{ caption_or_missing(it.title) }}</h3>
+{{ it.svg | safe }}
+<p class="how"><span class="lbl">How to read:</span> {{ caption_or_missing(it.how_to_read) }}</p>
+{% if it.png %}<p class="links"><a href="{{ it.png }}">PNG</a></p>{% endif %}
+</figure>
+{% elif it.kind == "interactive" %}
+<figure id="{{ it.id }}" class="interactive">
+<h3 class="fig-title">{{ caption_or_missing(it.title) }}</h3>
+{% if vega_js %}
+<div class="vega-target" id="{{ it.id }}-vis" data-spec="{{ it.id }}-spec"></div>
+<noscript>{{ it.fallback_svg | safe }}</noscript>
+<script type="application/json" id="{{ it.id }}-spec">{{ script_safe(it.spec_json) }}</script>
+{% else %}
+{{ it.fallback_svg | safe }}
+{% endif %}
+<p class="how"><span class="lbl">How to read:</span> {{ caption_or_missing(it.how_to_read) }}</p>
+</figure>
+{% elif it.kind == "table" %}
+<div class="table-item"{% if it.id %} id="{{ it.id }}"{% endif %}>
+<h3>{{ it.title }}</h3>
+{% if it.caption %}<p class="caption">{{ it.caption }}</p>{% endif %}
+{{ it.html | safe }}
+{% if it.csv %}<p class="links"><a href="{{ it.csv }}">CSV</a></p>{% endif %}
+</div>
+{% elif it.kind == "text" %}
+<div class="text">{{ it.html | safe }}</div>
+{% elif it.kind == "details" %}
+<details>
+<summary>{{ it.summary }}</summary>
+{{ render_items(it["items"]) }}
+</details>
+{% endif %}
+{% endfor %}
+{%- endmacro %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="motrpac_probe {{ tool_version }}">
+<title>{{ title }}</title>
+<style>
+{{ css }}
+</style>
+</head>
+<body>
+<main>
+<header class="title-block">
+<h1>{{ title }}</h1>
+{% if subtitle %}<p class="subtitle">{{ subtitle }}</p>{% endif %}
+{% if meta %}
+<p class="meta">{% for label, value in meta %}<span class="k">{{ label }}:</span> {{ value }}{% if not loop.last %}<span class="sep">|</span>{% endif %}{% endfor %}</p>
+{% endif %}
+</header>
+
+<section class="headline" id="headline-block">
+<h2>{{ caption_or_missing(headline.title) }}</h2>
+{% if headline.how_to_read %}<p class="how"><span class="lbl">How to read:</span> {{ headline.how_to_read }}</p>{% endif %}
+{% if headline.table_html %}{{ headline.table_html | safe }}{% endif %}
+{% if headline.sentences %}
+<ul class="sentences">
+{% for s in headline.sentences %}<li>{{ s }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% if first_screen %}
+<ul class="first-screen">
+{% for line in first_screen %}<li>{{ line }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+</section>
+
+{% if toc %}
+<nav class="toc" aria-label="Contents"><span class="label">Contents</span>{% for id, t in toc %}<a href="#{{ id }}">{{ t }}</a>{% endfor %}</nav>
+{% endif %}
+
+{% for s in sections %}
+<section id="{{ s.id }}">
+<h2>{{ s.title }}</h2>
+{% if s.intro %}
+<div class="intro">
+{% for line in s.intro %}<p>{{ line }}</p>
+{% endfor %}
+</div>
+{% endif %}
+{{ render_items(s["items"]) }}
+</section>
+{% endfor %}
+
+{% if show_glossary %}
+<section id="glossary">
+<h2>Glossary</h2>
+<dl class="glossary">
+{% for term, definition in glossary %}<dt>{{ term }}</dt><dd>{{ definition }}</dd>
+{% endfor %}
+</dl>
+</section>
+{% endif %}
+
+{% if show_provenance %}
+<section id="provenance">
+<h2>Provenance</h2>
+<details>
+<summary>Run provenance (JSON)</summary>
+<pre>{{ provenance_json }}</pre>
+</details>
+</section>
+{% endif %}
+
+<footer>Generated by motrpac_probe {{ tool_version }}. Single-file report; figures are inline SVG, tables sort by clicking a column header.</footer>
+</main>
+{{ sort_script() }}
+{% if vega_js %}
+<script>
+{{ vega_js }}
+</script>
+<script>
+(function () {
+  document.querySelectorAll('.vega-target').forEach(function (el) {
+    function fallback(err) {
+      var ns = el.parentNode.querySelector('noscript');
+      if (ns) el.innerHTML = ns.textContent;
+      if (err && window.console) console.warn('vega-embed failed for ' + el.id, err);
+    }
+    try {
+      var spec = JSON.parse(document.getElementById(el.getAttribute('data-spec')).textContent);
+      vegaEmbed(el, spec, {actions: false, renderer: 'svg'}).catch(fallback);
+    } catch (e) { fallback(e); }
+  });
+})();
+</script>
+{% endif %}
+</body>
+</html>

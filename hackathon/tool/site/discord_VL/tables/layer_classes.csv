@@ -1,0 +1,7 @@
+Comparison,Group / sex,Genes in both layers,Concordant,RNA only,Protein only,Opposite,Neither
+EE–CON 15–45 min,EE,5744,0,275,1,0,5468
+EE–CON 3.5–4 h,EE,5744,2,706,1,0,5035
+EE–CON 24 h,EE,5744,1,755,0,0,4988
+RE–CON 15–45 min,RE,5744,0,218,0,0,5526
+RE–CON 3.5–4 h,RE,5744,9,1919,2,0,3814
+RE–CON 24 h,RE,5744,14,1642,6,1,4081

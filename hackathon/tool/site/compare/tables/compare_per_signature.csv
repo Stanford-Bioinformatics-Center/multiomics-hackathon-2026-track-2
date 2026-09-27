@@ -1,0 +1,10 @@
+signature,title,kind,mito,n_opp,n_cols,median_class
+pah_muscle_malenfant2015,"PAH, skeletal muscle proteome (Malenfant 2015)",disease,0.47368421052631576,5,12,77.94999999999999
+pah_blood_cheadle2012_eds,"PAH, blood erythroid signature (Cheadle 2012)",disease,0.18181818181818182,0,12,43.1
+hostrup2022_hiit_proteome,"HIIT training, muscle proteome (Hostrup 2022)",positive control,0.45528455284552843,0,12,0.55
+random_matched,Random abundance-matched genes,negative control,0.12,0,12,56.74999999999999
+random_mito9,Random MitoCarta genes marked down,pathway-class control,1.0,3,12,57.95
+type2_diabetes_muscle_mootha2003,"Type 2 diabetes, skeletal muscle (Mootha 2003)",disease,0.896551724137931,8,12,98.6
+heart_failure_lv_hannenhalli2006,"Heart failure, left ventricle (Hannenhalli 2006)",disease,0.07880910683012259,0,12,98.80000000000001
+aging_muscle_liu2013,"Aging, skeletal muscle (Liu 2013)",disease,0.06896551724137931,2,12,73.35
+septic_shock_blood_cvijanovich2008,"Septic shock, whole blood (Cvijanovich 2008)",disease,0.03529411764705882,1,12,57.650000000000006

@@ -1,0 +1,12 @@
+gene,group,Human VL METAB,Human BLOOD METAB,Rat SKM-GN METAB,Rat SKM-VL METAB,Rat HEART METAB,Rat PLASMA METAB
+Citric acid,TCA intermediates (synthetic demo),6/6,10/10,8/8,0/8,8/8,8/8
+Isocitric acid,TCA intermediates (synthetic demo),6/6,10/10,8/8,0/8,8/8,8/8
+cis-Aconitic acid,TCA intermediates (synthetic demo),6/6,10/10,8/8,0/8,8/8,8/8
+Oxoglutaric acid,TCA intermediates (synthetic demo),0/6,0/10,8/8,0/8,8/8,8/8
+Succinic acid,TCA intermediates (synthetic demo),6/6,10/10,8/8,0/8,8/8,8/8
+Fumaric acid,TCA intermediates (synthetic demo),6/6,10/10,8/8,0/8,8/8,8/8
+Malic acid,TCA intermediates (synthetic demo),6/6,10/10,8/8,0/8,8/8,8/8
+Pyruvic acid,TCA intermediates (synthetic demo),6/6,10/10,8/8,0/8,8/8,8/8
+Lactic acid,TCA intermediates (synthetic demo),6/6,10/10,8/8,0/8,8/8,8/8
+CAR 2:0,TCA intermediates (synthetic demo),6/6,10/10,0/8,0/8,0/8,0/8
+CAR(2:0),TCA intermediates (synthetic demo),0/6,0/10,8/8,8/8,8/8,8/8

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="motrpac_probe 0.1.0">
+<title>motrpac_probe: disease signatures against MoTrPAC exercise data</title>
+<style>
+/* motrpac_probe report stylesheet.
+   Every colour and font used by the HTML report lives here; edit the
+   variables below to restyle. Figure colours (matplotlib) are set in
+   render.py (ACCENT, INK, MUTED, DIVERGING, LAYER_COLORS). */
+
+:root {
+  --font-body: Inter, Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --ink: #111111;        /* body text */
+  --muted: #555555;      /* secondary text, captions */
+  --paper: #ffffff;      /* background */
+  --accent: #2f5f8a;     /* links, section rules, active states */
+  --rule: #d0d0d0;       /* table and hairline rules */
+  --rule-strong: #888888;
+  --zebra: #f6f6f6;      /* alternate table rows */
+  --flag: #fbf3dc;       /* rows flagged via row_class="flag" */
+  --missing: #c00000;    /* marker for an empty figure title or how-to-read line */
+  --size-base: 16px;
+  --size-table: 14px;
+  --size-small: 14px;
+  --content-width: 1280px;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  line-height: 1.5;
+}
+
+main, .page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 24px 32px 48px 32px;
+}
+
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+a:hover, a:focus { color: var(--ink); }
+
+h1 { font-size: 28px; font-weight: 600; margin: 8px 0 4px 0; line-height: 1.25; }
+h2 {
+  font-size: 22px; font-weight: 600; margin: 40px 0 12px 0;
+  padding-top: 10px; border-top: 2px solid var(--accent);
+}
+h3 { font-size: 17px; font-weight: 600; margin: 24px 0 8px 0; }
+
+p { margin: 6px 0 10px 0; max-width: 95ch; }
+
+code, pre, .mono { font-family: var(--font-mono); font-size: 14px; }
+
+/* Title block */
+.subtitle { color: var(--muted); font-size: 18px; margin: 0 0 8px 0; }
+.meta { color: var(--muted); font-size: var(--size-small); margin: 0 0 16px 0; line-height: 1.6; }
+.meta .k { color: var(--ink); font-weight: 600; }
+.meta .sep { color: var(--rule-strong); padding: 0 6px; }
+
+/* Headline block: first thing after the title */
+.headline { border-top: 2px solid var(--accent); border-bottom: 1px solid var(--rule); padding: 10px 0 12px 0; margin: 8px 0 12px 0; }
+.headline h2 { border-top: none; margin: 0 0 6px 0; padding-top: 0; }
+.headline .sentences { margin: 8px 0 0 0; padding-left: 20px; }
+.headline .sentences li { margin: 2px 0; }
+.first-screen { margin: 8px 0 0 0; padding: 0; list-style: none; color: var(--ink); }
+.first-screen li { margin: 2px 0; padding-left: 10px; border-left: 3px solid var(--rule-strong); }
+
+/* Table of contents: one line of anchor links */
+nav.toc { font-size: var(--size-small); margin: 16px 0 0 0; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+nav.toc .label { font-weight: 600; margin-right: 8px; }
+nav.toc a { margin-right: 14px; white-space: nowrap; }
+
+/* "How to read" lines and captions */
+.how { color: var(--ink); font-size: var(--size-small); margin: 4px 0 6px 0; }
+.how .lbl { font-weight: 600; }
+.caption { color: var(--muted); font-size: var(--size-small); margin: 2px 0 6px 0; }
+.intro p { margin: 4px 0 8px 0; }
+.missing { color: var(--missing); font-weight: 700; }
+.links { font-size: 13px; margin: 2px 0 12px 0; }
+.links a { margin-right: 10px; }
+.note { color: var(--muted); font-size: 13px; margin: 4px 0; }
+
+/* Figures */
+figure { margin: 12px 0 20px 0; padding: 0; break-inside: avoid; page-break-inside: avoid; }
+figure .fig-title { margin: 0 0 6px 0; }
+figure svg { display: block; width: 100%; max-width: 100%; height: auto; }
+figure.w-narrow svg { max-width: 720px; }
+.vega-target { width: 100%; max-width: 100%; overflow-x: auto; }
+.vega-fallback { display: none; }
+.vega-fallback.show { display: block; }
+
+/* Tables */
+.table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 6px 0 4px 0; }
+table {
+  border-collapse: collapse; font-size: var(--size-table);
+  font-variant-numeric: tabular-nums; min-width: 40%;
+}
+caption { caption-side: top; text-align: left; color: var(--muted); font-size: var(--size-small); padding: 0 0 4px 0; }
+th, td { padding: 4px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; text-align: left; }
+thead th { border-bottom: 2px solid var(--rule-strong); font-weight: 600; white-space: nowrap; background: var(--paper); }
+tbody tr:nth-child(even) td { background: var(--zebra); }
+tbody tr.flag td { background: var(--flag); }
+td.num, th.num { text-align: right; }
+td .na, .na { color: var(--muted); font-style: italic; }
+table.sortable thead th { cursor: pointer; user-select: none; }
+table.sortable thead th::after { content: ""; display: inline-block; width: 1.1em; color: var(--muted); }
+table.sortable thead th[aria-sort="ascending"]::after { content: " \2191"; color: var(--accent); }
+table.sortable thead th[aria-sort="descending"]::after { content: " \2193"; color: var(--accent); }
+table.sortable thead th:hover { color: var(--accent); }
+
+/* Collapsible blocks */
+details { margin: 10px 0; border-left: 2px solid var(--rule); padding: 2px 0 2px 12px; }
+details > summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+details[open] > summary { margin-bottom: 6px; }
+details pre { white-space: pre-wrap; word-break: break-word; background: var(--zebra); padding: 10px; margin: 6px 0; border: 1px solid var(--rule); }
+
+/* Glossary */
+dl.glossary { display: grid; grid-template-columns: max-content 1fr; column-gap: 20px; row-gap: 4px; margin: 8px 0; }
+dl.glossary dt { font-weight: 600; }
+dl.glossary dd { margin: 0; }
+
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); margin-top: 40px; padding-top: 8px; }
+
+/* Site index */
+.site-intro p { max-width: 95ch; }
+
+@media print {
+  nav.toc { display: none; }
+  body { font-size: 11pt; }
+  main, .page { max-width: none; padding: 0; }
+  figure, table, .table-wrap { break-inside: avoid; page-break-inside: avoid; }
+  h2, h3 { break-after: avoid; page-break-after: avoid; }
+  details { border-left: none; }
+  a { color: var(--ink); }
+  .vega-target { display: none; }
+  .vega-fallback { display: block; }
+}
+
+</style>
+</head>
+<body>
+<main>
+<header class="title-block">
+<h1>motrpac_probe: disease signatures against MoTrPAC exercise data</h1>
+</header>
+<div class="site-intro">
+<p>Each example is a gene signature (direction = up or down in the condition) scored by motrpac_probe against MoTrPAC exercise and training comparisons. A positive cameraPR t means the comparison moves the signature genes against the signature (opposed); a negative t means it moves them the same way.</p>
+<p>The headline columns are read from each run&#39;s tables/column_scores.csv (the core muscle and heart comparisons); percentiles are against the pathway-class-matched random-set null. Each report holds the figures, full tables and provenance.</p>
+<p>Signature library (every MoTrPAC comparison as UP and DOWN gene sets, BH FDR &lt; 0.05, top 250 by |stat|): <a href="library/motrpac_library.gmt">motrpac_library.gmt</a>, <a href="library/motrpac_library_index.json">motrpac_library_index.json</a>, <a href="library/README.txt">README.txt</a>, <a href="library/query_pah_muscle_malenfant2015/report.html">library query for pah_muscle_malenfant2015</a>.</p>
+</div>
+<h2>Examples</h2>
+<div class="table-wrap">
+<table id="examples" class="data sortable">
+<thead><tr>
+<th scope="col">Example</th>
+<th scope="col">Description</th>
+<th scope="col" class="num">Genes</th>
+<th scope="col">Signatures compared</th>
+<th scope="col">Human VL RNA EE 24 h: opposed/measured, t</th>
+<th scope="col">Human VL protein RE 24 h: opposed/measured, t</th>
+<th scope="col">Rat gastrocnemius protein F 8 wk: opposed/measured, t</th>
+<th scope="col">Strongest set-level comparison: t, class-null percentile</th>
+<th scope="col">Opposed at cameraPR FDR &lt; 0.05 / scored</th>
+<th scope="col">Same direction at cameraPR FDR &lt; 0.05 / scored</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><a href="compare/report.html">All disease signatures side by side</a></td>
+<td>Generality view: every example signature against the same human 24 h and rat 4–8 wk comparisons (mprobe compare).</td>
+<td class="num">9</td>
+<td>9</td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+</tr>
+<tr>
+<td><a href="discord_HEART/report.html">Layer discordance: rat HEART</a></td>
+<td>Which omic layer responds, when, and why RNA and protein disagree (mprobe discord): timescale, agreement, detection power, protein-only calls, lag, sex, 3-layer pathways.</td>
+<td class="num"><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+</tr>
+<tr>
+<td><a href="discord_SKM-GN/report.html">Layer discordance: rat SKM-GN</a></td>
+<td>Which omic layer responds, when, and why RNA and protein disagree (mprobe discord): timescale, agreement, detection power, protein-only calls, lag, sex, 3-layer pathways.</td>
+<td class="num"><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+</tr>
+<tr>
+<td><a href="discord_VL/report.html">Layer discordance: human VL</a></td>
+<td>Which omic layer responds, when, and why RNA and protein disagree (mprobe discord): timescale, agreement, detection power, protein-only calls, lag, sex, 3-layer pathways.</td>
+<td class="num"><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+</tr>
+<tr>
+<td><a href="pah_muscle_malenfant2015/report.html">pah_muscle_malenfant2015</a></td>
+<td>PAH, skeletal muscle proteome (Malenfant 2015). 19 iTRAQ proteins plus 6 phenotype genes from vastus lateralis of IPAH patients vs controls.</td>
+<td class="num">19</td>
+<td><span class="na">not measured</span></td>
+<td>15/18, t = 4.16</td>
+<td>2/19, t = -4.12</td>
+<td>15/19, t = 4.62</td>
+<td>Rat vastus lateralis RNA, female 4 wk: t = +6.42, pct 99</td>
+<td>19/52</td>
+<td>2/52</td>
+</tr>
+<tr>
+<td><a href="pah_blood_cheadle2012_eds/report.html">pah_blood_cheadle2012_eds</a></td>
+<td>PAH, blood erythroid signature (Cheadle 2012). 22 erythroid development genes reported up in PAH peripheral blood (GSE33463).</td>
+<td class="num">22</td>
+<td><span class="na">not measured</span></td>
+<td>3/11, t = -1.90</td>
+<td>3/14, t = -0.12</td>
+<td>7/12, t = 0.90</td>
+<td>Rat heart RNA, female 1 wk: t = -3.34, pct 0</td>
+<td>0/52</td>
+<td>1/52</td>
+</tr>
+<tr>
+<td><a href="hostrup2022_hiit_proteome/report.html">hostrup2022_hiit_proteome</a></td>
+<td>HIIT training, muscle proteome (Hostrup 2022). Vastus lateralis proteins changed after 5 weeks of HIIT; should agree with MoTrPAC training.</td>
+<td class="num">123</td>
+<td><span class="na">not measured</span></td>
+<td>32/119, t = -8.15</td>
+<td>71/121, t = 2.01</td>
+<td>26/112, t = -9.11</td>
+<td>Rat gastrocnemius protein, female 8 wk: t = -9.11, pct 0</td>
+<td>2/52</td>
+<td>36/52</td>
+</tr>
+<tr>
+<td><a href="random_matched/report.html">random_matched</a></td>
+<td>Random abundance-matched genes. 25 random genes matched on expression decile to the PAH muscle signature; should score near the null.</td>
+<td class="num">25</td>
+<td><span class="na">not measured</span></td>
+<td>14/25, t = 0.21</td>
+<td>8/19, t = 1.68</td>
+<td>9/19, t = 0.97</td>
+<td>Rat heart protein, male 1 wk: t = +2.61, pct 100</td>
+<td>0/52</td>
+<td>0/52</td>
+</tr>
+<tr>
+<td><a href="random_mito9/report.html">random_mito9</a></td>
+<td>Random MitoCarta genes marked down. 9 random mitochondrial genes all set to -1, showing what the pathway class alone scores.</td>
+<td class="num">9</td>
+<td><span class="na">not measured</span></td>
+<td>7/9, t = 2.56</td>
+<td>0/9, t = -2.60</td>
+<td>7/9, t = 2.76</td>
+<td>Rat heart protein, female 4 wk: t = +5.15, pct 99</td>
+<td>4/52</td>
+<td>0/52</td>
+</tr>
+<tr>
+<td><a href="tca_intermediates_demo/report.html">tca_intermediates_demo</a></td>
+<td>TCA intermediates (synthetic metabolite demo). Synthetic RefMet metabolite list that exercises the metabolomics path; not a published signature.</td>
+<td class="num">10</td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td><span class="na">not measured</span></td>
+<td>Human blood metabolite, EE–CON 15–45 min: t = +7.67, pct 100</td>
+<td>10/40</td>
+<td>7/40</td>
+</tr>
+<tr>
+<td><a href="type2_diabetes_muscle_mootha2003/report.html">type2_diabetes_muscle_mootha2003</a></td>
+<td>Type 2 diabetes, skeletal muscle (Mootha 2003). MSigDB MOOTHA_VOXPHOS, the OXPHOS gene set coordinately down in T2D/IGT vastus lateralis; down-only.</td>
+<td class="num">87</td>
+<td><span class="na">not measured</span></td>
+<td>83/87, t = 10.72</td>
+<td>4/78, t = -8.09</td>
+<td>67/72, t = 11.62</td>
+<td>Rat vastus lateralis RNA, female 8 wk: t = +14.37, pct 100</td>
+<td>33/52</td>
+<td>8/52</td>
+</tr>
+<tr>
+<td><a href="heart_failure_lv_hannenhalli2006/report.html">heart_failure_lv_hannenhalli2006</a></td>
+<td>Heart failure, left ventricle (Hannenhalli 2006). Genes up and down in failing vs non-failing human left ventricle (GSE5406), Enrichr crowd GEO signature.</td>
+<td class="num">571</td>
+<td><span class="na">not measured</span></td>
+<td>242/530, t = -1.21</td>
+<td>161/317, t = 0.70</td>
+<td>158/279, t = 0.53</td>
+<td>Human vastus lateralis RNA, RE–CON 3.5–4 h: t = +3.30, pct 100</td>
+<td>0/52</td>
+<td>0/52</td>
+</tr>
+<tr>
+<td><a href="aging_muscle_liu2013/report.html">aging_muscle_liu2013</a></td>
+<td>Aging, skeletal muscle (Liu 2013). Genes up and down in old vs young human biceps brachii (GDS4858/GSE38718), Enrichr crowd GEO signature.</td>
+<td class="num">522</td>
+<td><span class="na">not measured</span></td>
+<td>310/498, t = 3.05</td>
+<td>107/252, t = -0.10</td>
+<td>110/227, t = 0.19</td>
+<td>Human vastus lateralis RNA, EE–CON 24 h: t = +3.05, pct 100</td>
+<td>0/52</td>
+<td>0/52</td>
+</tr>
+<tr>
+<td><a href="septic_shock_blood_cvijanovich2008/report.html">septic_shock_blood_cvijanovich2008</a></td>
+<td>Septic shock, whole blood (Cvijanovich 2008). Genes up and down in pediatric septic shock vs control whole blood (GSE9692), Enrichr crowd GEO signature.</td>
+<td class="num">510</td>
+<td><span class="na">not measured</span></td>
+<td>206/354, t = 0.58</td>
+<td>84/153, t = 1.61</td>
+<td>63/120, t = -0.85</td>
+<td>Human vastus lateralis protein, EE–CON 24 h: t = +3.24, pct 100</td>
+<td>0/52</td>
+<td>0/52</td>
+</tr>
+</tbody>
+</table>
+</div>
+<footer>Generated by motrpac_probe 0.1.0. Each example links to a single-file HTML report.</footer>
+</main>
+<script>
+/* Sortable tables: click a header of any table.sortable. Numeric-aware;
+   "not measured" / NA sort last; "< 0.001" sorts as 0.0009. */
+(function () {
+  function key(td) {
+    var t = (td.getAttribute('data-sort') || td.textContent).trim();
+    if (t === '' || t === 'not measured' || t === 'NA') return [2, 0];
+    var m = t.match(/^<\s*([\d.]+)$/);
+    if (m) return [0, parseFloat(m[1]) * 0.9];
+    var s = t.replace(/,/g, '').replace(/−/g, '-').replace(/%$/, '');
+    if (/^[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?$/i.test(s)) return [0, parseFloat(s)];
+    return [1, t.toLowerCase()];
+  }
+  document.querySelectorAll('table.sortable').forEach(function (tb) {
+    if (!tb.tHead || !tb.tBodies.length) return;
+    var ths = tb.tHead.rows[0].cells;
+    Array.prototype.forEach.call(ths, function (th, i) {
+      th.tabIndex = 0;
+      function go() {
+        var asc = th.getAttribute('aria-sort') !== 'ascending';
+        Array.prototype.forEach.call(ths, function (h) { h.removeAttribute('aria-sort'); });
+        th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+        var body = tb.tBodies[0], rows = Array.prototype.slice.call(body.rows);
+        rows.sort(function (a, b) {
+          var x = key(a.cells[i]), y = key(b.cells[i]);
+          if (x[0] !== y[0]) return (x[0] === 2) ? 1 : (y[0] === 2) ? -1 : (asc ? x[0] - y[0] : y[0] - x[0]);
+          var c = x[1] < y[1] ? -1 : x[1] > y[1] ? 1 : 0;
+          return asc ? c : -c;
+        });
+        rows.forEach(function (r) { body.appendChild(r); });
+      }
+      th.addEventListener('click', go);
+      th.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+    });
+  });
+})();
+</script>
+</body>
+</html>

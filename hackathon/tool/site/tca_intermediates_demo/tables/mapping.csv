@@ -1,0 +1,11 @@
+refmet_name,direction,group,weight,source,refmet,map_method,status,direction_parsed
+Citric acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",Citric acid,RefMet name,mapped,-1
+Isocitric acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",Isocitric acid,RefMet name,mapped,-1
+cis-Aconitic acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",cis-Aconitic acid,RefMet name,mapped,-1
+Oxoglutaric acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",Oxoglutaric acid,RefMet name,mapped,-1
+Succinic acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",Succinic acid,RefMet name,mapped,-1
+Fumaric acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",Fumaric acid,RefMet name,mapped,-1
+Malic acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",Malic acid,RefMet name,mapped,-1
+Pyruvic acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",Pyruvic acid,RefMet name,mapped,-1
+Lactic acid,1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",Lactic acid,RefMet name,mapped,1
+CAR(2:0),-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature",CAR 2:0; CAR(2:0),RefMet name,mapped,-1

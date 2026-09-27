@@ -1,0 +1,6 @@
+Property,Level,n rows,Fraction RNA-only
+RNA baseline tertile,high,541,0.6118299445471349
+RNA baseline tertile,low,541,0.23844731977818853
+RNA baseline tertile,mid,540,0.45185185185185184
+proteomics missing values > 0,no,1448,0.39709944751381215
+proteomics missing values > 0,yes,174,0.7413793103448276

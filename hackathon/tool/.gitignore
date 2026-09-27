@@ -1,0 +1,8 @@
+# generated: rebuild with `mprobe store build` / `make all`
+store/*.parquet
+store/raw_metab/*.csv.gz
+out/
+qa/*.png
+__pycache__/
+.pytest_cache/
+*.egg-info/

@@ -1,0 +1,49 @@
+Comparison,Genes measured,Opposed,Same direction,Sign test p,Sign test p (effective n),Genes at BH FDR < 0.05,Opposed at BH FDR < 0.05
+"Human vastus lateralis metabolite, EE–CON 15–45 min",9,6,3,0.5078125,0.453125,3,3
+"Human vastus lateralis metabolite, EE–CON 3.5–4 h",9,6,3,0.5078125,0.453125,1,1
+"Human vastus lateralis metabolite, EE–CON 24 h",9,5,4,1.0,1.0,0,0
+"Human vastus lateralis metabolite, RE–CON 15–45 min",9,5,4,1.0,1.0,4,4
+"Human vastus lateralis metabolite, RE–CON 3.5–4 h",9,6,3,0.5078125,0.453125,1,1
+"Human vastus lateralis metabolite, RE–CON 24 h",9,2,7,0.1796875,0.453125,1,1
+"Human blood metabolite, EE–CON 20 min during",9,7,2,0.1796875,0.453125,8,7
+"Human blood metabolite, EE–CON 40 min during",9,8,1,0.0390625,0.125,8,7
+"Human blood metabolite, EE–CON 10 min",9,8,1,0.0390625,0.125,9,8
+"Human blood metabolite, EE–CON 15–45 min",9,8,1,0.0390625,0.125,9,8
+"Human blood metabolite, EE–CON 3.5–4 h",9,7,2,0.1796875,0.453125,1,1
+"Human blood metabolite, EE–CON 24 h",9,6,3,0.5078125,0.453125,0,0
+"Human blood metabolite, RE–CON 10 min",9,8,1,0.0390625,0.125,9,8
+"Human blood metabolite, RE–CON 15–45 min",9,8,1,0.0390625,0.125,9,8
+"Human blood metabolite, RE–CON 3.5–4 h",9,6,3,0.5078125,0.453125,1,1
+"Human blood metabolite, RE–CON 24 h",9,8,1,0.0390625,0.125,1,1
+"Rat gastrocnemius metabolite, female 1 wk",10,2,8,0.109375,0.2890625,0,0
+"Rat gastrocnemius metabolite, female 2 wk",10,2,8,0.109375,0.2890625,0,0
+"Rat gastrocnemius metabolite, female 4 wk",10,1,9,0.021484375,0.0703125,0,0
+"Rat gastrocnemius metabolite, female 8 wk",10,8,2,0.109375,0.2890625,0,0
+"Rat gastrocnemius metabolite, male 1 wk",10,2,8,0.109375,0.2890625,1,0
+"Rat gastrocnemius metabolite, male 2 wk",10,4,6,0.75390625,0.7265625,1,0
+"Rat gastrocnemius metabolite, male 4 wk",10,8,2,0.109375,0.2890625,0,0
+"Rat gastrocnemius metabolite, male 8 wk",10,8,2,0.109375,0.2890625,0,0
+"Rat vastus lateralis metabolite, female 1 wk",1,0,1,1.0,1.0,0,0
+"Rat vastus lateralis metabolite, female 2 wk",1,0,1,1.0,1.0,0,0
+"Rat vastus lateralis metabolite, female 4 wk",1,0,1,1.0,1.0,0,0
+"Rat vastus lateralis metabolite, female 8 wk",1,0,1,1.0,1.0,0,0
+"Rat vastus lateralis metabolite, male 1 wk",1,0,1,1.0,1.0,0,0
+"Rat vastus lateralis metabolite, male 2 wk",1,0,1,1.0,1.0,0,0
+"Rat vastus lateralis metabolite, male 4 wk",1,1,0,1.0,1.0,0,0
+"Rat vastus lateralis metabolite, male 8 wk",1,1,0,1.0,1.0,0,0
+"Rat heart metabolite, female 1 wk",10,5,5,1.0,1.0,1,1
+"Rat heart metabolite, female 2 wk",10,6,4,0.75390625,0.7265625,1,1
+"Rat heart metabolite, female 4 wk",10,6,4,0.75390625,0.7265625,1,1
+"Rat heart metabolite, female 8 wk",10,8,2,0.109375,0.2890625,0,0
+"Rat heart metabolite, male 1 wk",10,5,5,1.0,1.0,4,4
+"Rat heart metabolite, male 2 wk",10,5,5,1.0,1.0,6,4
+"Rat heart metabolite, male 4 wk",10,6,4,0.75390625,0.7265625,4,2
+"Rat heart metabolite, male 8 wk",10,5,5,1.0,1.0,0,0
+"Rat plasma metabolite, female 1 wk",10,2,8,0.109375,0.2890625,2,0
+"Rat plasma metabolite, female 2 wk",10,4,6,0.75390625,0.7265625,1,0
+"Rat plasma metabolite, female 4 wk",10,1,9,0.021484375,0.0703125,0,0
+"Rat plasma metabolite, female 8 wk",10,2,8,0.109375,0.2890625,0,0
+"Rat plasma metabolite, male 1 wk",10,2,8,0.109375,0.2890625,0,0
+"Rat plasma metabolite, male 2 wk",10,3,7,0.34375,0.2890625,0,0
+"Rat plasma metabolite, male 4 wk",10,4,6,0.75390625,0.7265625,0,0
+"Rat plasma metabolite, male 8 wk",10,1,9,0.021484375,0.0703125,2,0

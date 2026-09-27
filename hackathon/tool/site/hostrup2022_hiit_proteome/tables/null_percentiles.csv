@@ -1,0 +1,53 @@
+Comparison,Observed t,Abundance null median t,Abundance null percentile,Abundance measure,Class null median t,Class null percentile
+"Human vastus lateralis RNA, EE–CON 15–45 min",1.5280107794289166,0.9306178188832113,84.3,baseline (column),2.5412108151438484,3.2
+"Human vastus lateralis RNA, EE–CON 3.5–4 h",-0.12198616472085459,-0.46969677477868516,69.0,baseline (column),-0.16983628905840187,52.5
+"Human vastus lateralis RNA, EE–CON 24 h",-8.147574815816704,-0.7413369782390673,0.0,baseline (column),-4.614578981479676,0.0
+"Human vastus lateralis RNA, RE–CON 15–45 min",1.9844967190243588,0.8577686835255349,96.3,baseline (column),2.3271888659322806,29.099999999999998
+"Human vastus lateralis RNA, RE–CON 3.5–4 h",-1.0416667377234867,-0.9464978386393958,44.6,baseline (column),-0.4635308545267993,17.9
+"Human vastus lateralis RNA, RE–CON 24 h",-2.8189121222085474,-0.250143249871895,0.1,baseline (column),-1.3005188774479715,2.0
+"Human vastus lateralis protein, EE–CON 15–45 min",1.5826055869151565,1.1389942770796275,74.4,baseline (column),2.4627830432027107,8.5
+"Human vastus lateralis protein, EE–CON 3.5–4 h",-0.9956112501589396,-0.2057845869633603,9.1,baseline (column),-0.1832794227437673,8.200000000000001
+"Human vastus lateralis protein, EE–CON 24 h",0.5399727477452955,0.8554944492494541,33.7,baseline (column),1.4340614210182059,7.1
+"Human vastus lateralis protein, RE–CON 15–45 min",2.407049220189271,1.7270933909002997,87.0,baseline (column),2.8137009824294714,23.0
+"Human vastus lateralis protein, RE–CON 3.5–4 h",2.3960387787637827,0.9714650638233852,98.3,baseline (column),1.9624971647525165,76.2
+"Human vastus lateralis protein, RE–CON 24 h",2.0064171345963264,1.1912227207134367,88.2,baseline (column),3.387042765978434,1.4000000000000001
+"Rat gastrocnemius RNA, female 1 wk",-2.183679983297043,-0.4060411638147965,0.3,baseline (column),-1.0189323165825952,3.8
+"Rat gastrocnemius RNA, female 2 wk",-1.5851910316050142,-0.193226677012991,3.1,baseline (column),-0.5443113546501903,6.1
+"Rat gastrocnemius RNA, female 4 wk",-4.176003618885418,0.029368921049522254,0.0,baseline (column),-2.659958841976112,1.4000000000000001
+"Rat gastrocnemius RNA, female 8 wk",-4.731883815139547,0.14928442684764953,0.0,baseline (column),-3.15236513679661,1.3
+"Rat gastrocnemius RNA, male 1 wk",-5.748231170219166,-0.2017786795519608,0.0,baseline (column),-3.561056210037085,0.5
+"Rat gastrocnemius RNA, male 2 wk",-4.220868776863545,-0.4210965597865082,0.0,baseline (column),-2.29191167765623,0.2
+"Rat gastrocnemius RNA, male 4 wk",-5.53934057975399,0.11061483085443695,0.0,baseline (column),-3.150613589645416,0.1
+"Rat gastrocnemius RNA, male 8 wk",-3.791212363815013,0.21189653670906877,0.0,baseline (column),-2.434425334844721,4.2
+"Rat gastrocnemius protein, female 1 wk",-4.636177239520832,-0.8326489117066842,0.0,GTEx v8 TPM (Muscle - Skeletal),-3.1459322071387215,0.7000000000000001
+"Rat gastrocnemius protein, female 2 wk",-4.506158300729757,-0.20839042846595257,0.0,GTEx v8 TPM (Muscle - Skeletal),-1.9792682574838132,0.0
+"Rat gastrocnemius protein, female 4 wk",-7.933615283621739,-0.595911593611003,0.0,GTEx v8 TPM (Muscle - Skeletal),-4.509340345101281,0.0
+"Rat gastrocnemius protein, female 8 wk",-9.11094057306396,-0.8916488635357702,0.0,GTEx v8 TPM (Muscle - Skeletal),-5.317524193313671,0.0
+"Rat gastrocnemius protein, male 1 wk",-1.037485567562054,0.37889645407048833,2.5,GTEx v8 TPM (Muscle - Skeletal),0.33010658352783573,1.5
+"Rat gastrocnemius protein, male 2 wk",-3.5793098971218194,-0.05831990189703083,0.0,GTEx v8 TPM (Muscle - Skeletal),-2.325928551388788,4.1000000000000005
+"Rat gastrocnemius protein, male 4 wk",-3.6250533900787296,0.2893243659500571,0.0,GTEx v8 TPM (Muscle - Skeletal),-1.4071467929339523,0.0
+"Rat gastrocnemius protein, male 8 wk",-4.511966081849113,-0.48379824655321363,0.0,GTEx v8 TPM (Muscle - Skeletal),-2.4928928590744235,0.2
+"Rat vastus lateralis RNA, female 1 wk",-3.406449681702359,0.5262165039665542,0.0,baseline (column),-1.7272310749924347,0.6
+"Rat vastus lateralis RNA, female 2 wk",-2.777848452092116,1.5933011314089192,0.0,baseline (column),-0.6105364365191803,0.1
+"Rat vastus lateralis RNA, female 4 wk",-6.233728062031365,0.5584117856633289,0.0,baseline (column),-3.9080700731078113,0.1
+"Rat vastus lateralis RNA, female 8 wk",-6.49859613079025,0.5244273642488357,0.0,baseline (column),-3.7048878430603445,0.0
+"Rat vastus lateralis RNA, male 1 wk",-3.9289913210861838,-0.5606281811061187,0.0,baseline (column),-2.19607280906808,0.1
+"Rat vastus lateralis RNA, male 2 wk",-2.915253105909349,-0.45875155864194883,0.0,baseline (column),-1.9533736049233563,5.0
+"Rat vastus lateralis RNA, male 4 wk",-4.161109156762568,-0.030246030064288228,0.0,baseline (column),-2.87901595435749,1.9
+"Rat vastus lateralis RNA, male 8 wk",-3.1987087657766042,0.6940714965511215,0.0,baseline (column),-1.7555793087730387,1.3
+"Rat heart RNA, female 1 wk",-1.459725231665022,-1.1614089953185949,32.300000000000004,baseline (column),-1.5888949663836387,58.3
+"Rat heart RNA, female 2 wk",0.37830740834462984,-0.5707464507794806,89.0,baseline (column),-0.24168157438080634,77.8
+"Rat heart RNA, female 4 wk",-3.490971813041379,-1.3210333484450485,0.3,baseline (column),-2.6835194202193344,12.6
+"Rat heart RNA, female 8 wk",-3.9337216930998875,-0.4759175797815608,0.0,baseline (column),-2.3762192679079845,2.4
+"Rat heart RNA, male 1 wk",-3.661733804402156,-1.5457663191322846,0.6,baseline (column),-2.987729074254474,15.8
+"Rat heart RNA, male 2 wk",-5.029590304022934,-1.2920291857568036,0.0,baseline (column),-3.5505964144342097,2.7
+"Rat heart RNA, male 4 wk",-2.6608298537447284,-1.1440052188484566,3.9,baseline (column),-2.3243537215045666,30.9
+"Rat heart RNA, male 8 wk",-1.5279967730943784,-0.27839495950640203,7.9,baseline (column),-0.0076787272365266565,1.7999999999999998
+"Rat heart protein, female 1 wk",-0.3346180885679394,0.25171458266237834,20.5,GTEx v8 TPM (Heart - Left Ventricle),-0.30433821830138974,48.9
+"Rat heart protein, female 2 wk",-2.7452121760700976,-0.7972109762423469,0.0,GTEx v8 TPM (Heart - Left Ventricle),-1.6346446081424508,4.1000000000000005
+"Rat heart protein, female 4 wk",-5.171137156893829,-0.3704421818421849,0.0,GTEx v8 TPM (Heart - Left Ventricle),-3.276641110628746,0.2
+"Rat heart protein, female 8 wk",-2.098257477803749,-0.9254628262050525,4.3,GTEx v8 TPM (Heart - Left Ventricle),-0.8201373092151447,2.5
+"Rat heart protein, male 1 wk",-2.148440158689236,-0.6460181374426324,1.7000000000000002,GTEx v8 TPM (Heart - Left Ventricle),-1.5108984032915163,16.400000000000002
+"Rat heart protein, male 2 wk",-4.809976428650748,-0.7074229013254933,0.0,GTEx v8 TPM (Heart - Left Ventricle),-3.5065525696677473,2.9000000000000004
+"Rat heart protein, male 4 wk",-3.89849516691532,-1.024709510796328,0.0,GTEx v8 TPM (Heart - Left Ventricle),-2.697893018040933,3.8
+"Rat heart protein, male 8 wk",-4.385504813225772,-1.2354732943851614,0.0,GTEx v8 TPM (Heart - Left Ventricle),-1.9169363068251404,0.0

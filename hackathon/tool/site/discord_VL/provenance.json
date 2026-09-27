@@ -1,0 +1,29 @@
+{
+  "tool": "motrpac_probe 0.1.0",
+  "timestamp": "2026-09-27T00:42:16",
+  "command": "mprobe discord --quiet --species human --tissue VL",
+  "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
+  "store": "d615c2f0b9aec182",
+  "legacy_scripts_sha256_16": {
+    "05_pah_grid.py": "493558c57ee23f84",
+    "10_everywhere.py": "442df6305f226a0f",
+    "03_join.py": "95deb2a298b150cd",
+    "06_discordance.py": "7ee4ea64378d032a",
+    "08_discordance_model.py": "444933effeeba640"
+  },
+  "parameters": {
+    "species": "human",
+    "tissue": "VL",
+    "cutoff": 0.05
+  },
+  "timings_s": {
+    "store load": 0.43,
+    "a timescale": 0.0,
+    "b agreement": 1.19,
+    "c stratified rho": 5.75,
+    "d which layer": 0.08,
+    "g sex": 0.0,
+    "3-layer pathways": 0.01,
+    "figures + tables": 0.56
+  }
+}

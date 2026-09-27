@@ -1,0 +1,26 @@
+gene_symbol,direction,group,weight,source,uniprot
+NDUFA9,-1,OXPHOS-down,0.71,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q16795
+UQCRC2,-1,OXPHOS-down,0.74,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P22695
+UQCRC1,-1,OXPHOS-down,0.74,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P31930
+ATP5MG,-1,OXPHOS-down,0.7,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",O75964
+ATP5F1B,-1,OXPHOS-down,0.74,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P06576
+IDH2,-1,TCA/transport-down,0.74,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P48735
+OGDH,-1,TCA/transport-down,0.77,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q02218
+SLC25A4,-1,TCA/transport-down,0.65,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P12235
+ECH1,-1,TCA/transport-down,0.57,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q13011
+GLO1,1,glycolytic-up,1.39,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q04760
+FBP2,1,glycolytic-up,1.33,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",O00757
+PEBP1,1,contractile/other-up,1.29,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P30086
+ATP2A1,1,contractile/other-up,1.33,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",O14983
+MYH1,1,contractile/other-up,2.42,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P12882
+MYH2,1,contractile/other-up,1.26,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q9UKX2
+MYH7,1,contractile/other-up,1.26,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P12883
+MYLPF,1,contractile/other-up,1.58,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q96A32
+APOA1,1,contractile/other-up,1.29,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P02647
+PDLIM3,1,contractile/other-up,1.58,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q53GG5
+CS,-1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),
+TFAM,-1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),
+PDHA1,-1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),
+PDHB,-1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),
+LDHA,1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),
+LDHB,1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),

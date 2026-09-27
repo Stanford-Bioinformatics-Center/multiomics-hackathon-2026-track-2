@@ -1,0 +1,213 @@
+Comparison,Gene,Disease direction,RNA stat,Protein stat,Which layer answered,RNA baseline tertile,Proteomics missing values,GTEx tertile,RNA features,Protein features
+"Human vastus lateralis, EE–CON 15–45 min",AHCYL1,-1.0,-0.0063469557986298,0.318912288413148,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",COX6A1,-1.0,-0.890696579417422,-0.178287125213491,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",FUNDC1,-1.0,0.290932087523871,0.431515744890884,neither,low,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",LARS2,-1.0,-0.743514693353489,-1.07286469877991,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",MMAA,-1.0,1.0199203744154,-0.0412312953836432,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",MRPL35,-1.0,-0.913125249938259,-1.19412758047687,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",MTRES1,-1.0,-1.98109108308672,0.517140337886406,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",STX17,-1.0,-0.847797335935578,1.14754508239104,neither,high,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 15–45 min",TIMM8A,-1.0,-1.55525211125482,-0.577704839451313,neither,low,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",AHCYL1,-1.0,-1.83919986957283,0.345140814102209,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",COX6A1,-1.0,0.311070264546287,-1.93675723859285,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",FUNDC1,-1.0,0.392009671344542,-0.276213043011292,neither,low,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",LARS2,-1.0,-1.47045915107419,-0.564895653942746,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",MMAA,-1.0,2.56238858844256,-0.945403768353917,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",MRPL35,-1.0,1.99016508479651,-0.037660123963393,neither,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",MTRES1,-1.0,-1.16019336987479,0.711206884009125,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",STX17,-1.0,-0.585777200478032,1.31939143404323,neither,high,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 3.5–4 h",TIMM8A,-1.0,3.16420381509111,0.170135469602028,RNA only,low,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",AHCYL1,-1.0,-3.4509756848335,0.313126115657542,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",COX6A1,-1.0,0.417242732147258,-1.86710492231354,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",FUNDC1,-1.0,2.99460229072927,0.850658802572654,RNA only,low,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",LARS2,-1.0,3.85998640750045,-0.0648043100542041,RNA only,mid,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",MMAA,-1.0,1.6037429781229,1.9009397848624,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",MRPL35,-1.0,4.03198682300154,-0.644634410779978,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",MTRES1,-1.0,3.8705224856215,-0.968756049704073,RNA only,mid,,high,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",STX17,-1.0,-1.47241468884776,1.36065705774061,neither,high,,mid,1.0,1.0
+"Human vastus lateralis, EE–CON 24 h",TIMM8A,-1.0,2.35113728599171,0.152565665995865,neither,low,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",AHCYL1,-1.0,0.10152053617952,-0.479592563199511,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",COX6A1,-1.0,-0.271618342797651,0.730633916385499,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",FUNDC1,-1.0,0.977714858489205,0.356322321487297,neither,low,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",LARS2,-1.0,-1.49247923295481,-0.431312592903177,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",MMAA,-1.0,0.992265801876438,-0.296643673066276,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",MRPL35,-1.0,-1.16612080378733,-0.545471127402704,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",MTRES1,-1.0,-2.26280301232266,-0.528022972411823,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",STX17,-1.0,-0.208397012461758,-0.257529636612216,neither,high,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 15–45 min",TIMM8A,-1.0,-2.51323696418284,-1.54685487244089,neither,low,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",AHCYL1,-1.0,-0.648898198040219,-0.274623220616245,neither,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",COX6A1,-1.0,2.26982936046339,-2.42014742796772,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",FUNDC1,-1.0,-0.374714825444178,-0.16504667758577,neither,low,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",LARS2,-1.0,-2.87308699564809,-0.942522924634202,RNA only,mid,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",MMAA,-1.0,2.27475340609202,-1.35218075576342,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",MRPL35,-1.0,3.89036115644851,-0.153608440952623,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",MTRES1,-1.0,-2.74034597325612,-0.0487562530722032,RNA only,mid,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",STX17,-1.0,-2.91233903845253,-0.0128561247464779,RNA only,high,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 3.5–4 h",TIMM8A,-1.0,5.24707393877784,0.179631707844766,RNA only,low,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",AHCYL1,-1.0,-8.0819162237608,-0.47987937003161,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",COX6A1,-1.0,1.75967303649815,-1.79175414340394,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",FUNDC1,-1.0,-0.645332979092301,-0.309037640285353,neither,low,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",LARS2,-1.0,2.39330012473987,-0.975970313476839,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",MMAA,-1.0,1.59942153795649,-1.12661184006373,neither,mid,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",MRPL35,-1.0,3.78960914731582,-1.21839833572035,RNA only,high,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",MTRES1,-1.0,1.07828425702534,-2.1178577548179,neither,mid,,high,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",STX17,-1.0,-1.04203141566442,-0.0558311363688139,neither,high,,mid,1.0,1.0
+"Human vastus lateralis, RE–CON 24 h",TIMM8A,-1.0,3.74264664023083,-1.95758922999492,RNA only,low,,mid,1.0,1.0
+"Human subcutaneous adipose, EE–CON 3.5–4 h",AHCYL1,-1.0,1.33567993536835,-0.492000627065356,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",COX6A1,-1.0,0.876243419850702,1.07758854597245,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",LARS2,-1.0,1.34811363210665,-0.795282939540118,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",MMAA,-1.0,-0.16796749187402,-0.825588710635151,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",MTRES1,-1.0,1.20262315214825,-1.28150398025915,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",STX17,-1.0,-1.54624440215383,-0.185466369674704,neither,,,,,
+"Human subcutaneous adipose, EE–CON 3.5–4 h",TIMM8A,-1.0,0.246859917806331,0.374219611639602,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",AHCYL1,-1.0,0.875873155153571,-1.07716776357489,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",COX6A1,-1.0,1.26529322430898,-0.0954812823977129,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",LARS2,-1.0,0.107092575905951,-0.357933236693486,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",MMAA,-1.0,-0.0621706993990668,-0.0896221674675047,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",MTRES1,-1.0,3.35048017133344,-0.45930224478359,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",STX17,-1.0,-1.510814307843,-1.64219877356228,neither,,,,,
+"Human subcutaneous adipose, RE–CON 3.5–4 h",TIMM8A,-1.0,0.64157056344316,0.124616391371982,neither,,,,,
+"Rat gastrocnemius, female 1 wk",AHCYL1,-1.0,-0.219504305377232,0.0265697387818489,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",COX6A1,-1.0,1.4283401725271,-0.963505049858297,neither,high,6.5,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",FUNDC1,-1.0,-1.71431442591616,1.06641802421399,neither,mid,1.5,mid,1.0,1.0
+"Rat gastrocnemius, female 1 wk",LARS2,-1.0,-0.421022149754067,-1.67238399699552,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 1 wk",MMAA,-1.0,-0.739197701492687,1.2242733448064,neither,mid,0.0,low,1.0,1.0
+"Rat gastrocnemius, female 1 wk",MRPL35,-1.0,0.781866871414063,2.42351161008273,neither,high,2.0,high,1.0,1.0
+"Rat gastrocnemius, female 1 wk",MTRES1,-1.0,-0.209566753363858,2.02293716863384,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 1 wk",STX17,-1.0,-0.185200383704356,0.396887706909119,neither,low,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 1 wk",TIMM8A,-1.0,-0.783828377406982,1.51477933791359,neither,low,0.0,low,1.0,1.0
+"Rat gastrocnemius, female 2 wk",AHCYL1,-1.0,-0.35969365547271,-0.346522875411111,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",COX6A1,-1.0,1.38189406770085,-0.557870713252621,neither,high,6.5,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",FUNDC1,-1.0,0.545639380143936,0.898720381344125,neither,mid,1.5,mid,1.0,1.0
+"Rat gastrocnemius, female 2 wk",LARS2,-1.0,-0.563731885551276,-1.37828410378932,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 2 wk",MMAA,-1.0,0.0827282584315676,1.12846400578892,neither,mid,0.0,low,1.0,1.0
+"Rat gastrocnemius, female 2 wk",MRPL35,-1.0,0.353216155850649,0.751292343221146,neither,high,2.0,high,1.0,1.0
+"Rat gastrocnemius, female 2 wk",MTRES1,-1.0,-0.135151912787779,2.57498513447167,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 2 wk",STX17,-1.0,0.174727330592548,1.30596263261017,neither,low,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 2 wk",TIMM8A,-1.0,-0.239669287844268,3.32328066341362,neither,low,0.0,low,1.0,1.0
+"Rat gastrocnemius, female 4 wk",AHCYL1,-1.0,0.869018335534924,1.04022603661187,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",COX6A1,-1.0,0.949239544854102,0.0126095426851208,neither,high,6.5,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",FUNDC1,-1.0,-0.151975006479305,-0.76124454986681,neither,mid,1.5,mid,1.0,1.0
+"Rat gastrocnemius, female 4 wk",LARS2,-1.0,-0.549299130270719,-0.358575728050284,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 4 wk",MMAA,-1.0,-0.476592904580649,3.32067382943359,neither,mid,0.0,low,1.0,1.0
+"Rat gastrocnemius, female 4 wk",MRPL35,-1.0,1.48367627357021,1.62918159143583,neither,high,2.0,high,1.0,1.0
+"Rat gastrocnemius, female 4 wk",MTRES1,-1.0,0.724773995348352,0.629451741082779,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 4 wk",STX17,-1.0,0.668162480460979,1.59653951849812,neither,low,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 4 wk",TIMM8A,-1.0,1.24157840036914,5.99127959832563,protein only,low,0.0,low,1.0,1.0
+"Rat gastrocnemius, female 8 wk",AHCYL1,-1.0,1.2770738392405,1.57826663194188,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",COX6A1,-1.0,2.2800552737279,0.761637641043074,neither,high,6.5,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",FUNDC1,-1.0,-1.39271146599635,-0.192741175103549,neither,mid,1.5,mid,1.0,1.0
+"Rat gastrocnemius, female 8 wk",LARS2,-1.0,-0.288095804561026,-0.196835171871884,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 8 wk",MMAA,-1.0,-0.549056193833268,2.94922092491191,neither,mid,0.0,low,1.0,1.0
+"Rat gastrocnemius, female 8 wk",MRPL35,-1.0,1.58800888030072,1.15961814450698,neither,high,2.0,high,1.0,1.0
+"Rat gastrocnemius, female 8 wk",MTRES1,-1.0,0.771485528323127,3.00873058423249,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 8 wk",STX17,-1.0,0.0863237391670906,1.43960238675309,neither,low,0.0,mid,1.0,1.0
+"Rat gastrocnemius, female 8 wk",TIMM8A,-1.0,1.45516992481337,7.5887495481665,protein only,low,0.0,low,1.0,1.0
+"Rat gastrocnemius, male 1 wk",AHCYL1,-1.0,0.472609098203689,-0.0441694671525434,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",COX6A1,-1.0,3.26518758509692,-0.43536882237627,neither,high,6.5,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",FUNDC1,-1.0,-0.592766465900368,-1.20120890220896,neither,mid,1.5,mid,1.0,1.0
+"Rat gastrocnemius, male 1 wk",LARS2,-1.0,-0.594647682551813,-2.23814034749194,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 1 wk",MMAA,-1.0,1.58895817064881,0.662332853803661,neither,mid,0.0,low,1.0,1.0
+"Rat gastrocnemius, male 1 wk",MRPL35,-1.0,1.63689666210648,-1.22541406003395,neither,high,2.0,high,1.0,1.0
+"Rat gastrocnemius, male 1 wk",MTRES1,-1.0,1.98961824314309,1.54071733998237,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 1 wk",STX17,-1.0,-0.627255253494043,-1.31793638013496,neither,low,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 1 wk",TIMM8A,-1.0,0.366493843943021,3.89094703573901,neither,low,0.0,low,1.0,1.0
+"Rat gastrocnemius, male 2 wk",AHCYL1,-1.0,1.3144908391423,-0.723599915958931,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",COX6A1,-1.0,1.37408198702024,1.30919677095774,neither,high,6.5,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",FUNDC1,-1.0,0.257726172321603,-0.30229044198793,neither,mid,1.5,mid,1.0,1.0
+"Rat gastrocnemius, male 2 wk",LARS2,-1.0,-0.402642557721206,-0.913005633935177,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 2 wk",MMAA,-1.0,0.591941674480845,0.631125205532394,neither,mid,0.0,low,1.0,1.0
+"Rat gastrocnemius, male 2 wk",MRPL35,-1.0,0.309988293869195,-0.204051044252034,neither,high,2.0,high,1.0,1.0
+"Rat gastrocnemius, male 2 wk",MTRES1,-1.0,3.41576994922284,1.22969243912253,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 2 wk",STX17,-1.0,1.56450398064941,-1.90513253271109,neither,low,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 2 wk",TIMM8A,-1.0,0.67420366907513,3.31413875494507,neither,low,0.0,low,1.0,1.0
+"Rat gastrocnemius, male 4 wk",AHCYL1,-1.0,1.1674792410464,1.4985998012475,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",COX6A1,-1.0,1.18379706616803,0.622176795742897,neither,high,6.5,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",FUNDC1,-1.0,-0.395829538567079,-0.961618634886756,neither,mid,1.5,mid,1.0,1.0
+"Rat gastrocnemius, male 4 wk",LARS2,-1.0,-0.104069183457465,-1.68266088893911,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 4 wk",MMAA,-1.0,-0.156460215056827,1.02593257118037,neither,mid,0.0,low,1.0,1.0
+"Rat gastrocnemius, male 4 wk",MRPL35,-1.0,0.861162795502602,0.998438372251984,neither,high,2.0,high,1.0,1.0
+"Rat gastrocnemius, male 4 wk",MTRES1,-1.0,2.74271518219945,1.03461056197592,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 4 wk",STX17,-1.0,0.95837984031642,-1.60421136724418,neither,low,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 4 wk",TIMM8A,-1.0,0.758013808658757,7.43238295688099,protein only,low,0.0,low,1.0,1.0
+"Rat gastrocnemius, male 8 wk",AHCYL1,-1.0,0.0503145580797876,0.196805690571676,neither,high,0.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",COX6A1,-1.0,3.09698370468448,2.09254322773797,neither,high,6.5,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",FUNDC1,-1.0,-1.33417422526046,1.68338022566106,neither,mid,1.5,mid,1.0,1.0
+"Rat gastrocnemius, male 8 wk",LARS2,-1.0,0.627738104922896,-0.489562378729807,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 8 wk",MMAA,-1.0,-0.122334512306784,1.69946752426737,neither,mid,0.0,low,1.0,1.0
+"Rat gastrocnemius, male 8 wk",MRPL35,-1.0,0.57287724386422,1.00682292936514,neither,high,2.0,high,1.0,1.0
+"Rat gastrocnemius, male 8 wk",MTRES1,-1.0,1.11406972573816,-0.838263926868594,neither,high,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 8 wk",STX17,-1.0,2.28026464759598,-1.64712841735465,neither,low,0.0,mid,1.0,1.0
+"Rat gastrocnemius, male 8 wk",TIMM8A,-1.0,0.263282310517546,7.82616132658716,protein only,low,0.0,low,1.0,1.0
+"Rat heart, female 1 wk",AHCYL1,-1.0,2.06923955037051,0.207393245101202,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",COX6A1,-1.0,0.78543669986441,0.84691720700017,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",FUNDC1,-1.0,0.415479410725114,0.745473411903972,neither,mid,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",LARS2,-1.0,0.111715360539842,0.727431285673442,neither,high,0.0,mid,1.0,1.0
+"Rat heart, female 1 wk",MMAA,-1.0,0.881444725333757,1.9189240808127,neither,mid,0.0,low,1.0,1.0
+"Rat heart, female 1 wk",MRPL35,-1.0,0.198461497029396,0.610286529044348,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",MTRES1,-1.0,1.11174387947924,1.34531709874841,neither,mid,0.0,high,1.0,1.0
+"Rat heart, female 1 wk",STX17,-1.0,0.137450360204606,-0.58557639992598,neither,low,0.0,mid,1.0,1.0
+"Rat heart, female 1 wk",TIMM8A,-1.0,-0.778255196005901,3.02738813732219,neither,low,0.0,mid,1.0,1.0
+"Rat heart, female 2 wk",AHCYL1,-1.0,1.62775691365366,1.54294766004361,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",COX6A1,-1.0,-0.216348580646081,1.51032938996572,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",FUNDC1,-1.0,-0.112145112466296,3.00911301443895,neither,mid,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",LARS2,-1.0,-0.407353072256669,1.85850462988244,neither,high,0.0,mid,1.0,1.0
+"Rat heart, female 2 wk",MMAA,-1.0,1.83042197637192,0.0370697593996102,neither,mid,0.0,low,1.0,1.0
+"Rat heart, female 2 wk",MRPL35,-1.0,0.434193605470027,1.26833752233954,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",MTRES1,-1.0,0.236001194525354,0.379644406650726,neither,mid,0.0,high,1.0,1.0
+"Rat heart, female 2 wk",STX17,-1.0,-0.524379484497428,0.585227282566572,neither,low,0.0,mid,1.0,1.0
+"Rat heart, female 2 wk",TIMM8A,-1.0,-0.176320533416833,3.41842361321325,neither,low,0.0,mid,1.0,1.0
+"Rat heart, female 4 wk",AHCYL1,-1.0,1.36537036462587,1.74282115770919,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",COX6A1,-1.0,1.23794134211249,3.07751017378813,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",FUNDC1,-1.0,-0.90126601793051,1.01611183045745,neither,mid,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",LARS2,-1.0,-0.017672424806408,3.1056651985145,neither,high,0.0,mid,1.0,1.0
+"Rat heart, female 4 wk",MMAA,-1.0,1.26687377137755,3.20769363315091,neither,mid,0.0,low,1.0,1.0
+"Rat heart, female 4 wk",MRPL35,-1.0,-0.0302510704873907,1.88127453403898,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",MTRES1,-1.0,1.31075940594656,2.91720688073102,neither,mid,0.0,high,1.0,1.0
+"Rat heart, female 4 wk",STX17,-1.0,0.919598875405771,0.724265465163408,neither,low,0.0,mid,1.0,1.0
+"Rat heart, female 4 wk",TIMM8A,-1.0,-0.258564104749085,4.55310656997676,protein only,low,0.0,mid,1.0,1.0
+"Rat heart, female 8 wk",AHCYL1,-1.0,0.840187471337703,3.25795693545193,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",COX6A1,-1.0,-1.04132214151252,2.10992535893095,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",FUNDC1,-1.0,0.791133864630992,2.4582031451648,neither,mid,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",LARS2,-1.0,0.234847334290768,-1.11676169262115,neither,high,0.0,mid,1.0,1.0
+"Rat heart, female 8 wk",MMAA,-1.0,0.76038646659496,-0.582656067707028,neither,mid,0.0,low,1.0,1.0
+"Rat heart, female 8 wk",MRPL35,-1.0,1.66952789499738,-0.453339121557874,neither,high,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",MTRES1,-1.0,1.43149382087482,0.809738633521635,neither,mid,0.0,high,1.0,1.0
+"Rat heart, female 8 wk",STX17,-1.0,0.986980527307083,0.52738460951038,neither,low,0.0,mid,1.0,1.0
+"Rat heart, female 8 wk",TIMM8A,-1.0,-0.154741505173937,2.23438773326802,neither,low,0.0,mid,1.0,1.0
+"Rat heart, male 1 wk",AHCYL1,-1.0,-0.419857432731902,1.13910469650298,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",COX6A1,-1.0,0.112333012684771,-0.305575101331727,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",FUNDC1,-1.0,1.06104289877784,0.0206179684114399,neither,mid,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",LARS2,-1.0,0.878197436765873,-0.317048622314655,neither,high,0.0,mid,1.0,1.0
+"Rat heart, male 1 wk",MMAA,-1.0,1.91370100050979,0.962700760741378,neither,mid,0.0,low,1.0,1.0
+"Rat heart, male 1 wk",MRPL35,-1.0,0.2720221282663,-0.806203719913556,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",MTRES1,-1.0,2.20909736649659,0.850024567205465,neither,mid,0.0,high,1.0,1.0
+"Rat heart, male 1 wk",STX17,-1.0,-1.43168194349163,1.29667656793953,neither,low,0.0,mid,1.0,1.0
+"Rat heart, male 1 wk",TIMM8A,-1.0,1.06064080833247,2.89917276347775,neither,low,0.0,mid,1.0,1.0
+"Rat heart, male 2 wk",AHCYL1,-1.0,0.568705567401483,0.602602529334636,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",COX6A1,-1.0,0.312592398912144,-0.0183022997985448,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",FUNDC1,-1.0,1.28297663426684,-1.10789468310544,neither,mid,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",LARS2,-1.0,0.177501935819679,1.39890090548414,neither,high,0.0,mid,1.0,1.0
+"Rat heart, male 2 wk",MMAA,-1.0,0.91259406603008,2.08676933179843,neither,mid,0.0,low,1.0,1.0
+"Rat heart, male 2 wk",MRPL35,-1.0,-0.262520207261789,0.706174682001816,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",MTRES1,-1.0,1.37268332092355,2.36887064166589,neither,mid,0.0,high,1.0,1.0
+"Rat heart, male 2 wk",STX17,-1.0,-1.17703159903229,1.14637559194472,neither,low,0.0,mid,1.0,1.0
+"Rat heart, male 2 wk",TIMM8A,-1.0,-0.557579190002774,2.33347960804453,neither,low,0.0,mid,1.0,1.0
+"Rat heart, male 4 wk",AHCYL1,-1.0,-0.309973856915842,1.14784438039704,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",COX6A1,-1.0,-0.400713224502552,-0.556632655228312,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",FUNDC1,-1.0,0.229792087904795,0.500073558371689,neither,mid,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",LARS2,-1.0,-0.186740333201725,0.527872777824636,neither,high,0.0,mid,1.0,1.0
+"Rat heart, male 4 wk",MMAA,-1.0,1.29289485357408,2.21913410621424,neither,mid,0.0,low,1.0,1.0
+"Rat heart, male 4 wk",MRPL35,-1.0,-1.49858569646239,0.969665269516883,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",MTRES1,-1.0,0.623383403693939,1.64925153726391,neither,mid,0.0,high,1.0,1.0
+"Rat heart, male 4 wk",STX17,-1.0,0.137549843183513,3.14078477627169,neither,low,0.0,mid,1.0,1.0
+"Rat heart, male 4 wk",TIMM8A,-1.0,-0.148614354596102,1.03622964816085,neither,low,0.0,mid,1.0,1.0
+"Rat heart, male 8 wk",AHCYL1,-1.0,-1.8377612479535,1.75790368261427,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",COX6A1,-1.0,0.417699865731798,-0.0621472392160492,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",FUNDC1,-1.0,1.21122909537272,-0.482674757220524,neither,mid,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",LARS2,-1.0,-0.795565277261216,-2.32758853911312,neither,high,0.0,mid,1.0,1.0
+"Rat heart, male 8 wk",MMAA,-1.0,-0.0837595662802824,0.861302565582827,neither,mid,0.0,low,1.0,1.0
+"Rat heart, male 8 wk",MRPL35,-1.0,-0.815575400102851,-1.06401059205007,neither,high,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",MTRES1,-1.0,-0.427269329363571,0.517925764143583,neither,mid,0.0,high,1.0,1.0
+"Rat heart, male 8 wk",STX17,-1.0,-1.14177750068508,3.03987603521468,neither,low,0.0,mid,1.0,1.0
+"Rat heart, male 8 wk",TIMM8A,-1.0,-1.17230629410643,2.42644506158253,neither,low,0.0,mid,1.0,1.0

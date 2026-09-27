@@ -1,0 +1,11 @@
+refmet_name,direction,group,weight,source
+Citric acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"
+Isocitric acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"
+cis-Aconitic acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"
+Oxoglutaric acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"
+Succinic acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"
+Fumaric acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"
+Malic acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"
+Pyruvic acid,-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"
+Lactic acid,1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"
+CAR(2:0),-1,TCA intermediates (synthetic demo),,"SYNTHETIC demo, not a published signature"

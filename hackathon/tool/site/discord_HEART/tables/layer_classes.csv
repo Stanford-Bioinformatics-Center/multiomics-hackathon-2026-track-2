@@ -1,0 +1,9 @@
+Comparison,Group / sex,Genes in both layers,Concordant,RNA only,Protein only,Opposite,Neither
+female 1 wk,F,7842,0,2,0,0,7840
+female 2 wk,F,7841,0,30,0,0,7811
+female 4 wk,F,7840,4,49,65,0,7722
+female 8 wk,F,7841,19,172,160,2,7488
+male 1 wk,M,7841,1,31,3,0,7806
+male 2 wk,M,7840,13,94,86,1,7646
+male 4 wk,M,7841,8,74,185,1,7573
+male 8 wk,M,7840,49,252,419,10,7110

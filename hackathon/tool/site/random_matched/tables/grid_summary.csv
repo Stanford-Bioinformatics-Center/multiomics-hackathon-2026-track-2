@@ -1,0 +1,53 @@
+Comparison,Genes measured,Opposed,Same direction,Sign test p,Sign test p (effective n),Genes at BH FDR < 0.05,Opposed at BH FDR < 0.05
+"Human vastus lateralis RNA, EE–CON 15–45 min",25,10,15,0.42435622215270996,0.5412561893463135,2,1
+"Human vastus lateralis RNA, EE–CON 3.5–4 h",25,17,8,0.10775214433670044,0.15158963203430176,4,2
+"Human vastus lateralis RNA, EE–CON 24 h",25,14,11,0.6900379657745361,0.8388197422027588,5,2
+"Human vastus lateralis RNA, RE–CON 15–45 min",25,9,16,0.2295229434967041,0.30745625495910645,2,1
+"Human vastus lateralis RNA, RE–CON 3.5–4 h",25,16,9,0.2295229434967041,0.30745625495910645,8,5
+"Human vastus lateralis RNA, RE–CON 24 h",25,14,11,0.6900379657745361,0.8388197422027588,11,5
+"Human vastus lateralis protein, EE–CON 15–45 min",19,8,11,0.6476058959960938,0.8145294189453125,0,0
+"Human vastus lateralis protein, EE–CON 3.5–4 h",19,11,8,0.6476058959960938,0.480682373046875,0,0
+"Human vastus lateralis protein, EE–CON 24 h",19,11,8,0.6476058959960938,0.480682373046875,0,0
+"Human vastus lateralis protein, RE–CON 15–45 min",19,7,12,0.359283447265625,0.480682373046875,0,0
+"Human vastus lateralis protein, RE–CON 3.5–4 h",19,10,9,1.0,0.8145294189453125,1,1
+"Human vastus lateralis protein, RE–CON 24 h",19,8,11,0.6476058959960938,0.8145294189453125,1,1
+"Rat gastrocnemius RNA, female 1 wk",24,10,14,0.5412561893463135,0.6776394844055176,0,0
+"Rat gastrocnemius RNA, female 2 wk",24,10,14,0.5412561893463135,0.6776394844055176,0,0
+"Rat gastrocnemius RNA, female 4 wk",24,12,12,1.0,1.0,0,0
+"Rat gastrocnemius RNA, female 8 wk",24,8,16,0.15158963203430176,0.21003961563110352,0,0
+"Rat gastrocnemius RNA, male 1 wk",24,11,13,0.8388197422027588,1.0,0,0
+"Rat gastrocnemius RNA, male 2 wk",24,9,15,0.30745625495910645,0.4048728942871094,0,0
+"Rat gastrocnemius RNA, male 4 wk",24,9,15,0.30745625495910645,0.4048728942871094,0,0
+"Rat gastrocnemius RNA, male 8 wk",24,12,12,1.0,1.0,0,0
+"Rat gastrocnemius protein, female 1 wk",19,10,9,1.0,0.8145294189453125,0,0
+"Rat gastrocnemius protein, female 2 wk",19,11,8,0.6476058959960938,0.480682373046875,0,0
+"Rat gastrocnemius protein, female 4 wk",19,10,9,1.0,0.8145294189453125,1,1
+"Rat gastrocnemius protein, female 8 wk",19,9,10,1.0,1.0,1,1
+"Rat gastrocnemius protein, male 1 wk",19,10,9,1.0,0.8145294189453125,0,0
+"Rat gastrocnemius protein, male 2 wk",19,11,8,0.6476058959960938,0.480682373046875,0,0
+"Rat gastrocnemius protein, male 4 wk",19,9,10,1.0,1.0,0,0
+"Rat gastrocnemius protein, male 8 wk",19,9,10,1.0,1.0,0,0
+"Rat vastus lateralis RNA, female 1 wk",24,10,14,0.5412561893463135,0.6776394844055176,0,0
+"Rat vastus lateralis RNA, female 2 wk",24,11,13,0.8388197422027588,1.0,0,0
+"Rat vastus lateralis RNA, female 4 wk",24,10,14,0.5412561893463135,0.6776394844055176,0,0
+"Rat vastus lateralis RNA, female 8 wk",24,12,12,1.0,1.0,2,1
+"Rat vastus lateralis RNA, male 1 wk",24,15,9,0.30745625495910645,0.4048728942871094,0,0
+"Rat vastus lateralis RNA, male 2 wk",24,13,11,0.8388197422027588,1.0,0,0
+"Rat vastus lateralis RNA, male 4 wk",24,11,13,0.8388197422027588,1.0,0,0
+"Rat vastus lateralis RNA, male 8 wk",24,15,9,0.30745625495910645,0.4048728942871094,0,0
+"Rat heart RNA, female 1 wk",24,11,13,0.8388197422027588,1.0,0,0
+"Rat heart RNA, female 2 wk",24,13,11,0.8388197422027588,1.0,0,0
+"Rat heart RNA, female 4 wk",24,13,11,0.8388197422027588,1.0,0,0
+"Rat heart RNA, female 8 wk",24,14,10,0.5412561893463135,0.6776394844055176,1,1
+"Rat heart RNA, male 1 wk",24,13,11,0.8388197422027588,1.0,0,0
+"Rat heart RNA, male 2 wk",24,13,11,0.8388197422027588,1.0,0,0
+"Rat heart RNA, male 4 wk",24,14,10,0.5412561893463135,0.6776394844055176,0,0
+"Rat heart RNA, male 8 wk",24,9,15,0.30745625495910645,0.4048728942871094,1,1
+"Rat heart protein, female 1 wk",19,12,7,0.359283447265625,0.480682373046875,0,0
+"Rat heart protein, female 2 wk",19,11,8,0.6476058959960938,0.480682373046875,0,0
+"Rat heart protein, female 4 wk",19,9,10,1.0,1.0,0,0
+"Rat heart protein, female 8 wk",19,13,6,0.1670684814453125,0.237884521484375,2,2
+"Rat heart protein, male 1 wk",19,13,6,0.1670684814453125,0.237884521484375,0,0
+"Rat heart protein, male 2 wk",19,11,8,0.6476058959960938,0.480682373046875,1,1
+"Rat heart protein, male 4 wk",19,10,9,1.0,0.8145294189453125,1,1
+"Rat heart protein, male 8 wk",19,10,9,1.0,0.8145294189453125,2,2
