@@ -1,0 +1,10 @@
+test,n_eligible,n_q_lt_0_05,n_raw_p_lt_0_05,smallest_q
+"change difference, PAH_vs_Healthy",560,0,17,0.839030397085401
+"change difference, PAH_vs_Normal_Pressures",554,0,9,0.5497297609120895
+"change difference, PAH_vs_Borderline_Pressures",553,0,47,0.09738190713468416
+"change difference, PAH_vs_SSc_no_PH_all",552,0,16,0.7733551998576667
+"within-group change, Healthy",652,5,82,0.0014031933785935698
+"within-group change, LowRisk",646,0,67,0.1536430836778872
+"within-group change, Normal Pressures",606,2,23,0.014729607530076693
+"within-group change, Borderline Pressures",636,11,48,0.0009136353798764001
+"within-group change, PAH",628,4,71,0.0004918680841616601

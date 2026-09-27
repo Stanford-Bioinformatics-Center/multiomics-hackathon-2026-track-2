@@ -1,0 +1,21 @@
+{
+  "st000763_factors": {
+    "file": "workbench/ST000763/factors.json",
+    "source": "Metabolomics Workbench REST API, study ST000763 sample factors",
+    "url": "https://www.metabolomicsworkbench.org/rest/study/study_id/ST000763/factors",
+    "downloaded": "2026-09-25",
+    "sha256": "2fffc7ea486834c6a46a04ce8926dca2e2a99c1b2a319dedac104333d4a7169c"
+  },
+  "st000763_data": {
+    "file": "workbench/ST000763/data.json",
+    "source": "Metabolomics Workbench REST API, study ST000763 named-metabolite data",
+    "url": "https://www.metabolomicsworkbench.org/rest/study/study_id/ST000763/data",
+    "downloaded": "2026-09-25",
+    "sha256": "6a8106cbcc6b939cd21efda29bed245f96c583074056ae3b0c68ae84f53bfccc"
+  },
+  "refmet_classes": {
+    "file": "refmet/metabolomics.workbench.refmet.2024.08.07.metabolites.gmt.gz",
+    "source": "MotrpacHumanPreSuspensionAnalysis 2.0.8 source, data-raw/gmt_processing/gmt_files/",
+    "sha256": "a28e765d544d061500c13ef397ec883fcef86450ffca15306a14b2033926f625"
+  }
+}

@@ -1,0 +1,6 @@
+test,n_eligible,n_q_lt_0_05,n_unique_refmet,smallest_q,n_q_lt_0_05_mannwhitney,n_q_lt_0_05_centered,n_q_lt_0_05_sex_adjusted,classes_q_lt_0_05
+PAH_vs_Healthy,574,43,41,4.560809928850105e-10,69.0,45.0,37.0,REFMET_Saturated FA; REFMET_Unsaturated FA
+PAH_vs_Normal_Pressures,573,0,0,0.9261805775426164,0.0,0.0,0.0,
+PAH_vs_SSc_no_PH_all,573,0,0,0.06211473402147413,0.0,10.0,0.0,REFMET_PE; REFMET_Unsaturated FA
+Normal_vs_LowRisk,565,1,1,0.0005532485316264671,0.0,16.0,1.0,
+Cath_severity_trend,561,0,0,0.16319353240560405,,,,
