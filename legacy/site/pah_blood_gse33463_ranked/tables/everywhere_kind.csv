@@ -1,0 +1,5 @@
+Comparison kind,Units,Median fraction opposed,"Opposed-majority units, q < 0.05","Same-majority units, q < 0.05"
+exercise post−pre,48,0.48257552324981956,3,3
+exercise vs control,48,0.4877258897289323,3,1
+reference (non-exercise),72,0.4951389216472475,1,2
+training vs sedentary,132,0.502912064801498,2,6

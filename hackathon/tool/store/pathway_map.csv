@@ -1,0 +1,648 @@
+pathway,side,member,rule,source,measured_in
+TCA cycle,gene,ACLY,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,ACO1,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,ACO2,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,CS,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,DLAT,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,DLD,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,DLST,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,FH,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,IDH1,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,IDH2,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,IDH3A,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,IDH3B,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,IDH3G,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,MDH1,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,MDH2,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,OGDH,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,OGDHL,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,PC,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,PCK1,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,PCK2,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,PDHA1,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,PDHA2,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,PDHB,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,SDHA,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,SDHB,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,SDHC,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT
+TCA cycle,gene,SDHCP5,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),
+TCA cycle,gene,SDHD,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT
+TCA cycle,gene,SUCLA2,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,SUCLG1,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,SUCLG2,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA/PROT/PHOSPHO
+TCA cycle,gene,SUCLG2P2,msigdbr gene set KEGG_CITRATE_CYCLE_TCA_CYCLE,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_CITRATE_CYCLE_TCA_CYCLE (KEGG hsa00020),RNA
+TCA cycle,metabolite,2-Oxoglutaric acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids; KEGG C00026 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+TCA cycle,metabolite,Acetyl-CoA,curated: TCA-cycle acyl-CoA (KEGG map00020 compound),RefMet sub_class Acyl CoAs; KEGG C00024 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+TCA cycle,metabolite,Citric acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids; KEGG C00158 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+TCA cycle,metabolite,Citric acid/Isocitric acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+TCA cycle,metabolite,Fumaric acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids; KEGG C00122 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+TCA cycle,metabolite,Isocitric acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids; KEGG C00311 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+TCA cycle,metabolite,Malic acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids; KEGG C00149 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+TCA cycle,metabolite,Oxaloacetic acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids; KEGG C00036 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+TCA cycle,metabolite,Oxoglutaric acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids; KEGG C00026 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+TCA cycle,metabolite,Succinic acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids; KEGG C00042 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+TCA cycle,metabolite,Succinyl-CoA,curated: TCA-cycle acyl-CoA (KEGG map00020 compound),RefMet sub_class Acyl CoAs; KEGG C00091 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+TCA cycle,metabolite,cis-Aconitic acid,RefMet sub_class = TCA acids,RefMet sub_class TCA acids; KEGG C00417 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,gene,ACSS1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ACSS2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ADH1A,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT
+Glycolysis / gluconeogenesis,gene,ADH1B,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ADH1C,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ADH4,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO/PROT_OLINK
+Glycolysis / gluconeogenesis,gene,ADH5,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ADH6,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT
+Glycolysis / gluconeogenesis,gene,ADH7,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT
+Glycolysis / gluconeogenesis,gene,AKR1A1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ALDH1A3,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT
+Glycolysis / gluconeogenesis,gene,ALDH1B1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ALDH2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ALDH3A1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PROT_OLINK
+Glycolysis / gluconeogenesis,gene,ALDH3A2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ALDH3B1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT
+Glycolysis / gluconeogenesis,gene,ALDH3B2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),PROT
+Glycolysis / gluconeogenesis,gene,ALDH7A1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ALDH9A1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ALDOA,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ALDOB,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ALDOC,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,BPGM,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,DLAT,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,DLD,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,ENO1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO/PROT_OLINK
+Glycolysis / gluconeogenesis,gene,ENO2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO/PROT_OLINK
+Glycolysis / gluconeogenesis,gene,ENO3,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,FBP1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO/PROT_OLINK
+Glycolysis / gluconeogenesis,gene,FBP2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,G6PC1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),
+Glycolysis / gluconeogenesis,gene,G6PC2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),
+Glycolysis / gluconeogenesis,gene,GALM,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,GAPDH,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,GCK,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT
+Glycolysis / gluconeogenesis,gene,GPI,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,HK1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,HK2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,HK3,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,LDHA,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,LDHAL6A,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA
+Glycolysis / gluconeogenesis,gene,LDHAL6B,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,LDHB,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,LDHC,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PCK1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PCK2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PDHA1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PDHA2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PDHB,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PFKL,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PFKM,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PFKP,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PGAM1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PGAM2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PGAM4,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT
+Glycolysis / gluconeogenesis,gene,PGK1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PGK2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PGM1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PGM2,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,PKLR,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO/PROT_OLINK
+Glycolysis / gluconeogenesis,gene,PKM,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,gene,TPI1,msigdbr gene set KEGG_GLYCOLYSIS_GLUCONEOGENESIS,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_GLYCOLYSIS_GLUCONEOGENESIS (KEGG hsa00010),RNA/PROT/PHOSPHO
+Glycolysis / gluconeogenesis,metabolite,Dihydroxyacetone phosphate,curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Short-chain acids; KEGG C00111 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,metabolite,"Fructose 1,6-bisphosphate",curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Hexose phosphates; KEGG C00354 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,metabolite,Fructose 6-phosphate,curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Hexose phosphates; KEGG C00085 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,metabolite,Glucose,curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Hexoses; KEGG C00031 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,metabolite,Glyceraldehyde 3-phosphate,curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Short-chain acids; KEGG C00118 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,metabolite,Hexose 6-phosphate,curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Hexose phosphates; KEGG C02965 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,metabolite,Lactic acid,curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Short-chain acids; KEGG C00186 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,metabolite,Phosphoenolpyruvic acid,curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Short-chain acids; KEGG C00074 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,metabolite,Phosphoglyceric acid,curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Short-chain acids (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Glycolysis / gluconeogenesis,metabolite,Pyruvic acid,curated: glycolysis/gluconeogenesis intermediate (KEGG map00010 compound),RefMet sub_class Short-chain acids; KEGG C00022 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Fatty-acid beta-oxidation,gene,ACAA1,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO/PROT_OLINK
+Fatty-acid beta-oxidation,gene,ACAA2,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACADL,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACADM,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACADS,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACADSB,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACADVL,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACAT1,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACAT2,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACOX1,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO/PROT_OLINK
+Fatty-acid beta-oxidation,gene,ACOX3,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACSL1,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACSL3,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACSL4,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACSL5,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ACSL6,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ADH1A,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT
+Fatty-acid beta-oxidation,gene,ADH1B,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ADH1C,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ADH4,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO/PROT_OLINK
+Fatty-acid beta-oxidation,gene,ADH5,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ADH6,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT
+Fatty-acid beta-oxidation,gene,ADH7,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT
+Fatty-acid beta-oxidation,gene,ALDH1B1,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ALDH2,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ALDH3A2,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ALDH7A1,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ALDH9A1,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,CPT1A,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,CPT1B,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,CPT1C,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT
+Fatty-acid beta-oxidation,gene,CPT2,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,CYP4A11,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA
+Fatty-acid beta-oxidation,gene,CYP4A22,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ECHS1,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ECI1,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,ECI2,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,EHHADH,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,GCDH,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,HADH,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,HADHA,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,gene,HADHB,msigdbr gene set KEGG_FATTY_ACID_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_FATTY_ACID_METABOLISM (KEGG hsa00071),RNA/PROT/PHOSPHO
+Fatty-acid beta-oxidation,metabolite,CAR 10:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C03299 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 10:0;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 10:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 10:2,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 11:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 11:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 12:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 12:0;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 12:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 12:2,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 12:3,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 13:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 13:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 14:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 14:0;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 14:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 14:1;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 14:2,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 14:2;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 16:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02990 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 16:0;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 16:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 16:2,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 16:3,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 17:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 18:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 18:0;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 18:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 18:1;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 18:2,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 18:3,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 20:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 20:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 20:2,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 20:3,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 20:4,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 24:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 26:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 26:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 2:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02571 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 3:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C03017 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 4:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02862 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 4:0;3Me,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C20826 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 4:0;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 5:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 5:0;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 5:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 6:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 6:0;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 7:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 8:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02838 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 8:0;OH,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 8:1,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR 9:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR DC3:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR DC3:0;2Me,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR DC5:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR DC6:0,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+Fatty-acid beta-oxidation,metabolite,CAR(10:0(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(10:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C03299 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(10:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(10:2),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(11:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(12:0(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(12:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(12:0)_lp_a,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(12:0)_lp_b,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(12:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(13:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(13:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(14:0(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(14:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(14:1(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(14:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(14:2(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(14:2),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(15:0)_lp_a,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(15:0)_lp_b,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(16:0(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(16:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02990 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(16:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(16:1)_lp_a,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(16:1)_lp_b,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(16:2(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(16:2),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(16:2)_lp_a,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(16:3),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(17:0)_lp_a,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(17:0)_lp_b,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(17:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(18:0(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(18:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(18:1(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(18:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(18:1)_lp_a,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(18:2),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(18:2)_lp_a,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(18:3)_lp_a,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(19:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(20:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(20:1(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(20:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(20:2(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(20:2)_lp_a,RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(20:4),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(21:2),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(22:2),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(22:4),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(24:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(24:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(26:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(26:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(2:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02571 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(3:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C03017 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(4:0(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(4:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02862 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(5:0(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(5:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(5:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(6:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(7:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(8:0(OH)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(8:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02838 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(8:1),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(9:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(DC3:0(2Me)),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(DC3:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,CAR(DC5:0),RefMet sub_class = Acyl carnitines (names CAR(...) / CAR ...),RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Fatty-acid beta-oxidation,metabolite,Carnitine,curated: free carnitine (carnitine shuttle),RefMet sub_class Carnitines; KEGG C00487 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+BCAA catabolism,gene,ABAT,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ACAA1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO/PROT_OLINK
+BCAA catabolism,gene,ACAA2,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ACAD8,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT
+BCAA catabolism,gene,ACADM,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ACADS,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ACADSB,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ACAT1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ACAT2,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ALDH1B1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ALDH2,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ALDH3A2,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ALDH6A1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ALDH7A1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ALDH9A1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,AOX1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,AUH,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,BCAT1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT
+BCAA catabolism,gene,BCAT2,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,BCKDHA,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,BCKDHB,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT
+BCAA catabolism,gene,DBT,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,DLD,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,ECHS1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,EHHADH,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,HADH,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,HADHA,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,HADHB,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,HIBADH,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,HIBCH,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,HMGCL,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,HMGCS1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,HMGCS2,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,HSD17B10,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,IL4I1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,IVD,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO/PROT_OLINK
+BCAA catabolism,gene,MCCC1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,MCCC2,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,MCEE,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,MMUT,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,OXCT1,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,OXCT2,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA
+BCAA catabolism,gene,PCCA,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,gene,PCCB,msigdbr gene set KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION (KEGG hsa00280),RNA/PROT/PHOSPHO
+BCAA catabolism,metabolite,3-Methyl-2-oxovaleric acid,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Short-chain keto acids; KEGG C06008 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+BCAA catabolism,metabolite,CAR 3:0,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280); notation variant of CAR(3:0)",RefMet sub_class Acyl carnitines; KEGG C03017 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+BCAA catabolism,metabolite,CAR 5:0,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280); notation variant of CAR(5:0)",RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+BCAA catabolism,metabolite,CAR 5:0;OH,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280); notation variant of CAR(5:0(OH))",RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+BCAA catabolism,metabolite,CAR 5:1,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280); notation variant of CAR(5:1)",RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human
+BCAA catabolism,metabolite,CAR(3:0),"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Acyl carnitines; KEGG C03017 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+BCAA catabolism,metabolite,CAR(5:0(OH)),"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Acyl carnitines (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+BCAA catabolism,metabolite,CAR(5:0),"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+BCAA catabolism,metabolite,CAR(5:1),"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Acyl carnitines; KEGG C02301 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+BCAA catabolism,metabolite,Isoleucine,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Amino acids; KEGG C00407 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+BCAA catabolism,metabolite,Isovaleryl-CoA,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Acyl CoAs; KEGG C02939 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+BCAA catabolism,metabolite,Ketoisovaleric acid,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Branched FA; KEGG C00141 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+BCAA catabolism,metabolite,Ketoleucine,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Short-chain keto acids; KEGG C00233 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+BCAA catabolism,metabolite,Leucine,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Amino acids; KEGG C00123 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+BCAA catabolism,metabolite,Leucine/Isoleucine,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Amino acids (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+BCAA catabolism,metabolite,Propionyl-CoA,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Acyl CoAs; KEGG C00100 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+BCAA catabolism,metabolite,Valine,"curated: BCAA, branched-chain keto acid or BCAA-derived acyl-CoA/acylcarnitine (KEGG map00280)",RefMet sub_class Amino acids; KEGG C00183 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,gene,ADA,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,ADCY1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADCY10,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,ADCY2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADCY3,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADCY4,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADCY5,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADCY6,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADCY7,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,ADCY8,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADCY9,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADK,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADPRM,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,ADSL,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADSS1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ADSS2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,AK1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,AK2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,AK4,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,AK5,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,AK7,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ALLC,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,AMPD1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,AMPD2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,AMPD3,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,APRT,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,ATIC,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,CANT1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,DCK,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,DGUOK,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ENPP1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ENPP3,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ENTPD1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,ENTPD2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PROT_OLINK
+Purine metabolism,gene,ENTPD3,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,ENTPD4,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ENTPD5,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PROT_OLINK
+Purine metabolism,gene,ENTPD6,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PROT_OLINK
+Purine metabolism,gene,ENTPD8,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,FHIT,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PROT_OLINK
+Purine metabolism,gene,GART,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,GDA,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,GMPR,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,GMPR2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,GMPS,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,GUCY1A1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,GUCY1A2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,GUCY1B1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,GUCY2C,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PHOSPHO
+Purine metabolism,gene,GUCY2D,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,GUCY2F,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,GUK1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,HPRT1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,IMPDH1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,IMPDH2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,ITPA,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NME1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NME1-NME2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,NME2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NME3,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,NME4,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,NME5,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,NME6,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,NME7,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NPR1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NPR2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NT5C,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NT5C1A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NT5C1B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,NT5C2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NT5C3A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,NT5E,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PROT_OLINK
+Purine metabolism,gene,NT5M,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,NUDT2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,NUDT5,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,NUDT9,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PAICS,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PAPSS1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,PAPSS2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE10A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE11A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE1A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE1B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE1C,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE2A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE3A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE3B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE4A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE4B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE4C,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE4D,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE5A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE6A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,PDE6B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,PDE6C,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,PDE6D,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,PDE6G,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,PDE6H,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,PDE7A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE7B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE8A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE8B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PDE9A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,PFAS,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PKLR,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,PKM,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PNP,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PNPT1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,POLA1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PHOSPHO
+Purine metabolism,gene,POLA2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLD1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLD2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLD3,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLD4,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLE,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLE2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PHOSPHO
+Purine metabolism,gene,POLE3,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLE4,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR1A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLR1B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLR1C,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR1D,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLR1E,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR1H,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR2A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLR2B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR2C,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLR2D,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR2E,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR2F,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,POLR2G,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR2H,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR2I,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR2J,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR2J2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,POLR2J3,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,POLR2K,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR2L,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR3A,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLR3B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR3C,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLR3D,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLR3F,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR3G,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PHOSPHO
+Purine metabolism,gene,POLR3GL,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,POLR3H,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,POLR3K,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,PPAT,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,PRIM1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,PRIM2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,PRPS1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PRPS1L1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA
+Purine metabolism,gene,PRPS2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,PRUNE1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,RRM1,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT
+Purine metabolism,gene,RRM2,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,RRM2B,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO/PROT_OLINK
+Purine metabolism,gene,URAD,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,gene,XDH,msigdbr gene set KEGG_PURINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PURINE_METABOLISM (KEGG hsa00230),RNA/PROT/PHOSPHO
+Purine metabolism,metabolite,"3',5' cyclic AMP",curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNMP; KEGG C00575 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Purine metabolism,metabolite,ADP,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNDP; KEGG C00008 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,AMP,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNMP; KEGG C00020 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,ATP,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNTP; KEGG C00002 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Adenine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Aminopurines; KEGG C00147 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Adenosine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine ribonucleosides; KEGG C00212 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Adenylsuccinic acid,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNMP; KEGG C03794 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Allantoin,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Ureides; KEGG C02350 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Deoxyadenosine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine deoxyribonucleosides; KEGG C00559 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Purine metabolism,metabolite,Deoxyguanosine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine deoxyribonucleosides; KEGG C00330 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,GDP,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNDP; KEGG C00035 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,GMP,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNMP; KEGG C00144 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,GTP,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNTP; KEGG C00044 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Guanine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Hypoxanthines; KEGG C00242 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Guanosine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine ribonucleosides; KEGG C00387 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Hypoxanthine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Hypoxanthines; KEGG C00262 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,IMP,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNMP; KEGG C00130 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Inosine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine ribonucleosides; KEGG C00294 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Phosphoribosyl pyrophosphate,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Pentose phosphates; KEGG C00119 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Uric acid,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Xanthines; KEGG C00366 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,XMP,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine rNMP; KEGG C00655 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Purine metabolism,metabolite,Xanthine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Xanthines; KEGG C00385 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,Xanthosine,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine ribonucleosides; KEGG C01762 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Purine metabolism,metabolite,dATP,curated: purine base/nucleoside/nucleotide or degradation product (KEGG map00230),RefMet sub_class Purine dNTP; KEGG C00131 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,gene,AK3,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,CAD,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,CANT1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,CDA,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,CMPK1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,CMPK2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,CTPS1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,CTPS2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,DCK,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,DCTD,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,DHODH,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,DPYD,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,DPYS,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,DTYMK,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,DUT,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,ENTPD1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,ENTPD3,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,ENTPD4,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,ENTPD5,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PROT_OLINK
+Pyrimidine metabolism,gene,ENTPD6,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PROT_OLINK
+Pyrimidine metabolism,gene,ENTPD8,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,ITPA,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,NME1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,NME1-NME2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA
+Pyrimidine metabolism,gene,NME2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,NME3,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,NME4,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,NME5,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,NME6,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,NME7,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,NT5C,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,NT5C1A,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,NT5C1B,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,NT5C2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,NT5C3A,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,NT5E,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PROT_OLINK
+Pyrimidine metabolism,gene,NT5M,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,NUDT2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,PNP,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,PNPT1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,POLA1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PHOSPHO
+Pyrimidine metabolism,gene,POLA2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLD1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLD2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLD3,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLD4,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLE,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLE2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PHOSPHO
+Pyrimidine metabolism,gene,POLE3,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLE4,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR1A,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLR1B,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLR1C,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR1D,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLR1E,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR1H,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR2A,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLR2B,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR2C,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLR2D,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR2E,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR2F,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,POLR2G,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR2H,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR2I,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR2J,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR2J2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA
+Pyrimidine metabolism,gene,POLR2J3,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA
+Pyrimidine metabolism,gene,POLR2K,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR2L,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR3A,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLR3B,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR3C,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLR3D,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLR3F,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR3G,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PHOSPHO
+Pyrimidine metabolism,gene,POLR3GL,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,POLR3H,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,POLR3K,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,PRIM1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,PRIM2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,RRM1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,RRM2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,RRM2B,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,TK1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PHOSPHO
+Pyrimidine metabolism,gene,TK2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,TXNRD1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,TXNRD2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,TYMP,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO/PROT_OLINK
+Pyrimidine metabolism,gene,TYMS,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,UCK1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,UCK2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,UCKL1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,UMPS,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT
+Pyrimidine metabolism,gene,UPB1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,UPP1,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,gene,UPP2,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PHOSPHO
+Pyrimidine metabolism,gene,UPRT,msigdbr gene set KEGG_PYRIMIDINE_METABOLISM,msigdbr 26.1.1 C2:CP:KEGG_LEGACY KEGG_PYRIMIDINE_METABOLISM (KEGG hsa00240),RNA/PROT/PHOSPHO
+Pyrimidine metabolism,metabolite,CDP,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine rNDP; KEGG C00112 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,CMP,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine rNMP; KEGG C00055 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,CTP,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine rNTP; KEGG C00063 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,Cytidine,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine ribonucleosides; KEGG C00475 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,Cytosine,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidones; KEGG C00380 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,Deoxycytidine,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine deoxyribonucleosides; KEGG C00881 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Pyrimidine metabolism,metabolite,Deoxyuridine,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine deoxyribonucleosides; KEGG C00526 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,Thymidine,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine deoxyribonucleosides; KEGG C00214 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),rat
+Pyrimidine metabolism,metabolite,UDP,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine rNDP; KEGG C00015 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,UMP,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine rNMP; KEGG C00105 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,UTP,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine rNTP; KEGG C00075 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,Uracil,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Other pyrimidines; KEGG C00106 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,Ureidopropionic acid,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Ureas; KEGG C02642 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,Uridine,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine ribonucleosides; KEGG C00299 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,beta-Alanine,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Amino acids; KEGG C00099 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,dCTP,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine dNTP; KEGG C00458 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,dTTP,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine dNTP; KEGG C00459 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat
+Pyrimidine metabolism,metabolite,dUMP,curated: pyrimidine base/nucleoside/nucleotide or degradation product (KEGG map00240),RefMet sub_class Pyrimidine dNMP; KEGG C00365 (store/raw_metab: rat_metab_feature_map_v1 / human_metab_feature_map_v1),human/rat

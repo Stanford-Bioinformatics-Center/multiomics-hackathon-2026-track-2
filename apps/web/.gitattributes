@@ -1,0 +1,18 @@
+# NOTE: The original Figma Make export declared Git LFS rules here, but no file was
+# ever actually stored via LFS (git lfs ls-files was empty; the one PNG is a normal
+# git blob). This repository (the integration monorepo) does NOT use Git LFS, so the
+# LFS filter rules were removed to keep a fresh clone self-contained and LFS-independent.
+# See DECISIONS.md ADR-0003 and VERIFICATION.md.
+
+# Treat binary asset types as binary (no LFS, no text/EOL munging).
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.webp   binary
+*.ico    binary
+*.pdf    binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.otf    binary

@@ -1,0 +1,30 @@
+{
+  "fixture": "pah_muscle_malenfant2015.csv",
+  "rationale": "Predefined sensitivity views for the PAH skeletal-muscle protein signature. These are PLANNED subgroup analyses declared before results are read, not post-hoc gene removal. Several higher-in-PAH proteins are myosins, so exercise-related muscle fibre-type composition is a plausible competing explanation for opposition in the contractile subgroup; the fibre view isolates it. Directions follow Malenfant 2015 Table 2 (lower = -1, higher = +1). Reference: DECISIONS.md ADR-0005; interpretation guardrails in README.",
+  "views": [
+    {
+      "id": "full19",
+      "label": "Full 19-protein signature",
+      "description": "All nineteen Table-2 iTRAQ proteins (9 lower + 10 higher). Primary scientific demonstration.",
+      "genes": ["NDUFA9","UQCRC2","UQCRC1","ATP5MG","ATP5F1B","IDH2","OGDH","SLC25A4","ECH1","GLO1","FBP2","PEBP1","ATP2A1","MYH1","MYH2","MYH7","MYLPF","APOA1","PDLIM3"]
+    },
+    {
+      "id": "lower9",
+      "label": "Lower-in-PAH (9 proteins)",
+      "description": "The nine downregulated proteins (ratio < 1); the committed regression subset. Mitochondrial / OXPHOS / TCA weighted.",
+      "genes": ["NDUFA9","UQCRC2","UQCRC1","ATP5MG","ATP5F1B","IDH2","OGDH","SLC25A4","ECH1"]
+    },
+    {
+      "id": "upper10",
+      "label": "Higher-in-PAH (10 proteins)",
+      "description": "The ten upregulated proteins (ratio > 1); glycolytic and contractile enriched.",
+      "genes": ["GLO1","FBP2","PEBP1","ATP2A1","MYH1","MYH2","MYH7","MYLPF","APOA1","PDLIM3"]
+    },
+    {
+      "id": "fibre_myosin",
+      "label": "Contractile / fibre-type (myosin) subgroup",
+      "description": "Myosin and contractile proteins whose exercise opposition may reflect fibre-type composition shifts (rat endurance training shifts IIb -> IIa/IIx) rather than a disease-specific effect. Read against fibre markers (MYH1/MYH2/MYH4/MYH7).",
+      "genes": ["MYH1","MYH2","MYH7","MYLPF","ATP2A1","PDLIM3"]
+    }
+  ]
+}

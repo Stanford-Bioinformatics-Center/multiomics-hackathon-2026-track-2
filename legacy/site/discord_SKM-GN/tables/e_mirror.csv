@@ -1,0 +1,7 @@
+call,n_genes,fraction
+replicated RNA responders (RNA measurable),557,1.0
+protein-supported,338,0.6068222621184919
+protein significantly opposite,42,0.07540394973070018
+"RNA-only (protein bounded), lenient",71,0.12746858168761221
+"RNA-only (protein bounded), strict",32,0.05745062836624776
+undetermined,106,0.19030520646319568

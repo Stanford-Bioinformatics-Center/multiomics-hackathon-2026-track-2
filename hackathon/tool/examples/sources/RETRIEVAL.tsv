@@ -1,0 +1,8 @@
+file	url_or_origin	retrieved	sha256
+Aging_Perturbations_from_GEO_down.gmt	https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=Aging_Perturbations_from_GEO_down	2026-09-27	bc1654a949ab6d7a
+Aging_Perturbations_from_GEO_up.gmt	https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=Aging_Perturbations_from_GEO_up	2026-09-27	4a3ce2e6e1ebdd55
+Disease_Perturbations_from_GEO_down.gmt	https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=Disease_Perturbations_from_GEO_down	2026-09-27	7e13f4260fabadf4
+Disease_Perturbations_from_GEO_up.gmt	https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=Disease_Perturbations_from_GEO_up	2026-09-27	1997c78043a8eb86
+Disease_Signatures_from_GEO_down_2014.gmt	https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=Disease_Signatures_from_GEO_down_2014	2026-09-27	299d85f02c6dd3ea
+Disease_Signatures_from_GEO_up_2014.gmt	https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=Disease_Signatures_from_GEO_up_2014	2026-09-27	c102b2a4714bb2dd
+msigdbr_cgp_subset.csv	R msigdbr 26.1.1 (MSigDB 2026.1.Hs) via tool/scripts/fetch_msigdbr_cgp.R, offline	2026-09-27	26520a2f714eb00e

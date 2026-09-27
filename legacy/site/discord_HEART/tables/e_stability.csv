@@ -1,0 +1,5 @@
+observed_class,n_genes,call_frequency_of,median_frequency,n_frequency_ge_0_5
+RNA-supported,427,RNA-supported,0.572,258
+protein-only lenient,242,protein-only lenient,0.438,89
+protein-only strict,121,protein-only strict,0.328,31
+replicated responder (RNA measurable),1141,replicated responder,0.642,803

@@ -1,0 +1,26 @@
+gene,group,Human VL RNA,Human VL PROT,Rat SKM-GN RNA,Rat SKM-GN PROT,Rat SKM-VL RNA,Rat HEART RNA,Rat HEART PROT
+NDUFA9,OXPHOS-down,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+UQCRC2,OXPHOS-down,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+UQCRC1,OXPHOS-down,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+ATP5MG,OXPHOS-down,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+ATP5F1B,OXPHOS-down,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+IDH2,TCA/transport-down,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+OGDH,TCA/transport-down,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+SLC25A4,TCA/transport-down,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+ECH1,TCA/transport-down,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+GLO1,glycolytic-up,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+FBP2,glycolytic-up,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+PEBP1,contractile/other-up,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+ATP2A1,contractile/other-up,6/6,6/6,0/8,8/8,0/8,0/8,0/8
+MYH1,contractile/other-up,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+MYH2,contractile/other-up,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+MYH7,contractile/other-up,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+MYLPF,contractile/other-up,6/6,6/6,8/8,8/8,8/8,0/8,0/8
+APOA1,contractile/other-up,0/6,6/6,0/8,8/8,0/8,0/8,8/8
+PDLIM3,contractile/other-up,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+CS,phenotype,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+TFAM,phenotype,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+PDHA1,phenotype,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+PDHB,phenotype,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+LDHA,phenotype,6/6,6/6,8/8,8/8,8/8,8/8,8/8
+LDHB,phenotype,6/6,6/6,8/8,8/8,8/8,8/8,8/8

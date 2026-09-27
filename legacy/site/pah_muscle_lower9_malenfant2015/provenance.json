@@ -1,0 +1,76 @@
+{
+  "tool": "motrpac_probe 0.1.0",
+  "timestamp": "2026-09-27T02:05:16",
+  "command": "mprobe run --quiet --signature examples/pah_muscle_lower9_malenfant2015.csv --name pah_muscle_lower9_malenfant2015",
+  "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
+  "signature": {
+    "name": "pah_muscle_lower9_malenfant2015",
+    "sha256_16": "ddc98dbe6e79a29c",
+    "path": "examples/pah_muscle_lower9_malenfant2015.csv"
+  },
+  "store": {
+    "contrasts_parquet_sha256_16": "d615c2f0b9aec182",
+    "built_at": "2026-09-26T23:50:44",
+    "rows": "4342327",
+    "columns": "422"
+  },
+  "sources": {
+    "MotrpacRatTraining6moData": "2.0.0",
+    "MotrpacHumanPreSuspensionAnalysis": "2.0.8",
+    "human_data_collection": "c2.0 (MotrpacHumanPreSuspensionAnalysis 2.0.8; identical to the team pipeline's c2.0 exports, checked row by row)",
+    "join_table_version": "join_table_v2 (scripts/03_join.py v2: rat RNA on/off rows dropped)",
+    "gtex": "GTEx v8 gene median TPM (model/ext/gtex_v8_gene_median_tpm.gct.gz)",
+    "mitocarta": "MitoCarta3.0 human (model/ext/mitocarta3_human.csv)"
+  },
+  "legacy_scripts_sha256_16": {
+    "05_pah_grid.py": "493558c57ee23f84",
+    "10_everywhere.py": "442df6305f226a0f",
+    "03_join.py": "95deb2a298b150cd",
+    "06_discordance.py": "7ee4ea64378d032a",
+    "08_discordance_model.py": "444933effeeba640",
+    "_source": "hackathon/scripts"
+  },
+  "python": "3.11.16",
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.7",
+    "jinja2": "3.1.6",
+    "pyarrow": "21.0.0"
+  },
+  "parameters": {
+    "cutoff": 0.05,
+    "cap": 4.0,
+    "nboot": 1000,
+    "seed": 20260926,
+    "nperm": 2000,
+    "exact_symbols": false,
+    "context_groups": [
+      "phenotype"
+    ],
+    "min_n": 10,
+    "tissues": [
+      "VL",
+      "SKM-GN",
+      "SKM-VL",
+      "HEART"
+    ],
+    "universe": "all",
+    "pool_sets": [],
+    "pool_groups": [],
+    "sections": null
+  },
+  "timings_s": {
+    "store load": 0.23,
+    "signature mapping": 0.03,
+    "B/C grid + cameraPR": 0.18,
+    "D calibration nulls": 0.18,
+    "A coverage + detection flags": 0.11,
+    "E layer discordance": 0.17,
+    "F everywhere": 0.32,
+    "sensitivity": 0.15,
+    "3-layer pathways": 0.28,
+    "figures": 2.35
+  }
+}

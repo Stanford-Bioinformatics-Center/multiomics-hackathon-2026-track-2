@@ -1,0 +1,10 @@
+call,n_genes,fraction_of_denominator,original_sample_level
+replicated protein responders,1013,,601.0
+  RNA measurable (denominator),1010,,561.0
+  RNA too low to call,3,,
+RNA-supported,459,0.45445544554455447,374.0
+RNA significantly opposite,57,0.05643564356435644,16.0
+"protein-only, lenient",295,0.29207920792079206,116.0
+"protein-only, strict (subset of lenient)",145,0.14356435643564355,62.0
+undetermined,199,0.19702970297029704,55.0
+bounded at every sex x week,30,0.0297029702970297,12.0

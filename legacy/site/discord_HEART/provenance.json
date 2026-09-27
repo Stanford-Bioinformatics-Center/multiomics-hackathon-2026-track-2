@@ -1,0 +1,32 @@
+{
+  "tool": "motrpac_probe 0.1.0",
+  "timestamp": "2026-09-27T02:07:22",
+  "command": "mprobe discord --quiet --species rat --tissue HEART",
+  "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
+  "store": "d615c2f0b9aec182",
+  "legacy_scripts_sha256_16": {
+    "05_pah_grid.py": "493558c57ee23f84",
+    "10_everywhere.py": "442df6305f226a0f",
+    "03_join.py": "95deb2a298b150cd",
+    "06_discordance.py": "7ee4ea64378d032a",
+    "08_discordance_model.py": "444933effeeba640",
+    "_source": "hackathon/scripts"
+  },
+  "parameters": {
+    "species": "rat",
+    "tissue": "HEART",
+    "cutoff": 0.05
+  },
+  "timings_s": {
+    "store load": 0.46,
+    "a timescale": 0.0,
+    "b agreement": 2.13,
+    "c stratified rho": 7.65,
+    "d which layer": 0.3,
+    "e protein without RNA": 1.03,
+    "f lag": 2.26,
+    "g sex": 0.05,
+    "3-layer pathways": 0.02,
+    "figures + tables": 1.5
+  }
+}

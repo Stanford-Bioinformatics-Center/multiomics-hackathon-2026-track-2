@@ -1,0 +1,140 @@
+/* motrpac_probe report stylesheet.
+   Every colour and font used by the HTML report lives here; edit the
+   variables below to restyle. Figure colours (matplotlib) are set in
+   render.py (ACCENT, INK, MUTED, DIVERGING, LAYER_COLORS). */
+
+:root {
+  --font-body: Inter, Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --ink: #111111;        /* body text */
+  --muted: #555555;      /* secondary text, captions */
+  --paper: #ffffff;      /* background */
+  --accent: #2f5f8a;     /* links, section rules, active states */
+  --rule: #d0d0d0;       /* table and hairline rules */
+  --rule-strong: #888888;
+  --zebra: #f6f6f6;      /* alternate table rows */
+  --flag: #fbf3dc;       /* rows flagged via row_class="flag" */
+  --missing: #c00000;    /* marker for an empty figure title or how-to-read line */
+  --size-base: 16px;
+  --size-table: 14px;
+  --size-small: 14px;
+  --content-width: 1280px;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  line-height: 1.5;
+}
+
+main, .page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 24px 32px 48px 32px;
+}
+
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+a:hover, a:focus { color: var(--ink); }
+
+h1 { font-size: 28px; font-weight: 600; margin: 8px 0 4px 0; line-height: 1.25; }
+h2 {
+  font-size: 22px; font-weight: 600; margin: 40px 0 12px 0;
+  padding-top: 10px; border-top: 2px solid var(--accent);
+}
+h3 { font-size: 17px; font-weight: 600; margin: 24px 0 8px 0; }
+
+p { margin: 6px 0 10px 0; max-width: 95ch; }
+
+code, pre, .mono { font-family: var(--font-mono); font-size: 14px; }
+
+/* Title block */
+.subtitle { color: var(--muted); font-size: 18px; margin: 0 0 8px 0; }
+.meta { color: var(--muted); font-size: var(--size-small); margin: 0 0 16px 0; line-height: 1.6; }
+.meta .k { color: var(--ink); font-weight: 600; }
+.meta .sep { color: var(--rule-strong); padding: 0 6px; }
+
+/* Headline block: first thing after the title */
+.headline { border-top: 2px solid var(--accent); border-bottom: 1px solid var(--rule); padding: 10px 0 12px 0; margin: 8px 0 12px 0; }
+.headline h2 { border-top: none; margin: 0 0 6px 0; padding-top: 0; }
+.headline .sentences { margin: 8px 0 0 0; padding-left: 20px; }
+.headline .sentences li { margin: 2px 0; }
+.first-screen { margin: 8px 0 0 0; padding: 0; list-style: none; color: var(--ink); }
+.first-screen li { margin: 2px 0; padding-left: 10px; border-left: 3px solid var(--rule-strong); }
+
+/* Table of contents: one line of anchor links */
+nav.toc { font-size: var(--size-small); margin: 16px 0 0 0; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+nav.toc .label { font-weight: 600; margin-right: 8px; }
+nav.toc a { margin-right: 14px; white-space: nowrap; }
+
+/* "How to read" lines and captions */
+.how { color: var(--ink); font-size: var(--size-small); margin: 4px 0 6px 0; }
+.how .lbl { font-weight: 600; }
+.caption { color: var(--muted); font-size: var(--size-small); margin: 2px 0 6px 0; }
+.intro p { margin: 4px 0 8px 0; }
+.missing { color: var(--missing); font-weight: 700; }
+.links { font-size: 13px; margin: 2px 0 12px 0; }
+.links a { margin-right: 10px; }
+.note { color: var(--muted); font-size: 13px; margin: 4px 0; }
+
+/* Figures */
+figure { margin: 12px 0 20px 0; padding: 0; break-inside: avoid; page-break-inside: avoid; }
+figure .fig-title { margin: 0 0 6px 0; }
+figure svg { display: block; width: 100%; max-width: 100%; height: auto; }
+figure.w-narrow svg { max-width: 720px; }
+.vega-target { width: 100%; max-width: 100%; overflow-x: auto; }
+.vega-fallback { display: none; }
+.vega-fallback.show { display: block; }
+
+/* Tables */
+.table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 6px 0 4px 0; }
+table {
+  border-collapse: collapse; font-size: var(--size-table);
+  font-variant-numeric: tabular-nums; min-width: 40%;
+}
+caption { caption-side: top; text-align: left; color: var(--muted); font-size: var(--size-small); padding: 0 0 4px 0; }
+th, td { padding: 4px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; text-align: left; }
+thead th { border-bottom: 2px solid var(--rule-strong); font-weight: 600; white-space: nowrap; background: var(--paper); }
+tbody tr:nth-child(even) td { background: var(--zebra); }
+tbody tr.flag td { background: var(--flag); }
+td.num, th.num { text-align: right; }
+td .na, .na { color: var(--muted); font-style: italic; }
+table.sortable thead th { cursor: pointer; user-select: none; }
+table.sortable thead th::after { content: ""; display: inline-block; width: 1.1em; color: var(--muted); }
+table.sortable thead th[aria-sort="ascending"]::after { content: " \2191"; color: var(--accent); }
+table.sortable thead th[aria-sort="descending"]::after { content: " \2193"; color: var(--accent); }
+table.sortable thead th:hover { color: var(--accent); }
+
+/* Collapsible blocks */
+details { margin: 10px 0; border-left: 2px solid var(--rule); padding: 2px 0 2px 12px; }
+details > summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+details[open] > summary { margin-bottom: 6px; }
+details pre { white-space: pre-wrap; word-break: break-word; background: var(--zebra); padding: 10px; margin: 6px 0; border: 1px solid var(--rule); }
+
+/* Glossary */
+dl.glossary { display: grid; grid-template-columns: max-content 1fr; column-gap: 20px; row-gap: 4px; margin: 8px 0; }
+dl.glossary dt { font-weight: 600; }
+dl.glossary dd { margin: 0; }
+
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); margin-top: 40px; padding-top: 8px; }
+
+/* Site index */
+.site-intro p { max-width: 95ch; }
+
+@media print {
+  nav.toc { display: none; }
+  body { font-size: 11pt; }
+  main, .page { max-width: none; padding: 0; }
+  figure, table, .table-wrap { break-inside: avoid; page-break-inside: avoid; }
+  h2, h3 { break-after: avoid; page-break-after: avoid; }
+  details { border-left: none; }
+  a { color: var(--ink); }
+  .vega-target { display: none; }
+  .vega-fallback { display: block; }
+}

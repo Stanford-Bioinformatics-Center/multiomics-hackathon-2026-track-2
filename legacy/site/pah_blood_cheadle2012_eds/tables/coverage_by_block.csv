@@ -1,0 +1,23 @@
+gene,group,Human VL RNA,Human VL PROT,Rat SKM-GN RNA,Rat SKM-GN PROT,Rat SKM-VL RNA,Rat HEART RNA,Rat HEART PROT
+ALAS2,erythroid (EDS subset),6/6,0/6,8/8,0/8,8/8,8/8,8/8
+AHSP,erythroid (EDS subset),0/6,6/6,0/8,8/8,0/8,0/8,8/8
+CA1,erythroid (EDS subset),0/6,6/6,0/8,8/8,0/8,0/8,8/8
+EPB42,erythroid (EDS subset),0/6,6/6,0/8,8/8,0/8,8/8,8/8
+FECH,erythroid (EDS subset),6/6,6/6,8/8,8/8,8/8,8/8,8/8
+GLRX5,erythroid (EDS subset),6/6,6/6,8/8,8/8,8/8,8/8,8/8
+GSPT1,erythroid (EDS subset),6/6,6/6,8/8,8/8,8/8,8/8,8/8
+GYPB,erythroid (EDS subset),0/6,0/6,0/8,0/8,0/8,0/8,0/8
+GYPE,erythroid (EDS subset),0/6,0/6,0/8,0/8,0/8,0/8,0/8
+HBA2,erythroid (EDS subset),6/6,0/6,0/8,0/8,0/8,0/8,0/8
+HBB,erythroid (EDS subset),6/6,6/6,8/8,8/8,8/8,8/8,8/8
+HBD,erythroid (EDS subset),0/6,6/6,8/8,8/8,8/8,8/8,8/8
+HBM,erythroid (EDS subset),0/6,6/6,0/8,0/8,0/8,0/8,0/8
+HBQ1,erythroid (EDS subset),0/6,6/6,0/8,8/8,0/8,0/8,8/8
+BPGM,erythroid (EDS subset),6/6,6/6,8/8,8/8,8/8,8/8,8/8
+MYL4,erythroid (EDS subset),0/6,6/6,8/8,8/8,8/8,8/8,8/8
+SELENBP1,erythroid (EDS subset),6/6,6/6,8/8,0/8,8/8,8/8,0/8
+SLC25A37,erythroid (EDS subset),6/6,0/6,8/8,0/8,8/8,8/8,0/8
+SNCA,erythroid (EDS subset),0/6,6/6,8/8,8/8,8/8,8/8,8/8
+TMCC2,erythroid (EDS subset),6/6,0/6,8/8,0/8,8/8,8/8,0/8
+TSPAN5,erythroid (EDS subset),6/6,0/6,8/8,0/8,8/8,8/8,0/8
+GATA1,erythroid (EDS subset),0/6,0/6,0/8,0/8,0/8,0/8,0/8

@@ -1,0 +1,25 @@
+Comparison,Setting changed,Conclusion,Default,Alternative
+"Human vastus lateralis RNA, EE–CON 24 h",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Human vastus lateralis protein, EE–CON 15–45 min",universe: all genes vs muscle-intrinsic,set-level verdict,same direction,no set-level shift
+"Human vastus lateralis protein, RE–CON 15–45 min",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,same direction
+"Human vastus lateralis protein, RE–CON 24 h",universe: all genes vs muscle-intrinsic,set-level verdict,same direction,no set-level shift
+"Rat gastrocnemius RNA, female 8 wk",null size 1000 vs 200,pathway-class null,above 95th percentile,within null
+"Rat gastrocnemius RNA, male 2 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat gastrocnemius RNA, male 4 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat gastrocnemius RNA, male 8 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat gastrocnemius protein, female 1 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat gastrocnemius protein, female 4 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat gastrocnemius protein, female 8 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat gastrocnemius protein, male 2 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat gastrocnemius protein, male 4 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat gastrocnemius protein, male 8 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat vastus lateralis RNA, female 1 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat vastus lateralis RNA, female 2 wk",null size 1000 vs 200,pathway-class null,within null,above 95th percentile
+"Rat vastus lateralis RNA, female 8 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat vastus lateralis RNA, male 4 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat vastus lateralis RNA, male 8 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat heart RNA, male 1 wk",FDR cutoff 0.05 vs 0.1,set-level verdict,no set-level shift,opposed
+"Rat heart RNA, male 2 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat heart protein, female 4 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat heart protein, male 2 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift
+"Rat heart protein, male 4 wk",universe: all genes vs muscle-intrinsic,set-level verdict,opposed,no set-level shift

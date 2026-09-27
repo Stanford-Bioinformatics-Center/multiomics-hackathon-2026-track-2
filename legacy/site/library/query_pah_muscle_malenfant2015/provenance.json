@@ -1,0 +1,14 @@
+{
+  "command": "mprobe library query --signature examples/pah_muscle_malenfant2015.csv",
+  "signature": "examples/pah_muscle_malenfant2015.csv",
+  "n_counted_genes": 19,
+  "n_columns": 422,
+  "store_sha256_16": "d615c2f0b9aec182",
+  "store_built_at": "2026-09-26T23:50:44",
+  "MotrpacRatTraining6moData": "2.0.0",
+  "MotrpacHumanPreSuspensionAnalysis": "2.0.8",
+  "join_table_version": "join_table_v2 (scripts/03_join.py v2: rat RNA on/off rows dropped)",
+  "built_at": "2026-09-27T01:28:29",
+  "cutoff": 0.05,
+  "cap": 250
+}

@@ -1,0 +1,16 @@
+{
+  "fixture": "pah_muscle_malenfant2015.csv",
+  "fixture_sha256_16": "0c80d82e5546ed9b",
+  "store_hash_16": "d615c2f0b9aec182",
+  "universe": "MoTrPAC store gene symbols (core.get_store().genes)",
+  "counts": {
+    "n_input_rows": 25,
+    "n_audit_rows": 25,
+    "n_mapped": 25,
+    "n_ambiguous": 0,
+    "n_unmapped": 0,
+    "n_dropped": 0
+  },
+  "ambiguous_rows": [],
+  "note": "Committed mapping manifest for the built-in PAH fixture. All 25 input rows resolve unambiguously to a single measured MoTrPAC symbol under the released ID map. New user uploads still require interactive researcher confirmation via the mapping-preview gate; this manifest is only the pre-approved mapping for the built-in example."
+}

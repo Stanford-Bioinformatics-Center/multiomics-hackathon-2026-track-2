@@ -1,0 +1,20 @@
+# Every CLI flag of `mprobe run` / `mprobe discord`, with its default. Use: mprobe run --config config.example.yaml
+# --signature X.csv. Flags given on the command line win over this file.
+run:
+  cutoff: 0.05            # BH FDR cutoff for dots and verdicts
+  cap: 4                  # |stat| cap for grid colours (statistics never use it)
+  nboot: 1000             # random sets per null
+  seed: 20260926
+  context_groups: [phenotype]   # signature groups shown but not counted
+  tissues: [VL, SKM-GN, SKM-VL, HEART]
+  universe: all           # all | muscle-intrinsic (cameraPR background)
+  min_n: 10               # min measured cells to rank a unit in section F
+  pool_sets: []           # optional fixed-pool null, e.g. [KEGG_OXIDATIVE_PHOSPHORYLATION, KEGG_CITRATE_CYCLE_TCA_CYCLE]
+  pool_groups: []         # signature groups the pool null applies to
+  sections: []            # empty = all: coverage, grid, camera, nulls, layers, everywhere, caveats, sensitivity
+discord:
+  species: rat
+  tissue: SKM-GN
+  layers: [RNA, PROT, PHOSPHO, METAB]
+  cutoff: 0.05
+  universe: all

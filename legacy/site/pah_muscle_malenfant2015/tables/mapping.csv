@@ -1,0 +1,26 @@
+gene_symbol,direction,group,weight,source,uniprot,gene,map_method,direction_parsed,status,weight_num
+NDUFA9,-1,OXPHOS-down,0.71,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q16795,NDUFA9,human symbol,-1,mapped,0.71
+UQCRC2,-1,OXPHOS-down,0.74,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P22695,UQCRC2,human symbol,-1,mapped,0.74
+UQCRC1,-1,OXPHOS-down,0.74,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P31930,UQCRC1,human symbol,-1,mapped,0.74
+ATP5MG,-1,OXPHOS-down,0.7,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",O75964,ATP5MG,human symbol,-1,mapped,0.7
+ATP5F1B,-1,OXPHOS-down,0.74,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P06576,ATP5F1B,human symbol,-1,mapped,0.74
+IDH2,-1,TCA/transport-down,0.74,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P48735,IDH2,human symbol,-1,mapped,0.74
+OGDH,-1,TCA/transport-down,0.77,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q02218,OGDH,human symbol,-1,mapped,0.77
+SLC25A4,-1,TCA/transport-down,0.65,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P12235,SLC25A4,human symbol,-1,mapped,0.65
+ECH1,-1,TCA/transport-down,0.57,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q13011,ECH1,human symbol,-1,mapped,0.57
+GLO1,1,glycolytic-up,1.39,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q04760,GLO1,human symbol,1,mapped,1.39
+FBP2,1,glycolytic-up,1.33,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",O00757,FBP2,human symbol,1,mapped,1.33
+PEBP1,1,contractile/other-up,1.29,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P30086,PEBP1,human symbol,1,mapped,1.29
+ATP2A1,1,contractile/other-up,1.33,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",O14983,ATP2A1,human symbol,1,mapped,1.33
+MYH1,1,contractile/other-up,2.42,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P12882,MYH1,human symbol,1,mapped,2.42
+MYH2,1,contractile/other-up,1.26,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q9UKX2,MYH2,human symbol,1,mapped,1.26
+MYH7,1,contractile/other-up,1.26,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P12883,MYH7,human symbol,1,mapped,1.26
+MYLPF,1,contractile/other-up,1.58,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q96A32,MYLPF,human symbol,1,mapped,1.58
+APOA1,1,contractile/other-up,1.29,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",P02647,APOA1,human symbol,1,mapped,1.29
+PDLIM3,1,contractile/other-up,1.58,"Malenfant 2015 J Mol Med (iTRAQ VL, 4 IPAH vs 4 controls)",Q53GG5,PDLIM3,human symbol,1,mapped,1.58
+CS,-1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),,CS,human symbol,-1,mapped,
+TFAM,-1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),,TFAM,human symbol,-1,mapped,
+PDHA1,-1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),,PDHA1,human symbol,-1,mapped,
+PDHB,-1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),,PDHB,human symbol,-1,mapped,
+LDHA,1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),,LDHA,human symbol,1,mapped,
+LDHB,1,phenotype,,Malenfant 2015 enzyme activity / blot (phenotype),,LDHB,human symbol,1,mapped,

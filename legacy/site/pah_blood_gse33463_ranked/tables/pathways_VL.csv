@@ -1,0 +1,109 @@
+pathway,layer,dataset,tissue,contrast,time,n_in_set,n_universe,t,p,column_id
+TCA cycle,RNA,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,29,14972,-2.3301188124193657,0.019813093429064687,human_acute|VL|RNA|EE_vs_CON_15to45min
+Glycolysis / gluconeogenesis,RNA,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,45,14972,-0.41288249266455834,0.6796986217714264,human_acute|VL|RNA|EE_vs_CON_15to45min
+Fatty-acid beta-oxidation,RNA,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,36,14972,-4.123099536379052,3.7582415556799265e-05,human_acute|VL|RNA|EE_vs_CON_15to45min
+BCAA catabolism,RNA,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,42,14972,-5.280509415127737,1.3062652314244525e-07,human_acute|VL|RNA|EE_vs_CON_15to45min
+Purine metabolism,RNA,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,135,14972,-1.3965959624356736,0.16255581004748695,human_acute|VL|RNA|EE_vs_CON_15to45min
+Pyrimidine metabolism,RNA,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,91,14972,-1.7009704703314315,0.08896930060422988,human_acute|VL|RNA|EE_vs_CON_15to45min
+TCA cycle,RNA,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,29,14972,-0.03261620533819488,0.9739810815441943,human_acute|VL|RNA|EE_vs_CON_3.5to4h
+Glycolysis / gluconeogenesis,RNA,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,45,14972,0.7015918269220821,0.4829446566153054,human_acute|VL|RNA|EE_vs_CON_3.5to4h
+Fatty-acid beta-oxidation,RNA,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,36,14972,-0.29308244995721705,0.769463193350495,human_acute|VL|RNA|EE_vs_CON_3.5to4h
+BCAA catabolism,RNA,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,42,14972,-0.37852722547591094,0.7050443404318012,human_acute|VL|RNA|EE_vs_CON_3.5to4h
+Purine metabolism,RNA,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,135,14972,-0.22329629659680253,0.8233079561729573,human_acute|VL|RNA|EE_vs_CON_3.5to4h
+Pyrimidine metabolism,RNA,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,91,14972,-0.546223038029127,0.5849207719207432,human_acute|VL|RNA|EE_vs_CON_3.5to4h
+TCA cycle,RNA,human_acute,VL,EE_vs_CON_24h,EE 24 h,29,14972,7.518171633771463,5.869351457855824e-14,human_acute|VL|RNA|EE_vs_CON_24h
+Glycolysis / gluconeogenesis,RNA,human_acute,VL,EE_vs_CON_24h,EE 24 h,45,14972,3.3202618486025286,0.0009014800213596113,human_acute|VL|RNA|EE_vs_CON_24h
+Fatty-acid beta-oxidation,RNA,human_acute,VL,EE_vs_CON_24h,EE 24 h,36,14972,6.026740162961433,1.7122536359679805e-09,human_acute|VL|RNA|EE_vs_CON_24h
+BCAA catabolism,RNA,human_acute,VL,EE_vs_CON_24h,EE 24 h,42,14972,5.255535397270226,1.4962048646685108e-07,human_acute|VL|RNA|EE_vs_CON_24h
+Purine metabolism,RNA,human_acute,VL,EE_vs_CON_24h,EE 24 h,135,14972,0.6028542752625854,0.5466147688320213,human_acute|VL|RNA|EE_vs_CON_24h
+Pyrimidine metabolism,RNA,human_acute,VL,EE_vs_CON_24h,EE 24 h,91,14972,0.9314047834629147,0.3516592376092781,human_acute|VL|RNA|EE_vs_CON_24h
+TCA cycle,RNA,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,29,14972,-2.536986010115385,0.011191206578125876,human_acute|VL|RNA|RE_vs_CON_15to45min
+Glycolysis / gluconeogenesis,RNA,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,45,14972,-0.7260495469811034,0.4678197478726456,human_acute|VL|RNA|RE_vs_CON_15to45min
+Fatty-acid beta-oxidation,RNA,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,36,14972,-3.0758865745231545,0.0021025608740430635,human_acute|VL|RNA|RE_vs_CON_15to45min
+BCAA catabolism,RNA,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,42,14972,-4.116948424472519,3.8598085118321895e-05,human_acute|VL|RNA|RE_vs_CON_15to45min
+Purine metabolism,RNA,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,135,14972,-0.7946519000646806,0.42682861676431294,human_acute|VL|RNA|RE_vs_CON_15to45min
+Pyrimidine metabolism,RNA,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,91,14972,-1.8619404176694931,0.06263106934862407,human_acute|VL|RNA|RE_vs_CON_15to45min
+TCA cycle,RNA,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,29,14972,0.13553998358869224,0.8921867759612798,human_acute|VL|RNA|RE_vs_CON_3.5to4h
+Glycolysis / gluconeogenesis,RNA,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,45,14972,0.4313696195232892,0.6662058480313588,human_acute|VL|RNA|RE_vs_CON_3.5to4h
+Fatty-acid beta-oxidation,RNA,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,36,14972,0.17938210129840024,0.8576401122649047,human_acute|VL|RNA|RE_vs_CON_3.5to4h
+BCAA catabolism,RNA,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,42,14972,-0.07868998839801115,0.9372802606326955,human_acute|VL|RNA|RE_vs_CON_3.5to4h
+Purine metabolism,RNA,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,135,14972,0.4971082289286038,0.6191200324950556,human_acute|VL|RNA|RE_vs_CON_3.5to4h
+Pyrimidine metabolism,RNA,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,91,14972,-0.5057166122619812,0.6130630507072368,human_acute|VL|RNA|RE_vs_CON_3.5to4h
+TCA cycle,RNA,human_acute,VL,RE_vs_CON_24h,RE 24 h,29,14972,1.7904035705675512,0.07340925706648439,human_acute|VL|RNA|RE_vs_CON_24h
+Glycolysis / gluconeogenesis,RNA,human_acute,VL,RE_vs_CON_24h,RE 24 h,45,14972,0.5476166374325669,0.583963327265806,human_acute|VL|RNA|RE_vs_CON_24h
+Fatty-acid beta-oxidation,RNA,human_acute,VL,RE_vs_CON_24h,RE 24 h,36,14972,-0.7211089731138794,0.4708537317677718,human_acute|VL|RNA|RE_vs_CON_24h
+BCAA catabolism,RNA,human_acute,VL,RE_vs_CON_24h,RE 24 h,42,14972,-1.9748754616338502,0.04830062758912469,human_acute|VL|RNA|RE_vs_CON_24h
+Purine metabolism,RNA,human_acute,VL,RE_vs_CON_24h,RE 24 h,135,14972,0.44056031545151647,0.6595376991956866,human_acute|VL|RNA|RE_vs_CON_24h
+Pyrimidine metabolism,RNA,human_acute,VL,RE_vs_CON_24h,RE 24 h,91,14972,0.3716910992024899,0.7101281134200612,human_acute|VL|RNA|RE_vs_CON_24h
+TCA cycle,PROT,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,28,5998,-2.4470780732958124,0.014430465306880259,human_acute|VL|PROT|EE_vs_CON_15to45min
+Glycolysis / gluconeogenesis,PROT,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,48,5998,1.3468738283010762,0.1780717746569215,human_acute|VL|PROT|EE_vs_CON_15to45min
+Fatty-acid beta-oxidation,PROT,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,32,5998,-4.34564357610575,1.4116150807493348e-05,human_acute|VL|PROT|EE_vs_CON_15to45min
+BCAA catabolism,PROT,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,40,5998,-5.707844004183967,1.1989478385028647e-08,human_acute|VL|PROT|EE_vs_CON_15to45min
+Purine metabolism,PROT,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,83,5998,1.3480830907689143,0.17768258379617605,human_acute|VL|PROT|EE_vs_CON_15to45min
+Pyrimidine metabolism,PROT,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,54,5998,-1.132522548090014,0.25746009607705617,human_acute|VL|PROT|EE_vs_CON_15to45min
+TCA cycle,PROT,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,28,5998,-0.08011697266046362,0.9361468976461307,human_acute|VL|PROT|EE_vs_CON_3.5to4h
+Glycolysis / gluconeogenesis,PROT,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,48,5998,-1.3459235572518495,0.17837805638783935,human_acute|VL|PROT|EE_vs_CON_3.5to4h
+Fatty-acid beta-oxidation,PROT,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,32,5998,-1.4593535984299,0.1445201952380535,human_acute|VL|PROT|EE_vs_CON_3.5to4h
+BCAA catabolism,PROT,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,40,5998,-0.9249868938222883,0.35500994950495135,human_acute|VL|PROT|EE_vs_CON_3.5to4h
+Purine metabolism,PROT,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,83,5998,-1.4309722654592365,0.15249027795046782,human_acute|VL|PROT|EE_vs_CON_3.5to4h
+Pyrimidine metabolism,PROT,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,54,5998,-1.667436056806577,0.09547995075944594,human_acute|VL|PROT|EE_vs_CON_3.5to4h
+TCA cycle,PROT,human_acute,VL,EE_vs_CON_24h,EE 24 h,28,5998,-2.050567090212111,0.040352502659444574,human_acute|VL|PROT|EE_vs_CON_24h
+Glycolysis / gluconeogenesis,PROT,human_acute,VL,EE_vs_CON_24h,EE 24 h,48,5998,1.9623146706340113,0.04977204017857601,human_acute|VL|PROT|EE_vs_CON_24h
+Fatty-acid beta-oxidation,PROT,human_acute,VL,EE_vs_CON_24h,EE 24 h,32,5998,-1.4473523787413898,0.1478505350037775,human_acute|VL|PROT|EE_vs_CON_24h
+BCAA catabolism,PROT,human_acute,VL,EE_vs_CON_24h,EE 24 h,40,5998,-2.1223833599104207,0.03384643523528225,human_acute|VL|PROT|EE_vs_CON_24h
+Purine metabolism,PROT,human_acute,VL,EE_vs_CON_24h,EE 24 h,83,5998,1.9190230041747929,0.05502883966728725,human_acute|VL|PROT|EE_vs_CON_24h
+Pyrimidine metabolism,PROT,human_acute,VL,EE_vs_CON_24h,EE 24 h,54,5998,0.7020792667656692,0.48265698298314585,human_acute|VL|PROT|EE_vs_CON_24h
+TCA cycle,PROT,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,28,5998,-3.428775473916384,0.0006103931999374885,human_acute|VL|PROT|RE_vs_CON_15to45min
+Glycolysis / gluconeogenesis,PROT,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,48,5998,0.6859925387315758,0.4927443368083586,human_acute|VL|PROT|RE_vs_CON_15to45min
+Fatty-acid beta-oxidation,PROT,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,32,5998,-4.427923946405424,9.683341676123635e-06,human_acute|VL|PROT|RE_vs_CON_15to45min
+BCAA catabolism,PROT,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,40,5998,-5.707001626656825,1.2048620478194808e-08,human_acute|VL|PROT|RE_vs_CON_15to45min
+Purine metabolism,PROT,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,83,5998,0.6024850557961976,0.5468740914360226,human_acute|VL|PROT|RE_vs_CON_15to45min
+Pyrimidine metabolism,PROT,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,54,5998,-0.5638858143658485,0.5728529338449629,human_acute|VL|PROT|RE_vs_CON_15to45min
+TCA cycle,PROT,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,28,5998,-1.5428578572338352,0.12291803963048852,human_acute|VL|PROT|RE_vs_CON_3.5to4h
+Glycolysis / gluconeogenesis,PROT,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,48,5998,-0.08515191914250057,0.9321434575830629,human_acute|VL|PROT|RE_vs_CON_3.5to4h
+Fatty-acid beta-oxidation,PROT,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,32,5998,-2.2067636705172333,0.027368332631599362,human_acute|VL|PROT|RE_vs_CON_3.5to4h
+BCAA catabolism,PROT,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,40,5998,-2.5728524672535085,0.010110250840062679,human_acute|VL|PROT|RE_vs_CON_3.5to4h
+Purine metabolism,PROT,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,83,5998,-2.1804219154143576,0.029264949071205214,human_acute|VL|PROT|RE_vs_CON_3.5to4h
+Pyrimidine metabolism,PROT,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,54,5998,-1.8164573547794793,0.06935015430873377,human_acute|VL|PROT|RE_vs_CON_3.5to4h
+TCA cycle,PROT,human_acute,VL,RE_vs_CON_24h,RE 24 h,28,5998,-4.74890897636763,2.0927519083882343e-06,human_acute|VL|PROT|RE_vs_CON_24h
+Glycolysis / gluconeogenesis,PROT,human_acute,VL,RE_vs_CON_24h,RE 24 h,48,5998,1.1978123485315295,0.23103742548944786,human_acute|VL|PROT|RE_vs_CON_24h
+Fatty-acid beta-oxidation,PROT,human_acute,VL,RE_vs_CON_24h,RE 24 h,32,5998,-3.9120261079915557,9.253699940277058e-05,human_acute|VL|PROT|RE_vs_CON_24h
+BCAA catabolism,PROT,human_acute,VL,RE_vs_CON_24h,RE 24 h,40,5998,-6.044276926661042,1.5911156448839144e-09,human_acute|VL|PROT|RE_vs_CON_24h
+Purine metabolism,PROT,human_acute,VL,RE_vs_CON_24h,RE 24 h,83,5998,0.7194079677154088,0.4719176264237196,human_acute|VL|PROT|RE_vs_CON_24h
+Pyrimidine metabolism,PROT,human_acute,VL,RE_vs_CON_24h,RE 24 h,54,5998,-1.2347612447015992,0.21696775981071767,human_acute|VL|PROT|RE_vs_CON_24h
+TCA cycle,METAB,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,9,891,4.886166431413025,1.2193434094630561e-06,human_acute|VL|METAB|EE_vs_CON_15to45min
+Glycolysis / gluconeogenesis,METAB,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,10,891,-0.4123228646366618,0.6802021991101104,human_acute|VL|METAB|EE_vs_CON_15to45min
+Fatty-acid beta-oxidation,METAB,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,53,891,10.424152422736762,4.3997822447329e-24,human_acute|VL|METAB|EE_vs_CON_15to45min
+BCAA catabolism,METAB,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,10,891,6.305003336090248,4.534283622517627e-10,human_acute|VL|METAB|EE_vs_CON_15to45min
+Purine metabolism,METAB,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,21,891,2.984086793954957,0.002922080448370378,human_acute|VL|METAB|EE_vs_CON_15to45min
+Pyrimidine metabolism,METAB,human_acute,VL,EE_vs_CON_15to45min,EE 15–45 min,15,891,-0.24873795049674646,0.8036209413478682,human_acute|VL|METAB|EE_vs_CON_15to45min
+TCA cycle,METAB,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,9,891,1.8926626747138786,0.05872736976365548,human_acute|VL|METAB|EE_vs_CON_3.5to4h
+Glycolysis / gluconeogenesis,METAB,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,10,891,-1.1301160445286749,0.25873214248964077,human_acute|VL|METAB|EE_vs_CON_3.5to4h
+Fatty-acid beta-oxidation,METAB,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,53,891,6.149680274680896,1.1719312643772896e-09,human_acute|VL|METAB|EE_vs_CON_3.5to4h
+BCAA catabolism,METAB,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,10,891,0.5854165850840071,0.558416207596248,human_acute|VL|METAB|EE_vs_CON_3.5to4h
+Purine metabolism,METAB,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,21,891,-0.4578162105540662,0.6471963610633193,human_acute|VL|METAB|EE_vs_CON_3.5to4h
+Pyrimidine metabolism,METAB,human_acute,VL,EE_vs_CON_3.5to4h,EE 3.5–4 h,15,891,1.3774079204245817,0.16873284102298944,human_acute|VL|METAB|EE_vs_CON_3.5to4h
+TCA cycle,METAB,human_acute,VL,EE_vs_CON_24h,EE 24 h,9,891,-1.3925355677456042,0.16410846070748486,human_acute|VL|METAB|EE_vs_CON_24h
+Glycolysis / gluconeogenesis,METAB,human_acute,VL,EE_vs_CON_24h,EE 24 h,10,891,-1.3169352706949424,0.1881996837819764,human_acute|VL|METAB|EE_vs_CON_24h
+Fatty-acid beta-oxidation,METAB,human_acute,VL,EE_vs_CON_24h,EE 24 h,53,891,10.17681137084212,4.37562024492233e-23,human_acute|VL|METAB|EE_vs_CON_24h
+BCAA catabolism,METAB,human_acute,VL,EE_vs_CON_24h,EE 24 h,10,891,-0.8407543044377183,0.4007116628766204,human_acute|VL|METAB|EE_vs_CON_24h
+Purine metabolism,METAB,human_acute,VL,EE_vs_CON_24h,EE 24 h,21,891,-3.4886602197959973,0.0005092727237101057,human_acute|VL|METAB|EE_vs_CON_24h
+Pyrimidine metabolism,METAB,human_acute,VL,EE_vs_CON_24h,EE 24 h,15,891,-1.6873430165102004,0.09188820399879796,human_acute|VL|METAB|EE_vs_CON_24h
+TCA cycle,METAB,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,9,891,4.7532744544342425,2.3335621712654844e-06,human_acute|VL|METAB|RE_vs_CON_15to45min
+Glycolysis / gluconeogenesis,METAB,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,10,891,2.6370241555642644,0.008509658177043921,human_acute|VL|METAB|RE_vs_CON_15to45min
+Fatty-acid beta-oxidation,METAB,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,53,891,-5.1278856582934305,3.5970086341285146e-07,human_acute|VL|METAB|RE_vs_CON_15to45min
+BCAA catabolism,METAB,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,10,891,2.6337200572446022,0.008592245753368994,human_acute|VL|METAB|RE_vs_CON_15to45min
+Purine metabolism,METAB,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,21,891,4.2698751729172155,2.166223195346838e-05,human_acute|VL|METAB|RE_vs_CON_15to45min
+Pyrimidine metabolism,METAB,human_acute,VL,RE_vs_CON_15to45min,RE 15–45 min,15,891,0.45315793025534595,0.6505456037459536,human_acute|VL|METAB|RE_vs_CON_15to45min
+TCA cycle,METAB,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,9,891,0.6703165658822634,0.5028300952587532,human_acute|VL|METAB|RE_vs_CON_3.5to4h
+Glycolysis / gluconeogenesis,METAB,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,10,891,-1.7493971242742639,0.08056745353867106,human_acute|VL|METAB|RE_vs_CON_3.5to4h
+Fatty-acid beta-oxidation,METAB,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,53,891,2.2352511306698166,0.025648510618431805,human_acute|VL|METAB|RE_vs_CON_3.5to4h
+BCAA catabolism,METAB,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,10,891,-4.10282612299877,4.456250212454219e-05,human_acute|VL|METAB|RE_vs_CON_3.5to4h
+Purine metabolism,METAB,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,21,891,0.11847698253458483,0.9057164962283197,human_acute|VL|METAB|RE_vs_CON_3.5to4h
+Pyrimidine metabolism,METAB,human_acute,VL,RE_vs_CON_3.5to4h,RE 3.5–4 h,15,891,1.574953059334356,0.11562305998651654,human_acute|VL|METAB|RE_vs_CON_3.5to4h
+TCA cycle,METAB,human_acute,VL,RE_vs_CON_24h,RE 24 h,9,891,-2.28632497718426,0.022469677999589828,human_acute|VL|METAB|RE_vs_CON_24h
+Glycolysis / gluconeogenesis,METAB,human_acute,VL,RE_vs_CON_24h,RE 24 h,10,891,-0.9909583789839203,0.3219755397728828,human_acute|VL|METAB|RE_vs_CON_24h
+Fatty-acid beta-oxidation,METAB,human_acute,VL,RE_vs_CON_24h,RE 24 h,53,891,8.749552492869295,1.0612003167626066e-17,human_acute|VL|METAB|RE_vs_CON_24h
+BCAA catabolism,METAB,human_acute,VL,RE_vs_CON_24h,RE 24 h,10,891,-4.504891189464763,7.52617441510164e-06,human_acute|VL|METAB|RE_vs_CON_24h
+Purine metabolism,METAB,human_acute,VL,RE_vs_CON_24h,RE 24 h,21,891,-2.963839539372432,0.0031193376652071977,human_acute|VL|METAB|RE_vs_CON_24h
+Pyrimidine metabolism,METAB,human_acute,VL,RE_vs_CON_24h,RE 24 h,15,891,-0.9946991035713316,0.32015329113953944,human_acute|VL|METAB|RE_vs_CON_24h

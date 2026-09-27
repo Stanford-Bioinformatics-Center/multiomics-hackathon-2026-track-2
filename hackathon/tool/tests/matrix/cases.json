@@ -1,0 +1,329 @@
+[
+ {
+  "case": "size5_random_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size5_random_half.csv",
+  "args": []
+ },
+ {
+  "case": "size5_random_up",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size5_random_up.csv",
+  "args": []
+ },
+ {
+  "case": "size5_random_down",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size5_random_down.csv",
+  "args": []
+ },
+ {
+  "case": "size25_random_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size25_random_half.csv",
+  "args": []
+ },
+ {
+  "case": "size25_random_up",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size25_random_up.csv",
+  "args": []
+ },
+ {
+  "case": "size25_random_down",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size25_random_down.csv",
+  "args": []
+ },
+ {
+  "case": "size100_random_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size100_random_half.csv",
+  "args": []
+ },
+ {
+  "case": "size100_random_up",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size100_random_up.csv",
+  "args": []
+ },
+ {
+  "case": "size100_random_down",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size100_random_down.csv",
+  "args": []
+ },
+ {
+  "case": "size500_random_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size500_random_half.csv",
+  "args": []
+ },
+ {
+  "case": "size500_random_up",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size500_random_up.csv",
+  "args": []
+ },
+ {
+  "case": "size500_random_down",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size500_random_down.csv",
+  "args": []
+ },
+ {
+  "case": "size5_mito_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size5_mito_half.csv",
+  "args": []
+ },
+ {
+  "case": "size25_mito_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size25_mito_half.csv",
+  "args": []
+ },
+ {
+  "case": "size100_mito_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size100_mito_half.csv",
+  "args": []
+ },
+ {
+  "case": "size500_mito_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size500_mito_half.csv",
+  "args": []
+ },
+ {
+  "case": "size5_secreted_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size5_secreted_half.csv",
+  "args": []
+ },
+ {
+  "case": "size25_secreted_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size25_secreted_half.csv",
+  "args": []
+ },
+ {
+  "case": "size100_secreted_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size100_secreted_half.csv",
+  "args": []
+ },
+ {
+  "case": "size500_secreted_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size500_secreted_half.csv",
+  "args": []
+ },
+ {
+  "case": "size5_contractile_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size5_contractile_half.csv",
+  "args": []
+ },
+ {
+  "case": "size25_contractile_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size25_contractile_half.csv",
+  "args": []
+ },
+ {
+  "case": "size100_contractile_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size100_contractile_half.csv",
+  "args": []
+ },
+ {
+  "case": "size500_contractile_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size500_contractile_half.csv",
+  "args": []
+ },
+ {
+  "case": "size5_ribosomal_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size5_ribosomal_half.csv",
+  "args": []
+ },
+ {
+  "case": "size25_ribosomal_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size25_ribosomal_half.csv",
+  "args": []
+ },
+ {
+  "case": "size100_ribosomal_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size100_ribosomal_half.csv",
+  "args": []
+ },
+ {
+  "case": "size500_ribosomal_half",
+  "group": "size x composition",
+  "file": "tests/matrix/inputs/size500_ribosomal_half.csv",
+  "args": []
+ },
+ {
+  "case": "id_human_symbols",
+  "group": "id types",
+  "file": "tests/matrix/inputs/id_human_symbols.csv",
+  "args": []
+ },
+ {
+  "case": "id_uniprot_column",
+  "group": "id types",
+  "file": "tests/matrix/inputs/id_uniprot_column.csv",
+  "args": []
+ },
+ {
+  "case": "id_uniprot_in_symbol",
+  "group": "id types",
+  "file": "tests/matrix/inputs/id_uniprot_in_symbol.csv",
+  "args": []
+ },
+ {
+  "case": "id_ensembl",
+  "group": "id types",
+  "file": "tests/matrix/inputs/id_ensembl.csv",
+  "args": []
+ },
+ {
+  "case": "id_rat_symbols",
+  "group": "id types",
+  "file": "tests/matrix/inputs/id_rat_symbols.csv",
+  "args": []
+ },
+ {
+  "case": "id_mixed_case",
+  "group": "id types",
+  "file": "tests/matrix/inputs/id_mixed_case.csv",
+  "args": []
+ },
+ {
+  "case": "id_duplicates",
+  "group": "id types",
+  "file": "tests/matrix/inputs/id_duplicates.csv",
+  "args": []
+ },
+ {
+  "case": "id_20pct_unknown",
+  "group": "id types",
+  "file": "tests/matrix/inputs/id_20pct_unknown.csv",
+  "args": []
+ },
+ {
+  "case": "absent_from_proteomics",
+  "group": "edge cases",
+  "file": "tests/matrix/inputs/absent_from_proteomics.csv",
+  "args": []
+ },
+ {
+  "case": "empty_overlap_tissue",
+  "group": "edge cases",
+  "file": "tests/matrix/inputs/empty_overlap_tissue.csv",
+  "args": []
+ },
+ {
+  "case": "weights_present",
+  "group": "weights",
+  "file": "tests/matrix/inputs/weights_present.csv",
+  "args": []
+ },
+ {
+  "case": "weights_absent",
+  "group": "weights",
+  "file": "tests/matrix/inputs/weights_absent.csv",
+  "args": []
+ },
+ {
+  "case": "direction_words",
+  "group": "id types",
+  "file": "tests/matrix/inputs/direction_words.csv",
+  "args": []
+ },
+ {
+  "case": "example_pah_muscle_malenfant2015",
+  "group": "example: disease",
+  "file": "examples/pah_muscle_malenfant2015.csv",
+  "args": [
+   "--pool-sets",
+   "KEGG_OXIDATIVE_PHOSPHORYLATION,KEGG_CITRATE_CYCLE_TCA_CYCLE",
+   "--pool-groups",
+   "OXPHOS-down,TCA/transport-down"
+  ]
+ },
+ {
+  "case": "example_pah_blood_cheadle2012_eds",
+  "group": "example: disease",
+  "file": "examples/pah_blood_cheadle2012_eds.csv",
+  "args": []
+ },
+ {
+  "case": "example_hostrup2022_hiit_proteome",
+  "group": "example: positive control",
+  "file": "examples/hostrup2022_hiit_proteome.csv",
+  "args": []
+ },
+ {
+  "case": "example_random_matched",
+  "group": "example: negative control",
+  "file": "examples/random_matched.csv",
+  "args": []
+ },
+ {
+  "case": "example_random_mito9",
+  "group": "example: pathway-class control",
+  "file": "examples/random_mito9.csv",
+  "args": []
+ },
+ {
+  "case": "example_type2_diabetes_muscle_mootha2003",
+  "group": "example: disease",
+  "file": "examples/type2_diabetes_muscle_mootha2003.csv",
+  "args": []
+ },
+ {
+  "case": "example_heart_failure_lv_hannenhalli2006",
+  "group": "example: disease",
+  "file": "examples/heart_failure_lv_hannenhalli2006.csv",
+  "args": []
+ },
+ {
+  "case": "example_aging_muscle_liu2013",
+  "group": "example: disease",
+  "file": "examples/aging_muscle_liu2013.csv",
+  "args": []
+ },
+ {
+  "case": "example_septic_shock_blood_cvijanovich2008",
+  "group": "example: disease",
+  "file": "examples/septic_shock_blood_cvijanovich2008.csv",
+  "args": []
+ },
+ {
+  "case": "seed2_pah_muscle_malenfant2015",
+  "group": "seed",
+  "file": "examples/pah_muscle_malenfant2015.csv",
+  "args": [
+   "--pool-sets",
+   "KEGG_OXIDATIVE_PHOSPHORYLATION,KEGG_CITRATE_CYCLE_TCA_CYCLE",
+   "--pool-groups",
+   "OXPHOS-down,TCA/transport-down",
+   "--seed",
+   "12345"
+  ]
+ },
+ {
+  "case": "seed2_random_matched",
+  "group": "seed",
+  "file": "examples/random_matched.csv",
+  "args": [
+   "--seed",
+   "12345"
+  ]
+ }
+]

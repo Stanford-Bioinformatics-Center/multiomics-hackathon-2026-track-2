@@ -1,0 +1,9 @@
+Quantity,Value
+RNA-only vs protein-only rows,1558
+RNA only,356
+Protein only,1202
+Detection-only features,"rna_baseline, prot_missing"
+Full-model features,"rna_baseline, prot_missing, gtex_log2_tpm, mitocarta3, stable_complex, secreted, n_collapsed_rna, n_collapsed_prot, phosphosites"
+"AUC, detection-only (CV)",0.670
+"AUC, full (CV)",0.732
+"AUC, full with shuffled labels",0.486

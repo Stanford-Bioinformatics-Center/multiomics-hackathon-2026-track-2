@@ -1,0 +1,321 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Confirm store provenance keys before wiring the version (verify-before-claiming)": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532517909
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532529654
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532627167
+      }
+    ],
+    "1.2 Add the `_study_label()` and `_dataset_for_species()` helpers in `explorer.py`": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532517945
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532632024
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532720396
+      }
+    ],
+    "1.3 Emit `dataset` + `study_label` from `_layer()`": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532517995
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532728108
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532924453
+      }
+    ],
+    "1.4 Emit `dataset` + `study_label` from `_pathway_layer()`": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518053
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532729037
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532925681
+      }
+    ],
+    "2.1 Add `dataset` + `study_label` to `ExplorerColumn` in `client.ts`": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518084
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532930277
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532988686
+      }
+    ],
+    "3. Checkpoint — backend fields + client type": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518114
+      }
+    ],
+    "4.1 Hold `Filters` state in `MotrpacExplorer` and pass it down as props": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518147
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532994912
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533400652
+      }
+    ],
+    "4.2 Move the species/tissue/human-sex resolution into the parent resolver": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518175
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533001698
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533402019
+      }
+    ],
+    "4.3 Preserve single-tab behavior including the RNA↔Protein Pair View": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518214
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533002899
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533402848
+      }
+    ],
+    "5.1 Add the mode toggle and unit model in `MotrpacExplorer.tsx`": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518247
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533408736
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533634180
+      }
+    ],
+    "5.2 Add the responsive even-split grid CSS": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518287
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533634938
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533728568
+      }
+    ],
+    "6.1 Add the `provenanceLabel(column)` helper and panel chips/headers": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518318
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533747145
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533939602
+      }
+    ],
+    "6.2 Add `study_label` to every CSV row-builder": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518352
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533753256
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533940937
+      }
+    ],
+    "6.3 Preserve the page footnote": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518428
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533753976
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533941859
+      }
+    ],
+    "7.1 Regenerate the example JSONs": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518468
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533947381
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790534172240
+      }
+    ],
+    "9. Record traceability artifacts **[DOCS ONLY]** (R11)": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518497
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790534178388
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790534711327
+      }
+    ],
+    "10. Final checkpoint — full verification battery": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532518526
+      },
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790534718957
+      }
+    ],
+    "1. Add `dataset` + `study_label` to backend columns from the store (R4, R9.2)": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532925712
+      }
+    ],
+    "2. Declare the new fields on the client `ExplorerColumn` type (R4.6)": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790532988807
+      }
+    ],
+    "4. Lift `Filters` into the parent as the Shared Filter Bar (R2, R3.5)": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533402940
+      }
+    ],
+    "5. Add Compare-All Mode + the responsive Comparison Grid (R1, R3.6, R3.7)": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533728599
+      }
+    ],
+    "6. Surface full provenance in headers/chips, tables, and CSV (R5, R6, R10)": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790533941889
+      }
+    ],
+    "7. Regenerate saved examples with the new fields (R7)": [
+      {
+        "executionId": "60751343-ff1a-4ece-8edd-8d36fae4619e",
+        "chatSessionId": "sess_32be8cad-998d-45b3-9407-b4c728fbd607",
+        "timestamp": 1790534172297
+      }
+    ]
+  }
+}

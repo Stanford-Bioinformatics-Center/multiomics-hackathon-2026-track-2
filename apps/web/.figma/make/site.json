@@ -1,0 +1,10 @@
+{
+  "description": "Empowering biomedical researchers, this app enables cross-cohort comparisons of disease signatures and exercise responses, facilitating hypothesis generation and evidence exploration.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

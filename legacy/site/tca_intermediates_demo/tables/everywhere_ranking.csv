@@ -1,0 +1,152 @@
+dataset,tissue,layer,time,kind,n_columns,n_measured,n_opposed,n_same,frac_opposed,frac_same,sign_p,n_fdrbh05,n_fdrbh05_opposed,n_fdrbh05_same,camera_t_mean,early_human_muscle,sign_q_bh,ranked,majority,unit_words
+human_acute,VL,METAB,EE−CON 15-45m,exercise vs control,1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,3,3,0,5.3553521965342545,True,0.807154605263158,False,opposed,Human VL METAB EE–CON 15-45m
+human_acute,VL,METAB,EE−CON 3.5h,exercise vs control,1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,1,1,0,2.6757242429593813,False,0.807154605263158,False,opposed,Human VL METAB EE–CON 3.5h
+human_acute,VL,METAB,EE−CON 24h,exercise vs control,1,9,5,4,0.5555555555555556,0.4444444444444444,1.0,0,0,0,-0.07601129796105595,False,1.0,False,opposed,Human VL METAB EE–CON 24h
+human_acute,VL,METAB,RE−CON 15-45m,exercise vs control,1,9,5,4,0.5555555555555556,0.4444444444444444,1.0,4,4,0,4.870993472637752,True,1.0,False,opposed,Human VL METAB RE–CON 15-45m
+human_acute,VL,METAB,RE−CON 3.5h,exercise vs control,1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,1,1,0,1.5712994223022672,False,0.807154605263158,False,opposed,Human VL METAB RE–CON 3.5h
+human_acute,VL,METAB,RE−CON 24h,exercise vs control,1,9,2,7,0.2222222222222222,0.7777777777777778,0.1796875,1,1,0,-0.5939248922762527,False,0.6460193452380952,False,same,Human VL METAB RE–CON 24h
+human_acute,VL,METAB,EE post−pre 15-45m,exercise post−pre,1,9,7,2,0.7777777777777778,0.2222222222222222,0.1796875,5,4,1,6.1815200434826965,True,0.6460193452380952,False,opposed,Human VL METAB EE post–pre 15-45m
+human_acute,VL,METAB,EE post−pre 3.5h,exercise post−pre,1,9,4,5,0.4444444444444444,0.5555555555555556,1.0,1,1,0,1.6487444163417933,False,1.0,False,same,Human VL METAB EE post–pre 3.5h
+human_acute,VL,METAB,EE post−pre 24h,exercise post−pre,1,9,4,5,0.4444444444444444,0.5555555555555556,1.0,0,0,0,0.7167770847287266,False,1.0,False,same,Human VL METAB EE post–pre 24h
+human_acute,VL,METAB,RE post−pre 15-45m,exercise post−pre,1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,6,5,1,4.816661720205834,True,0.807154605263158,False,opposed,Human VL METAB RE post–pre 15-45m
+human_acute,VL,METAB,RE post−pre 3.5h,exercise post−pre,1,9,3,6,0.3333333333333333,0.6666666666666666,0.5078125,1,1,0,0.14071373094958142,False,0.807154605263158,False,same,Human VL METAB RE post–pre 3.5h
+human_acute,VL,METAB,RE post−pre 24h,exercise post−pre,1,9,4,5,0.4444444444444444,0.5555555555555556,1.0,2,1,1,-0.01637257918996538,False,1.0,False,same,Human VL METAB RE post–pre 24h
+human_acute,VL,METAB,CON post−pre 15-45m,reference (non-exercise),1,9,5,4,0.5555555555555556,0.4444444444444444,1.0,0,0,0,-0.06000634627532029,True,1.0,False,opposed,Human VL METAB CON post–pre 15-45m
+human_acute,VL,METAB,CON post−pre 3.5h,reference (non-exercise),1,9,1,8,0.1111111111111111,0.8888888888888888,0.0390625,0,0,0,-1.6315568749774882,False,0.2681107954545454,False,same,Human VL METAB CON post–pre 3.5h
+human_acute,VL,METAB,CON post−pre 24h,reference (non-exercise),1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,0,0,0,0.794157903800395,False,0.807154605263158,False,opposed,Human VL METAB CON post–pre 24h
+human_acute,VL,METAB,EE−CON pre,reference (non-exercise),1,9,5,4,0.5555555555555556,0.4444444444444444,1.0,0,0,0,0.060167158342534124,False,1.0,False,opposed,Human VL METAB EE–CON pre
+human_acute,VL,METAB,EE−RE pre,reference (non-exercise),1,9,4,5,0.4444444444444444,0.5555555555555556,1.0,0,0,0,-0.1700153902386013,False,1.0,False,same,Human VL METAB EE–RE pre
+human_acute,VL,METAB,EE−RE 15-45m,reference (non-exercise),1,9,5,4,0.5555555555555556,0.4444444444444444,1.0,2,2,0,0.4999733148767083,True,1.0,False,opposed,Human VL METAB EE–RE 15-45m
+human_acute,VL,METAB,EE−RE 3.5h,reference (non-exercise),1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,0,0,0,1.858634749726885,False,0.807154605263158,False,opposed,Human VL METAB EE–RE 3.5h
+human_acute,VL,METAB,EE−RE 24h,reference (non-exercise),1,9,5,4,0.5555555555555556,0.4444444444444444,1.0,0,0,0,0.5436122445062714,False,1.0,False,opposed,Human VL METAB EE–RE 24h
+human_acute,VL,METAB,RE−CON pre,reference (non-exercise),1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,0,0,0,0.2157970585071029,False,0.807154605263158,False,opposed,Human VL METAB RE–CON pre
+human_acute,ADIPOSE,METAB,EE−CON 15-45m,exercise vs control,1,8,6,2,0.75,0.25,0.2890625,0,0,0,1.7265684606750662,False,0.807154605263158,False,opposed,Human ADIPOSE METAB EE–CON 15-45m
+human_acute,ADIPOSE,METAB,EE−CON 3.5h,exercise vs control,1,8,5,3,0.625,0.375,0.7265625,0,0,0,-0.7476195383265303,False,1.0,False,opposed,Human ADIPOSE METAB EE–CON 3.5h
+human_acute,ADIPOSE,METAB,EE−CON 24h,exercise vs control,1,8,6,2,0.75,0.25,0.2890625,0,0,0,0.41034209497494883,False,0.807154605263158,False,opposed,Human ADIPOSE METAB EE–CON 24h
+human_acute,ADIPOSE,METAB,RE−CON 15-45m,exercise vs control,1,8,4,4,0.5,0.5,1.0,0,0,0,0.11771925075711266,False,1.0,False,same,Human ADIPOSE METAB RE–CON 15-45m
+human_acute,ADIPOSE,METAB,RE−CON 3.5h,exercise vs control,1,8,4,4,0.5,0.5,1.0,0,0,0,-0.7421164977121041,False,1.0,False,same,Human ADIPOSE METAB RE–CON 3.5h
+human_acute,ADIPOSE,METAB,RE−CON 24h,exercise vs control,1,8,6,2,0.75,0.25,0.2890625,0,0,0,2.3789505595622833,False,0.807154605263158,False,opposed,Human ADIPOSE METAB RE–CON 24h
+human_acute,ADIPOSE,METAB,EE post−pre 15-45m,exercise post−pre,1,8,6,2,0.75,0.25,0.2890625,0,0,0,2.456854338722041,False,0.807154605263158,False,opposed,Human ADIPOSE METAB EE post–pre 15-45m
+human_acute,ADIPOSE,METAB,EE post−pre 3.5h,exercise post−pre,1,8,7,1,0.875,0.125,0.0703125,0,0,0,1.108310723472631,False,0.40835336538461536,False,opposed,Human ADIPOSE METAB EE post–pre 3.5h
+human_acute,ADIPOSE,METAB,EE post−pre 24h,exercise post−pre,1,8,2,6,0.25,0.75,0.2890625,0,0,0,-0.5539798542570981,False,0.807154605263158,False,same,Human ADIPOSE METAB EE post–pre 24h
+human_acute,ADIPOSE,METAB,RE post−pre 15-45m,exercise post−pre,1,8,5,3,0.625,0.375,0.7265625,2,1,1,0.642492760889817,False,1.0,False,opposed,Human ADIPOSE METAB RE post–pre 15-45m
+human_acute,ADIPOSE,METAB,RE post−pre 3.5h,exercise post−pre,1,8,7,1,0.875,0.125,0.0703125,0,0,0,1.0599342606136957,False,0.40835336538461536,False,opposed,Human ADIPOSE METAB RE post–pre 3.5h
+human_acute,ADIPOSE,METAB,RE post−pre 24h,exercise post−pre,1,8,4,4,0.5,0.5,1.0,0,0,0,2.0668285438500664,False,1.0,False,same,Human ADIPOSE METAB RE post–pre 24h
+human_acute,ADIPOSE,METAB,CON post−pre 15-45m,reference (non-exercise),1,8,4,4,0.5,0.5,1.0,0,0,0,0.37318727726473033,False,1.0,False,same,Human ADIPOSE METAB CON post–pre 15-45m
+human_acute,ADIPOSE,METAB,CON post−pre 3.5h,reference (non-exercise),1,8,4,4,0.5,0.5,1.0,0,0,0,1.3913973990477306,False,1.0,False,same,Human ADIPOSE METAB CON post–pre 3.5h
+human_acute,ADIPOSE,METAB,CON post−pre 24h,reference (non-exercise),1,8,2,6,0.25,0.75,0.2890625,0,0,0,-1.0366969496070992,False,0.807154605263158,False,same,Human ADIPOSE METAB CON post–pre 24h
+human_acute,ADIPOSE,METAB,EE−CON pre,reference (non-exercise),1,8,5,3,0.625,0.375,0.7265625,0,0,0,0.2114572933682454,False,1.0,False,opposed,Human ADIPOSE METAB EE–CON pre
+human_acute,ADIPOSE,METAB,EE−RE pre,reference (non-exercise),1,8,3,5,0.375,0.625,0.7265625,0,0,0,-0.7561736144878954,False,1.0,False,same,Human ADIPOSE METAB EE–RE pre
+human_acute,ADIPOSE,METAB,EE−RE 15-45m,reference (non-exercise),1,8,5,3,0.625,0.375,0.7265625,0,0,0,1.5080963917120744,False,1.0,False,opposed,Human ADIPOSE METAB EE–RE 15-45m
+human_acute,ADIPOSE,METAB,EE−RE 3.5h,reference (non-exercise),1,8,7,1,0.875,0.125,0.0703125,0,0,0,-0.1616930601131189,False,0.40835336538461536,False,opposed,Human ADIPOSE METAB EE–RE 3.5h
+human_acute,ADIPOSE,METAB,EE−RE 24h,reference (non-exercise),1,8,4,4,0.5,0.5,1.0,0,0,0,-1.8883187753883222,False,1.0,False,same,Human ADIPOSE METAB EE–RE 24h
+human_acute,ADIPOSE,METAB,RE−CON pre,reference (non-exercise),1,8,5,3,0.625,0.375,0.7265625,0,0,0,0.8782159545240272,False,1.0,False,opposed,Human ADIPOSE METAB RE–CON pre
+human_acute,BLOOD,METAB,EE−CON 20m-during,exercise vs control,1,9,7,2,0.7777777777777778,0.2222222222222222,0.1796875,8,7,1,4.798602309393752,False,0.6460193452380952,False,opposed,Human BLOOD METAB EE–CON 20m-during
+human_acute,BLOOD,METAB,EE−CON 40m-during,exercise vs control,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,8,7,1,6.342512817256592,False,0.2681107954545454,False,opposed,Human BLOOD METAB EE–CON 40m-during
+human_acute,BLOOD,METAB,EE−CON 10m,exercise vs control,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,9,8,1,6.6289499308050654,False,0.2681107954545454,False,opposed,Human BLOOD METAB EE–CON 10m
+human_acute,BLOOD,METAB,EE−CON 15-45m,exercise vs control,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,9,8,1,7.668986094542568,False,0.2681107954545454,False,opposed,Human BLOOD METAB EE–CON 15-45m
+human_acute,BLOOD,METAB,EE−CON 3.5h,exercise vs control,1,9,7,2,0.7777777777777778,0.2222222222222222,0.1796875,1,1,0,1.9114856394560273,False,0.6460193452380952,False,opposed,Human BLOOD METAB EE–CON 3.5h
+human_acute,BLOOD,METAB,EE−CON 24h,exercise vs control,1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,0,0,0,0.9945847744614381,False,0.807154605263158,False,opposed,Human BLOOD METAB EE–CON 24h
+human_acute,BLOOD,METAB,RE−CON 10m,exercise vs control,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,9,8,1,7.483934021427935,False,0.2681107954545454,False,opposed,Human BLOOD METAB RE–CON 10m
+human_acute,BLOOD,METAB,RE−CON 15-45m,exercise vs control,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,9,8,1,5.9579486770799335,False,0.2681107954545454,False,opposed,Human BLOOD METAB RE–CON 15-45m
+human_acute,BLOOD,METAB,RE−CON 3.5h,exercise vs control,1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,1,1,0,1.9590052616518632,False,0.807154605263158,False,opposed,Human BLOOD METAB RE–CON 3.5h
+human_acute,BLOOD,METAB,RE−CON 24h,exercise vs control,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,1,1,0,2.9073057878076822,False,0.2681107954545454,False,opposed,Human BLOOD METAB RE–CON 24h
+human_acute,BLOOD,METAB,EE post−pre 20m-during,exercise post−pre,1,9,7,2,0.7777777777777778,0.2222222222222222,0.1796875,8,7,1,4.79028793217135,False,0.6460193452380952,False,opposed,Human BLOOD METAB EE post–pre 20m-during
+human_acute,BLOOD,METAB,EE post−pre 40m-during,exercise post−pre,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,9,8,1,5.946469069009618,False,0.2681107954545454,False,opposed,Human BLOOD METAB EE post–pre 40m-during
+human_acute,BLOOD,METAB,EE post−pre 10m,exercise post−pre,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,9,8,1,5.362538493479389,False,0.2681107954545454,False,opposed,Human BLOOD METAB EE post–pre 10m
+human_acute,BLOOD,METAB,EE post−pre 15-45m,exercise post−pre,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,9,8,1,5.4567105313307405,False,0.2681107954545454,False,opposed,Human BLOOD METAB EE post–pre 15-45m
+human_acute,BLOOD,METAB,EE post−pre 3.5h,exercise post−pre,1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,4,3,1,1.5538974424057177,False,0.807154605263158,False,opposed,Human BLOOD METAB EE post–pre 3.5h
+human_acute,BLOOD,METAB,EE post−pre 24h,exercise post−pre,1,9,2,7,0.2222222222222222,0.7777777777777778,0.1796875,1,1,0,-0.12022084149628083,False,0.6460193452380952,False,same,Human BLOOD METAB EE post–pre 24h
+human_acute,BLOOD,METAB,RE post−pre 10m,exercise post−pre,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,9,8,1,6.521944834504447,False,0.2681107954545454,False,opposed,Human BLOOD METAB RE post–pre 10m
+human_acute,BLOOD,METAB,RE post−pre 15-45m,exercise post−pre,1,9,8,1,0.8888888888888888,0.1111111111111111,0.0390625,9,8,1,5.24177512846564,False,0.2681107954545454,False,opposed,Human BLOOD METAB RE post–pre 15-45m
+human_acute,BLOOD,METAB,RE post−pre 3.5h,exercise post−pre,1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,4,4,0,1.671007823159921,False,0.807154605263158,False,opposed,Human BLOOD METAB RE post–pre 3.5h
+human_acute,BLOOD,METAB,RE post−pre 24h,exercise post−pre,1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,2,2,0,1.559951224105463,False,0.807154605263158,False,opposed,Human BLOOD METAB RE post–pre 24h
+human_acute,BLOOD,METAB,CON post−pre 20m-during,reference (non-exercise),1,9,7,2,0.7777777777777778,0.2222222222222222,0.1796875,1,1,0,0.8488636243247892,False,0.6460193452380952,False,opposed,Human BLOOD METAB CON post–pre 20m-during
+human_acute,BLOOD,METAB,CON post−pre 40m-during,reference (non-exercise),1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,1,1,0,0.5428640135438831,False,0.807154605263158,False,opposed,Human BLOOD METAB CON post–pre 40m-during
+human_acute,BLOOD,METAB,CON post−pre 10m,reference (non-exercise),1,9,5,4,0.5555555555555556,0.4444444444444444,1.0,1,0,1,0.04926450332405427,False,1.0,False,opposed,Human BLOOD METAB CON post–pre 10m
+human_acute,BLOOD,METAB,CON post−pre 15-45m,reference (non-exercise),1,9,4,5,0.4444444444444444,0.5555555555555556,1.0,2,1,1,0.13512437387326937,False,1.0,False,same,Human BLOOD METAB CON post–pre 15-45m
+human_acute,BLOOD,METAB,CON post−pre 3.5h,reference (non-exercise),1,9,6,3,0.6666666666666666,0.3333333333333333,0.5078125,2,1,1,0.7465679798167847,False,0.807154605263158,False,opposed,Human BLOOD METAB CON post–pre 3.5h
+human_acute,BLOOD,METAB,CON post−pre 24h,reference (non-exercise),1,9,2,7,0.2222222222222222,0.7777777777777778,0.1796875,1,1,0,-0.7757960690115676,False,0.6460193452380952,False,same,Human BLOOD METAB CON post–pre 24h
+human_acute,BLOOD,METAB,EE−CON pre,reference (non-exercise),1,9,0,9,0.0,1.0,0.00390625,0,0,0,-1.8316235768993485,False,0.19661458333333334,False,same,Human BLOOD METAB EE–CON pre
+human_acute,BLOOD,METAB,EE−RE pre,reference (non-exercise),1,9,7,2,0.7777777777777778,0.2222222222222222,0.1796875,0,0,0,1.698802713664889,False,0.6460193452380952,False,opposed,Human BLOOD METAB EE–RE pre
+human_acute,BLOOD,METAB,EE−RE 10m,reference (non-exercise),1,9,2,7,0.2222222222222222,0.7777777777777778,0.1796875,8,2,6,-2.8032233083005917,False,0.6460193452380952,False,same,Human BLOOD METAB EE–RE 10m
+human_acute,BLOOD,METAB,EE−RE 15-45m,reference (non-exercise),1,9,3,6,0.3333333333333333,0.6666666666666666,0.5078125,7,2,5,-1.451675674701368,False,0.807154605263158,False,same,Human BLOOD METAB EE–RE 15-45m
+human_acute,BLOOD,METAB,EE−RE 3.5h,reference (non-exercise),1,9,3,6,0.3333333333333333,0.6666666666666666,0.5078125,1,0,1,-0.9060843964110418,False,0.807154605263158,False,same,Human BLOOD METAB EE–RE 3.5h
+human_acute,BLOOD,METAB,EE−RE 24h,reference (non-exercise),1,9,1,8,0.1111111111111111,0.8888888888888888,0.0390625,0,0,0,-2.552251152772589,False,0.2681107954545454,False,same,Human BLOOD METAB EE–RE 24h
+human_acute,BLOOD,METAB,RE−CON pre,reference (non-exercise),1,9,2,7,0.2222222222222222,0.7777777777777778,0.1796875,0,0,0,-2.8505457256026787,False,0.6460193452380952,False,same,Human BLOOD METAB RE–CON pre
+rat_train,SKM-GN,METAB,1w,training vs sedentary,2,20,4,16,0.2,0.8,0.01181793212890625,1,0,1,-3.3511208033963893,False,0.254929678780692,True,same,Rat SKM-GN METAB 1w
+rat_train,SKM-GN,METAB,2w,training vs sedentary,2,20,6,14,0.3,0.7,0.11531829833984375,1,0,1,-1.9810416146704242,False,0.5617117112682711,True,same,Rat SKM-GN METAB 2w
+rat_train,SKM-GN,METAB,4w,training vs sedentary,2,20,9,11,0.45,0.55,0.8238029479980469,0,0,0,-1.1706374702444347,False,1.0,True,same,Rat SKM-GN METAB 4w
+rat_train,SKM-GN,METAB,8w,training vs sedentary,2,20,16,4,0.8,0.2,0.01181793212890625,0,0,0,1.3371437720275685,False,0.254929678780692,True,opposed,Rat SKM-GN METAB 8w
+rat_train,SKM-VL,METAB,1w,training vs sedentary,2,2,0,2,0.0,1.0,0.5,0,0,0,,False,0.807154605263158,False,same,Rat SKM-VL METAB 1w
+rat_train,SKM-VL,METAB,2w,training vs sedentary,2,2,0,2,0.0,1.0,0.5,0,0,0,,False,0.807154605263158,False,same,Rat SKM-VL METAB 2w
+rat_train,SKM-VL,METAB,4w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat SKM-VL METAB 4w
+rat_train,SKM-VL,METAB,8w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat SKM-VL METAB 8w
+rat_train,HEART,METAB,1w,training vs sedentary,2,20,10,10,0.5,0.5,1.0,5,5,0,1.1752985131478648,False,1.0,True,same,Rat HEART METAB 1w
+rat_train,HEART,METAB,2w,training vs sedentary,2,20,11,9,0.55,0.45,0.8238029479980469,7,5,2,1.237865206845948,False,1.0,True,opposed,Rat HEART METAB 2w
+rat_train,HEART,METAB,4w,training vs sedentary,2,20,12,8,0.6,0.4,0.5034446716308594,5,3,2,0.4653993779167724,False,0.807154605263158,True,opposed,Rat HEART METAB 4w
+rat_train,HEART,METAB,8w,training vs sedentary,2,20,13,7,0.65,0.35,0.26317596435546875,0,0,0,0.22953555869661746,False,0.807154605263158,True,opposed,Rat HEART METAB 8w
+rat_train,WAT-SC,METAB,1w,training vs sedentary,2,20,8,12,0.4,0.6,0.5034446716308594,0,0,0,-1.8748812858464219,False,0.807154605263158,True,same,Rat WAT-SC METAB 1w
+rat_train,WAT-SC,METAB,2w,training vs sedentary,2,20,12,8,0.6,0.4,0.5034446716308594,0,0,0,0.17168884288192188,False,0.807154605263158,True,opposed,Rat WAT-SC METAB 2w
+rat_train,WAT-SC,METAB,4w,training vs sedentary,2,20,7,13,0.35,0.65,0.26317596435546875,0,0,0,-2.0032972162037135,False,0.807154605263158,True,same,Rat WAT-SC METAB 4w
+rat_train,WAT-SC,METAB,8w,training vs sedentary,2,20,16,4,0.8,0.2,0.01181793212890625,0,0,0,1.256451500519735,False,0.254929678780692,True,opposed,Rat WAT-SC METAB 8w
+rat_train,LIVER,METAB,1w,training vs sedentary,2,20,11,9,0.55,0.45,0.8238029479980469,2,2,0,1.4080772305154148,False,1.0,True,opposed,Rat LIVER METAB 1w
+rat_train,LIVER,METAB,2w,training vs sedentary,2,20,8,12,0.4,0.6,0.5034446716308594,5,3,2,0.4038654247833391,False,0.807154605263158,True,same,Rat LIVER METAB 2w
+rat_train,LIVER,METAB,4w,training vs sedentary,2,20,14,6,0.7,0.3,0.11531829833984375,0,0,0,1.2383461300969911,False,0.5617117112682711,True,opposed,Rat LIVER METAB 4w
+rat_train,LIVER,METAB,8w,training vs sedentary,2,20,7,13,0.35,0.65,0.26317596435546875,0,0,0,-1.0727808301600055,False,0.807154605263158,True,same,Rat LIVER METAB 8w
+rat_train,KIDNEY,METAB,1w,training vs sedentary,2,20,3,17,0.15,0.85,0.0025768280029296875,1,0,1,-2.6347577888905214,False,0.1945505142211914,True,same,Rat KIDNEY METAB 1w
+rat_train,KIDNEY,METAB,2w,training vs sedentary,2,20,7,13,0.35,0.65,0.26317596435546875,0,0,0,-0.8505311227238918,False,0.807154605263158,True,same,Rat KIDNEY METAB 2w
+rat_train,KIDNEY,METAB,4w,training vs sedentary,2,20,9,11,0.45,0.55,0.8238029479980469,2,0,2,-1.428305138916356,False,1.0,True,same,Rat KIDNEY METAB 4w
+rat_train,KIDNEY,METAB,8w,training vs sedentary,2,20,8,12,0.4,0.6,0.5034446716308594,0,0,0,-0.5017680448388206,False,0.807154605263158,True,same,Rat KIDNEY METAB 8w
+rat_train,LUNG,METAB,1w,training vs sedentary,2,20,11,9,0.55,0.45,0.8238029479980469,5,2,3,-0.23049581327626897,False,1.0,True,opposed,Rat LUNG METAB 1w
+rat_train,LUNG,METAB,2w,training vs sedentary,2,20,11,9,0.55,0.45,0.8238029479980469,5,2,3,-1.0244414379505844,False,1.0,True,opposed,Rat LUNG METAB 2w
+rat_train,LUNG,METAB,4w,training vs sedentary,2,20,7,13,0.35,0.65,0.26317596435546875,2,0,2,-1.5676243310693836,False,0.807154605263158,True,same,Rat LUNG METAB 4w
+rat_train,LUNG,METAB,8w,training vs sedentary,2,20,6,14,0.3,0.7,0.11531829833984375,0,0,0,-0.6896110041345345,False,0.5617117112682711,True,same,Rat LUNG METAB 8w
+rat_train,CORTEX,METAB,1w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat CORTEX METAB 1w
+rat_train,CORTEX,METAB,2w,training vs sedentary,2,2,2,0,1.0,0.0,0.5,0,0,0,,False,0.807154605263158,False,opposed,Rat CORTEX METAB 2w
+rat_train,CORTEX,METAB,4w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat CORTEX METAB 4w
+rat_train,CORTEX,METAB,8w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat CORTEX METAB 8w
+rat_train,ADRNL,METAB,1w,training vs sedentary,2,2,2,0,1.0,0.0,0.5,0,0,0,,False,0.807154605263158,False,opposed,Rat ADRNL METAB 1w
+rat_train,ADRNL,METAB,2w,training vs sedentary,2,2,2,0,1.0,0.0,0.5,0,0,0,,False,0.807154605263158,False,opposed,Rat ADRNL METAB 2w
+rat_train,ADRNL,METAB,4w,training vs sedentary,2,2,0,2,0.0,1.0,0.5,0,0,0,,False,0.807154605263158,False,same,Rat ADRNL METAB 4w
+rat_train,ADRNL,METAB,8w,training vs sedentary,2,2,0,2,0.0,1.0,0.5,0,0,0,,False,0.807154605263158,False,same,Rat ADRNL METAB 8w
+rat_train,BAT,METAB,1w,training vs sedentary,2,18,13,5,0.7222222222222222,0.2777777777777778,0.09625244140625,2,2,0,1.5107294759983594,False,0.519075666155134,True,opposed,Rat BAT METAB 1w
+rat_train,BAT,METAB,2w,training vs sedentary,2,20,9,11,0.45,0.55,0.8238029479980469,1,0,1,0.38157764041877185,False,1.0,True,same,Rat BAT METAB 2w
+rat_train,BAT,METAB,4w,training vs sedentary,2,20,11,9,0.55,0.45,0.8238029479980469,0,0,0,1.3844089155580082,False,1.0,True,opposed,Rat BAT METAB 4w
+rat_train,BAT,METAB,8w,training vs sedentary,2,18,4,14,0.2222222222222222,0.7777777777777778,0.0308837890625,0,0,0,-1.4421703179737735,False,0.2681107954545454,True,same,Rat BAT METAB 8w
+rat_train,COLON,METAB,1w,training vs sedentary,2,2,2,0,1.0,0.0,0.5,0,0,0,,False,0.807154605263158,False,opposed,Rat COLON METAB 1w
+rat_train,COLON,METAB,2w,training vs sedentary,2,2,2,0,1.0,0.0,0.5,0,0,0,,False,0.807154605263158,False,opposed,Rat COLON METAB 2w
+rat_train,COLON,METAB,4w,training vs sedentary,2,2,2,0,1.0,0.0,0.5,0,0,0,,False,0.807154605263158,False,opposed,Rat COLON METAB 4w
+rat_train,COLON,METAB,8w,training vs sedentary,2,2,0,2,0.0,1.0,0.5,0,0,0,,False,0.807154605263158,False,same,Rat COLON METAB 8w
+rat_train,HIPPOC,METAB,1w,training vs sedentary,2,18,10,8,0.5555555555555556,0.4444444444444444,0.8145294189453125,0,0,0,0.4987545728647125,False,1.0,True,opposed,Rat HIPPOC METAB 1w
+rat_train,HIPPOC,METAB,2w,training vs sedentary,2,18,14,4,0.7777777777777778,0.2222222222222222,0.0308837890625,0,0,0,1.4626813087260495,False,0.2681107954545454,True,opposed,Rat HIPPOC METAB 2w
+rat_train,HIPPOC,METAB,4w,training vs sedentary,2,18,13,5,0.7222222222222222,0.2777777777777778,0.09625244140625,0,0,0,2.203744560542409,False,0.519075666155134,True,opposed,Rat HIPPOC METAB 4w
+rat_train,HIPPOC,METAB,8w,training vs sedentary,2,18,11,7,0.6111111111111112,0.3888888888888889,0.480682373046875,0,0,0,0.7034588526269521,False,0.807154605263158,True,opposed,Rat HIPPOC METAB 8w
+rat_train,HYPOTH,METAB,1w,training vs sedentary,2,2,0,2,0.0,1.0,0.5,0,0,0,,False,0.807154605263158,False,same,Rat HYPOTH METAB 1w
+rat_train,HYPOTH,METAB,2w,training vs sedentary,2,2,0,2,0.0,1.0,0.5,0,0,0,,False,0.807154605263158,False,same,Rat HYPOTH METAB 2w
+rat_train,HYPOTH,METAB,4w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat HYPOTH METAB 4w
+rat_train,HYPOTH,METAB,8w,training vs sedentary,2,2,0,2,0.0,1.0,0.5,0,0,0,,False,0.807154605263158,False,same,Rat HYPOTH METAB 8w
+rat_train,OVARY,METAB,1w,training vs sedentary,1,1,0,1,0.0,1.0,1.0,0,0,0,,False,1.0,False,same,Rat OVARY METAB 1w
+rat_train,OVARY,METAB,2w,training vs sedentary,1,1,0,1,0.0,1.0,1.0,0,0,0,,False,1.0,False,same,Rat OVARY METAB 2w
+rat_train,OVARY,METAB,4w,training vs sedentary,1,1,1,0,1.0,0.0,1.0,0,0,0,,False,1.0,False,opposed,Rat OVARY METAB 4w
+rat_train,OVARY,METAB,8w,training vs sedentary,1,1,0,1,0.0,1.0,1.0,0,0,0,,False,1.0,False,same,Rat OVARY METAB 8w
+rat_train,SMLINT,METAB,1w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat SMLINT METAB 1w
+rat_train,SMLINT,METAB,2w,training vs sedentary,2,2,2,0,1.0,0.0,0.5,0,0,0,,False,0.807154605263158,False,opposed,Rat SMLINT METAB 2w
+rat_train,SMLINT,METAB,4w,training vs sedentary,2,2,2,0,1.0,0.0,0.5,0,0,0,,False,0.807154605263158,False,opposed,Rat SMLINT METAB 4w
+rat_train,SMLINT,METAB,8w,training vs sedentary,2,2,2,0,1.0,0.0,0.5,0,0,0,,False,0.807154605263158,False,opposed,Rat SMLINT METAB 8w
+rat_train,SPLEEN,METAB,1w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat SPLEEN METAB 1w
+rat_train,SPLEEN,METAB,2w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat SPLEEN METAB 2w
+rat_train,SPLEEN,METAB,4w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat SPLEEN METAB 4w
+rat_train,SPLEEN,METAB,8w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat SPLEEN METAB 8w
+rat_train,TESTES,METAB,1w,training vs sedentary,1,1,1,0,1.0,0.0,1.0,0,0,0,,False,1.0,False,opposed,Rat TESTES METAB 1w
+rat_train,TESTES,METAB,2w,training vs sedentary,1,1,1,0,1.0,0.0,1.0,0,0,0,,False,1.0,False,opposed,Rat TESTES METAB 2w
+rat_train,TESTES,METAB,4w,training vs sedentary,1,1,1,0,1.0,0.0,1.0,0,0,0,,False,1.0,False,opposed,Rat TESTES METAB 4w
+rat_train,TESTES,METAB,8w,training vs sedentary,1,1,1,0,1.0,0.0,1.0,0,0,0,,False,1.0,False,opposed,Rat TESTES METAB 8w
+rat_train,VENACV,METAB,4w,training vs sedentary,2,2,0,2,0.0,1.0,0.5,0,0,0,,False,0.807154605263158,False,same,Rat VENACV METAB 4w
+rat_train,VENACV,METAB,8w,training vs sedentary,2,2,1,1,0.5,0.5,1.0,0,0,0,,False,1.0,False,same,Rat VENACV METAB 8w
+rat_train,VENACV,METAB,1w,training vs sedentary,1,1,0,1,0.0,1.0,1.0,0,0,0,,False,1.0,False,same,Rat VENACV METAB 1w
+rat_train,VENACV,METAB,2w,training vs sedentary,1,1,0,1,0.0,1.0,1.0,0,0,0,,False,1.0,False,same,Rat VENACV METAB 2w
+rat_train,PLASMA,METAB,1w,training vs sedentary,2,20,4,16,0.2,0.8,0.01181793212890625,2,0,2,-2.0976523616952663,False,0.254929678780692,True,same,Rat PLASMA METAB 1w
+rat_train,PLASMA,METAB,2w,training vs sedentary,2,20,7,13,0.35,0.65,0.26317596435546875,1,0,1,-1.574150105351456,False,0.807154605263158,True,same,Rat PLASMA METAB 2w
+rat_train,PLASMA,METAB,4w,training vs sedentary,2,20,5,15,0.25,0.75,0.04138946533203125,0,0,0,-3.2140793053896957,False,0.27173083761463995,True,same,Rat PLASMA METAB 4w
+rat_train,PLASMA,METAB,8w,training vs sedentary,2,20,3,17,0.15,0.85,0.0025768280029296875,2,0,2,-2.8161654717770164,False,0.1945505142211914,True,same,Rat PLASMA METAB 8w

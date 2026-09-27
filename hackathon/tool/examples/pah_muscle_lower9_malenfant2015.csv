@@ -1,0 +1,10 @@
+gene_symbol,uniprot,direction,group,weight,source
+NDUFA9,Q16795,-1,PAH lower proteins (Table 2),0.71,"Malenfant 2015 J Mol Med Table 2 (downregulated), as transcribed by the team: MoTrPAC Hackathon/Rat Comparison PAH Proteins/data/paper/"
+UQCRC2,P22695,-1,PAH lower proteins (Table 2),0.74,"Malenfant 2015 J Mol Med Table 2 (downregulated), as transcribed by the team: MoTrPAC Hackathon/Rat Comparison PAH Proteins/data/paper/"
+UQCRC1,P31930,-1,PAH lower proteins (Table 2),0.74,"Malenfant 2015 J Mol Med Table 2 (downregulated), as transcribed by the team: MoTrPAC Hackathon/Rat Comparison PAH Proteins/data/paper/"
+ATP5L,O75964,-1,PAH lower proteins (Table 2),0.7,"Malenfant 2015 J Mol Med Table 2 (downregulated), as transcribed by the team: MoTrPAC Hackathon/Rat Comparison PAH Proteins/data/paper/"
+ATP5B,P06576,-1,PAH lower proteins (Table 2),0.74,"Malenfant 2015 J Mol Med Table 2 (downregulated), as transcribed by the team: MoTrPAC Hackathon/Rat Comparison PAH Proteins/data/paper/"
+IDH2,P48735,-1,PAH lower proteins (Table 2),0.74,"Malenfant 2015 J Mol Med Table 2 (downregulated), as transcribed by the team: MoTrPAC Hackathon/Rat Comparison PAH Proteins/data/paper/"
+OGDH,Q02218,-1,PAH lower proteins (Table 2),0.77,"Malenfant 2015 J Mol Med Table 2 (downregulated), as transcribed by the team: MoTrPAC Hackathon/Rat Comparison PAH Proteins/data/paper/"
+SLC25A4,P12235,-1,PAH lower proteins (Table 2),0.65,"Malenfant 2015 J Mol Med Table 2 (downregulated), as transcribed by the team: MoTrPAC Hackathon/Rat Comparison PAH Proteins/data/paper/"
+ECH1,Q13011,-1,PAH lower proteins (Table 2),0.57,"Malenfant 2015 J Mol Med Table 2 (downregulated), as transcribed by the team: MoTrPAC Hackathon/Rat Comparison PAH Proteins/data/paper/"
