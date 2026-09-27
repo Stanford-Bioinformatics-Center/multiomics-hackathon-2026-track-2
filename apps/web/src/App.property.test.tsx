@@ -4,7 +4,7 @@
 //
 // Direct navigation to a retired mock design view (architecture/01, technical/02, workflow/03,
 // dashboard/04, slide/08) — or to any unknown/garbage identifier — must resolve to the last-used
-// LIVE view when one exists this session, otherwise to the default Discordance view. A retired
+// LIVE view when one exists this session, otherwise to the default view (Explorer after the motrpac-explorer merge). A retired
 // identifier is NEVER the resolved result; the resolver only ever yields a live, navigable view.
 //
 // A live identifier always resolves to itself, regardless of the last-used value.
@@ -68,7 +68,7 @@ describe("Property 15: retired-view redirect resolution", () => {
     );
   });
 
-  test("retired requested id resolves to last-used live view, else Discordance — never retired", () => {
+  test("retired requested id resolves to last-used live view, else the default view — never retired", () => {
     fc.assert(
       fc.property(retiredId, lastLiveArb, (requested, lastLiveView) => {
         const resolved = resolveView(requested, lastLiveView);

@@ -27,6 +27,9 @@ from . import convergence as _convergence
 from . import discordance_casestudy as _discordance
 from . import generalized_query as _genq
 from . import metab_casestudy as _metab
+from . import metab_upload as _metab_upload
+from . import story as _story
+from . import explorer as _explorer
 from . import export as _export
 from .schema import AnalysisRequest as _AnalysisRequest
 from .schema import SignatureRow as _SignatureRow
@@ -116,6 +119,8 @@ class AvailabilityRequestIn(BaseModel):
     tissue: Optional[str] = None
     sex: Optional[str] = None
     timepoint: Optional[str] = None
+    contrast_category: Optional[str] = None
+    exercise_type: Optional[str] = None
 
 
 class ValidateRequestIn(BaseModel):
@@ -128,6 +133,10 @@ class ValidateRequestIn(BaseModel):
         if sum([self.signature_rows is not None, bool(self.signature_csv_text), bool(self.example_name)]) != 1:
             raise ValueError("provide exactly one of: signature_rows, signature_csv_text, example_name")
         return self
+
+
+class MetabolitePreviewRequestIn(BaseModel):
+    csv_text: str = Field(min_length=1, max_length=2_000_000)
 
 
 # ---- helpers ------------------------------------------------------------------------------------
@@ -182,10 +191,63 @@ def get_catalog():
     return _catalog.build_catalog()
 
 
+@app.get("/api/story", response_model=_story.StoryResponse)
+def get_story():
+    """Read-only narrative panels, each record traced to a committed source output."""
+    try:
+        return _story.build_story()
+    except FileNotFoundError as error:
+        raise HTTPException(status_code=404, detail=str(error))
+
+
+class ExplorerListIn(BaseModel):
+    kind: str
+    name: Optional[str] = None
+    text: Optional[str] = Field(default=None, max_length=5_000_000)
+    example: Optional[str] = None
+
+
+class ExplorerRequestIn(BaseModel):
+    lists: list[ExplorerListIn] = Field(min_length=1, max_length=6)
+
+
+@app.get("/api/explorer/examples")
+def explorer_examples():
+    """Neutral example inputs; each carries only a source citation."""
+    return {"examples": _explorer.list_examples()}
+
+
+class ExplorerFileIn(BaseModel):
+    filename: str = Field(min_length=1, max_length=300)
+    content_base64: str = Field(min_length=1, max_length=14_000_000)
+
+
+@app.post("/api/explorer/read-file")
+def explorer_read_file(req: ExplorerFileIn):
+    """Uploaded spreadsheet or text file -> CSV text plus a guessed list kind."""
+    import base64
+    try:
+        return _explorer.read_upload(req.filename, base64.b64decode(req.content_base64))
+    except (ValueError, UnicodeDecodeError) as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:  # unreadable workbook
+        raise HTTPException(status_code=422, detail=f"Could not read {req.filename}: {exc}") from exc
+
+
+@app.post("/api/explorer/analyse")
+def explorer_analyse(req: ExplorerRequestIn):
+    """Any gene/protein, metabolite or pathway list -> every matching MoTrPAC comparison by layer."""
+    try:
+        return _explorer.analyse([item.model_dump() for item in req.lists])
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+
 @app.post("/api/availability")
 def post_availability(req: AvailabilityRequestIn):
     # a scientific empty state is a 200, not an error
-    return _catalog.resolve_availability(req.target_species, req.selected_omics, req.tissue, req.sex, req.timepoint)
+    return _catalog.resolve_availability(req.target_species, req.selected_omics, req.tissue, req.sex, req.timepoint,
+                                         contrast_category=req.contrast_category, exercise_type=req.exercise_type)
 
 
 @app.post("/api/signatures/validate")
@@ -250,6 +312,16 @@ def get_export(run_id: str):
 
 
 # ---- metabolomics case study (ST000763): a SEPARATE, read-only analysis type -----------------------
+
+@app.post("/api/metabolomics/preview")
+def preview_metabolite_list(request: MetabolitePreviewRequestIn):
+    """Match a documented user list to precomputed MoTrPAC metabolite contrasts."""
+    try:
+        return _metab_upload.preview_metabolite_list(request.csv_text)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail="MoTrPAC metabolite export is unavailable") from exc
 
 @app.get("/api/metabolomics/casestudy")
 def get_metab_casestudy():

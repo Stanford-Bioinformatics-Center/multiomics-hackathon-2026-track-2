@@ -7,8 +7,11 @@ the returned layers, and the store+code versions match a direct engine call. If 
 the polished UI would misrepresent the already-correct scientific engine.
 """
 import math
+from pathlib import Path
 
 import pytest
+
+EXAMPLE = Path(__file__).resolve().parents[3] / "hackathon" / "tool" / "examples" / "pah_muscle_malenfant2015.csv"
 
 pytestmark = pytest.mark.skipif(
     __import__("motrpac_probe.paths", fromlist=["CONTRASTS"]).CONTRASTS.exists() is False,
@@ -18,7 +21,7 @@ pytestmark = pytest.mark.skipif(
 def _engine_direct(cutoff=0.05):
     """Direct engine call, mirroring what analysis.py / Marimo use."""
     from motrpac_probe import run
-    R = run.compute("examples/pah_muscle_malenfant2015.csv", quiet=True, cutoff=cutoff)
+    R = run.compute(str(EXAMPLE), quiet=True, cutoff=cutoff)
     sc = R["scores"].set_index("column_id")
     out = {}
     for cid, r in sc.iterrows():

@@ -1,4 +1,5 @@
 import { createElement, useEffect, useState, type ReactNode } from "react";
+import MotrpacExplorer from "./components/MotrpacExplorer";
 import LiveDashboard from "./components/LiveDashboard";
 import MetabolomicsCaseStudy from "./components/MetabolomicsCaseStudy";
 import GeneralizedQuery from "./components/GeneralizedQuery";
@@ -8,32 +9,43 @@ import Discordance from "./components/Discordance";
 // Navigation model
 // ---------------------------------------------------------------------------
 //
-// The application presents exactly five live views. The mock design views that
-// used to live here (architecture/01, technical/02, workflow/03, dashboard/04,
-// slide/08) have been retired — their content was migrated into
-// DESIGN_PROVENANCE.md with the original Figma-Make attribution preserved.
+// The application presents live views only. The mock design views that used to
+// live here (architecture/01, technical/02, workflow/03, dashboard/04, slide/08)
+// have been retired — their content was migrated into DESIGN_PROVENANCE.md with
+// the original Figma-Make attribution preserved (R6). They are never rendered.
 //
-// `View` therefore only names the five live views. Retired identifiers are kept
-// in `RETIRED_VIEWS` purely so the redirect resolver can recognise a stale or
-// hand-typed identifier and map it to a live view; they are never rendered.
+// Two interactive live surfaces coexist:
+//   - Explorer (default) — the generalized "any molecule list in, every matching
+//     MoTrPAC result out" tool. Computes cameraPR / rank correlation on demand
+//     against the pre-processed motrpac_probe store.
+//   - Live results (API) — the directed PAH-muscle comparison plus the
+//     layer_discordance table (the finalize-discordance-mvp live view; backup).
+// Generalized query (bundled/hard-coded example signatures) is a further backup.
+// Discordance is the Track 2 "Omic Discordance Explained" headline showcase over
+// the committed demo outputs.
+//
+// `View` only names live views. Retired identifiers are kept in `RETIRED_VIEWS`
+// purely so the redirect resolver can recognise a stale or hand-typed identifier
+// and map it to a live view; they are never rendered.
 
-export type View = "discordance" | "live" | "generalized" | "metabolomics" | "methods";
+export type View = "explorer" | "live" | "discordance" | "generalized" | "metabolomics" | "methods";
 
 /** Identifiers of the removed mock design views. Never rendered. */
 export const RETIRED_VIEWS = ["architecture", "technical", "workflow", "dashboard", "slide"] as const;
 
 /** The default live view shown on initial load and used as the ultimate fallback. */
-export const DEFAULT_VIEW: View = "discordance";
+export const DEFAULT_VIEW: View = "explorer";
 
 /** sessionStorage key holding the last live view the user visited this session. */
 export const LAST_VIEW_STORAGE_KEY = "esx.lastView";
 
 export const NAV_VIEWS: { id: View; label: string; eyebrow: string }[] = [
-  { id: "discordance", label: "Discordance", eyebrow: "01" },
+  { id: "explorer", label: "Explorer", eyebrow: "01" },
   { id: "live", label: "Live results (API)", eyebrow: "02" },
-  { id: "generalized", label: "Generalized query", eyebrow: "03" },
-  { id: "metabolomics", label: "Metabolomics (ST000763)", eyebrow: "04" },
-  { id: "methods", label: "About / Methods", eyebrow: "05" },
+  { id: "discordance", label: "Discordance", eyebrow: "03" },
+  { id: "generalized", label: "Generalized query", eyebrow: "04" },
+  { id: "metabolomics", label: "Metabolomics (ST000763)", eyebrow: "05" },
+  { id: "methods", label: "About / Methods", eyebrow: "06" },
 ];
 
 const LIVE_VIEW_IDS = new Set<string>(NAV_VIEWS.map((entry) => entry.id));
@@ -48,7 +60,7 @@ export function isLiveView(candidate: string | null | undefined): candidate is V
  *
  * - A live identifier resolves to itself.
  * - A retired or otherwise unknown identifier resolves to `lastLiveView` when that
- *   is itself a live view, otherwise to the default Discordance view.
+ *   is itself a live view, otherwise to the default Explorer view.
  *
  * A retired view is NEVER returned, so callers can render the result directly.
  */
@@ -146,7 +158,7 @@ function AboutMethods() {
   return (
     <section className="view">
       <div className="section-intro">
-        <div className="section-intro__number">05</div>
+        <div className="section-intro__number">06</div>
         <div>
           <Text className="eyebrow">About / Methods</Text>
           <Text as="h2" className="section-title">Honest framing and where the details live</Text>
@@ -206,7 +218,7 @@ export default function App() {
       <header className="app-header">
         <div className="app-identity">
           <div className="app-logo"><span>ES</span></div>
-          <div><Text as="h1">Exercise Signature Explorer</Text><Text as="p">Track 2 · Omic Discordance Explained</Text></div>
+          <div><Text as="h1">Exercise Signature Explorer</Text><Text as="p">MoTrPAC exercise results for any molecule set</Text></div>
         </div>
         <div className="science-disclaimer"><span>RESEARCH USE</span> Cross-cohort association evidence — not a treatment claim</div>
       </header>
@@ -215,14 +227,16 @@ export default function App() {
           <Button
             className={`view-nav__item ${view === item.id ? "view-nav__item--active" : ""}`}
             onClick={() => setView(item.id)}
+            aria-current={view === item.id ? "page" : undefined}
             key={item.id}
           >
             <span>{item.eyebrow}</span>{item.label}
           </Button>
         ))}
       </nav>
-      {view === "discordance" && <Discordance />}
+      {view === "explorer" && <MotrpacExplorer />}
       {view === "live" && <LiveDashboard />}
+      {view === "discordance" && <Discordance />}
       {view === "generalized" && <GeneralizedQuery />}
       {view === "metabolomics" && <MetabolomicsCaseStudy />}
       {view === "methods" && <AboutMethods />}

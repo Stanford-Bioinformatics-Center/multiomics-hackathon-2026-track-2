@@ -29,8 +29,8 @@ from .schema import (
     LayerDiscordanceRow, MappingAuditRow, MultiplicityFamily,
 )
 
-SCHEMA_VERSION = "1.0.0"
-CODE_VERSION = "motrpac_probe_service/0.1.0"
+SCHEMA_VERSION = "1.1.0"
+CODE_VERSION = "motrpac_probe_service/0.2.0"
 
 # Analysis-affecting request fields (the run_id inputs). Presentation-only fields are excluded.
 _ANALYSIS_PARAM_KEYS = ("target_species", "selected_omics", "fdr_threshold")
@@ -40,7 +40,24 @@ _CONTRASTS = {
     "human_acute": ("post-exercise", "matched pre-exercise / control"),
     "rat_train": ("trained rat", "sex-matched sedentary rat"),
 }
-_DISEASE_CONTRAST = ("human idiopathic PAH vastus lateralis", "matched healthy human control")
+# Comparators below come from the committed fixture descriptions in examples/README.md.
+# An upload has no verified source design, so its comparator is deliberately generic.
+_EXAMPLE_CONTRASTS = {
+    "pah_muscle_malenfant2015": ("idiopathic PAH vastus lateralis (4 patients)",
+                                  "control vastus lateralis (4 people)"),
+    "pah_muscle_lower9_malenfant2015": ("idiopathic PAH vastus lateralis (4 patients)",
+                                         "control vastus lateralis (4 people)"),
+    "pah_blood_cheadle2012_eds": ("idiopathic PAH PBMC (30 people)", "healthy PBMC (41 people)"),
+    "pah_blood_gse33463_ranked": ("idiopathic PAH PBMC (30 people)", "healthy PBMC (41 people)"),
+    "type2_diabetes_muscle_mootha2003": (
+        "impaired-glucose-tolerance or type-2-diabetes vastus lateralis, OXPHOS gene set",
+        "normal-glucose-tolerance vastus lateralis"),
+    "heart_failure_lv_hannenhalli2006": ("failing human left ventricle", "non-failing human left ventricle"),
+    "aging_muscle_liu2013": ("older-adult biceps brachii", "young-adult biceps brachii"),
+    "septic_shock_blood_cvijanovich2008": ("pediatric septic-shock blood, day 1", "control blood"),
+    "hostrup2022_hiit_proteome": ("post-HIIT-training vastus lateralis", "pre-training vastus lateralis"),
+}
+_UNVERIFIED_CONTRAST = ("uploaded/source signature condition", "source comparator as supplied")
 
 # omic layer name (React/UI) -> engine store layer code
 _OMIC_TO_LAYER = {"transcriptomics": "RNA", "proteomics": "PROT", "phosphoproteomics": "PHOSPHO",
@@ -108,6 +125,13 @@ def _col_meta(S, cid):
                 sex=str(c.sex), timepoint=str(c.time), label=core.col_words(c))
 
 
+def _disease_contrast(request: AnalysisRequest) -> tuple[str, str]:
+    if request.example_name:
+        name = Path(request.example_name).name.removesuffix(".gz").removesuffix(".csv")
+        return _EXAMPLE_CONTRASTS.get(name, _UNVERIFIED_CONTRAST)
+    return _UNVERIFIED_CONTRAST
+
+
 def run_analysis(request: AnalysisRequest) -> AnalysisResponse:
     sig_path, sig_bytes, name, is_temp = _materialize_signature(request)
     try:
@@ -141,7 +165,8 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResponse:
                 column_id=str(r.column_id), comparison_label=m["label"], dataset=m["dataset"], species=m["species"],
                 tissue=m["tissue"], layer=m["layer"], sex=m["sex"], timepoint=m["timepoint"],
                 n_measured=int(r.n_measured), n_opposed=int(r.n_opposed), n_same=int(r.n_same),
-                camera_t=t, camera_p=_clean(r.camera_p), camera_fdr=q, verdict=verdict,
+                camera_t=t, camera_p=_clean(r.camera_p), camera_fdr=q,
+                camera_bonferroni=_clean(r.camera_bonferroni), verdict=verdict,
                 significant=bool(q is not None and q < cutoff)))
 
         # ---- per-feature evidence (grid_long: one row per shown gene per column), with full lineage
@@ -194,7 +219,8 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResponse:
 
         # ---- multiplicity family
         n_tests = int(sc.camera_p.notna().sum())
-        family = MultiplicityFamily(method="BH", threshold=cutoff, family_size=len(family_ids),
+        family = MultiplicityFamily(method="BH", methods=["BH", "Bonferroni"], threshold=cutoff,
+                                    family_size=len(family_ids),
                                     n_tests=n_tests, column_ids=family_ids)
 
         # ---- headline (the frozen result), computed, not hardcoded
@@ -202,13 +228,18 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResponse:
 
         # ---- provenance (engine builds it; opts['_path'] now set)
         prov = run.provenance(R, command="run_analysis")
-        prov["multiplicity_family"] = {"method": "BH", "family_size": len(family_ids), "n_tests": n_tests,
+        prov["multiplicity_family"] = {"method": "BH", "methods": ["BH", "Bonferroni"],
+                                       "family_size": len(family_ids), "n_tests": n_tests,
                                        "threshold": cutoff, "column_ids": family_ids}
         prov["run_id"] = run_id
         prov["schema_version"] = SCHEMA_VERSION
 
+        disease_num, disease_den = _disease_contrast(request)
+        prov["disease_contrast"] = {"numerator": disease_num, "denominator": disease_den,
+                                    "source": "committed example metadata" if request.example_name else
+                                              "user-supplied signature; comparator unverified"}
         contrasts = {ds: asdict(ContrastPair(
-            disease_numerator=_DISEASE_CONTRAST[0], disease_denominator=_DISEASE_CONTRAST[1],
+            disease_numerator=disease_num, disease_denominator=disease_den,
             exercise_numerator=ex[0], exercise_denominator=ex[1])) for ds, ex in _CONTRASTS.items()}
 
         status = "ok"
@@ -218,13 +249,17 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResponse:
         elif not columns:
             status, message = "no_compatible_data", "No compatible MoTrPAC comparison for this request."
 
+        caveats = list(_caveats.fixed_caveats())
+        caveats[0] = ("Direction agreement compares the supplied source signature with a MoTrPAC group "
+                      "contrast measured in different people or animals. It is not a treatment-effect test.")
+
         return AnalysisResponse(
             run_id=run_id, schema_version=SCHEMA_VERSION, status=status, message=message,
             signature_name=str(R["sig"].name), n_input_rows=audit_res["counts"]["n_input_rows"],
             n_counted_genes=len(R["sig"].genes), n_mapped_rows=audit_res["counts"]["n_mapped"],
             returned_layers=returned_layers, contrasts=contrasts, mapping_audit=audit_rows,
             columns=columns, features=features, layer_discordance=layer_rows, multiplicity_family=family,
-            headline=headline, caveats=list(_caveats.fixed_caveats()),
+            headline=headline, caveats=caveats,
             guardrails=[{"safe": s, "unsafe": u} for s, u in _caveats.GUARDRAILS], provenance=prov)
     finally:
         if is_temp:
@@ -245,13 +280,16 @@ def _headline(S, sc, cutoff) -> dict:
                 and c.sex == "M" and str(c.time).startswith("8")):
             r = s.loc[cid]
             q = _clean(r.camera_fdr)
+            q_text = "not estimable" if q is None else f"{q:.3g}"
             out["male_rat_skm_gn_protein_8wk"] = {
                 "column_id": cid, "camera_t": _clean(r.camera_t), "camera_p": _clean(r.camera_p),
                 "camera_fdr_family": q, "n_opposed": int(r.n_opposed), "n_measured": int(r.n_measured),
                 "significant_at_threshold": bool(q is not None and q < cutoff),
                 "interpretation": run.verdict(r.camera_t, r.camera_fdr, cutoff),
-                "statement": ("Directionally concordant (13/19 opposed) but NOT significant at "
-                              f"q<{cutoff} under the {len(s)}-column BH family (q={q:.4f}); a "
-                              "cross-cohort association, not evidence that exercise treats PAH."),
+                "statement": (f"{int(r.n_opposed)}/{int(r.n_measured)} measured signature members have an "
+                              "opposite-direction MoTrPAC estimate; "
+                              f"set-level BH q={q_text} across {len(s)} columns "
+                              f"({'significant' if q is not None and q < cutoff else 'not significant'} "
+                              f"at q<{cutoff}). Cross-cohort comparison, not a treatment-effect test."),
             }
     return out

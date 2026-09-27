@@ -110,6 +110,7 @@ class ColumnResult:
     camera_t: Optional[float]
     camera_p: Optional[float]         # unadjusted
     camera_fdr: Optional[float]       # BH across the whole family (NOT re-run on filtering)
+    camera_bonferroni: Optional[float] # Bonferroni across that same pre-filter family
     verdict: str                      # "opposed" | "same direction" | "no set-level shift"
     significant: bool                 # camera_fdr < fdr_threshold
 
@@ -134,6 +135,7 @@ class LayerDiscordanceRow:
 @dataclass
 class MultiplicityFamily:
     method: str                       # "BH"
+    methods: list[str]                # BH and Bonferroni, on the same primary cameraPR family
     threshold: float
     family_size: int                  # number of columns in the family (e.g. 52)
     n_tests: int                      # non-missing cameraPR tests actually adjusted
