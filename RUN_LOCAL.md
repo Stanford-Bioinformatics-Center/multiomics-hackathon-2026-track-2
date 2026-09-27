@@ -19,6 +19,16 @@ mprobe store fetch
 ```
 Node 22 for the web app (pinned via `apps/web/.mise.toml`).
 
+## One-off: pathway table for the explorer
+
+The explorer's *Pathways* input reads MoTrPAC's precomputed CAMERA results. Build the table once (about a minute, needs R) from the repository root:
+
+```
+Rscript apps/api/scripts_build_pathways.R
+```
+
+It writes `apps/api/data/motrpac_camera_pathways.csv.gz` (not committed; about 32 MB). Without it, gene/protein and metabolite lists still work and the Pathways tab explains how to build it.
+
 ## Terminal A — the API
 
 ```
@@ -47,7 +57,7 @@ stop it: `lsof -nP -iTCP:5173 -sTCP:LISTEN` then `kill <PID>`.
 | # | View | Data source |
 |---|---|---|
 | 01-04, 08 | Architecture / Technical flow / Workflow / Results dashboard / Judge slide | static design (mock) |
-| 05 | **Live results** | five-step PAH story from committed `MoTrPAC Hackathon/` outputs (`/api/story`), live engine runs for the T2D comparison and your own gene/protein or metabolite lists, and an evidence catalog; filters and significance rule are kept in the URL |
+| 05 | **Explorer** | paste or upload any gene/protein, metabolite or pathway list (or pick an example); returns every matching MoTrPAC comparison by omic layer (human acute and rat training, all tissues, contrasts, times, sexes) with raw P / BH / Bonferroni |
 | 06 | **Metabolomics (ST000763)** | standalone metabolomics module (read-only case study) |
 | 07 | **Generalized query** | `query_core` engine — pick a signature, run vs MoTrPAC; PAH examples reproduce the legacy result |
 

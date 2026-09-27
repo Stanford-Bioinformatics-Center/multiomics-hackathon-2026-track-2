@@ -28,6 +28,7 @@ from . import generalized_query as _genq
 from . import metab_casestudy as _metab
 from . import metab_upload as _metab_upload
 from . import story as _story
+from . import explorer as _explorer
 from . import export as _export
 from .schema import AnalysisRequest as _AnalysisRequest
 from .schema import SignatureRow as _SignatureRow
@@ -189,6 +190,49 @@ def get_story():
         return _story.build_story()
     except FileNotFoundError as error:
         raise HTTPException(status_code=404, detail=str(error))
+
+
+class ExplorerListIn(BaseModel):
+    kind: str
+    name: Optional[str] = None
+    text: Optional[str] = Field(default=None, max_length=5_000_000)
+    example: Optional[str] = None
+
+
+class ExplorerRequestIn(BaseModel):
+    lists: list[ExplorerListIn] = Field(min_length=1, max_length=6)
+
+
+@app.get("/api/explorer/examples")
+def explorer_examples():
+    """Neutral example inputs; each carries only a source citation."""
+    return {"examples": _explorer.list_examples()}
+
+
+class ExplorerFileIn(BaseModel):
+    filename: str = Field(min_length=1, max_length=300)
+    content_base64: str = Field(min_length=1, max_length=14_000_000)
+
+
+@app.post("/api/explorer/read-file")
+def explorer_read_file(req: ExplorerFileIn):
+    """Uploaded spreadsheet or text file -> CSV text plus a guessed list kind."""
+    import base64
+    try:
+        return _explorer.read_upload(req.filename, base64.b64decode(req.content_base64))
+    except (ValueError, UnicodeDecodeError) as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:  # unreadable workbook
+        raise HTTPException(status_code=422, detail=f"Could not read {req.filename}: {exc}") from exc
+
+
+@app.post("/api/explorer/analyse")
+def explorer_analyse(req: ExplorerRequestIn):
+    """Any gene/protein, metabolite or pathway list -> every matching MoTrPAC comparison by layer."""
+    try:
+        return _explorer.analyse([item.model_dump() for item in req.lists])
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
 
 
 @app.post("/api/availability")

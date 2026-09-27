@@ -1,6 +1,6 @@
 import { createElement, useEffect, useState, type ReactNode } from "react";
 import TechnicalFlowDiagram from "./components/TechnicalFlowDiagram";
-import LiveResultsStory from "./components/LiveResultsStory";
+import MotrpacExplorer from "./components/MotrpacExplorer";
 import MetabolomicsCaseStudy from "./components/MetabolomicsCaseStudy";
 import GeneralizedQuery from "./components/GeneralizedQuery";
 
@@ -11,7 +11,7 @@ const views: { id: View; label: string; eyebrow: string }[] = [
   { id: "technical", label: "Technical flow", eyebrow: "02" },
   { id: "workflow", label: "Researcher workflow", eyebrow: "03" },
   { id: "dashboard", label: "Reading guide", eyebrow: "04" },
-  { id: "live", label: "Live results", eyebrow: "05" },
+  { id: "live", label: "Explorer", eyebrow: "05" },
   { id: "metabolomics", label: "Metabolomics (ST000763)", eyebrow: "06" },
   { id: "generalized", label: "Generalized query", eyebrow: "07" },
   { id: "slide", label: "Judge slide", eyebrow: "08" },
@@ -461,7 +461,7 @@ export default function App() {
       <header className="app-header">
         <div className="app-identity">
           <div className="app-logo"><span>ES</span></div>
-          <div><Text as="h1">Exercise Signature Explorer</Text><Text as="p">System-design handoff · PAH worked example</Text></div>
+          <div><Text as="h1">Exercise Signature Explorer</Text><Text as="p">MoTrPAC exercise results for any molecule set</Text></div>
         </div>
         <div className="science-disclaimer"><span>RESEARCH USE</span> Directional evidence for follow-up — not a treatment claim</div>
       </header>
@@ -476,7 +476,7 @@ export default function App() {
       {view === "technical" && <TechnicalFlow />}
       {view === "workflow" && <Workflow />}
       {view === "dashboard" && <Dashboard onOpenLive={() => navigate("live")} />}
-      {view === "live" && <LiveResultsStory />}
+      {view === "live" && <MotrpacExplorer />}
       {view === "metabolomics" && <MetabolomicsCaseStudy />}
       {view === "generalized" && <GeneralizedQuery />}
       {view === "slide" && <JudgeSlide />}

@@ -307,6 +307,30 @@ export interface MetabolitePreview {
   note: string;
 }
 
+
+export type ExplorerKind = "genes" | "metabolites" | "pathways";
+export interface ExplorerExample { id: string; kind: ExplorerKind; label: string; source: string }
+export interface ExplorerInput {
+  id: number; name: string; kind: ExplorerKind; source: string | null; n_rows: number; n_mapped: number; n_names?: number;
+  unmapped: string[]; directed: boolean; ranked: boolean;
+}
+export interface ExplorerColumn {
+  id: string; species: string; tissue: string; tissue_label: string; layer: string; category: string; exercise: string;
+  time: string; time_label: string; time_rank: number; sex: string; n_tested?: number; n_measured?: number;
+  set_t?: number | null; set_p?: number | null; set_bh?: number | null; set_bonferroni?: number | null;
+  n_opposite?: number; n_same?: number; n_up?: number; n_down?: number;
+  rho?: number | null; rho_p?: number | null; rho_bh?: number | null; rho_bonferroni?: number | null; rho_n?: number;
+}
+/** [molecule index, column index, value (log2 FC or pathway z), raw P, BH q, Bonferroni] */
+export type ExplorerValue = [number, number, number | null, number | null, number | null, number | null];
+export interface ExplorerLayer {
+  id: string; label: string; available: boolean; reason?: string; n_matched: number; input: number | null;
+  molecules?: Array<{ name: string; dir: number; score: number | null; set?: string }>; n_shown?: number;
+  columns?: ExplorerColumn[]; values?: ExplorerValue[]; value_unit?: string;
+  family?: { n_tests: number | null; scope: string; methods: string[] }; molecule_rule?: string;
+}
+export interface ExplorerResponse { inputs: ExplorerInput[]; layers: ExplorerLayer[] }
+
 export interface SignatureRowInput {
   gene_symbol?: string;
   uniprot?: string;
@@ -356,6 +380,11 @@ export class ApiError extends Error {
 
 export const api = {
   story: () => getJSON<StoryResponse>("/story"),
+  explorerExamples: () => getJSON<{ examples: ExplorerExample[] }>("/explorer/examples"),
+  explorerReadFile: (body: { filename: string; content_base64: string }) =>
+    postJSON<{ text: string; kind: ExplorerKind | null; n_rows: number; columns: string[] }>("/explorer/read-file", body),
+  explorerAnalyse: (body: { lists: Array<{ kind: ExplorerKind; name?: string; text?: string; example?: string }> }) =>
+    postJSON<ExplorerResponse>("/explorer/analyse", body),
   health: () => getJSON<{ status: string; schema_version: string; store_hash: string }>("/health"),
   catalog: () => getJSON<Catalog>("/catalog"),
   availability: (body: {
