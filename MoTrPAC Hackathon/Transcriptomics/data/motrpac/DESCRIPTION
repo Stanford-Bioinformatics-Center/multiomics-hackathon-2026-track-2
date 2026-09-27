@@ -1,0 +1,89 @@
+Package: MotrpacHumanPreSuspensionAnalysis
+Title: Summary Statistics and Modeling Results from the MoTrPAC Pre-COVID Suspension Phase
+Version: 2.0.8
+Date: 2026-09-23
+Authors@R: c(
+    person(given = "Christopher", family = "Jin", 
+           email = "cajin@stanford.edu", 
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-7340-5023")),
+    person(given = "Tyler", family = "Sagendorf", 
+           email = "tyler.sagendorf@pnnl.gov", 
+           role = c("aut"),
+           comment = c(ORCID = "0000-0003-1552-4870")),
+    person(given = "Courtney", family = "Simmons", 
+           email = "cgsimmon@wakehealth.edu", 
+           role = c("aut"),
+           comment = c(ORCID = "0000-0002-3613-2377")),
+    person(given = "Catherine", family = "Gervais", 
+           email = "cgervais@wakehealth.edu", 
+           role = c("aut"),
+           comment = c(ORCID = "0009-0005-9947-4963")),
+    person(given = "Byron", family = "Jaeger", 
+           email = "bjaeger@wakehealth.edu", 
+           role = c("aut"),
+           comment = c(ORCID = "0000-0001-7399-2299")),
+    person(given = "Natalie", family = "Clark",
+          email = "nclark@broadinstitute.org",
+          role = c("aut"),
+          comment = c(ORCID = "0000-0003-0988-321X")),
+    person(given = "David", family = "Jimenez-Morales",
+          email = "david.jimenez-morales@stanford.edu",
+          role = c("aut"),
+          comment = c(ORCID = "0000-0003-4356-6461")),
+    person(given = "Daniel", family = "Katz",
+          email = "dankatz@stanford.edu",
+          role = c("aut"),
+          comment = c(ORCID = "0000-0001-7237-8502"))
+ )
+Description: This package distributes summary-level results from the MoTrPAC human
+    pre-COVID sedentary adult cohort and helpful functions used in the MoTrPAC
+    analysis.
+URL: https://motrpac.github.io/MotrpacHumanPreSuspensionAnalysis/
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Depends: 
+    R (>= 4.4)
+LazyData: true
+LazyDataCompression: xz
+Imports: 
+    data.table (>= 1.15.0),
+    dplyr,
+    magrittr,
+    MotrpacBicQC (>= 2.0.0),
+    stats,
+    tibble,
+    utils,
+    tidyr,
+    ggplot2,
+    ggpubr,
+    grDevices,
+    grid,
+    gridtext,
+    ComplexHeatmap,
+    latex2exp,
+    Biobase,
+    scales,
+    stringr,
+    Mfuzz,
+    TMSig (>= 1.0.0)
+Suggests:
+    here,
+    knitr,
+    patchwork,
+    pkgdown,
+    pheatmap,
+    rmarkdown,
+    readr,
+    roxygen2,
+    table.glue,
+    testthat (>= 3.0.0),
+    variancePartition,
+    RColorBrewer,
+    cmapR
+Remotes: MoTrPAC/MotrpacBicQC@v2.0.0
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+Config/roxygen2/version: 8.0.0
+RoxygenNote: 7.3.3

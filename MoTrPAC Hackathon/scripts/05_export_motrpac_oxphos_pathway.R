@@ -21,8 +21,8 @@ if (!requireNamespace(package_name, quietly = TRUE)) {
   stop("Install MotrpacHumanPreSuspensionAnalysis before running this script.")
 }
 package_version <- as.character(utils::packageVersion(package_name))
-if (package_version != "0.2.4") {
-  stop("Expected MotrpacHumanPreSuspensionAnalysis 0.2.4; found ", package_version)
+if (package_version != "2.0.8") {
+  stop("Expected MotrpacHumanPreSuspensionAnalysis 2.0.8; found ", package_version)
 }
 suppressPackageStartupMessages(library(MotrpacHumanPreSuspensionAnalysis))
 
@@ -52,11 +52,13 @@ if (nrow(results) != 3L || !setequal(results$Timepoint, times) ||
 }
 results <- results[match(times, results$Timepoint), , drop = FALSE]
 results$source_package_version <- package_version
+results$source_collection <- "c2.0"
 
 columns <- c(
   "tissue", "assay", "contrast_category", "contrast", "contrast_short",
   "Timepoint", "collection", "database", "set_id", "set", "set_size",
-  "direction", "z.std", "p_value", "adj_p_value", "source_package_version"
+  "direction", "z.std", "p_value", "adj_p_value", "source_package_version",
+  "source_collection"
 )
 output <- results[, columns, drop = FALSE]
 output_dir <- file.path(project_root, "outputs", "PAH protein")

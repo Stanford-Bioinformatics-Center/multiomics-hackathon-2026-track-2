@@ -7,7 +7,7 @@
 # Run from any directory with:
 #   Rscript scripts/10_export_motrpac_blood_gobp.R
 #
-# Source: MotrpacHumanPreSuspensionAnalysis 0.2.4 CAMERA_RESULTS
+# Source: MotrpacHumanPreSuspensionAnalysis 2.0.8 CAMERA_RESULTS
 # Outputs: outputs/PAH blood/motrpac_blood_gobp_camera.csv.gz and QC
 
 script_flag <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
@@ -19,11 +19,11 @@ dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 package_name <- "MotrpacHumanPreSuspensionAnalysis"
 if (!requireNamespace(package_name, quietly = TRUE)) {
-  stop("Install MotrpacHumanPreSuspensionAnalysis 0.2.4 first.")
+  stop("Install MotrpacHumanPreSuspensionAnalysis 2.0.8 first.")
 }
 package_version <- as.character(utils::packageVersion(package_name))
-if (package_version != "0.2.4") {
-  stop("Expected MotrpacHumanPreSuspensionAnalysis 0.2.4; found ",
+if (package_version != "2.0.8") {
+  stop("Expected MotrpacHumanPreSuspensionAnalysis 2.0.8; found ",
        package_version)
 }
 suppressPackageStartupMessages(library(MotrpacHumanPreSuspensionAnalysis))
@@ -56,9 +56,9 @@ results$contrast_category <- as.character(
 times <- c("during_20_min", "during_40_min", "post_10_min",
            "post_15_30_45_min", "post_3.5_4_hr", "post_24_hr")
 per_time <- table(factor(results$Timepoint, levels = times))
-if (nrow(results) != 28368L ||
+if (nrow(results) != 28374L ||
     !setequal(unique(results$Timepoint), times) ||
-    !all(as.integer(per_time) == 4728L) ||
+    !all(as.integer(per_time) == 4729L) ||
     any(results$contrast_category != "EE-CON") ||
     anyDuplicated(results[, c("Timepoint", "set")])) {
   stop("Unexpected MoTrPAC blood RNA GOBP set or time-point count.")
@@ -66,10 +66,11 @@ if (nrow(results) != 28368L ||
 
 results <- results[order(match(results$Timepoint, times), results$set), ]
 results$source_package_version <- package_version
+results$source_collection <- "c2.0"
 columns <- c("tissue", "assay", "contrast_category", "contrast_short",
              "Timepoint", "collection", "database", "set", "set_short",
              "set_size", "direction", "z.std", "p_value", "adj_p_value",
-             "source_package_version")
+             "source_package_version", "source_collection")
 write.csv(results[, columns],
           gzfile(file.path(output_dir, "motrpac_blood_gobp_camera.csv.gz")),
           row.names = FALSE, na = "")
@@ -80,7 +81,8 @@ qc <- data.frame(
   pathways_with_bh_below_0.05 = vapply(times, function(time) {
     sum(results$Timepoint == time & results$adj_p_value < 0.05)
   }, integer(1)),
-  source_package_version = package_version
+  source_package_version = package_version,
+  source_collection = "c2.0"
 )
 write.csv(qc, file.path(output_dir, "motrpac_blood_gobp_camera_qc.csv"),
           row.names = FALSE)

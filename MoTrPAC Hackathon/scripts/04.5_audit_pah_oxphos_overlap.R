@@ -7,7 +7,7 @@
 #   Rscript scripts/04.5_audit_pah_oxphos_overlap.R
 #
 # Inputs: outputs/PAH protein/pah_protein_motrpac_rna_matches.csv (script 04),
-# and the published MotrpacHumanPreSuspensionAnalysis 0.2.4
+# and the published MotrpacHumanPreSuspensionAnalysis 2.0.8
 # MOLECULAR_SIGNATURES object. Script 05 is not an input.
 # This is an exact membership lookup. It does not perform enrichment testing
 # and does not estimate an exercise effect in PAH patients.
@@ -22,8 +22,8 @@ if (!requireNamespace(package_name, quietly = TRUE)) {
   stop("Install MotrpacHumanPreSuspensionAnalysis before running this script.")
 }
 package_version <- as.character(utils::packageVersion(package_name))
-if (package_version != "0.2.4") {
-  stop("Expected MotrpacHumanPreSuspensionAnalysis 0.2.4; found ", package_version)
+if (package_version != "2.0.8") {
+  stop("Expected MotrpacHumanPreSuspensionAnalysis 2.0.8; found ", package_version)
 }
 suppressPackageStartupMessages(library(MotrpacHumanPreSuspensionAnalysis))
 
@@ -35,7 +35,7 @@ if (nrow(matches) != 9L || anyDuplicated(matches$uniprot_accession) ||
     anyNA(matches$motrpac_current_symbol) ||
     any(matches$motrpac_rna_timepoint != "post_24_hr") ||
     any(matches$motrpac_package_version != package_version)) {
-  stop("Expected nine distinct 24-hour RNA matches from package version 0.2.4.")
+  stop("Expected nine distinct 24-hour RNA matches from package version 2.0.8.")
 }
 
 set_name <- "GOBP_OXIDATIVE_PHOSPHORYLATION"

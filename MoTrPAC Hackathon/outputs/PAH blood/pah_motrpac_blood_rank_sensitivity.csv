@@ -1,7 +1,7 @@
 "Timepoint","analysis","shared_genes","spearman_rho"
-"during_20_min","primary_max_abs_t",13055,-0.0787638949363291
-"during_20_min","exclude_oxygen_transport_and_peroxide_catabolism",13031,-0.0774424009714389
-"during_20_min","highest_mean_expression_probe",13055,-0.090965338370927
+"during_20_min","primary_max_abs_t",13055,-0.0787638852338708
+"during_20_min","exclude_oxygen_transport_and_peroxide_catabolism",13031,-0.0774423912369654
+"during_20_min","highest_mean_expression_probe",13055,-0.0909653301300398
 "during_40_min","primary_max_abs_t",13055,-0.0285862077075032
 "during_40_min","exclude_oxygen_transport_and_peroxide_catabolism",13031,-0.0269367514625829
 "during_40_min","highest_mean_expression_probe",13055,-0.0362672282123616

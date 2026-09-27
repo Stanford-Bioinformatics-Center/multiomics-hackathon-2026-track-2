@@ -1,0 +1,15 @@
+{
+  "source_repository": "https://github.com/MoTrPAC/MotrpacRatTraining6moData",
+  "repository_commit": "f831a4fe421ec11687640452484a8247137aa74a",
+  "package_version": "2.0.0",
+  "downloaded_utc_date": "2026-09-26",
+  "files": {
+    "PROT_SKMGN_DA.rda": "51c45a3dd2e64aac157b25ab98ae5265c0aeed782ef965e698229cc301f8d814",
+    "PROT_SKMGN_NORM_DATA.rda": "cd38cc2baf14f7046029de7cf20f9c8a985fcac5140156d6ee943c8c7a0aa323",
+    "FEATURE_TO_GENE_FILT.rda": "bd7873a952c39c23bc68778c1af3394231b350bd07e33f50a3d0b9439eea5b06",
+    "RAT_TO_HUMAN_GENE.rda": "faa3952548b258828dd86cdfbf8956be8745b5d96e7075982077df4e66c1763b",
+    "PROT_META.rda": "270ee348d517f86d23424bf2def3b605721ab3b0790fe2378f470e305bb3fc9c",
+    "PHENO.rda": "5bf5f00e442aec6950dce8ba5ba35cb3d3ef3e2713e96cb997227e7493022925"
+  },
+  "sha256_note": "Values are SHA-256 hashes of the downloaded .rda files. Files came from raw.githubusercontent.com/MoTrPAC/MotrpacRatTraining6moData/main/data/ at the recorded commit."
+}

@@ -7,7 +7,7 @@
 #   Rscript scripts/09_test_pah_gobp_pathways.R
 #
 # Input:  outputs/PAH blood/pah_blood_gene_ranked.csv.gz (script 07)
-# Source: MotrpacHumanPreSuspensionAnalysis 0.2.4 GOBP gene sets
+# Source: MotrpacHumanPreSuspensionAnalysis 2.0.8 GOBP gene sets
 # Outputs: outputs/PAH blood/pah_gobp_camera.csv and QC
 #
 # A competitive pathway result describes a pattern across measured genes.
@@ -21,12 +21,12 @@ output_dir <- file.path(project_root, "outputs", "PAH blood")
 
 if (!requireNamespace("limma", quietly = TRUE) ||
     !requireNamespace("MotrpacHumanPreSuspensionAnalysis", quietly = TRUE)) {
-  stop("Install limma and MotrpacHumanPreSuspensionAnalysis 0.2.4 first.")
+  stop("Install limma and MotrpacHumanPreSuspensionAnalysis 2.0.8 first.")
 }
 package_version <- as.character(utils::packageVersion(
   "MotrpacHumanPreSuspensionAnalysis"))
-if (package_version != "0.2.4") {
-  stop("Expected MotrpacHumanPreSuspensionAnalysis 0.2.4; found ",
+if (package_version != "2.0.8") {
+  stop("Expected MotrpacHumanPreSuspensionAnalysis 2.0.8; found ",
        package_version)
 }
 
@@ -40,7 +40,7 @@ if (!all(c("gene_symbol", "t") %in% names(gene)) ||
 }
 
 # Use the same GOBP set definitions as the original GMT-based analysis.
-# Package 0.2.4 was checked locally against its source GMT: all 7,647 GOBP
+# Package 2.0.8 was checked locally against its source GMT: all 7,647 GOBP
 # names, order, and gene memberships matched. Use numerical indices so the
 # gene statistics and set membership follow the same row order.
 signatures <- suppressPackageStartupMessages(getExportedValue(
@@ -48,7 +48,7 @@ signatures <- suppressPackageStartupMessages(getExportedValue(
 gene_sets <- lapply(signatures[["GOBP"]], unique)
 if (length(gene_sets) != 7647L ||
     anyDuplicated(names(gene_sets))) {
-  stop("Unexpected GOBP collection in package 0.2.4.")
+  stop("Unexpected GOBP collection in package 2.0.8.")
 }
 index <- lapply(gene_sets, function(s) which(gene$gene_symbol %in% s))
 # Use tested-gene membership, not the unfiltered size of each GO set.

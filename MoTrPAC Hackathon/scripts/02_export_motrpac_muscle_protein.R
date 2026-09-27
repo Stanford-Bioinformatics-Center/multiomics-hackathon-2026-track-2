@@ -14,8 +14,8 @@ if (!requireNamespace(package_name, quietly = TRUE)) {
   stop("Install MotrpacHumanPreSuspensionAnalysis before running this script.")
 }
 package_version <- as.character(utils::packageVersion(package_name))
-if (package_version != "0.2.4") {
-  stop("Expected MotrpacHumanPreSuspensionAnalysis 0.2.4; found ", package_version)
+if (package_version != "2.0.8") {
+  stop("Expected MotrpacHumanPreSuspensionAnalysis 2.0.8; found ", package_version)
 }
 suppressPackageStartupMessages(library(MotrpacHumanPreSuspensionAnalysis))
 
@@ -33,18 +33,19 @@ times <- c("post_15_30_45_min", "post_3.5_4_hr", "post_24_hr")
 keep <- as.character(results$contrast_category) == "EE-CON" &
   as.character(results$Timepoint) %in% times
 results <- results[keep, , drop = FALSE]
-if (nrow(results) != 18591L) stop("Unexpected number of protein result rows.")
+if (nrow(results) != 18633L) stop("Unexpected number of protein result rows.")
 if (anyDuplicated(paste(results$Timepoint, results$feature_id))) {
   stop("Duplicate protein feature IDs within a time point.")
 }
 if (anyNA(results$uniprot)) stop("At least one protein lacks a UniProt accession.")
 results$source_package_version <- package_version
+results$source_collection <- "c2.0"
 
 columns <- c(
   "tissue", "assay", "contrast_type", "contrast_category", "contrast", "contrast_short",
   "Timepoint", "feature_id", "uniprot", "gene_symbol",
   "logFC", "z.std", "p_value", "adj_p_value", "full_model",
-  "source_package_version"
+  "source_package_version", "source_collection"
 )
 output <- results[, columns, drop = FALSE]
 output_dir <- file.path(project_root, "data", "processed")

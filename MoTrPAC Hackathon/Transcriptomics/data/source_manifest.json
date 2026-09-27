@@ -1,0 +1,22 @@
+{
+  "paper": {
+    "file": "paper/Cheadle2012.pdf",
+    "citation": "Cheadle et al. PLoS ONE 7:e34951 (2012), Table 2",
+    "doi": "10.1371/journal.pone.0034951",
+    "sha256": "47db9ba22cbe775441658b54b9a43fa4cba6d25f7a7ef878bb177e33cf2aad5d"
+  },
+  "paper_table_transcription": {
+    "file": "paper/table2_selected_pathways.csv",
+    "source": "Manually checked transcription of the eight selected Table 2 rows",
+    "sha256": "bc3def0991022affe03be6844decc927a8083f43fc3bb7f900688d4bff4564b2"
+  },
+  "motrpac_camera": {
+    "file": "motrpac/CAMERA_RESULTS.rda",
+    "source": "MotrpacHumanPreSuspensionAnalysis 2.0.8, data/CAMERA_RESULTS.rda",
+    "sha256": "065d827e001a39662ca5334515e9b5a78461eca7cc8fa2190d32a00a3d594d04"
+  },
+  "motrpac_description": {
+    "file": "motrpac/DESCRIPTION",
+    "sha256": "197b59c491460f83dcc2fb5895f0d73052f3128264f426fb31ab2c051a2e85c5"
+  }
+}
