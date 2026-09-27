@@ -1098,3 +1098,31 @@ actions"), a stated judging criterion. Newest at the bottom.
   test, or engine file changed; the golden-hash guard on `analysis.py` is unaffected. Two team actions
   remain before submission: insert Explorer/Discordance screenshots (README §7) and confirm per-person
   contributor roles (README §8). The next task is the merge to `main` per `MERGE_PLAN.md`.
+
+## ADR-0026 (merge prep) — Relocate the stale, regenerable `tool/site` gallery to `legacy/site` before merging to main
+- **Context.** Preparing the `integration/exercise-signature-explorer` → `main` merge (44 commits,
+  ~1003 files), the largest non-functional payload was `hackathon/tool/site/` — **193 MB across 572
+  files** (pre-rendered report HTML + multi-MB CSV tables, incl. a 60 MB `pathway_concordance_long.csv`).
+  It is **not referenced by the app runtime** (no `apps/` usage), and HANDOFF flagged it as recording a
+  **stale commit**. It is a **generated** artifact: the engine's `motrpac_probe site` CLI re-renders it
+  into `tool/site/` from the example run folders (`scripts_regenerate_gallery.md`); the CLI does not
+  read the committed copy.
+- **Decision.** `git mv hackathon/tool/site legacy/site` (history preserved) and add `legacy/README.md`
+  explaining that the folder holds set-aside, regenerable artifacts not used by the live app. Keep it
+  tracked (per the user's instruction to relocate, not untrack), so the live `hackathon/tool/` tree
+  carries source rather than a large regenerable output, while the artifact remains available for
+  reference.
+- **Reasons.** Relocating a stale, regenerable, unreferenced 193 MB artifact out of the tool source
+  tree keeps `main`'s working tree honest about what is source vs. output, without losing the reference
+  copy or rewriting history. A `git mv` preserves provenance (renames, not delete+add). Regeneration is
+  documented, so the canonical way to get a fresh gallery is the CLI, not these files.
+- **Alternatives rejected.** (a) Untrack via `git rm --cached` + `.gitignore` — the user chose to
+  relocate to `legacy/`, not untrack; and it would drop the reference copy. (b) Leave it at
+  `hackathon/tool/site/` — keeps a large stale output intermixed with source, the problem being solved.
+  (c) History rewrite to shrink the repo — out of scope and destructive; NOTE that `git mv` does NOT
+  shrink the repo (the 193 MB stays in history and in the tree, just relocated).
+- **Consequences.** 572 files relocated `hackathon/tool/site/** → legacy/site/**`; new `legacy/README.md`
+  and this ADR. No runtime source, engine, API, web, CI, or test file changed; the `motrpac_probe site`
+  CLI still regenerates into `hackathon/tool/site/` (now untracked until regenerated). The repository
+  size is unchanged (relocation, not removal). This is a merge-prep hygiene move; the merge itself
+  follows MERGE_PLAN.md (merge commit, no squash, no rebase over the shared tool branch).
