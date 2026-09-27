@@ -1,8 +1,23 @@
-param([string]$RscriptPath = 'C:\Program Files\R\R-4.4.2\bin\Rscript.exe')
+param([string]$RscriptPath = '')
 $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
-if (-not (Test-Path -LiteralPath $RscriptPath)) {
-    $RscriptPath = (Get-Command Rscript -ErrorAction Stop).Source
+if (-not $RscriptPath) {
+    $onPath = Get-Command Rscript -ErrorAction SilentlyContinue
+    if ($onPath) {
+        $RscriptPath = $onPath.Source
+    } else {
+        $installRoot = 'C:\Program Files\R'
+        if (Test-Path -LiteralPath $installRoot) {
+            $RscriptPath = Get-ChildItem -LiteralPath $installRoot -Directory -Filter 'R-*' |
+                Sort-Object Name -Descending |
+                ForEach-Object { Join-Path $_.FullName 'bin\Rscript.exe' } |
+                Where-Object { Test-Path -LiteralPath $_ } |
+                Select-Object -First 1
+        }
+    }
+}
+if (-not $RscriptPath -or -not (Test-Path -LiteralPath $RscriptPath)) {
+    throw 'Rscript not found. Install R or pass -RscriptPath with its executable path.'
 }
 Push-Location -LiteralPath $root
 try {

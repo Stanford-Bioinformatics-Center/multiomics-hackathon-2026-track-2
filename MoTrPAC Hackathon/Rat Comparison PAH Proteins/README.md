@@ -4,33 +4,35 @@ This folder starts with the nine proteins in the **Downregulated proteins** part
 
 ## Data prep
 
-`data/paper/Malenfant2015.pdf`, page 5, contains Table 2. `data/paper/pah_lower_proteins_malenfant2015.csv` transcribes its nine downregulated rows, including the paper's UniProt accession, symbol, PAH/control ratio, and reported P value. Check this CSV against the PDF before changing it. For example, NDUFA9 has a ratio of **0.71**: measured abundance in the resting PAH group was about **29% lower** than in the paper's healthy controls. A ratio below 1 identifies a downregulated paper entry; it does not predict the rat exercise response.
+`data/paper/pah_lower_proteins_malenfant2015.csv` transcribes the nine downregulated rows from Table 2 of Malenfant et al., including the paper's UniProt accession, symbol, PAH/control ratio, and reported P value. Table 2 is on page 5 of the local article PDF used to prepare this CSV. The publisher PDF is **not required or distributed with the shared pipeline**; use the article DOI under Sources if you need to check the table. For example, NDUFA9 has a ratio of **0.71**: measured abundance in the resting PAH group was about **29% lower** than in the paper's healthy controls. A ratio below 1 identifies a downregulated paper entry; it does not predict the rat exercise response.
 
 `data/rat/` contains the official MoTrPAC `MotrpacRatTraining6moData` version 2.0.0 objects used here. `source_manifest.json` records the source repository, pinned commit, and SHA-256 hash for each `.rda` file. `PROT_SKMGN_NORM_DATA` is sample-level normalized gastrocnemius protein abundance. `PHENO` describes the rats. `RAT_TO_HUMAN_GENE` and `FEATURE_TO_GENE_FILT` provide ortholog and feature mappings. `PROT_SKMGN_DA` contains MoTrPAC's published sex-specific differential-abundance results. The data are copied here so this folder can run without depending on `module_staging`.
 
 ## Run the pipeline
 
-Open PowerShell. Run the script below from any location; it finds this folder and runs each step in order. R 4.4.2 is installed at the path shown. If your R location differs, pass `-RscriptPath 'your\path\to\Rscript.exe'`.
+Install **Python 3.10 or newer** and **R 4.4 or newer**. Only Python's standard library and base R are used. From a clone of the repository, change into this module folder and run the platform-independent runner:
 
-```powershell
-& 'C:\Users\vanes\Downloads\MoTrPAC\MoTrPAC Hackathon\Rat Comparison PAH Proteins\scripts\run_all.ps1'
+```sh
+cd "MoTrPAC Hackathon/Rat Comparison PAH Proteins"
+python scripts/run_all.py
 ```
 
-To run **one step at a time**, first change to this folder, then run the scripts in the order below. `01` must finish before `02`, and so on. All R scripts use base R; no extra R package is needed.
+The runner checks the CSV and the SHA-256 hashes of all rat data files, finds `Rscript` on `PATH` (or in a standard Windows R installation), and runs Steps 01–05. If Rscript is elsewhere, use `python scripts/run_all.py --rscript "/path/to/Rscript"`. The included rat data allow this to run without downloading new data or installing an MoTrPAC R package.
 
-```powershell
-Set-Location 'C:\Users\vanes\Downloads\MoTrPAC\MoTrPAC Hackathon\Rat Comparison PAH Proteins'
-& '.\scripts\00_verify_inputs.ps1'
-& 'C:\Program Files\R\R-4.4.2\bin\Rscript.exe' '.\scripts\01_map_paper_to_rat.R'
-& 'C:\Program Files\R\R-4.4.2\bin\Rscript.exe' '.\scripts\02_prepare_rat_samples.R'
-& 'C:\Program Files\R\R-4.4.2\bin\Rscript.exe' '.\scripts\03_estimate_training_course.R'
-& 'C:\Program Files\R\R-4.4.2\bin\Rscript.exe' '.\scripts\04_compare_pooling_choices.R'
-& 'C:\Program Files\R\R-4.4.2\bin\Rscript.exe' '.\scripts\05_plot_training_course.R'
+To run **one step at a time**, stay in this module folder and run the commands below. `01` must finish before `02`, and so on. If `Rscript` is not on `PATH`, use its full executable path in place of `Rscript`. On Windows, `scripts/run_all.ps1` is also available; it accepts `-RscriptPath`.
+
+```sh
+python scripts/run_all.py --verify-only
+Rscript scripts/01_map_paper_to_rat.R
+Rscript scripts/02_prepare_rat_samples.R
+Rscript scripts/03_estimate_training_course.R
+Rscript scripts/04_compare_pooling_choices.R
+Rscript scripts/05_plot_training_course.R
 ```
 
 ## Scripts and outputs
 
-1. **`00_verify_inputs.ps1`** checks the nine paper rows and verifies every rat `.rda` file against the manifest hash. Stop if a hash fails; the following results would no longer have the stated provenance.
+1. **`run_all.py --verify-only`** checks the nine paper rows and verifies every rat `.rda` file against the manifest hash. The Windows alternative is `00_verify_inputs.ps1`. Stop if a hash fails; the following results would no longer have the stated provenance.
 2. **`01_map_paper_to_rat.R`** makes `output/01_paper_to_rat_mapping.csv`. It retains each paper UniProt accession for audit, applies an explicit paper-symbol-to-current-human-symbol crosswalk, then uses MoTrPAC's human-to-rat ortholog table and rat feature table. ATP5L is now **ATP5MG**; ATP5B is now **ATP5F1B**. The script demands one rat ortholog and one measured feature for each paper protein. It also exports `01_official_sex_specific_weekly.csv`: nine proteins × two sexes × four weeks = **72 published contrast rows**. `logFC` is trained minus sedentary. `adj_p_value` is MoTrPAC's published adjusted P value; `selection_fdr` tests a different training-selection question and should not be called an 8-week P value.
 3. **`02_prepare_rat_samples.R`** matches each selected protein value to the rat's sex and training group. `02_rat_protein_samples.csv` contains nine proteins × 57 rats = **513 rows**; `02_sample_counts.csv` shows the group sizes. There are 47 trained protein samples across weeks 1, 2, 4, and 8, and 10 sedentary samples. The sedentary muscle samples were collected at the **8-week endpoint only**.
 4. **`03_estimate_training_course.R`** fits `normalized log2 protein ~ sex + group` once per protein. It saves 45 sex-adjusted group means and 95% model confidence intervals in `03_sex_adjusted_group_means.csv`. Equal weighting of female and male predictions stops unequal group counts from changing what “sex-combined mean” means. `03_training_vs_sedentary_by_week.csv` has the trained-minus-sedentary estimates, P values, and exploratory BH q values across the nine chosen proteins **within each week**. `03_training_duration_patterns.csv` checks whether the four trained-group means strictly rise or fall and fits a separate, exploratory linear week slope among trained rats. A significant slope is not the same as every successive mean increasing.
@@ -47,5 +49,5 @@ The all-week pooled comparison detects **4/9** with targeted BH q < 0.05. It mix
 
 ## Sources
 
-- Malenfant et al., *Journal of Molecular Medicine* (2015), Table 2, DOI [10.1007/s00109-014-1244-0](https://doi.org/10.1007/s00109-014-1244-0); local copy: `data/paper/Malenfant2015.pdf`.
+- Malenfant et al., *Journal of Molecular Medicine* (2015), Table 2, DOI [10.1007/s00109-014-1244-0](https://doi.org/10.1007/s00109-014-1244-0).
 - MoTrPAC Study Group, *Nature* 629, 174–183 (2024), DOI [10.1038/s41586-023-06877-w](https://doi.org/10.1038/s41586-023-06877-w); rat data package [MotrpacRatTraining6moData](https://github.com/MoTrPAC/MotrpacRatTraining6moData), commit recorded in `data/rat/source_manifest.json`.
