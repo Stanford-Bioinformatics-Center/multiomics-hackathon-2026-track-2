@@ -20,17 +20,91 @@ resolve the repo root as `Path(__file__).resolve().parents[3]`, guard availabili
 `available()` check, read committed CSV/JSON, coerce `NaN`/`Infinity` → `null`, and return a
 JSON-safe dataclass.
 
-## The five analysis types
+## The six analysis types
 
+0. **explorer** — `explorer.analyse`, `motrpac_probe` engine (API + UI, **live**; the app's **default view** and headline paper→demo trace).
 1. **directed_signature** — `run_analysis`, `motrpac_probe` engine (API + UI, live).
 2. **metabolomics_case_study** — `metab_casestudy` Option-1 adapter over the ST000763 module (API + UI, read-only).
 3. **generalized_query** — `generalized_query` adapter over `query_core` (API + UI; upload endpoint planned).
 4. **discordance catalog + predictive model** — standalone discordance module (**CLI-only today**; read-only API + Discordance view planned).
 5. **PTM-parent audit** — `audit_ptm_parent.py` (**CLI-only today**; read-only API + Discordance view planned).
 
+The shipped app presents **six navigable views** (Explorer as the default on load): Explorer,
+Live results (API), Discordance, Generalized query, Metabolomics (ST000763), and About/Methods.
+The Explorer (analysis type 0) is the generalized "any molecule list in, every matching MoTrPAC
+result out" tool and is the headline; it was added by the `origin/motrpac-explorer` merge (see
+DECISIONS.md ADR-0023 and ADR-0024).
+
 Each type below is traced through the **seven stages in order**: entry point → module/function →
 data read → transform → output fields → provenance/run_id → UI view. Any stage that does not exist
 for a type is stated as **not applicable** rather than omitted.
+
+---
+
+## 0. explorer  **(live; default view; headline)**
+
+Take any list of genes/proteins, metabolites, or pathways — with no disease label — and return
+every matching MoTrPAC comparison, layer by layer, with honest BH + Bonferroni correction. This is
+the generalized counterpart to `directed_signature`: instead of one built-in disease signature, the
+user brings their own set (paste, upload, or a cited example). Statistics are computed by the
+`motrpac_probe` engine (cameraPR); the API/UI only serve, shape, and render.
+
+```mermaid
+flowchart TD
+  UI["Explorer view — MotrpacExplorer.tsx (paste / upload / pick example)"] --> CL["client.ts api.explorerAnalyse / explorerReadFile / explorerExamples"]
+  CL --> EPX["POST /api/explorer/analyse (app.py)"]
+  CL --> EPF["POST /api/explorer/read-file (upload → CSV text + guessed kind)"]
+  CL --> EPE["GET /api/explorer/examples (cited example inputs)"]
+  EPX --> AN["explorer.analyse(lists) — content-hash _CACHE"]
+  AN --> RD["_read + _map — parse list, detect kind, map ids via signature.map_genes / metab.map_metabolites"]
+  RD --> LAY["_layer / _pathway_layer — engine core.score_column (cameraPR) per MoTrPAC comparison"]
+  LAY --> FAM["_family — BH + Bonferroni over one layer-wide family (every included comparison)"]
+  FAM --> SHAPE["shape ExplorerColumn / values (NaN/inf → None via _f); store-sourced study_label"]
+  SHAPE --> RESP["ExplorerResponse (inputs[] + layers[])"]
+  RESP --> VIEW["MotrpacExplorer.tsx — per-layer tables (raw p / BH / Bonferroni), fused RNA↔protein co-view, CSV export"]
+```
+
+1. **Entry point.** UI: `apps/web/src/components/MotrpacExplorer.tsx` calls the typed client
+   `apps/web/src/api/client.ts` (`api.explorerAnalyse`, `api.explorerReadFile`, `api.explorerExamples`).
+   API: `POST /api/explorer/analyse` (`explorer_analyse`, 1–6 lists), plus `POST /api/explorer/read-file`
+   (uploaded spreadsheet/text → CSV text + guessed kind) and `GET /api/explorer/examples` (the cited
+   example inputs) in `apps/api/motrpac_probe_service/app.py`.
+2. **Module / function.** `motrpac_probe_service/explorer.py::analyse` orchestrates it. Parsing via
+   `_read`; identifier mapping via `_map` (which calls `motrpac_probe.signature.map_genes` for
+   gene/protein lists and `motrpac_probe.metab.map_metabolites` for metabolite lists); per-layer scoring
+   via `_layer` (gene/metabolite layers) and `_pathway_layer` (pathways); the multiple-testing family via
+   `_family`. The only statistic computed is the engine's cameraPR (`motrpac_probe.core.score_column`).
+3. **Data read.** The user's list arrives as pasted text, an uploaded file (read by `read_upload`), or a
+   cited example under `MoTrPAC Hackathon/demo_inputs/*` and `hackathon/tool/examples/*` (see `EXAMPLES`).
+   MoTrPAC comparisons and per-feature statistics are read from the published-summary-statistics store via
+   `metab.metab_store()` / `motrpac_probe.core`. The *Pathways* input additionally reads the R-built table
+   `apps/api/data/motrpac_camera_pathways.csv.gz` (built by `Rscript apps/api/scripts_build_pathways.R`;
+   gitignored — when absent, `_pathway_layer` returns `available: False` with a build-instruction reason).
+4. **Transform.** `_map` detects whether the list is directed (a `direction`/`score` column) and/or ranked
+   (≥50 numeric scores). For each MoTrPAC comparison of a layer, `core.score_column` runs cameraPR for the
+   whole set; `_family` applies **BH and Bonferroni once** across the layer-wide family (every included
+   comparison of that layer — human and rat, all tissues, times, contrasts) **before any display
+   filtering**. Ranked lists additionally get a Spearman rank correlation per column. All numerics are
+   coerced JSON-safe by `_f` (`NaN`/`inf` → `None`). No statistic is computed outside the engine.
+5. **Output fields.** `ExplorerResponse`: `inputs[]` (`ExplorerInput`: id, name, kind, source, n_rows,
+   n_mapped, n_names, unmapped[], directed, ranked) and `layers[]` (`ExplorerLayer`: id, label,
+   available, reason?, n_matched, molecules[], columns[], values[], value_unit?, family, molecule_rule).
+   Each `ExplorerColumn` carries `id, species, tissue, tissue_label, layer, category, exercise, time,
+   time_label, time_rank, sex, dataset, study_label, n_tested?, n_measured?, set_t, set_p, set_bh,
+   set_bonferroni` (and, for ranked lists, `rho, rho_p, rho_n, rho_bh, rho_bonferroni`). `study_label`
+   is store-sourced (`MotrpacHumanPreSuspensionAnalysis` 2.0.8 / `MotrpacRatTraining6moData` 2.0.0),
+   never fabricated (ADR-0024).
+6. **Provenance / run_id.** **No service `run_id`** — **not applicable** for the Explorer read path;
+   results are memoized by a content hash of the input lists (`analyse`'s `_CACHE`, keyed by
+   `sha256(kind+example+text)`). Provenance is carried per column as the store-sourced `dataset` +
+   `study_label` (with the authoritative release version), and the page footnote records the published
+   summary-statistics source (association, not treatment effects). The engine store backs every value.
+7. **UI view.** `apps/web/src/components/MotrpacExplorer.tsx` (nav entry "Explorer", **default view**):
+   per-layer comparison tables showing raw p / BH / Bonferroni, per-molecule effects, and — when both
+   transcriptomics and proteomics are available — a fused **RNA↔Protein pair co-view** (a combined `pair`
+   HeatGrid and a `pairTime` SmallMultiples matching molecules by `species|tissue|category|time|sex`),
+   plus a Compare-All grid mode and CSV exports carrying species · dataset · contrast on every row
+   (ADR-0024). Unavailable layers render an honest reason, never a fabricated panel.
 
 ---
 
@@ -312,6 +386,9 @@ a missing committed demo output returns 404 via the `available()` guard.
 
 | Method + path | Request inputs | Response outputs | Triggering condition |
 | --- | --- | --- | --- |
+| `GET /api/explorer/examples` | none | `{ examples[] }` (id, kind, label, source citation) | Explorer needs the cited example-input picklist |
+| `POST /api/explorer/read-file` | `{ filename, content_base64 }` | `{ text (CSV), kind (guessed), n_rows, columns[] }`; **422** on an empty/unreadable file | user uploads a spreadsheet/text list |
+| `POST /api/explorer/analyse` | `{ lists[] }` (1–6; each `{ kind, name?, text?, example? }`) | `ExplorerResponse` (`inputs[]` + `layers[]`); **422** on an invalid list/kind | run any molecule list(s) against every matching MoTrPAC comparison |
 | `GET /api/health` | none | `status`, `schema_version`, `store_hash` | health/liveness probe |
 | `GET /api/catalog` | none | `contexts[]`, `capability_matrix`, supported/unsupported source species, `store_hash`, `analysis_types` | UI needs catalog + selector values |
 | `POST /api/availability` | `target_species`, `selected_omics[]`, `tissue?`, `sex?`, `timepoint?` | `status`, `resolved_context`, `available_omics[]`, `unavailable_omics[]`, `message`, `suggested_alternatives[]` (empty state = 200) | resolve whether a request has compatible data |

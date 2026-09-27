@@ -1043,3 +1043,58 @@ actions"), a stated judging criterion. Newest at the bottom.
   tests) is installed; the R-built pathway table is absent in this checkout, so `blood_pathway_6`'s
   pathway layer is skip-on-missing-artifact in the cross-check. The optional (`*`) property/component
   tests (tasks 4.4, 5.3, 6.4, 8.1) are not implemented (MVP); they are tracked as PLANNED.
+
+## ADR-0025 (submission readiness) — README rewritten Explorer-first to the hackathon's eight-section scaffold; WORKFLOWS traces the Explorer; a JUDGING_CRITERIA map is added
+- **Context.** After the `origin/motrpac-explorer` merge (ADR-0023/ADR-0024) the shipped app
+  became **Explorer-default with six navigable views**, but the submission-facing docs still
+  described the deprecated **discordance-default, five-view** world: the root `README.md` led with
+  the discordance catalog as the headline and named the Discordance view as the default; `WORKFLOWS.md`
+  traced only the five discordance-era analysis paths and did not mention the Explorer (the new
+  headline); there was no README-level architecture/workflow diagram, no AI-usage disclosure, and no
+  document mapping the project to the hackathon's judging criteria. The hackathon slides specify an
+  **eight-section README scaffold** (Project snapshot, Research question, Workflow, Setup, Inputs &
+  outputs, Methods & provenance, Validation & limitations, Reuse & continuation) and **seven judging
+  criteria** (scientific novelty, impact, content, collaboration, methods & approach, documentation &
+  integrity, technical complexity), with the explicit caveat that technical complexity alone is not
+  rewarded. The user confirmed the pivot: the **Explorer is the single headline** (the paper→demo
+  trace), and this work is **documentation only** with a merge to `main` as the next task.
+- **Decision.** (a) Rewrite the root `README.md` to the eight-section scaffold, Explorer-first: lead
+  with the Explorer (any molecule list in → every matching MoTrPAC result out), state it is the default
+  view among six, keep the honest-framing block verbatim, and make every section **point to the
+  authoritative doc** (BOOTSTRAP/RUN_LOCAL/SCHEMA/WORKFLOWS/DECISIONS/VERIFICATION/METABOLOMICS/HANDOFF/
+  LICENSE) rather than duplicating it. Add two inline mermaid diagrams (a Data→Method→Result→User
+  workflow and a system-design/architecture diagram showing the source-of-truth boundary), an AI-usage
+  disclosure (Codex/Kiro/Claude/ChatGPT contributed across prompting + implementation; all numbers
+  originate in the engines, enforced by the golden-hash guard and the test battery), contributor names
+  (roles marked to-be-confirmed, since neither `main`'s README nor git history records explicit roles),
+  citations, and a screenshot placeholder (figures are user-provided, out of scope here). (b) Add a
+  new `## 0. explorer` section to `WORKFLOWS.md` tracing the Explorer through the same seven stages as
+  the other paths with one mermaid diagram, grounded in `explorer.py` / `app.py` / `client.ts`; update
+  the intro list to "six analysis types" (Explorer as default/headline) and add the three
+  `/api/explorer/*` endpoints to the contract table; the existing five diagrams are unchanged. (c) Add
+  `JUDGING_CRITERIA.md` mapping the seven criteria to concrete repo/presentation evidence plus the
+  minimum-defensible-submission checklist with honest status (presentation-only items and the
+  screenshot/roles gaps marked as gaps, not asserted). (d) Reconcile stale phrasing: fix `MERGE_PLAN.md`
+  (engine gate 122→123; PR summary now Explorer-first) and confirm `README.md` carries no
+  discordance-default/five-view/122 phrasing.
+- **Reasons.** The front door and the interpretability reference must match the shipped reality or a
+  judge lands on the Explorer while the README promises Discordance. Pointing to existing docs (rather
+  than duplicating) keeps a single source of truth and avoids drift, matching the repo's
+  documentation-integrity posture. Mapping to the exact scaffold + criteria makes the submission legible
+  to judges and frames technical complexity per the slide caveat (coherence + reproducibility over raw
+  complexity). Marking roles/screenshots as explicit gaps rather than inventing them preserves the
+  verify-before-claiming discipline (R13.4). Historical VERIFICATION/ADR-0021 checkpoints that record
+  `122/34` are **left intact** as accurate point-in-time logs (the 122→123 change is already documented
+  in ADR-0023); only the forward-looking gate in `MERGE_PLAN.md` was updated to 123.
+- **Alternatives rejected.** (a) Keep discordance-first framing — contradicts the shipped default and
+  the user's confirmed pivot. (b) Restore Discordance as the default in `App.tsx` — a runtime change,
+  out of the docs-only scope and against the user's deprecation decision. (c) Duplicate setup/method
+  content into the README — creates drift; rejected in favor of links. (d) Invent contributor roles or
+  fabricate an Explorer screenshot — violates integrity; left as marked gaps for the team. (e) Rewrite
+  the historical `122/34` checkpoints to `123/34` — would falsify the reproduction log; rejected.
+- **Consequences.** Docs-only change set: `README.md` (full rewrite), `WORKFLOWS.md` (new Explorer
+  section + contract rows + intro), `JUDGING_CRITERIA.md` (new), `MERGE_PLAN.md` (123 + Explorer-first
+  PR summary), `DECISIONS.md` (this ADR), `VERIFICATION.md` (checkpoint below). No runtime source, CI,
+  test, or engine file changed; the golden-hash guard on `analysis.py` is unaffected. Two team actions
+  remain before submission: insert Explorer/Discordance screenshots (README §7) and confirm per-person
+  contributor roles (README §8). The next task is the merge to `main` per `MERGE_PLAN.md`.

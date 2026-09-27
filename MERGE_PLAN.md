@@ -26,7 +26,7 @@ each one manually before proceeding.
 1. **All verification gates report a passing status.**
    Every gate in the verification battery (see `VERIFICATION.md` and the R9 CI gate in
    `.github/workflows/ci.yml`) reports **passing**:
-   - Engine `pytest` battery: **exactly 122 passed / 34 skipped** (R9 AC7).
+   - Engine `pytest` battery: **exactly 123 passed / 34 skipped** (R9 AC7, updated to 123 by the motrpac-explorer merge — ADR-0023).
    - `apps/api` tests: **zero failures**.
    - Web `pnpm test` **and** `pnpm run build`: **zero failures**.
    - httpx API smoke check: passing (headline `q = 0.0584 ± 0.0001` and not-significant;
@@ -130,17 +130,18 @@ template below into the PR body and fill each section:
 
 ```markdown
 ## Summary
-<!-- What this PR does and why. The Track 2 "Omic Discordance Explained" MVP: discordance
-     is the default view (three-stage flow query builder → visualization → interpretation),
-     read-only discordance API over committed demo outputs, live query builder wired to the
-     live API with a mapping-preview confirmation gate, generalized upload + shared results
-     table, mock views retired, README anchored to Track 2, fresh-clone bootstrap, and
-     automated verification wired into CI. Honest framing: cross-cohort association, NOT a
-     PAH treatment claim; cohorts kept separate; headline male rat SKM-GN protein 8-week
-     result is q = 0.0584 (not significant) under the frozen 52-column BH family. -->
+<!-- What this PR does and why. The Track 2 "Omic Discordance Explained" work: the MoTrPAC
+     Explorer is the default view (any molecule list in → every matching MoTrPAC comparison
+     out, with a fused RNA↔protein co-view); alongside it, a read-only discordance API over
+     committed demo outputs, a live query builder with a mapping-preview confirmation gate,
+     generalized upload + shared results table, mock views retired, README rewritten to the
+     eight-section scaffold anchored to Track 2, fresh-clone bootstrap, and automated
+     verification wired into CI. Honest framing: cross-cohort association, NOT a PAH
+     treatment claim; cohorts kept separate; headline male rat SKM-GN protein 8-week result
+     is q = 0.0584 (not significant) under the frozen 52-column BH family. -->
 
 ## What was tested
-<!-- The verification battery and its results: engine pytest (exactly 122 passed / 34
+<!-- The verification battery and its results: engine pytest (exactly 123 passed / 34
      skipped), apps/api tests (zero failures), web pnpm test + pnpm run build (zero
      failures), httpx API smoke (headline q = 0.0584 ± 0.0001, discordance per-class counts
      1/0/285/5642, metabolomics null result), Playwright e2e (every live view renders real

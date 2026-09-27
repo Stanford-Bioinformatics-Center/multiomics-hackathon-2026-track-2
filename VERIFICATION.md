@@ -1149,3 +1149,52 @@ orchestrator and are recorded here as observed, not fabricated.
 
 Result: multiomic-comparison-view verified — apps/api 81 passed (saved-vs-live cross-check green/skip-on-
 missing-artifact after regeneration), web build OK + 38 passed; engine suite untouched (remains 123/34).
+
+### Submission-readiness docs checkpoint — Explorer-first README scaffold + WORKFLOWS Explorer trace + JUDGING_CRITERIA (ADR-0025) (PASS)
+Files added / changed (DOCS ONLY — no runtime source, CI, test, or engine file changed):
+- `README.md` (rewritten) — the hackathon's eight-section scaffold, Explorer-first: Project snapshot,
+  Research question, Workflow, Setup & quick start, Inputs & outputs, Methods & provenance, Validation
+  & limitations, Reuse & continuation, plus a Documentation map, a System-design mermaid, and a
+  Data→Method→Result→User workflow mermaid. AI usage disclosed (Codex/Kiro/Claude/ChatGPT across
+  prompting + implementation; numbers originate in the engines, enforced by the golden-hash guard +
+  battery). Contributor names present (roles marked to-be-confirmed). Screenshot placeholder for
+  user-provided figures. Setup/methods point to the authoritative docs rather than duplicating them.
+- `WORKFLOWS.md` — new `## 0. explorer` section tracing the Explorer through the seven stages with one
+  mermaid diagram (grounded in `explorer.py`, `app.py`, `client.ts`); intro updated to "six analysis
+  types" (Explorer as default/headline); the three `/api/explorer/*` endpoints added to the contract
+  table. The existing five diagrams are unchanged.
+- `JUDGING_CRITERIA.md` (new) — maps the seven judging criteria (scientific novelty, impact, content,
+  collaboration, methods & approach, documentation & integrity, technical complexity) to concrete
+  evidence, and records the minimum-defensible-submission checklist with honest status (screenshots +
+  per-person roles + presentation artifacts marked as gaps, not asserted). Linked once from the README
+  documentation map.
+- `MERGE_PLAN.md` — forward-looking engine gate updated 122 → 123 (per ADR-0023); PR summary template
+  rewritten Explorer-first.
+- `DECISIONS.md` (ADR-0025), `VERIFICATION.md` (this checkpoint) — traceability trail.
+
+Why: the shipped app is Explorer-default with six views (ADR-0023/0024), but the submission docs still
+described the deprecated discordance-default/five-view world; this aligns the front door and the
+interpretability reference with reality and maps the project to the hackathon scaffold + criteria. See
+ADR-0025.
+
+Commands run (repo root) — verify-before-claiming (R13.4), read-only checks only:
+- Eight-section scaffold present — `grep -nE '^#{1,3} ' README.md` → `## 1. Project snapshot` …
+  `## 8. Reuse & continuation` all present, in order, plus `## Documentation map` and `## System
+  design`; the `## Omic Discordance Explained` anchor is the first section.
+- Doc-map targets resolve — `test -f` each of WORKFLOWS/DECISIONS/VERIFICATION/JUDGING_CRITERIA/
+  METABOLOMICS/RUN_LOCAL/BOOTSTRAP `.md` + LICENSE → all `OK` (exist).
+- Documentation-map one-link invariant — an awk scan of ONLY the `## Documentation map` section →
+  exactly `1` link each to BOOTSTRAP, DECISIONS, JUDGING_CRITERIA, METABOLOMICS, RUN_LOCAL,
+  VERIFICATION, WORKFLOWS. (Inline references elsewhere in the README are intentional pointer-based
+  cross-references — "point, don't repeat" — and are not part of the map's one-link invariant.)
+- Stale-phrasing scan — `grep -niE 'default Discordance view|Discordance \(default\)|five nav|five
+  live views' README.md MERGE_PLAN.md` → `NONE`; `grep -n '\b122\b' README.md MERGE_PLAN.md` → none
+  (the remaining `122` mentions in ADR-0021 / HANDOFF / REQUIREMENTS_TRACEABILITY are intentionally
+  preserved point-in-time checkpoint logs; the 122→123 change is documented in ADR-0023).
+
+Result: the submission docs are consistent with the shipped Explorer-first six-view app and with each
+other; the README follows the eight-section scaffold, the Explorer is traced end-to-end in
+WORKFLOWS.md, and the judging criteria are mapped in JUDGING_CRITERIA.md. Docs only — engine,
+`apps/api`, and `apps/web` behavior unchanged; golden-hash guard on `analysis.py` unaffected. Two team
+actions remain before submission (README §7 screenshots, README §8 per-person roles); the next task is
+the merge to `main` per `MERGE_PLAN.md`.
