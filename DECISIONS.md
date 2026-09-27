@@ -864,3 +864,75 @@ actions"), a stated judging criterion. Newest at the bottom.
   in authoring the plan or verifying it. Engine, `apps/api`, and `apps/web` behavior unchanged (docs
   only).
 
+
+## ADR-0023 (merge) — Integrate `origin/motrpac-explorer`: Explorer as the default live view, LiveDashboard kept as backup, mocks stay retired; saved-vs-live cross-check made tolerant + artifact-aware; engine battery gate 122 → 123
+- **Context.** After the finalize-discordance-mvp work (ADR-0013…ADR-0022) was committed and pushed,
+  a parallel branch `origin/motrpac-explorer` added a generalized MoTrPAC Explorer — any molecule
+  list (genes/proteins/metabolites/pathways) in, every matching MoTrPAC result by omic layer out,
+  with the set-level cameraPR / rank-correlation computed on demand against the pre-processed
+  `motrpac_probe` store (a later commit, `85f897a`, made bundled examples load committed saved
+  results from `apps/web/public/examples/*.json` while custom uploads/pastes still run live). The
+  two branches diverged from the same base and overlapped heavily in the web app. Integrating them
+  raised a genuine product decision (not a mechanical merge): the explorer branch's `App.tsx`
+  restored the mock design views (architecture/technical/workflow/dashboard/slide) that R6
+  deliberately RETIRED, rebuilt section 05 as the Explorer, and DELETED `LiveDashboard.tsx`, whereas
+  HEAD had a five-live-view model with Discordance as the default and `LiveDashboard.tsx` carrying
+  the `layer_discordance` table. The team also pivoted away from "no live demo": the interactive
+  live surface is now the intended primary, so Discordance no longer needs to be the default.
+- **Decision.** Merge (not rebase — consistent with `MERGE_PLAN.md` R10 AC4; both branches are
+  published). Resolutions: (a) **App.tsx** — keep HEAD's R6 navigation model (mock design views stay
+  RETIRED and documented in `DESIGN_PROVENANCE.md`; the `resolveView`/`initialView` redirect resolver
+  and sessionStorage persistence are preserved) and ADD the Explorer as a live view. The merged app
+  has SIX live views; **Explorer is the default landing view**, **Live results (LiveDashboard) is the
+  backup live view**, and **Generalized query (bundled example signatures) is a further backup**;
+  Discordance is kept as the Track 2 "Omic Discordance Explained" headline showcase over committed
+  demo outputs. Nav order: Explorer → Live results (API) → Discordance → Generalized → Metabolomics →
+  About/Methods. (b) **LiveDashboard.tsx** — KEPT against the explorer branch's delete (modify/delete
+  resolved in favor of HEAD); it is the directed live view plus the `layer_discordance` table.
+  (c) **pyproject.toml** — union of both optional-dependency sets (`test` += `hypothesis>=6.100`;
+  `api` += `openpyxl>=3.1` for the explorer's `.xlsx` demo-input upload). `openpyxl` was ALSO added
+  to the `test` extra so `apps/api[test]` (what the CI `python` job installs) can run the explorer
+  tests that read `.xlsx` inputs. (d) **MotrpacExplorer.tsx** — the input-format placeholder gene
+  `PPARGC1A` was changed to `ATP5F1A` so the R6 AC3 banned-mock-identifier invariant
+  (PPARGC1A/SOD2/COL1A1) holds across the merged navigable surface; `App.test.tsx` extends the
+  banned-identifier grep to cover MotrpacExplorer/liveCharts/ui and was updated to the six-view
+  Explorer-default model. (e) **`test_saved_example_results_match_the_live_analysis`** (added by the
+  explorer branch) was changed from an EXACT byte-equality check to a **tolerance-based, artifact-aware**
+  comparison: numeric fields agree within `rtol=1e-9`/`atol=1e-12` (last-ULP float differences arise
+  from platform BLAS/summation order — the saved JSONs are generated on one machine, CI/dev on another),
+  and an example whose live rerun cannot reproduce a saved-available layer because a required BUILT
+  artifact is absent (the gitignored R-built pathway table `apps/api/data/motrpac_camera_pathways.csv.gz`,
+  produced by `Rscript apps/api/scripts_build_pathways.R`) is skipped-in-loop with an explicit reason
+  rather than failing. (f) **CI full-battery gate** raised from EXACTLY 122 → **123** passed / 34
+  skipped: the explorer branch added `hackathon/tool/tests/test_multiple_testing.py` (covering the
+  additive `camera_bonferroni` column in `core.py`), a legitimate +1 to the engine suite. The R9
+  golden-hash guard on `analysis.py` is UNAFFECTED — the merge changed `core.py`, not `analysis.py`
+  (hash still `analysis.py: OK`).
+- **Reasons.** Keeping the R6 retirement while adding Explorer honors the finalize-discordance-mvp
+  deliverable AND the new generalized tool with nothing lost (Option "integrate both"). Explorer as
+  default matches the team's pivot to a live-first primary surface; LiveDashboard and Generalized
+  remain as backups so a demo degrades gracefully (live tool → directed live view → bundled examples).
+  A merge (not rebase) preserves both authors' history and matches the documented merge discipline.
+  The exact-equality saved-vs-live test was not portable (bit-identical floats across machines, plus
+  a gitignored R artifact); the tolerant, artifact-aware form preserves its intent (saved results
+  reflect the real analysis) while passing deterministically anywhere — mirroring the engine suite's
+  existing expected-skip-when-local-data-absent posture. Raising the gate to 123 records the real
+  new count rather than masking it.
+- **Alternatives rejected.** (a) Take the explorer branch's `App.tsx` wholesale — un-retires the mock
+  views and contradicts the R6 deliverable. (b) Let Explorer REPLACE LiveDashboard (accept the delete)
+  — drops the `layer_discordance` rendering (part of R3). (c) Rebase either branch — rewrites published
+  history; rejected per R10 AC4 / git safety. (d) Regenerate the saved example JSONs locally to fix the
+  float mismatch — only moves the last-ULP mismatch to the next machine and still can't reproduce the
+  pathways example without the R table. (e) Leave the saved-vs-live test failing / build the R table in
+  CI — leaves CI red or adds a heavy, non-portable R dependency to the gate. (f) Add `openpyxl` only to
+  the `api` extra — the CI `python` job installs `[test]`, so the explorer xlsx tests would fail there.
+- **Consequences.** Two merge commits (`08dec87` bringing in `c164747`, then `4babcbd` bringing in
+  `85f897a`). Discordance and Explorer endpoints coexist on the backend (app/catalog/service/client
+  auto-merged). Verified by running the battery BEFORE claiming (R13.4): engine **123 passed / 34
+  skipped**; `apps/api` **81 passed** (includes the new explorer/story/metab_upload tests, with the
+  saved-vs-live cross-check now tolerant/artifact-aware); web **38 passed** + `pnpm run build` OK;
+  golden hash `analysis.py: OK`; `ci.yml` gate updated to 123/34 and YAML re-validated
+  (`jobs: python, e2e, web`). Note: `apps/api[api]`/`[test]` now require `openpyxl` (a fresh clone /
+  bootstrap must install it — already covered by the extras). The explorer's saved example JSONs are
+  regenerated by `apps/api/scripts_save_examples.py` (a provenance artifact, analogous to the gallery
+  regen procedure).

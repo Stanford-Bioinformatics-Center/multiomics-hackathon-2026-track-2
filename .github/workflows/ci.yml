@@ -38,7 +38,7 @@ jobs:
             echo "GOLDEN-HASH GUARD FAILED: analysis.py is NOT byte-identical to the golden reference"
             echo "(hackathon/tool/analysis.py.sha256). If this change to analysis.py is intended,"
             echo "re-run \`shasum -a 256 analysis.py > analysis.py.sha256\`, re-verify the engine"
-            echo "battery (122/34) and \`python analysis.py\` output, and commit the updated reference."
+            echo "battery (123/34) and \`python analysis.py\` output, and commit the updated reference."
             exit 1
           fi
           echo "GOLDEN-HASH GUARD PASSED: analysis.py matches the golden reference"
@@ -50,9 +50,9 @@ jobs:
           pip install "fastapi>=0.110" "httpx>=0.27"
       - name: Fetch the prebuilt store
         run: mprobe store fetch
-      - name: Engine tests (full-battery gate — EXACTLY 122 passed / 34 skipped)
+      - name: Engine tests (full-battery gate — EXACTLY 123 passed / 34 skipped)
         # R9 AC7/AC8: the verification battery is complete ONLY when the engine suite reports
-        # EXACTLY 122 passed and 34 skipped. Any deviation (more/fewer passes, more/fewer skips,
+        # EXACTLY 123 passed and 34 skipped. Any deviation (more/fewer passes, more/fewer skips,
         # any failure/error) blocks the battery and therefore the merge (CI fails).
         run: |
           python -m pytest -q -rs | tee /tmp/pytest.txt
@@ -72,8 +72,8 @@ jobs:
               r"needs the local hackathon/ data|motrpac R env not available|no store", l)]
           if bad:
               print("UNEXPECTED SKIPS:\n" + "\n".join(bad)); sys.exit(1)
-          # R9 AC7: the battery is complete ONLY at exactly 122 passed AND 34 skipped.
-          EXPECTED_PASSED, EXPECTED_SKIPPED = 122, 34
+          # R9 AC7: the battery is complete ONLY at exactly 123 passed AND 34 skipped.
+          EXPECTED_PASSED, EXPECTED_SKIPPED = 123, 34
           if passed != EXPECTED_PASSED or skipped != EXPECTED_SKIPPED:
               print(f"ENGINE BATTERY GATE FAILED: expected exactly {EXPECTED_PASSED} passed / "
                     f"{EXPECTED_SKIPPED} skipped, got {passed} passed / {skipped} skipped — "
