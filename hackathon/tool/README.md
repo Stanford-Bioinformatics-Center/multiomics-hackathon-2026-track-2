@@ -37,6 +37,32 @@ optional `group`, `weight`, `source`. Rat genes map to human through the RGD ort
 direction, duplicate). Rows in the group `phenotype` (configurable: `--context-groups`) are shown but not counted.
 Weights are carried and displayed; the statistics are unweighted.
 
+**Full disease ranking** (a genome-wide disease-vs-control contrast): a CSV with a gene column and a `t` (or
+`stat`, `z`, `score`, `logFC`) column and no `direction` column, e.g. a limma table. `mprobe run` detects it and
+adds sections R and P below; a directional signature derived from it (BH < 0.05, at most 250 genes per direction)
+drives the other sections. `--exact-symbols` matches gene symbols exactly, as the team pipeline does.
+
+**Metabolite signature:** `refmet_name` (or `hmdb` / `kegg`) and `direction`; scored on the METAB layer.
+
+## Relationship to the team pipeline on main (`MoTrPAC Hackathon/`)
+
+The team's PAH pipeline (15 numbered R/Python scripts, collection c2.0) is one case study; this tool is its
+generalisation to any disease, tissue, species and layer, and reproduces it (`tests/test_team.py`, reference values
+are the team's committed outputs in `tests/fixtures/team_main_c2/`). Both use MotrpacHumanPreSuspensionAnalysis
+2.0.8, collection c2.0; the exported tables are identical row by row.
+
+| team script | what it does | in the tool | reproduced |
+|---|---|---|---|
+| 00, 03–04 | nine lower PAH proteins: UniProt match; RNA at three times | `run` sections A–C (any signature; UniProt, Ensembl and rat ids accepted) | 0/9, 7/9, 9/9 positive; 7 at BH < 0.05 at 24 h; 0/27 protein |
+| 04.5–05 | OXPHOS membership; MoTrPAC's precomputed OXPHOS test | cameraPR port validated against the package's CAMERA results; OXPHOS/TCA pool null | package values to 1e-8 |
+| 06–07 | GSE33463 IPAH-minus-healthy PBMC limma ranking | stays in the team pipeline; its output is the example `pah_blood_gse33463_ranked.csv.gz` | input |
+| 07.5, 08 | MoTrPAC blood gene ranks; Spearman of disease vs exercise ranking, gene-label permutation | section R: every comparison (422), Fisher 95% CI, BH, calibration against non-exercise reference contrasts | ρ to 3 decimals at all six times |
+| 09–11 | GO:BP cameraPR on the disease ranking; join to MoTrPAC's precomputed GO:BP results | section P: same test on both sides for every comparison, plus the team's precomputed-results variant | 5,183 sets, 63 at BH < 0.05; 40 joint rows = 27 same + 13 opposite |
+| 12 | blood sensitivity checks | the sensitivity section (FDR, background, null size) | — |
+
+Conventions: ρ > 0 means exercise moves genes the same way as the disease (as in the team pipeline); cameraPR
+t > 0 in sections B–D means exercise opposes a directional signature. Both are labelled in every table.
+
 ## What a report contains (`mprobe run`)
 
 The first screen is the headline table: for each tissue × layer × time, genes opposed / measured, the signed

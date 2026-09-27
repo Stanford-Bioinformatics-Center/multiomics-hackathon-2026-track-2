@@ -29,85 +29,122 @@ def _():
     _t = time.time()
     S = core.get_store()                 # gene store (RNA / protein / phospho)
     SM = metab.metab_store()             # + metabolomics, for the pathway panel
-    load_s = time.time() - _t
+    print(f"[app] store loaded in {time.time() - _t:.1f} s")
     # marimo's markdown uses its own heading font; match the reports (style.css is loaded via css_file)
     mo.Html("<style>.markdown h1, .markdown h2, .markdown h3, .prose h1, .prose h2, .prose h3 "
-            "{font-family: var(--font-body); font-weight: 600;}</style>")
-    return (CORE_TISSUES, EXAMPLES, LAYER_WORDS, TISSUE_WORDS, OUT, Path, S, SM, col_words, core, figures, json, layers, load_s, metab, mo,
+            "{font-family: var(--font-body); font-weight: 600;} "
+            "[data-testid=marimo-plugin-form-submit-button] {background: var(--accent); color: #fff; "
+            "border-color: var(--accent);}</style>")
+    return (CORE_TISSUES, EXAMPLES, LAYER_WORDS, TISSUE_WORDS, OUT, Path, S, SM, col_words, core, figures, json, layers, metab, mo,
             np, pd, plt, render, run, short_words, tempfile, time)
 
 
 @app.cell
-def _(EXAMPLES, json, load_s, mo, pd):
+def _(EXAMPLES, json, mo, pd):
     manifest = json.loads((EXAMPLES / "examples.json").read_text())
     gene_examples = {e["title"]: e for e in manifest if e.get("kind") != "metabolite demo"}
-    _args = mo.cli_args()
+    _args = mo.cli_args()  # headless checks: --example NAME / --paste FILE.csv
     _by_name = {e["name"]: e["title"] for e in gene_examples.values()}
-    _default = _by_name.get(_args.get("example", "pah_muscle_malenfant2015"), "(none)")
-    _paste0 = ""
+    default_example = _by_name.get(_args.get("example", "pah_muscle_malenfant2015"), list(gene_examples)[0])
+    default_paste = ""
     if _args.get("paste"):
         _p = pd.read_csv(_args.get("paste"), dtype=str)
-        _paste0 = "\n".join(f"{a},{b}" for a, b in zip(_p.iloc[:, 0], _p.iloc[:, 1]))
-    sig_form = mo.md(
-        "{example}\n\n{upload}\n\n{paste}"
-    ).batch(
-        example=mo.ui.dropdown(options=["(none)"] + list(gene_examples), value=_default, label="Example signature"),
-        upload=mo.ui.file(filetypes=[".csv"], label="Upload a CSV"),
-        paste=mo.ui.text_area(value=_paste0, placeholder="GENE,direction per line, e.g.\nNDUFA9,-1\nHBB,1", rows=6,
-                              full_width=True, label="or paste genes"),
-    ).form(submit_button_label="Use this signature", bordered=False)
+        default_paste = "\n".join(f"{a},{b}" for a, b in zip(_p.iloc[:, 0], _p.iloc[:, 1]))
+    source = mo.ui.radio(options=["Example", "Upload a CSV", "Paste genes"],
+                         value="Paste genes" if default_paste else "Example", inline=True, label="Signature from")
     mo.vstack([
-        mo.md("# motrpac_probe\nDoes exercise (MoTrPAC) move a disease signature's genes against the disease, in "
-              f"RNA and in protein? Store loaded in {load_s:.1f} s.\n\n"
-              "## 1. Signature\nColumns: `gene_symbol` (or `uniprot` / `ensembl` / `rat_symbol`), `direction` "
-              "(+1 up in disease, −1 down), optional `group`. Upload wins over paste, paste over the example."),
-        sig_form])
-    return gene_examples, sig_form
+        mo.md("# motrpac_probe\nDoes exercise move a disease signature's genes against the disease, in RNA and in "
+              "protein? Scores your gene list against every MoTrPAC exercise comparison (human acute exercise, rat "
+              "endurance training).\n\n## 1. Signature and options"),
+        source])
+    return default_example, default_paste, gene_examples, source
 
 
 @app.cell
-def _(CORE_TISSUES, mo):
-    opt_form = mo.md("{tissues}\n\n{cutoff} {universe} {nboot}").batch(
-        tissues=mo.ui.multiselect(options=CORE_TISSUES, value=CORE_TISSUES, label="Core tissues"),
-        cutoff=mo.ui.dropdown(options=["0.05", "0.10"], value="0.05", label="BH FDR cutoff"),
-        universe=mo.ui.dropdown(options=["all", "muscle-intrinsic"], value="all", label="cameraPR background"),
-        nboot=mo.ui.dropdown(options=["200", "1000"], value="200", label="Random sets per null"),
-    ).form(submit_button_label="Apply options", bordered=False)
-    mo.vstack([mo.md("## 2. Options\nDefaults are used until you press *Apply options*. 1,000 random sets per "
-                     "null (the report default) takes about 10 s longer than 200."), opt_form])
-    return (opt_form,)
+def _(CORE_TISSUES, TISSUE_WORDS, default_example, default_paste, gene_examples, mo, source):
+    _inputs = {
+        "Example": mo.ui.dropdown(options=list(gene_examples), value=default_example, label="Example"),
+        "Upload a CSV": mo.ui.file(filetypes=[".csv"], label="Choose CSV file"),
+        "Paste genes": mo.ui.text_area(value=default_paste, rows=8, full_width=True, label="One gene per line",
+                                       placeholder="GENE,direction  (direction +1 = up in disease, −1 = down)\n"
+                                                   "NDUFA9,-1\nHBB,1"),
+    }
+    _help = {
+        "Example": "Published signatures and controls shipped with the tool.",
+        "Upload a CSV": "Columns: `gene_symbol` (or `uniprot`, `ensembl`, `rat_symbol`), `direction` (+1 up in "
+                        "disease, −1 down), optional `group`.",
+        "Paste genes": "Gene symbol and direction separated by a comma or tab; a header line is optional.",
+    }
+    _tis = {f"{'Human' if t == 'VL' else 'Rat'} {TISSUE_WORDS[t]} ({t})": t for t in CORE_TISSUES}
+    run_form = mo.md(
+        f"{_help[source.value]}\n\n{{sig}}\n\n**Options**\n\n{{tissues}}\n\n{{cutoff}}\n\n{{universe}}\n\n"
+        "{nboot}"
+    ).batch(
+        sig=_inputs[source.value],
+        tissues=mo.ui.multiselect(options=_tis, value=list(_tis), label="Tissues"),
+        cutoff=mo.ui.dropdown(options={"0.05": 0.05, "0.10": 0.10}, value="0.05",
+                              label="Significance cutoff (BH FDR)"),
+        universe=mo.ui.dropdown(options={"All measured genes": "all",
+                                         "Muscle-intrinsic genes only": "muscle-intrinsic"},
+                                value="All measured genes", label="Background genes for the set test"),
+        nboot=mo.ui.dropdown(options={"200 (about 8 s)": 200, "1,000 (as in the reports, about 20 s)": 1000},
+                             value="200 (about 8 s)", label="Random gene sets per null"),
+    ).form(submit_button_label="Run analysis", bordered=False)
+    run_form
+    return (run_form,)
 
 
 @app.cell
-def _(EXAMPLES, Path, gene_examples, mo, opt_form, run, sig_form, tempfile, time):
-    # forms return None until first submitted: use the defaults shown in the widgets
-    sv = sig_form.value if sig_form.value is not None else sig_form.element.value
-    ov = opt_form.value if opt_form.value is not None else opt_form.element.value
-    if sv["upload"]:
-        src = Path(tempfile.mkdtemp()) / sv["upload"][0].name
-        src.write_bytes(sv["upload"][0].contents)
-        how = "uploaded file"
-    elif sv["paste"].strip():
-        _lines = [l.replace("\t", ",").strip() for l in sv["paste"].strip().splitlines() if l.strip()]
+def _(EXAMPLES, Path, gene_examples, mo, run, run_form, source, tempfile, time):
+    # the form is None until first submitted: until then show the defaults it displays
+    v = run_form.value if run_form.value is not None else run_form.element.value
+    src = how = None
+    if source.value == "Upload a CSV" and v["sig"]:
+        src = Path(tempfile.mkdtemp()) / v["sig"][0].name
+        src.write_bytes(v["sig"][0].contents)
+        how = f"uploaded file {src.name}"
+    elif source.value == "Paste genes" and v["sig"].strip():
+        _lines = [l.replace("\t", ",").strip() for l in v["sig"].strip().splitlines() if l.strip()]
         if not _lines[0].lower().startswith(("gene", "uniprot", "ensembl", "rat_symbol")):
             _lines = ["gene_symbol,direction"] + _lines
         src = Path(tempfile.mkdtemp()) / "pasted.csv"
         src.write_text("\n".join(_lines) + "\n")
-        how = "pasted genes"
-    elif sv["example"] != "(none)":
-        src = EXAMPLES / gene_examples[sv["example"]]["file"]
-        how = f"example: {sv['example']}"
-    else:
-        src = None
-    mo.stop(src is None, mo.md("Choose an example, upload a CSV or paste genes."))
+        how = f"{len(_lines) - 1} pasted genes"
+    elif source.value == "Example":
+        src = EXAMPLES / gene_examples[v["sig"]]["file"]
+        how = v["sig"]
+    mo.stop(src is None, mo.md("Add a signature above and press **Run analysis**."))
     _t = time.time()
-    with mo.status.spinner(title="Scoring the signature against every comparison ..."):
-        R = run.compute(src, name=src.stem, cutoff=float(ov["cutoff"]), nboot=int(ov["nboot"]),
-                        tissues=tuple(ov["tissues"]), universe=ov["universe"], quiet=True)
-    compute_s = time.time() - _t
-    mo.md(f"**Signature:** {how} (`{src.name}`) · {len(R['sig'].genes)} counted genes · "
-          f"{len(R['core_cols'])} comparisons · computed in {compute_s:.1f} s")
+    with mo.status.spinner(title="Scoring the signature against every comparison (about 8 s) ..."):
+        R = run.compute(src, name=src.stem, cutoff=v["cutoff"], nboot=v["nboot"], tissues=tuple(v["tissues"]),
+                        universe=v["universe"], quiet=True)
+    _dt = time.time() - _t
+    mo.md(f"**Results for:** {how} · {len(R['sig'].genes)} genes counted · {len(R['core_cols'])} comparisons · "
+          f"{_dt:.0f} s" + ("" if run_form.value is not None else " · default settings"))
     return (R,)
+
+
+@app.cell
+def _(R, mo, run):
+    # the reports' first-screen matrix (run.headline_html), with the class-null percentile joined as in run.write
+    _sc = R["scores"].assign(pct_class=R["scores"].column_id.map(
+        R["nulls"][R["nulls"].null == "class"].set_index("column_id").pct_t))
+    _mp = R["sig"].table
+    _meas = {c: int(R["scores"].set_index("column_id").loc[c, "n_measured"]) for c in R["core_cols"]}
+    from motrpac_probe.caveats import fixed_caveats as _fc
+    mo.vstack([
+        mo.md("## Headline: does exercise oppose the signature, by layer and time?\n"
+              "Cell = genes moved against the disease direction / genes measured, and the set-level cameraPR t "
+              f"(+ = opposed; * = BH FDR < {R['opts']['cutoff']}); class pct = percentile among random gene sets "
+              "of the same pathway class (95+ = more opposed than its class). Blue tint = opposed, red = same "
+              "direction as the disease."),
+        mo.Html(run.headline_html(R["S"], _sc, R["opts"]["cutoff"])),
+        mo.md(f"**Coverage:** {int((_mp.status == 'mapped').sum())} of {len(_mp)} input rows mapped; "
+              f"{min(_meas.values())}–{max(_meas.values())} of {len(R['sig'].genes)} counted genes measured per "
+              "comparison (section 2).\n\n"
+              f"**Caveat:** {_fc()[3]}"),
+    ])
+    return
 
 
 @app.cell
@@ -119,7 +156,7 @@ def _(LAYER_WORDS, R, TISSUE_WORDS, mo, render):
     _cov = _cov.rename(columns={"gene": "Gene", "group": "Group"})
     _idcol = [c for c in ["gene_symbol", "uniprot", "ensembl", "rat_symbol"] if c in _unm.columns][:1]
     mo.vstack([
-        mo.md(f"## 3. Coverage\n{int((_mp.status == 'mapped').sum())} of {len(_mp)} input rows mapped to a human "
+        mo.md(f"## 2. Coverage\n{int((_mp.status == 'mapped').sum())} of {len(_mp)} input rows mapped to a human "
               f"gene symbol; {len(R['sig'].genes)} are counted in the statistics (phenotype-group genes are shown "
               "but not counted). Cell = number of comparisons (timepoints × sexes or groups) in which the gene is "
               "measured, out of the total for that tissue and layer."),
@@ -140,7 +177,7 @@ def _(R, S, figures, mo, plt, render):
         _f = figures.grid(S, R["grid"], R["core_cols"], R["sig"], R["opts"]["cap"], R["opts"]["cutoff"])
         _svg = render.fig_to_svg(_f)
         plt.close(_f)
-    mo.vstack([mo.md("## 4. Agreement grid\nCell = agreement × |stat| capped at 4: blue = exercise moves the gene "
+    mo.vstack([mo.md("## 3. Agreement grid\nCell = agreement × |stat| capped at 4: blue = exercise moves the gene "
                      f"against the disease, red = same direction as the disease, hatched = not measured; dot = "
                      f"BH FDR < {R['opts']['cutoff']}. One row per signature gene, one column per comparison."),
                mo.Html(_svg),
@@ -209,7 +246,7 @@ def _(R, S, col_words, figures, mo, plt, render):
         _s1, _s2 = render.fig_to_svg(_f1), render.fig_to_svg(_f2)
         plt.close(_f1)
         plt.close(_f2)
-    mo.vstack([mo.md("## 5. Set-level opposition and null percentiles\ncameraPR t > 0 = the signature as a whole "
+    mo.vstack([mo.md("## 4. Set-level opposition and null percentiles\ncameraPR t > 0 = the signature as a whole "
                      "is opposed by exercise (circles; triangles = up-genes and down-genes alone). Percentile = "
                      f"where the signature's t falls among {R['opts']['nboot']} random gene sets matched on "
                      "abundance, or on MitoCarta / GO:CC complex / secreted class. A high class-null percentile "
@@ -226,7 +263,7 @@ def _(R, S, col_words, figures, mo, plt, render):
 @app.cell
 def _(R, figures, layers, mo, plt, render):
     _d = R["disc"]
-    mo.stop(not len(_d), mo.md("## 6. Layer discordance\nNo RNA–protein pairs for this signature."))
+    mo.stop(not len(_d), mo.md("## 5. Layer discordance\nNo RNA–protein pairs for this signature."))
     _sents = [layers.sentence(r) for r in _d.itertuples() if not r.cross]
     with render.mpl_style():
         _f = figures.discordance(_d, R["disc_genes"], [])
@@ -236,7 +273,7 @@ def _(R, figures, layers, mo, plt, render):
         columns={"label": "Comparison", "n_genes_both": "Genes in both layers (all)", "rho_all": "ρ all genes",
                  "n_sig_both": "Signature genes in both layers", "rna_opposed": "Opposed in RNA",
                  "prot_opposed": "Opposed in protein", "rho_sig": "ρ signature genes"})
-    mo.vstack([mo.md("## 6. Layer discordance\nSpearman ρ between the RNA and protein statistics of the same "
+    mo.vstack([mo.md("## 5. Layer discordance\nSpearman ρ between the RNA and protein statistics of the same "
                      "comparison, over all genes and over the signature genes."),
                mo.md("\n".join(f"- {s}" for s in _sents[:8])),
                mo.Html(_svg),
@@ -261,7 +298,7 @@ def _(SM, metab, mo, plt, pw_tissue, render):
     _w = _f.get_size_inches()[0] * 96  # show at native size (text stays >= 10 pt), scroll if wider than the page
     _svg = render.fig_to_svg(_f)
     plt.close(_f)
-    mo.vstack([mo.md("## 7. Metabolic pathways in three layers\nIndependent of the signature: how each pathway's "
+    mo.vstack([mo.md("## 6. Metabolic pathways in three layers\nIndependent of the signature: how each pathway's "
                      "genes (RNA, protein) and metabolites respond to exercise in one tissue."),
                pw_tissue,
                mo.Html(f'<div style="overflow-x:auto"><div style="min-width:{_w:.0f}px">{_svg}</div></div>'),
@@ -272,7 +309,7 @@ def _(SM, metab, mo, plt, pw_tissue, render):
 @app.cell
 def _(mo, pd, render):
     from motrpac_probe.caveats import GUARDRAILS, fixed_caveats
-    mo.vstack([mo.md("## 8. Caveats"), mo.md("\n".join(f"- {c}" for c in fixed_caveats())),
+    mo.vstack([mo.md("## 7. Caveats"), mo.md("\n".join(f"- {c}" for c in fixed_caveats())),
                mo.Html(render.df_to_html(pd.DataFrame(GUARDRAILS, columns=["Safe statement", "Unsafe upgrade"]),
                                          table_id="app-guard", sortable=False))])
     return
@@ -281,7 +318,7 @@ def _(mo, pd, render):
 @app.cell
 def _(mo):
     export = mo.ui.run_button(label="Export report")
-    mo.vstack([mo.md("## 9. Export\nWrites the full static report (all sections, tables as CSV, provenance) for "
+    mo.vstack([mo.md("## 8. Export\nWrites the full static report (all sections, tables as CSV, provenance) for "
                      "the current signature and options."), export])
     return (export,)
 

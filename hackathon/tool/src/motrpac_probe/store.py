@@ -382,6 +382,8 @@ def build(log=print, hash_inputs=True):
             ("MotrpacRatTraining6moData", r_pkg_version("MotrpacRatTraining6moData")),
             ("MotrpacHumanPreSuspensionAnalysis", r_pkg_version("MotrpacHumanPreSuspensionAnalysis")),
             ("MotrpacRatTraining6mo", r_pkg_version("MotrpacRatTraining6mo")),
+            ("human_data_collection", "c2.0 (MotrpacHumanPreSuspensionAnalysis 2.0.8; identical to the team pipeline's "
+                                      "c2.0 exports, checked row by row)"),
             ("join_table_version", "join_table_v2 (scripts/03_join.py v2: rat RNA on/off rows dropped)"),
             ("join_table_rows_csv", str(n_csv)),
             ("join_table_rows_store", str(int((rows.source == "join_table_v2").sum()))),

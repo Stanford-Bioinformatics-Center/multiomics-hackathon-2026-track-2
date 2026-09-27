@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T00:41:52",
+  "timestamp": "2026-09-27T01:16:36",
   "command": "mprobe discord --quiet --species rat --tissue SKM-GN",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "store": "d615c2f0b9aec182",
@@ -20,12 +20,12 @@
     "store load": 0.42,
     "a timescale": 0.0,
     "b agreement": 1.48,
-    "c stratified rho": 5.43,
-    "d which layer": 0.25,
+    "c stratified rho": 5.44,
+    "d which layer": 0.21,
     "e protein without RNA": 0.65,
-    "f lag": 1.69,
+    "f lag": 1.68,
     "g sex": 0.04,
     "3-layer pathways": 0.02,
-    "figures + tables": 1.5
+    "figures + tables": 1.48
   }
 }

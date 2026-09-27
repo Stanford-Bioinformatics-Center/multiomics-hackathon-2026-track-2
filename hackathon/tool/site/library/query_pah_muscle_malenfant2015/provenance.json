@@ -8,7 +8,7 @@
   "MotrpacRatTraining6moData": "2.0.0",
   "MotrpacHumanPreSuspensionAnalysis": "2.0.8",
   "join_table_version": "join_table_v2 (scripts/03_join.py v2: rat RNA on/off rows dropped)",
-  "built_at": "2026-09-27T00:41:40",
+  "built_at": "2026-09-27T01:16:24",
   "cutoff": 0.05,
   "cap": 250
 }

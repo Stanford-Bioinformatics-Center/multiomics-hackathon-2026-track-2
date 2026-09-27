@@ -1,6 +1,7 @@
 File,Signature,Kind,MitoCarta share,Columns opposed (FDR < 0.05),Columns measured,Median class null percentile
 pah_muscle_malenfant2015,"PAH, skeletal muscle proteome (Malenfant 2015)",disease,0.47368421052631576,5,12,77.94999999999999
 pah_blood_cheadle2012_eds,"PAH, blood erythroid signature (Cheadle 2012)",disease,0.18181818181818182,0,12,43.1
+pah_blood_gse33463_ranked,"PAH, blood PBMC full ranking (GSE33463; team pipeline)",disease,0.076,0,12,46.95
 hostrup2022_hiit_proteome,"HIIT training, muscle proteome (Hostrup 2022)",positive control,0.45528455284552843,0,12,0.55
 random_matched,Random abundance-matched genes,negative control,0.12,0,12,56.74999999999999
 random_mito9,Random MitoCarta genes marked down,pathway-class control,1.0,3,12,57.95

@@ -40,7 +40,8 @@ def compute(paths, titles=None, nboot=1000, seed=20260926, cutoff=0.05, kinds=No
     cids = [c for c, _ in COLUMNS]
     rows = []
     for i, p in enumerate(paths):
-        sig = signature.load(p)
+        from . import ranked
+        sig = ranked.load_ranked(p)[1] if ranked.is_ranked(p) else signature.load(p)
         sc = core.score_columns(S, cids, sig, cutoff=cutoff).set_index("column_id")
         nl = nulls.run_nulls(S, cids, sig, B=nboot, seed=seed)
         ann = S.ann.reindex(sig.genes)

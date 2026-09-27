@@ -161,7 +161,8 @@ def discordance(ds, G, show_pairs):
         g = G[(G.rna == pr[0]) & (G.prot == pr[1])]
         col = np.where(g.rna_opposed & g.prot_opposed, ACCENT, np.where(g.rna_opposed | g.prot_opposed, "#9a9a9a", "#a51c30"))
         ax.scatter(g.stat_rna * -g.direction, g.stat_prot * -g.direction, c=col, s=26, zorder=3)
-        for r in g.itertuples():
+        lab = g.assign(_m=(g.stat_rna.abs() + g.stat_prot.abs())).nlargest(25, "_m")  # label the 25 strongest
+        for r in lab.itertuples():
             ax.annotate(r.gene_symbol_human, (r.stat_rna * -r.direction, r.stat_prot * -r.direction), fontsize=7.5,
                         xytext=(2, 2), textcoords="offset points")
         ax.axhline(0, color=INK, lw=0.6)
@@ -208,5 +209,56 @@ def coverage(cov, blocks):
     ax.tick_params(length=0)
     for sp in ax.spines.values():
         sp.set_visible(False)
+    fig.tight_layout()
+    return fig
+
+
+def rank_association(S, ra, ref=None):
+    """Spearman rho (disease ranking vs exercise statistic) per column with Fisher 95% CI; grey = reference
+    (non-exercise) columns of the same tissue x layer."""
+    d = ra.dropna(subset=["rho"]).merge(S.cols.reset_index(drop=True)[["column_id", "dataset", "tissue", "layer", "col_order"]],
+                                        on="column_id").sort_values("col_order").reset_index(drop=True)
+    fig, ax = plt.subplots(figsize=(max(7, 0.24 * len(d) + 2.5), 4.2))
+    x = np.arange(len(d))
+    for layer, col in LAYER_COLORS.items():
+        m = (d.layer.str.startswith(layer)).to_numpy()
+        if m.any():
+            ax.errorbar(x[m], d.rho[m], yerr=[(d.rho - d.ci_low)[m].clip(lower=0), (d.ci_high - d.rho)[m].clip(lower=0)],
+                        fmt="o", ms=4.5, color=col, lw=1, label="protein" if layer == "PROT" else layer)
+    if ref is not None and len(ref):
+        for i, r in enumerate(d.itertuples()):
+            rr = ref[(ref.dataset == r.dataset) & (ref.tissue == r.tissue) & (ref.layer == r.layer)].rho.dropna()
+            ax.scatter(np.full(len(rr), i), rr, s=8, color=MUTED, alpha=0.5, lw=0, zorder=1)
+    ax.axhline(0, color=INK, lw=0.8)
+    for a, b, lab in _blocks(S, d.column_id):
+        if a:
+            ax.axvline(a - .5, color=INK, lw=0.6)
+        ax.text((a + b - 1) / 2, 1.01, lab.replace("\n", " "), transform=ax.get_xaxis_transform(), ha="center",
+                va="bottom", fontsize=8.5)
+    ax.set_xticks(x, [short_words(r) for r in S.cols.loc[d.column_id].itertuples()], rotation=90, fontsize=9)
+    ax.set_ylabel("Spearman ρ (+ = same as disease, − = opposed)", fontsize=10)
+    ax.set_xlim(-.7, len(d) - .3)
+    ax.legend(fontsize=8.5, frameon=False, loc="upper left", bbox_to_anchor=(0, -0.42), ncol=4)
+    fig.tight_layout()
+    return fig
+
+
+def pathway_counts(S, sm):
+    """Jointly significant GO:BP sets per column, split into same and opposite direction."""
+    d = sm.merge(S.cols.reset_index(drop=True)[["column_id", "col_order"]], on="column_id").sort_values("col_order").reset_index(drop=True)
+    fig, ax = plt.subplots(figsize=(max(7, 0.24 * len(d) + 2.5), 3.8))
+    x = np.arange(len(d))
+    ax.bar(x, d.same_direction, color="#a51c30", label="same direction as disease")
+    ax.bar(x, -d.opposite_direction, color="#1f4e79", label="opposite direction (opposed)")
+    ax.axhline(0, color=INK, lw=0.8)
+    for a, b, lab in _blocks(S, d.column_id):
+        if a:
+            ax.axvline(a - .5, color=INK, lw=0.6)
+        ax.text((a + b - 1) / 2, 1.01, lab.replace("\n", " "), transform=ax.get_xaxis_transform(), ha="center",
+                va="bottom", fontsize=8.5)
+    ax.set_xticks(x, [short_words(r) for r in S.cols.loc[d.column_id].itertuples()], rotation=90, fontsize=9)
+    ax.set_ylabel("GO:BP sets, BH < 0.05 on both sides", fontsize=10)
+    ax.set_xlim(-.7, len(d) - .3)
+    ax.legend(fontsize=8.5, frameon=False, loc="upper left", bbox_to_anchor=(0, -0.42), ncol=2)
     fig.tight_layout()
     return fig

@@ -14,12 +14,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import __version__, core, everywhere, figures, interactive, layers, legacy, nulls, signature, store
+from . import __version__, core, everywhere, figures, interactive, layers, legacy, nulls, ranked, signature, store
 from .caveats import GUARDRAILS, fixed_caveats
 from .core import CORE_LAYERS, CORE_TISSUES, EXERCISE_KINDS, col_words
 from .paths import OUT
 
-DEFAULTS = dict(cutoff=0.05, cap=4.0, nboot=1000, seed=20260926, context_groups=("phenotype",), min_n=10,
+DEFAULTS = dict(cutoff=0.05, cap=4.0, nboot=1000, seed=20260926, nperm=2000, exact_symbols=False, context_groups=("phenotype",), min_n=10,
                 tissues=CORE_TISSUES, universe="all", pool_sets=(), pool_groups=(), sections=None)
 SECTIONS = ["coverage", "grid", "camera", "nulls", "layers", "pathways", "everywhere", "caveats", "sensitivity"]
 METAB_EXTRA_TISSUES = ("PLASMA", "BLOOD")   # metabolite signatures: also rat plasma and human blood
@@ -71,11 +71,37 @@ def compute(sig_path, name=None, **kw):
     else:
         S = core.get_store()
         T("store load")
-        sig = signature.load(sig_path, name=name, context_groups=tuple(o["context_groups"]))
+        rinfo = None
+        if ranked.is_ranked(sig_path):  # full disease ranking (gene + t): team blood pipeline, generalised
+            rk, sig, rinfo = ranked.load_ranked(sig_path, name=name, cutoff=o["cutoff"],
+                                                exact_symbols=o.get("exact_symbols", False))
+        else:
+            sig = signature.load(sig_path, name=name, context_groups=tuple(o["context_groups"]))
         T("signature mapping")
         core_cols = S.select(tissues=o["tissues"], layers=CORE_LAYERS, kinds=EXERCISE_KINDS).column_id.tolist()
     cutoff, cap = o["cutoff"], o["cap"]
-    R = dict(opts=o, sig=sig, core_cols=core_cols, S=S, metab_mode=metab_mode)
+    R = dict(opts=o, sig=sig, core_cols=core_cols, S=S, metab_mode=metab_mode,
+             ranked_mode=not metab_mode and rinfo is not None)
+    if R["ranked_mode"]:
+        R["rinfo"] = rinfo
+        c = S.cols
+        hx = (c.dataset == "human_acute") & (c.kind == "exercise vs control")
+        focus = c[(hx & c.layer.isin(["RNA", "PROT", "PROT_OLINK"])) |
+                  ((c.dataset == "rat_train") & c.tissue.isin(o["tissues"]) & c.layer.isin(CORE_LAYERS))]
+        focus = focus.sort_values("col_order").column_id.tolist()
+        perm = c[hx & (c.layer == "RNA")].column_id.tolist()
+        ra = ranked.rank_association(S, rk, c.column_id.tolist(), nperm=o["nperm"], perm_cids=perm, seed=o["seed"])
+        R["rank_all"] = ra
+        R["rank_focus"] = ra[ra.column_id.isin(focus)].merge(
+            ranked.reference_calibration(S, ra[ra.column_id.isin(focus)], ra), on="column_id", how="left")
+        T("R rank association")
+        dis = ranked.disease_pathways(rinfo["full"])
+        R["pw_dis"] = dis
+        R["pw_store"], R["pw_store_long"] = ranked.pathway_concordance(S, dis, focus, cutoff=o["cutoff"])
+        hcols = [x for x in focus if x.startswith("human_acute")]
+        R["pw_pkg"], R["pw_pkg_long"] = ranked.pathway_concordance(S, dis, hcols, exercise_side="precomputed",
+                                                                   cutoff=o["cutoff"])
+        T("P pathway concordance")
     uni = intrinsic_universe(S) if o["universe"] == "muscle-intrinsic" else None
     R["scores"] = core.score_columns(S, core_cols, sig, cap=cap, cutoff=cutoff, universe=uni)
     R["grid"] = core.grid_long(S, core_cols, sig, cap=cap)
@@ -229,6 +255,15 @@ def write(R, outdir, command="", toggles=None):
                 show.append((m.label.iloc[0], (m.rna.iloc[0], m.prot.iloc[0])))
         if len(d):
             svg["layers"] = fig("layers", figures.discordance(d, R["disc_genes"], show))
+        if R.get("ranked_mode"):
+            ref = R["rank_all"].merge(S.cols.reset_index(drop=True)[["column_id", "dataset", "tissue", "layer", "kind"]], on="column_id")
+            svg["rank_assoc"] = fig("rank_assoc", figures.rank_association(
+                S, R["rank_focus"], ref[ref.kind == "reference (non-exercise)"]))
+            svg["pw_counts"] = fig("pw_counts", figures.pathway_counts(S, R["pw_store"]))
+            tab("rank_association_all", R["rank_all"].assign(comparison=R["rank_all"].column_id.map(cw)))
+            tab("disease_pathways", R["pw_dis"])
+            tab("pathway_concordance_long", R["pw_store_long"])
+            tab("pathway_concordance_precomputed_long", R["pw_pkg_long"])
         if R.get("pathways"):
             from . import metab
             for (tis, sp), pw in R["pathways"].items():
@@ -262,6 +297,7 @@ def provenance(R, command):
         "store": {"contrasts_parquet_sha256_16": store.store_hash(), "built_at": sp.get("built_at"),
                   "rows": sp.get("store_rows"), "columns": sp.get("store_columns")},
         "sources": {k: sp.get(k) for k in ["MotrpacRatTraining6moData", "MotrpacHumanPreSuspensionAnalysis",
+                                            "human_data_collection",
                                             "join_table_version", "gtex", "mitocarta"]},
         "legacy_scripts_sha256_16": legacy.script_hashes(),
         "python": sys.version.split()[0],
@@ -628,6 +664,9 @@ def context(R, svg, tables, cw, fp, command, outdir):
           "Listed conclusions should be reported with the setting that supports them.",
           sens_v if len(sens_v) else pd.DataFrame({"Result": ["no conclusion flips"]}), max_rows=100)]))
 
+    if R.get("ranked_mode"):
+        sections[1:1] = ranked_sections(R, tables, cw, fp, T, F, num2, cut)
+
     meta = [("Signature", sig.name), ("Genes counted", str(len(sig.genes))), ("Rows in file", str(n_in)),
             ("Run", dt.datetime.now().strftime("%Y-%m-%d %H:%M")), ("Store", store.store_hash()),
             ("Repo", store.git_sha()[:10]), ("Command", command)]
@@ -637,6 +676,82 @@ def context(R, svg, tables, cw, fp, command, outdir):
                 meta=meta, headline=headline, first_screen=first, sections=sections, glossary=glossary,
                 toggles={s: True for s in SECTIONS} | ({k: False for k in SECTIONS if k not in o["sections"]}
                                                        if o.get("sections") else {}))
+
+
+TEAM_CREDIT = ("Generalised from the team's PAH blood module (`MoTrPAC Hackathon/scripts` 07.5–12 on main: GSE33463 "
+               "IPAH-minus-healthy PBMC ranking vs MoTrPAC blood RNA).")
+
+
+def ranked_sections(R, tables, cw, fp, T, F, num2, cut):
+    """Sections for a full disease ranking: whole-ranking association and GO:BP pathway concordance."""
+    S, ri = R["S"], R["rinfo"]
+    ra = R["rank_focus"].copy()
+    ra["Comparison"] = ra.column_id.map(cw)
+    v = ra[["Comparison", "n_shared", "rho", "ci_low", "ci_high", "perm_p", "perm_fdr", "direction",
+            "ref_abs_rho_median", "pct_vs_reference"]].rename(columns={
+        "n_shared": "Shared genes", "rho": "Spearman ρ", "ci_low": "95% CI low", "ci_high": "95% CI high",
+        "perm_p": "Permutation p", "perm_fdr": "Permutation BH q", "direction": "Direction",
+        "ref_abs_rho_median": "Median |ρ|, reference contrasts", "pct_vs_reference": "|ρ| percentile vs reference"})
+    ok = ra.dropna(subset=["rho"])
+    lo, hi = ok.loc[ok.rho.idxmin()], ok.loc[ok.rho.idxmax()]
+    n_perm = int(ra.perm_p.notna().sum())
+    sents = [f"Disease ranking: {ri['n_full']:,} genes ({ri['stat_column']}), {ri['n_ranked']:,} mapped to MoTrPAC. "
+             f"Derived directional signature for sections B–G: {ri['n_derived_up']} up and {ri['n_derived_down']} "
+             f"down ({ri['derived_rule']}).",
+             f"Most opposed comparison: {lo.Comparison} (ρ = {lo.rho:+.3f}, 95% CI {lo.ci_low:+.3f} to "
+             f"{lo.ci_high:+.3f}); most similar: {hi.Comparison} (ρ = {hi.rho:+.3f}). |ρ| below about 0.1 means the "
+             "exercise response shares little of the disease ranking, however small its p value."]
+    sec_r = dict(id="rank", title="R. Whole-ranking association (disease ranking vs each exercise comparison)",
+                 intro=[TEAM_CREDIT] + sents, items=[
+        F("rank_assoc", "Does the whole disease ranking resemble or oppose each exercise comparison?",
+          "Spearman ρ between the disease statistic and the exercise statistic over shared genes, with Fisher-z 95% "
+          "CI (+ = exercise moves genes the same way as the disease, − = opposed). Grey points = the same ranking "
+          "against non-exercise reference contrasts of that tissue and layer (the calibration)."),
+        T("rank_association", "Rank association per comparison",
+          f"Permutation p = two-sided gene-label shuffle ({R['opts']['nperm']:,} shuffles; computed for the {n_perm} "
+          "human exercise-vs-control RNA comparisons) — it ignores gene-gene correlation, so it is exploratory, "
+          "as in the team pipeline. The reference percentile compares |ρ| with the non-exercise contrasts.", v,
+          formats={"Spearman ρ": "{:+.3f}", "95% CI low": "{:+.3f}", "95% CI high": "{:+.3f}", "Permutation p": fp,
+                   "Permutation BH q": fp, "Median |ρ|, reference contrasts": "{:.3f}",
+                   "|ρ| percentile vs reference": "{:.0f}"}, max_rows=80)])
+    ps, pk, dis = R["pw_store"].copy(), R["pw_pkg"].copy(), R["pw_dis"]
+    for d in (ps, pk):
+        d["Comparison"] = d.column_id.map(cw)
+    cols = {"shared_sets": "Shared sets", "both_bh": "BH < 0.05 on both sides", "same_direction": "Same direction",
+            "opposite_direction": "Opposite direction", "rho_set_t": "Spearman ρ of set t"}
+    lg = R["pw_store_long"]
+    top = lg[lg.both_bh].copy() if len(lg) else lg
+    if len(top):
+        top["Comparison"] = top.column_id.map(cw)
+        top = top.sort_values("fdr_disease")[["Comparison", "set", "t_disease", "fdr_disease", "t_exercise",
+                                              "fdr_exercise", "concordance"]].rename(columns={
+            "set": "GO:BP set", "t_disease": "t, disease", "fdr_disease": "BH q, disease",
+            "t_exercise": "t, exercise", "fdr_exercise": "BH q, exercise", "concordance": "Direction"})
+    else:
+        top = pd.DataFrame({"Result": ["no GO:BP set is BH < 0.05 on both sides"]})
+    sec_p = dict(id="pathways_go", title="P. Pathway concordance (GO:BP, both sides tested)", intro=[
+        TEAM_CREDIT,
+        f"Disease side: {len(dis):,} GO:BP sets (MotrpacHumanPreSuspensionAnalysis MOLECULAR_SIGNATURES, 10–500 genes "
+        f"in the ranking) tested with cameraPR; {int((dis.fdr < 0.05).sum())} at BH < 0.05. Exercise side: the same "
+        "test on every comparison (this table), and, for human comparisons, MoTrPAC's own precomputed results "
+        "(second table; this is the team pipeline).",
+        f"Across the comparisons shown: {int(ps.same_direction.sum())} same-direction and "
+        f"{int(ps.opposite_direction.sum())} opposite-direction set × comparison rows (same test on both sides); "
+        f"with MoTrPAC's precomputed results for human comparisons: {int(pk.same_direction.sum())} and "
+        f"{int(pk.opposite_direction.sum())}. GO sets share genes, so rows are not independent mechanisms."],
+        items=[F("pw_counts", "Pathways significant on both sides, by comparison",
+                 "Bars: GO:BP sets with BH < 0.05 in both the disease ranking and the exercise comparison; red = same "
+                 "direction as the disease, blue = opposite (exercise opposes). cameraPR, inter-gene correlation 0.01."),
+               T("pw_store", "Per comparison (same cameraPR on both sides)", "", ps[["Comparison"] + list(cols)].rename(
+                   columns=cols), formats={"Spearman ρ of set t": "{:+.3f}"}, max_rows=80),
+               T("pw_pkg", "Per human comparison, MoTrPAC precomputed pathway results (team pipeline)",
+                 "Exercise side = MotrpacHumanPreSuspensionAnalysis CAMERA_RESULTS (GOBP).",
+                 pk[["Comparison"] + list(cols)].rename(columns=cols), formats={"Spearman ρ of set t": "{:+.3f}"}),
+               dict(kind="details", summary="Jointly significant sets", items=[
+                   T("pw_joint", "GO:BP sets significant on both sides", "Same cameraPR on both sides.", top,
+                     formats={"t, disease": num2, "t, exercise": num2, "BH q, disease": fp, "BH q, exercise": fp},
+                     max_rows=200)])])
+    return [sec_r, sec_p]
 
 
 GLOSSARY = [

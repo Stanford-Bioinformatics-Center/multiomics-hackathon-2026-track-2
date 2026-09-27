@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T00:42:08",
+  "timestamp": "2026-09-27T01:16:51",
   "command": "mprobe discord --quiet --species rat --tissue HEART",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "store": "d615c2f0b9aec182",
@@ -19,13 +19,13 @@
   "timings_s": {
     "store load": 0.42,
     "a timescale": 0.0,
-    "b agreement": 2.1,
-    "c stratified rho": 7.58,
-    "d which layer": 0.29,
+    "b agreement": 2.09,
+    "c stratified rho": 7.56,
+    "d which layer": 0.28,
     "e protein without RNA": 0.87,
-    "f lag": 2.22,
+    "f lag": 2.24,
     "g sex": 0.05,
     "3-layer pathways": 0.02,
-    "figures + tables": 1.52
+    "figures + tables": 1.46
   }
 }

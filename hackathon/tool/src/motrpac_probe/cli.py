@@ -19,7 +19,8 @@ def _run(a):
     kw = dict(cutoff=a.cutoff, cap=0 if a.no_cap else a.cap, nboot=a.nboot, seed=a.seed,
               context_groups=_csv(a.context_groups) if a.context_groups is not None else None, min_n=a.min_n, universe=a.universe,
               tissues=_csv(a.tissues) or None, pool_sets=_csv(a.pool_sets), pool_groups=_csv(a.pool_groups),
-              sections=_csv(a.sections) or None, quiet=a.quiet)
+              sections=_csv(a.sections) or None, quiet=a.quiet, nperm=a.nperm,
+              exact_symbols=True if a.exact_symbols else None)
     kw = {k: v for k, v in kw.items() if v is not None and v != ()}
     if a.config:
         from .config import load_config
@@ -89,6 +90,9 @@ def main(argv=None):
     r.add_argument("--pool-sets", default="", help="optional fixed-pool null: gene-set names (comma list)")
     r.add_argument("--pool-groups", default="", help="signature groups used for the fixed-pool null")
     r.add_argument("--sections", default="", help="only render these sections (comma list)")
+    r.add_argument("--nperm", type=int, help="ranked input: gene-label permutations per comparison (2000)")
+    r.add_argument("--exact-symbols", action="store_true",
+                   help="ranked input: match gene symbols exactly (as the team pipeline) instead of the full mapping")
     r.add_argument("--quiet", action="store_true")
     r.set_defaults(fn=_run)
 

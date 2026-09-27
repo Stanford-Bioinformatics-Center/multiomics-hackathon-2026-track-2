@@ -1,6 +1,6 @@
 {
   "tool": "motrpac_probe 0.1.0",
-  "timestamp": "2026-09-27T00:41:06",
+  "timestamp": "2026-09-27T01:15:50",
   "command": "mprobe run --quiet --signature examples/random_mito9.csv --name random_mito9",
   "repo_git_sha": "5e2cde37eb418e7085b4988c75ae986a35c04da4",
   "signature": {
@@ -17,6 +17,7 @@
   "sources": {
     "MotrpacRatTraining6moData": "2.0.0",
     "MotrpacHumanPreSuspensionAnalysis": "2.0.8",
+    "human_data_collection": "c2.0 (MotrpacHumanPreSuspensionAnalysis 2.0.8; identical to the team pipeline's c2.0 exports, checked row by row)",
     "join_table_version": "join_table_v2 (scripts/03_join.py v2: rat RNA on/off rows dropped)",
     "gtex": "GTEx v8 gene median TPM (model/ext/gtex_v8_gene_median_tpm.gct.gz)",
     "mitocarta": "MitoCarta3.0 human (model/ext/mitocarta3_human.csv)"
@@ -42,6 +43,8 @@
     "cap": 4.0,
     "nboot": 1000,
     "seed": 20260926,
+    "nperm": 2000,
+    "exact_symbols": false,
     "context_groups": [
       "phenotype"
     ],
@@ -58,7 +61,7 @@
     "sections": null
   },
   "timings_s": {
-    "store load": 0.21,
+    "store load": 0.22,
     "signature mapping": 0.03,
     "B/C grid + cameraPR": 0.17,
     "D calibration nulls": 0.16,
@@ -67,6 +70,6 @@
     "F everywhere": 0.31,
     "sensitivity": 0.13,
     "3-layer pathways": 0.25,
-    "figures": 1.32
+    "figures": 1.42
   }
 }

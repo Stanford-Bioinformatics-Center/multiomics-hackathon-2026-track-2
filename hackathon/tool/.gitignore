@@ -6,3 +6,5 @@ qa/*.png
 __pycache__/
 .pytest_cache/
 *.egg-info/
+site/app/
+store/camera_pkg_gobp.csv.gz
