@@ -47,7 +47,7 @@ stop it: `lsof -nP -iTCP:5173 -sTCP:LISTEN` then `kill <PID>`.
 | # | View | Data source |
 |---|---|---|
 | 01-04, 08 | Architecture / Technical flow / Workflow / Results dashboard / Judge slide | static design (mock) |
-| 05 | **Live results (API)** | mprobe engine — PAH muscle 19-protein run |
+| 05 | **Live results** | five-step PAH story from committed `MoTrPAC Hackathon/` outputs (`/api/story`), live engine runs for the T2D comparison and your own gene/protein or metabolite lists, and an evidence catalog; filters and significance rule are kept in the URL |
 | 06 | **Metabolomics (ST000763)** | standalone metabolomics module (read-only case study) |
 | 07 | **Generalized query** | `query_core` engine — pick a signature, run vs MoTrPAC; PAH examples reproduce the legacy result |
 

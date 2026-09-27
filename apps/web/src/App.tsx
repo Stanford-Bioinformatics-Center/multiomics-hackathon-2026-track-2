@@ -1,32 +1,27 @@
-import { createElement, useState, type ReactNode } from "react";
-import QueryBuilder, { initialAnalysisQuery } from "./components/QueryBuilder";
+import { createElement, useEffect, useState, type ReactNode } from "react";
 import TechnicalFlowDiagram from "./components/TechnicalFlowDiagram";
-import LiveDashboard from "./components/LiveDashboard";
+import LiveResultsStory from "./components/LiveResultsStory";
 import MetabolomicsCaseStudy from "./components/MetabolomicsCaseStudy";
 import GeneralizedQuery from "./components/GeneralizedQuery";
-import { getStudyContext, getVisualizationMode, type AnalysisQuery } from "./domain/analysis";
 
 type View = "architecture" | "technical" | "workflow" | "dashboard" | "live" | "metabolomics" | "generalized" | "slide";
-type DashboardTab = "Disease vs Exercise" | "RNA vs Protein" | "Heatmap" | "Evidence Table" | "Methods & Limitations";
 
 const views: { id: View; label: string; eyebrow: string }[] = [
   { id: "architecture", label: "System architecture", eyebrow: "01" },
   { id: "technical", label: "Technical flow", eyebrow: "02" },
   { id: "workflow", label: "Researcher workflow", eyebrow: "03" },
-  { id: "dashboard", label: "Results dashboard", eyebrow: "04" },
-  { id: "live", label: "Live results (API)", eyebrow: "05" },
+  { id: "dashboard", label: "Reading guide", eyebrow: "04" },
+  { id: "live", label: "Live results", eyebrow: "05" },
   { id: "metabolomics", label: "Metabolomics (ST000763)", eyebrow: "06" },
   { id: "generalized", label: "Generalized query", eyebrow: "07" },
   { id: "slide", label: "Judge slide", eyebrow: "08" },
 ];
 
-const dashboardTabs: DashboardTab[] = [
-  "Disease vs Exercise",
-  "RNA vs Protein",
-  "Heatmap",
-  "Evidence Table",
-  "Methods & Limitations",
-];
+function viewFromUrl(): View {
+  if (typeof window === "undefined") return "architecture";
+  const section = new URLSearchParams(window.location.search).get("section");
+  return views.find((item) => item.id === section)?.id ?? "architecture";
+}
 
 function Text({
   as = "div",
@@ -144,7 +139,7 @@ const architectureLayers = [
       "Human → rat ortholog mapping",
       "Omic-specific adapters",
       "Disease ↔ exercise comparison",
-      "Cross-omic classifier",
+      "Cross-omic agreement labels",
       "Pathway / context annotation",
       "Evidence + limitation labels",
     ],
@@ -282,7 +277,7 @@ const workflowSteps = [
   ["Confirm", "Approve, edit, or exclude every normalization decision.", "checkpoint"],
   ["Resolve context", "Choose the target MoTrPAC species; study design is derived from the catalog.", "context"],
   ["Compare", "Choose compatible omics, tissue, sex, and time point, then run precomputed results.", "compute"],
-  ["Classify", "Label disease opposition and RNA/protein agreement.", "classify"],
+  ["Label", "Describe disease and exercise directions, then RNA/protein agreement.", "classify"],
   ["Explore", "Review plots, pathways, provenance, and limitations.", "evidence"],
   ["Export", "Download a reproducible CSV/JSON result bundle.", "export"],
 ];
@@ -341,8 +336,8 @@ function Workflow() {
           <Text className="eyebrow">Independent classification A</Text>
           <Text as="h3">Disease relationship</Text>
           <div className="classification-list">
-            <span className="pill pill--teal">Opposes disease direction</span>
-            <span className="pill pill--coral">Matches disease direction</span>
+            <span className="pill pill--teal">Opposite direction from the PAH change</span>
+            <span className="pill pill--coral">Same direction as the PAH change</span>
             <span className="pill">Near-zero / uncertain</span>
             <span className="pill">Missing / unmapped</span>
           </div>
@@ -361,203 +356,41 @@ function Workflow() {
           </div>
         </div>
         <div className="strongest-state">
-          <Text className="eyebrow">Strongest exploratory state</Text>
-          <Text as="h3">RNA and protein agree — and both oppose the disease direction.</Text>
-          <Text as="p">A prioritized signal for hypothesis generation and follow-up, not evidence that exercise treats PAH. RNA and protein remain independent measurements; neither is treated as a proxy for the other.</Text>
+          <Text className="eyebrow">Cross-layer question</Text>
+          <Text as="h3">Do RNA and protein move together in the same tissue and time window?</Text>
+          <Text as="p">The PAH and MoTrPAC cohorts are separate. Agreement or disagreement between MoTrPAC layers describes healthy exercise physiology; it is a hypothesis for future patient studies.</Text>
         </div>
       </div>
     </section>
   );
 }
 
-const genes = [
-  { name: "PPARGC1A", x: 63, y: 29, type: "oppose" },
-  { name: "SOD2", x: 72, y: 24, type: "oppose" },
-  { name: "NDUFS1", x: 67, y: 37, type: "oppose" },
-  { name: "COL1A1", x: 29, y: 70, type: "oppose" },
-  { name: "CXCL12", x: 31, y: 61, type: "oppose" },
-  { name: "STAT3", x: 69, y: 68, type: "align" },
-  { name: "IL6R", x: 76, y: 76, type: "align" },
-  { name: "MYH7", x: 26, y: 26, type: "align" },
-  { name: "VEGFA", x: 57, y: 47, type: "neutral" },
-];
 
-function QuadrantPlot({ omic = false }: { omic?: boolean }) {
-  return (
-    <div className="plot-shell">
-      <div className="plot-y-label">{omic ? "Protein log₂FC" : "Exercise log₂FC"}</div>
-      <div className="plot">
-        <div className="quadrant quadrant--tl"><span>{omic ? "Discordant" : "Opposes"}</span></div>
-        <div className="quadrant quadrant--tr"><span>{omic ? "Concordant +" : "Disease aligned"}</span></div>
-        <div className="quadrant quadrant--bl"><span>{omic ? "Concordant −" : "Disease aligned"}</span></div>
-        <div className="quadrant quadrant--br"><span>{omic ? "Discordant" : "Opposes"}</span></div>
-        <span className="axis axis--x" />
-        <span className="axis axis--y" />
-        {genes.map((gene, index) => (
-          <span
-            className={`plot-point plot-point--${gene.type}`}
-            style={{ left: `${gene.x}%`, top: `${gene.y}%` }}
-            key={gene.name}
-          >
-            {(index < 5 || omic) && <span className="plot-label">{gene.name}</span>}
-          </span>
-        ))}
-      </div>
-      <div className="plot-x-label">{omic ? "RNA log₂FC" : "Disease effect"}</div>
-    </div>
-  );
-}
-
-function Heatmap() {
-  const rows = ["PPARGC1A", "SOD2", "NDUFS1", "COL1A1", "CXCL12", "STAT3", "IL6R", "MYH7"];
-  const cells = [
-    ["down", "up", "up", "na"], ["down", "up", "up", "na"], ["down", "up", "up", "na"],
-    ["up", "down", "down", "na"], ["up", "down", "down", "na"], ["up", "up", "up", "na"],
-    ["up", "up", "down", "na"], ["down", "down", "down", "na"],
-  ];
-  return (
-    <div className="heatmap">
-      <div className="heatmap__head"><span />{["Disease", "RNA", "Protein", "Metabolite"].map((h) => <span key={h}>{h}</span>)}</div>
-      {rows.map((row, i) => (
-        <div className="heatmap__row" key={row}>
-          <strong>{row}</strong>
-          {cells[i].map((cell, j) => <span className={`heat-cell heat-cell--${cell}`} key={j}>{j !== 3 && (i + j) % 3 === 0 ? "•" : ""}</span>)}
-        </div>
-      ))}
-      <div className="heatmap__legend"><span className="legend-gradient" /> signed effect <b>•</b> adjusted significant <i>planned layer</i></div>
-    </div>
-  );
-}
-
-function EvidenceTable() {
-  const rows = [
-    ["PPARGC1A", "PPARGC1A → Ppargc1a", "−1.24", "+0.88", "+0.61", "Opposes · concordant"],
-    ["SOD2", "SOD2 → Sod2", "−0.76", "+0.54", "+0.42", "Opposes · concordant"],
-    ["COL1A1", "COL1A1 → Col1a1", "+1.45", "−0.63", "−0.38", "Opposes · concordant"],
-    ["STAT3", "STAT3 → Stat3", "+0.71", "+0.39", "+0.26", "Matches · concordant"],
-    ["VEGFA", "VEGFA → Vegfa", "+0.32", "+0.05", "—", "Near-zero · RNA only"],
-  ];
-  return (
-    <div className="evidence-table">
-      <div className="table-tools"><div className="search-box">Search gene, mapping, source…</div><Button className="tiny-button">Download visible rows</Button></div>
-      <div className="table-row table-row--head">{["Feature", "Mapping", "Disease", "RNA", "Protein", "Classification"].map(h => <span key={h}>{h}</span>)}</div>
-      {rows.map(row => <div className="table-row" key={row[0]}>{row.map((cell, i) => <span key={i} className={i === 5 ? (cell.startsWith("Opposes") ? "good-text" : "warn-text") : ""}>{cell}</span>)}</div>)}
-      <div className="table-provenance">＋ Expandable provenance rows include source accession, numerator, denominator, q-values, ortholog method, mapping confidence, and pipeline version.</div>
-    </div>
-  );
-}
-
-function Methods() {
-  return (
-    <>
-      <div className="methods-grid">
-        <div className="method-block"><Text className="eyebrow">Source studies</Text><Text as="h3">Cross-cohort by design</Text><Text as="p">External human PAH skeletal-muscle signature compared with a catalog-resolved MoTrPAC context.</Text></div>
-        <div className="method-block"><Text className="eyebrow">Versions</Text><Text as="h3">Reproducible manifests</Text><Text as="p">Every export records dataset release, package versions, pipeline commit, parameters, timestamp, and content checksums.</Text></div>
-        <div className="method-block"><Text className="eyebrow">Mappings</Text><Text as="h3">Assumptions stay visible</Text><Text as="p">Human-to-rat orthology and transcript-to-protein comparison are reported with method, confidence, ambiguity, and exclusions.</Text></div>
-        <div className="method-block method-block--warning"><Text className="eyebrow">What is not supported</Text><Text as="h3">No treatment or causal claim</Text><Text as="p">Directional opposition is exploratory evidence for follow-up. It does not show that exercise treats PAH or establish clinical benefit.</Text></div>
-      </div>
-      <div className="scientific-state-gallery">
-        <div className="state-gallery-card"><span>SCIENTIFIC EMPTY STATE</span><strong>No matching tissue or time point</strong><p>The resolved study exists, but no result matches the selected catalog filters. Show compatible alternatives.</p></div>
-        <div className="state-gallery-card"><span>SCIENTIFIC EMPTY STATE</span><strong>No mapped features</strong><p>Show submitted identifiers, namespaces, alias attempts, mapping failures, and ortholog status.</p></div>
-        <div className="state-gallery-card state-gallery-card--weak"><span>MEASUREMENTS RETAINED</span><strong>No adjusted-significant support</strong><p>Effect sizes, directions, and adjusted p-values remain visible rather than being treated as missing.</p></div>
-        <div className="state-gallery-card state-gallery-card--error"><span>TECHNICAL ERROR ONLY</span><strong>Processing failure</strong><p>Reserved for malformed files, unavailable services, corrupted artifacts, or processing exceptions.</p></div>
-      </div>
-    </>
-  );
-}
-
-function PairwiseMatrix() {
-  return (
-    <div className="pairwise-matrix">
-      <div className="pairwise-matrix__head"><span /><strong>RNA</strong><strong>Protein</strong><strong>Metabolite</strong></div>
-      {[
-        ["RNA", "—", "0.68", "planned"],
-        ["Protein", "0.68", "—", "planned"],
-        ["Metabolite", "planned", "planned", "—"],
-      ].map((row) => (
-        <div className="pairwise-matrix__row" key={row[0]}>
-          <strong>{row[0]}</strong>
-          {row.slice(1).map((cell, index) => <span className={cell === "planned" ? "matrix-planned" : ""} key={index}>{cell}</span>)}
-        </div>
-      ))}
-      <small>Pairwise concordance matrix · select a supported pair for detailed inspection</small>
-    </div>
-  );
-}
-
-function DashboardContent({ tab, query }: { tab: DashboardTab; query: AnalysisQuery }) {
-  const mode = getVisualizationMode(query.selectedOmics);
-  if (tab === "Disease vs Exercise") return <QuadrantPlot />;
-  if (tab === "RNA vs Protein") {
-    if (mode === "single_layer") {
-      return (
-        <div className="visual-empty-state">
-          <span>ONE LAYER SELECTED</span>
-          <Text as="h3">Disease-versus-exercise analysis remains available.</Text>
-          <Text as="p">Cross-omic concordance or discordance requires at least two compatible layers. No missing biological mechanism is inferred.</Text>
-        </div>
-      );
-    }
-    if (mode === "matrix") {
-      return <div className="multi-view"><Heatmap /><PairwiseMatrix /></div>;
-    }
-    return <QuadrantPlot omic />;
-  }
-  if (tab === "Heatmap") return <Heatmap />;
-  if (tab === "Evidence Table") return <EvidenceTable />;
-  return <Methods />;
-}
-
-function Dashboard() {
-  const [tab, setTab] = useState<DashboardTab>("Disease vs Exercise");
-  const [query, setQuery] = useState<AnalysisQuery>(initialAnalysisQuery);
-  const context = getStudyContext(query.targetMotrpacSpecies)!;
-  const isRat = query.targetMotrpacSpecies === "rat";
-  const cards = [
-    ["128", "Input features", "100% retained"],
-    ["112", "Successfully mapped", "87.5%"],
-    ["47", "Opposite direction", "42% of mapped"],
-    ["31", "Adjusted-significant", "cross-cohort support"],
-    ["26", "RNA / protein agree", "of 39 dual-measured"],
-    ["16", "Missing / ambiguous", "requires review"],
-  ];
+function Dashboard({ onOpenLive }: { onOpenLive: () => void }) {
   return (
     <section className="view">
-      <SectionIntro number="03" kicker="Desktop wireframe" title="Evidence first, claims constrained" copy="The dashboard keeps contrast definitions, assumptions, missingness, and provenance beside the scientific signal." />
-      <div className="dashboard-frame">
-        <div className="dashboard-topbar">
-          <div className="dashboard-brand"><span className="brand-mark">ES</span><div><strong>Exercise Signature Explorer</strong><small>Cross-cohort molecular comparison</small></div></div>
-          <div className="topbar-context"><span>Current signature</span><strong>PAH skeletal muscle v1.2</strong></div>
-          <div className="topbar-context"><span>Dataset / version</span><strong>{context.datasetId} · {context.datasetVersion}</strong></div>
-          <Button className="method-link">Methodology ↗</Button>
-          <Button className="export-button">Export bundle ↓</Button>
-        </div>
-        <div className="contrast-banner">
-          <div><span>Disease numerator</span><strong>Human PAH skeletal muscle</strong></div><div className="versus">VS</div><div><span>Disease denominator</span><strong>Healthy human control</strong></div>
-          <div className="contrast-divider" />
-          <div><span>Exercise numerator</span><strong>{isRat ? "Chronically trained rat" : "Human post-acute exercise"}</strong></div><div className="versus">VS</div><div><span>Exercise denominator</span><strong>{isRat ? "Sex-matched sedentary rat" : "Matched human baseline"}</strong></div>
-        </div>
-        <div className="dashboard-body">
-          <aside className="filter-rail">
-            <QueryBuilder onQueryChange={setQuery} />
-          </aside>
-          <div className="dashboard-main">
-            <div className="summary-cards">
-              {cards.map(([value, label, detail], i) => <div className={`summary-card ${i === 2 || i === 4 ? "summary-card--focus" : ""}`} key={label}><strong>{value}</strong><span>{label}</span><small>{detail}</small></div>)}
-            </div>
-            <div className="visual-card">
-              <div className="dashboard-tabs">
-                {dashboardTabs.map(item => <Button className={`dashboard-tab ${tab === item ? "dashboard-tab--active" : ""}`} onClick={() => setTab(item)} key={item}>{item}</Button>)}
-              </div>
-              <div className="visual-header">
-                <div><Text className="eyebrow">{tab === "Methods & Limitations" ? "Interpretation guardrails" : `${context.species} · ${context.studyDesign} · ${query.tissue} · ${query.sex} · ${query.timepoint}`}</Text><Text as="h3">{tab}</Text></div>
-                {tab !== "Methods & Limitations" && <div className="chart-legend"><span><i className="dot dot--teal" /> Opposes / concordant</span><span><i className="dot dot--coral" /> Aligned / discordant</span><span><i className="dot dot--gray" /> Uncertain</span></div>}
-              </div>
-              <DashboardContent tab={tab} query={query} />
-              {(tab === "Disease vs Exercise" || (tab === "RNA vs Protein" && query.selectedOmics.length === 2)) && <div className="tooltip-demo"><strong>PPARGC1A</strong><span>Human → rat: Ppargc1a · 1:1 ortholog</span><span>Disease effect: −1.24 · q 0.003</span><span>Exercise RNA: +0.88 · q 0.012</span><span>Source: PAH-EXT-04 / MoTrPAC 1.0</span></div>}
-            </div>
-          </div>
-        </div>
+      <SectionIntro
+        number="04"
+        kicker="Reading guide"
+        title="Read each contrast first"
+        copy="The next section shows measured results. This guide explains how to read the panels without mixing the disease and exercise cohorts."
+      />
+      <div className="reading-comparison">
+        <article>
+          <span>REST · DISEASE STUDY</span>
+          <h3>PAH compared with its own controls</h3>
+          <p>The disease direction comes from a separate PAH study. Its numerator, denominator, tissue, and layer remain visible with each result.</p>
+        </article>
+        <article>
+          <span>EXERCISE · MOTRPAC</span>
+          <h3>Healthy physiology</h3>
+          <p>Human data follow one acute bout in sedentary adults, compared with a resting control group. Rat data follow endurance training over weeks.</p>
+        </article>
+      </div>
+      <div className="reading-note">
+        <strong>Interpretation</strong>
+        <p>Compare directions only after matching species, tissue, layer, time, and contrast. A cross-cohort match or difference generates a question for a future patient study; it does not test treatment in PAH.</p>
+        <Button className="run-comparison" onClick={onOpenLive}>Open live results →</Button>
       </div>
     </section>
   );
@@ -569,7 +402,7 @@ function JudgeSlide() {
     ["02", "Species + omic selection", "Study design derived from catalog"],
     ["03", "Availability + mapping validation", "No silent reinterpretation"],
     ["04", "Compatible MoTrPAC data", "Independent RNA + protein"],
-    ["05", "Two-axis classification", "Opposition + concordance"],
+    ["05", "Two-axis description", "Disease direction + omic agreement"],
     ["06", "Interactive evidence dashboard", "Plots + provenance + export"],
   ];
   return (
@@ -589,7 +422,7 @@ function JudgeSlide() {
           ))}
         </div>
         <div className="judge-result">
-          <div><span className="result-mark">✓</span><strong>Prioritize</strong><small>Concordant RNA + protein that oppose disease direction</small></div>
+          <div><span className="result-mark">✓</span><strong>Compare</strong><small>RNA + protein directions within matched tissue and time</small></div>
           <div><span className="result-mark">↗</span><strong>Follow up</strong><small>Generate hypotheses; do not infer treatment or causality</small></div>
           <div><span className="result-mark">≡</span><strong>Reproduce</strong><small>Export mappings, versions, assumptions, and calculations</small></div>
         </div>
@@ -607,7 +440,22 @@ function JudgeSlide() {
 }
 
 export default function App() {
-  const [view, setView] = useState<View>("architecture");
+  const [view, setView] = useState<View>(viewFromUrl);
+
+  useEffect(() => {
+    const syncFromUrl = () => setView(viewFromUrl());
+    window.addEventListener("popstate", syncFromUrl);
+    return () => window.removeEventListener("popstate", syncFromUrl);
+  }, []);
+
+  function navigate(next: View) {
+    if (next === view) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set("section", next);
+    window.history.pushState(null, "", url);
+    setView(next);
+  }
+
   return (
     <main className="app-shell">
       <header className="app-header">
@@ -619,7 +467,7 @@ export default function App() {
       </header>
       <nav className="view-nav" aria-label="Deliverables">
         {views.map(item => (
-          <Button className={`view-nav__item ${view === item.id ? "view-nav__item--active" : ""}`} onClick={() => setView(item.id)} key={item.id}>
+          <Button className={`view-nav__item ${view === item.id ? "view-nav__item--active" : ""}`} onClick={() => navigate(item.id)} aria-current={view === item.id ? "page" : undefined} key={item.id}>
             <span>{item.eyebrow}</span>{item.label}
           </Button>
         ))}
@@ -627,8 +475,8 @@ export default function App() {
       {view === "architecture" && <Architecture />}
       {view === "technical" && <TechnicalFlow />}
       {view === "workflow" && <Workflow />}
-      {view === "dashboard" && <Dashboard />}
-      {view === "live" && <LiveDashboard />}
+      {view === "dashboard" && <Dashboard onOpenLive={() => navigate("live")} />}
+      {view === "live" && <LiveResultsStory />}
       {view === "metabolomics" && <MetabolomicsCaseStudy />}
       {view === "generalized" && <GeneralizedQuery />}
       {view === "slide" && <JudgeSlide />}

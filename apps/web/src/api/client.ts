@@ -83,8 +83,69 @@ export interface ColumnResult {
   camera_t: number | null;
   camera_p: number | null;
   camera_fdr: number | null;
+  camera_bonferroni: number | null;
   verdict: string;
   significant: boolean;
+}
+
+export interface StoryRecord {
+  id: string;
+  panel_id: string;
+  record_type: string;
+  species: string | null;
+  tissue: string | null;
+  layer: string | null;
+  exercise: string | null;
+  contrast: string | null;
+  timepoint: string | null;
+  sex: string | null;
+  molecule: string | null;
+  disease_direction: string | null;
+  disease_contrast?: string | null;
+  disease_layer?: string | null;
+  disease_unit?: string | null;
+  motrpac_direction: string | null;
+  motrpac_measured?: boolean;
+  disease_value?: number | null;
+  disease_p_value?: number | null;
+  disease_q_value?: number | null;
+  value: number | null;
+  unit: string | null;
+  n?: number | null;
+  p_value: number | null;
+  q_value: number | null;
+  bonferroni_p?: number | null;
+  correction_method?: string | null;
+  correction_family?: string | null;
+  label: string;
+  source: string;
+  metrics?: Record<string, unknown>;
+}
+
+export interface StoryPanel {
+  id: string;
+  title: string;
+  question: string;
+  observation: string;
+  interpretation: string;
+  hypothesis: string;
+  caveat: string;
+  records: StoryRecord[];
+}
+
+export interface StoryResponse {
+  panels: StoryPanel[];
+  availability: {
+    species: string[];
+    tissues: string[];
+    layers: string[];
+    exercises: string[];
+    contrasts: string[];
+    timepoints: string[];
+    sexes: string[];
+    contexts: Array<Pick<StoryRecord, "panel_id" | "species" | "tissue" | "layer" | "exercise" | "contrast" | "timepoint" | "sex">>;
+  };
+  provenance?: Record<string, string>;
 }
 
 export interface FeatureEvidence {
@@ -214,6 +275,38 @@ export interface MetabConvergence {
   note: string;
 }
 
+export interface MetabolitePreview {
+  n_input_rows: number;
+  n_blood_matched: number;
+  unmapped_ids: string[];
+  rows: Array<{
+    input_row: number;
+    list_id: string;
+    name: string;
+    pah_direction: string;
+    pah_log2_effect: number | null;
+    pah_q_value: number | null;
+    is_reported_hit: boolean;
+    blood_matched: boolean;
+    muscle_matched: boolean;
+    context_label: string;
+    observations: Array<{
+      tissue: string;
+      feature_id: string;
+      match_basis: string;
+      contrast: string;
+      timepoint: string;
+      logFC: number | null;
+      p_value: number | null;
+      bh_q: number | null;
+    }>;
+    source: string;
+    caveat: string;
+  }>;
+  rule: string;
+  note: string;
+}
+
 export interface SignatureRowInput {
   gene_symbol?: string;
   uniprot?: string;
@@ -262,6 +355,7 @@ export class ApiError extends Error {
 }
 
 export const api = {
+  story: () => getJSON<StoryResponse>("/story"),
   health: () => getJSON<{ status: string; schema_version: string; store_hash: string }>("/health"),
   catalog: () => getJSON<Catalog>("/catalog"),
   availability: (body: {
@@ -282,6 +376,7 @@ export const api = {
   reportUrl: (runId: string) => `${BASE}/comparisons/${runId}/report`,
   exportUrl: (runId: string) => `${BASE}/comparisons/${runId}/export`,
   metabCaseStudy: () => getJSON<MetabCaseStudy>("/metabolomics/casestudy"),
+  metabolitePreview: (body: { csv_text: string }) => postJSON<MetabolitePreview>("/metabolomics/preview", body),
   metabConvergence: () => getJSON<MetabConvergence>("/metabolomics/convergence"),
   metabExportUrl: () => `${BASE}/metabolomics/casestudy/export`,
   generalizedSignatures: () => getJSON<{ signatures: GeneralizedSignature[]; note: string }>("/generalized/signatures"),
