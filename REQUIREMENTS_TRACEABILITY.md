@@ -24,9 +24,10 @@ traceable. Status: TODO / IN PROGRESS / DONE / BLOCKED.
 | R-RUN-1 (part) | FDR threshold in run_id; include-nonsignificant NOT in run_id | `service._run_id` | `test_run_id_deterministic_...` | DONE (service; UI in Gate 5) |
 | R-LIN-1 (part) | evidence_id on every feature row; traces to a column | `service` FeatureEvidence | `test_features_have_lineage_and_trace_to_columns` | DONE (service; browser test Gate 5) |
 | R-UI-2 (part) | Both contrasts first-class; never "healthy gene set" | `service` ContrastPair | `test_guardrails_and_contrasts_present` | DONE (service; UI in Gate 5) |
-| R-CAT-1 | Catalog/availability from store.columns, not React constants; SKM-VL RNA-only fixed | `apps/api` catalog | availability test | TODO |
-| R-CAT-2 | Unsupported source species (mouse/other) disabled or explicit unsupported | catalog + UI | unit test | TODO |
-| R-LIN-1 | evidence_id, mapping_decision_id, selected+candidate features, aggregation method on every evidence row | service | point→source test (R-PTS-1) | TODO |
+| R-CAT-1 | Catalog/availability from store.columns, not React constants; SKM-VL RNA-only fixed | `catalog.build_catalog` / `resolve_availability` | `test_catalog.py` (SKM-VL/SKM-GN) | DONE |
+| R-CAT-2 | Unsupported source species (mouse/other) disabled or explicit unsupported | `catalog.SUPPORTED_SOURCE_SPECIES` | `test_source_species_gating`, `test_unknown_species_no_matching_context` | DONE |
+| R-CAT-3 | Capability matrix (engine/api/react/demo) per layer | `catalog.CAPABILITY_MATRIX` | `test_capability_matrix_layers` | DONE |
+| R-LIN-1 | evidence_id, mapping_decision_id, source feature, n_collapsed, aggregation method on every evidence row | `service` FeatureEvidence | `test_feature_lineage_fields_present_and_collapse_recorded`, `test_mapping_decision_id_ties_to_audit` | DONE (service; browser test Gate 5) |
 | R-MULT-1 | 53-column BH family frozen; BH before filtering; display never re-runs BH | service | parity + q=0.0584 compute test | TODO |
 | R-HEAD-1 | Headline male rat SKM-GN prot 8wk = q=0.0584 (computed), not significant; 16-col only as labeled sensitivity | service + UI | q-compute test (R-MULT-1) | TODO |
 | R-VIZ-1 | Visualization mode from RETURNED layers, not requested | React | component test | TODO |

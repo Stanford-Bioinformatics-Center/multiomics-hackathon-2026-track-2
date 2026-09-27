@@ -141,3 +141,31 @@ Verified numbers:
 Commands:
 - `pip install -e apps/api[test]` (editable, alongside the editable engine)
 - `python -m pytest apps/api/tests/test_service.py -v` -> 8 passed
+
+### Gate 4 checkpoint — Catalog, lineage, availability from store.columns (PASS)
+Files added / changed:
+- `apps/api/motrpac_probe_service/catalog.py` (new; catalog + availability + capability matrix)
+- `apps/api/motrpac_probe_service/__init__.py`, `schema.py`, `service.py` (lineage fields wired)
+- `apps/api/tests/test_catalog.py` (new; 8 tests), `tests/test_service.py` (+2 lineage tests)
+
+Why:
+- Catalog and availability are derived from `store.load_columns()`, never hardcoded constants, so
+  the store is the single source of truth for what exists.
+- Fixes the React catalog bug: rat SKM-VL is RNA-only; SKM-GN has RNA+PROT+PHOSPHO.
+- Capability matrix per layer (engine/api/react/demo_validated): transcriptomics & proteomics are
+  fully exposed; phosphoproteomics is engine+api but not react; metabolomics is engine-only (not
+  api/react); genomics/epigenomics unsupported. So an engine-supported/UI-not-exposed layer is not
+  mislabeled globally "planned".
+- Source-species gating: mapper supports human + rat only; mouse/other are explicitly unsupported.
+- Lineage: every measured FeatureEvidence carries source_feature_id, n_collapsed,
+  aggregation_method, mapping_decision_id -> point -> evidence -> source is reconstructable/testable.
+
+Verified numbers (from the store, 422 columns total):
+- rat SKM-GN exercise layers = {RNA, PROT, PHOSPHO}; SKM-VL = {RNA} only.
+- Collapse rule = max |stat|: in rat SKM-GN protein, MYH7 collapses 2 features (feature_id
+  NP_058936.1), PDLIM3 collapses 3 (XP_006253181.1), NDUFA9 = 1 (NP_001094222.1).
+- Availability: (rat, [transcriptomics, proteomics], SKM-VL) -> partially_available (proteomics
+  unavailable); SKM-GN -> available; non-existent tissue -> no_matching_context (not an error).
+
+Commands:
+- `python -m pytest apps/api/tests -v` -> 18 passed (8 service + 2 lineage + 8 catalog)

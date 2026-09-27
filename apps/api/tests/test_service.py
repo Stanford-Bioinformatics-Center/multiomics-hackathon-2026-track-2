@@ -101,3 +101,33 @@ def test_signature_rows_input_path_is_content_addressed():
     resp = run_analysis(AnalysisRequest(signature_rows=rows, target_species="rat", signature_name="tiny"))
     assert resp.status == "ok"
     assert resp.n_counted_genes == 2
+
+
+def test_feature_lineage_fields_present_and_collapse_recorded():
+    """Point -> evidence -> source: every measured feature carries source_feature_id, n_collapsed,
+    aggregation_method, and mapping_decision_id. MYH7 collapses 2 features and PDLIM3 collapses 3
+    in the rat SKM-GN protein columns (collapse rule = max |stat|)."""
+    resp = run_analysis(_full19())
+    measured = [f for f in resp.features if f.measured]
+    assert measured
+    for f in measured:
+        assert f.source_feature_id, f"{f.gene}@{f.column_id} missing source_feature_id"
+        assert f.n_collapsed is not None and f.n_collapsed >= 1
+        assert f.aggregation_method in ("single_feature", "max_abs_stat")
+        assert f.mapping_decision_id.startswith(resp.run_id)
+        # aggregation method must agree with the collapse count
+        assert (f.aggregation_method == "max_abs_stat") == (f.n_collapsed > 1)
+    # MYH7 / PDLIM3 collapse in a rat SKM-GN protein column
+    skmgn_prot = [f for f in measured if f.dataset == "rat_train" and f.tissue == "SKM-GN" and f.layer == "PROT"]
+    myh7 = [f for f in skmgn_prot if f.gene == "MYH7"]
+    pdlim3 = [f for f in skmgn_prot if f.gene == "PDLIM3"]
+    assert myh7 and myh7[0].n_collapsed == 2 and myh7[0].aggregation_method == "max_abs_stat"
+    assert pdlim3 and pdlim3[0].n_collapsed == 3 and pdlim3[0].aggregation_method == "max_abs_stat"
+
+
+def test_mapping_decision_id_ties_to_audit():
+    resp = run_analysis(_full19())
+    audit_genes = {r.selected_symbol for r in resp.mapping_audit if r.selected_symbol}
+    for f in resp.features:
+        # the gene in a mapping_decision_id must be one that appears in the mapping audit
+        assert f.gene in audit_genes

@@ -144,7 +144,14 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResponse:
                 camera_t=t, camera_p=_clean(r.camera_p), camera_fdr=q, verdict=verdict,
                 significant=bool(q is not None and q < cutoff)))
 
-        # ---- per-feature evidence (grid_long: one row per shown gene per column), with lineage id
+        # ---- per-feature evidence (grid_long: one row per shown gene per column), with full lineage
+        # source_feature_id + n_collapsed come from the store row backing each gene in each column
+        # (collapse rule: max |stat| when several assay features map to one gene).
+        feature_ids = {}          # (column_id, gene) -> store feature_id
+        for cid in family_ids:
+            fr = S.frame(cid)
+            feature_ids.update(
+                {(cid, g): fid for g, fid in zip(fr.gene_symbol_human.astype(str), fr.feature_id.astype(str))})
         grid = R["grid"]
         features = []
         for r in grid.itertuples():
@@ -154,11 +161,17 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResponse:
             measured = lfc is not None
             opposed = (None if not measured else bool((1 if lfc > 0 else -1) * direction < 0))
             evidence_id = f"{run_id}:{r.column_id}:{r.gene}"
+            n_coll = _clean(r.n_collapsed)
+            n_coll = int(n_coll) if n_coll is not None else None
+            agg = ("single_feature" if (n_coll or 0) <= 1 else "max_abs_stat") if measured else ""
             features.append(FeatureEvidence(
                 evidence_id=evidence_id, gene=str(r.gene), disease_direction=direction, column_id=str(r.column_id),
                 comparison_label=m["label"], dataset=m["dataset"], species=m["species"], tissue=m["tissue"],
                 layer=m["layer"], sex=m["sex"], timepoint=m["timepoint"], exercise_logfc=lfc,
-                exercise_stat=_clean(r.stat), fdr_bh=_clean(r.fdr_bh), opposed=opposed, measured=measured))
+                exercise_stat=_clean(r.stat), fdr_bh=_clean(r.fdr_bh), opposed=opposed, measured=measured,
+                mapping_decision_id=f"{run_id}:map:{r.gene}",
+                source_feature_id=(feature_ids.get((str(r.column_id), str(r.gene)), "") if measured else ""),
+                n_collapsed=n_coll, aggregation_method=agg))
 
         # ---- layer discordance (RNA vs protein)
         disc = R.get("disc")

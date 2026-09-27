@@ -131,3 +131,20 @@ actions"), a stated judging criterion. Newest at the bottom.
   returning the raw compute() dict (non-serializable, leaks internals).
 - **Consequences.** 8 service tests; family size recorded as 52 (engine `core_cols`), not a hardcoded
   53; headline q=0.0584 computed. The service is the single seam React (Gate 5) and Marimo call.
+
+## ADR-0009 — Catalog & availability derived from store.columns; explicit capability matrix
+- **Context.** The React app shipped an in-memory catalog that (a) listed proteomics for rat SKM-VL
+  (the store has SKM-VL RNA only; SKM-GN has RNA+PROT+PHOSPHO) and (b) offered mouse/other source
+  species the mapper cannot resolve. Layers were labeled a flat "implemented/planned".
+- **Decision.** Generate the catalog and availability from `store.load_columns()`. Publish a
+  capability matrix with four independent flags per layer (engine/api/react/demo_validated) so an
+  engine-supported but UI-unexposed layer (phospho, metab) is not mislabeled globally "planned".
+  Gate the source species to human+rat; mouse/other return an explicit unsupported status. Add
+  lineage fields (source_feature_id, n_collapsed, aggregation_method="max_abs_stat" when >1,
+  mapping_decision_id) to every feature so point -> evidence -> source is testable.
+- **Reasons.** The store is the single source of truth for what exists; hardcoded catalogs drift and
+  misreport availability (an integrity risk). Lineage makes the traceability claim verifiable.
+- **Alternatives rejected.** Keeping the React constants (already wrong); a single "supported"
+  boolean per layer (hides the engine-vs-UI distinction).
+- **Consequences.** 8 catalog tests + 2 lineage tests. "No compatible data" is a valid HTTP-200
+  outcome, not an error. React (Gate 5) consumes this catalog instead of its constants.

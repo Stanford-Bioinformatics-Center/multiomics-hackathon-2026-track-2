@@ -68,7 +68,8 @@ class ContrastPair:
 
 @dataclass
 class FeatureEvidence:
-    """One signature gene in one comparison column. Every value traces to the store."""
+    """One signature gene in one comparison column. Every value traces to a store record so that
+    point -> evidence row -> source record is reconstructable (lineage fields below)."""
     evidence_id: str
     gene: str
     disease_direction: int
@@ -85,6 +86,11 @@ class FeatureEvidence:
     fdr_bh: Optional[float]          # within-comparison feature-level BH (from the store)
     opposed: Optional[bool]          # sign(exercise logFC) opposes disease direction
     measured: bool
+    # ---- lineage (point -> evidence -> source) ----
+    mapping_decision_id: str = ""    # ties this gene back to a mapping_audit row
+    source_feature_id: str = ""      # the store feature_id backing this gene in this column
+    n_collapsed: Optional[int] = None  # how many assay features collapsed into this gene
+    aggregation_method: str = ""     # e.g. "max_abs_stat" when n_collapsed > 1, else "single_feature"
 
 
 @dataclass
