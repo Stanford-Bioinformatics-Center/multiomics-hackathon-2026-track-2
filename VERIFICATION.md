@@ -283,3 +283,30 @@ Verified:
   Matches the legacy values (-0.079, -0.029, +0.060, +0.125, +0.116, +0.090) to the decimal:
   same input + same MoTrPAC reference + generalized engine -> identical result. This is the
   "generalize the hardcoded pipeline" confirmation.
+
+
+### Generalized query wiring + RUN_LOCAL checkpoint (PASS)
+Files added/changed:
+- `apps/api/motrpac_probe_service/generalized_query.py` (adapter over query_core.engine.run_query),
+  `app.py` (+2 endpoints), `catalog.py` (+generalized_query analysis type), `__init__.py` (export)
+- `apps/api/tests/test_generalized.py` (5 tests)
+- `apps/web/src/api/client.ts` (types+methods), `src/components/GeneralizedQuery.tsx` (view),
+  `src/App.tsx` (+ "Generalized query" view, now 8 views)
+- `RUN_LOCAL.md` (two-process run instructions + port guidance)
+
+Why: expose the generalized query_core engine (CLI-only in the repo) through the API/UI as a third
+analysis type, and document local run (a port clash with an unrelated ":8000 aegis" app was causing
+confusion).
+
+Verified:
+- Adapter reproduces the legacy blood result THROUGH the service: rna-layer Spearman
+  during_20_min -0.0788, during_40_min -0.0286, post_10_min +0.0601, post_15_30_45_min +0.1247,
+  post_3.5_4_hr +0.1161, post_24_hr +0.0899 (matches the hardcoded pipeline). JSON-safe.
+- Endpoints (TestClient): /api/generalized/signatures -> 5; /api/generalized/query/pah_blood_rna ->
+  200 with the reproduced rho; unknown id -> 404; catalog analysis_types includes generalized_query.
+- Test totals: api 43 passed (was 38 + 5 generalized); web 18 + build OK (8 views); engine
+  122/34 UNCHANGED; golden byte-identical (adapter-only).
+
+Local-run diagnosis: `:8000` is an unrelated "aegis" app; this app's web UI is Vite on 8443/5173 and
+the API is uvicorn on a chosen port (docs use 8765). A stale Vite was found on :5173. RUN_LOCAL.md
+records the exact two-terminal commands and VITE_API_BASE_URL wiring.

@@ -132,6 +132,39 @@ export interface AnalysisResponse {
   provenance: Record<string, unknown>;
 }
 
+export interface GeneralizedSignature {
+  id: string;
+  label: string;
+  tissue: string;
+  reference: string;
+  reference_contrast_category: string;
+}
+
+export interface GeneralizedRankRow {
+  layer: string;
+  timepoint: string;
+  contrast_category: string;
+  n_used: number;
+  spearman_rho: number | null;
+  status: string;
+}
+
+export interface GeneralizedQueryResult {
+  analysis_type: string;
+  schema_version: string;
+  signature_id: string;
+  signature_label: string;
+  tissue: string;
+  reference: string;
+  counts: Record<string, number>;
+  filters: Record<string, unknown>;
+  thresholds: Record<string, unknown>;
+  interpretation: string;
+  rank_correlation: GeneralizedRankRow[];
+  coverage_rows: number;
+  provenance: Record<string, unknown>;
+}
+
 export interface MetabHit {
   evidence_id: string;
   refmet_name: string;
@@ -251,4 +284,6 @@ export const api = {
   metabCaseStudy: () => getJSON<MetabCaseStudy>("/metabolomics/casestudy"),
   metabConvergence: () => getJSON<MetabConvergence>("/metabolomics/convergence"),
   metabExportUrl: () => `${BASE}/metabolomics/casestudy/export`,
+  generalizedSignatures: () => getJSON<{ signatures: GeneralizedSignature[]; note: string }>("/generalized/signatures"),
+  generalizedQuery: (id: string) => getJSON<GeneralizedQueryResult>(`/generalized/query/${id}`),
 };

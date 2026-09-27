@@ -53,6 +53,12 @@ ANALYSIS_TYPES = {
         "engine": "standalone MoTrPAC Hackathon/Metabolomics module (read-only adapter)",
         "api": True, "react": True,
     },
+    "generalized_query": {
+        "label": "Generalized query (any signature vs MoTrPAC)",
+        "cohort": "Any normalized disease signature (bundled PAH examples reproduce the legacy results)",
+        "engine": "standalone MoTrPAC Hackathon/generalized query_core (source of truth)",
+        "api": True, "react": True,
+    },
 }
 
 

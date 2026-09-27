@@ -22,6 +22,7 @@ from pydantic import BaseModel, Field, model_validator
 
 from . import catalog as _catalog
 from . import convergence as _convergence
+from . import generalized_query as _genq
 from . import metab_casestudy as _metab
 from . import export as _export
 from .schema import AnalysisRequest as _AnalysisRequest
@@ -256,3 +257,24 @@ def get_metab_convergence():
         return _convergence.cross_check()
     except FileNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
+# ---- generalized query (query_core): THIRD analysis type - run any signature vs MoTrPAC ------------
+
+@app.get("/api/generalized/signatures")
+def get_generalized_signatures():
+    """Bundled example signatures the generalized query_core engine can run (read-only picklist)."""
+    if not _genq.available():
+        raise HTTPException(status_code=404, detail="generalized query_core module not present")
+    return _genq.list_signatures()
+
+
+@app.get("/api/generalized/query/{signature_id}")
+def run_generalized_query(signature_id: str):
+    """Run a bundled signature through query_core against the MoTrPAC reference. The engine is the
+    source of truth; this reproduces the legacy hardcoded result for the PAH examples."""
+    if not _genq.available():
+        raise HTTPException(status_code=404, detail="generalized query_core module not present")
+    try:
+        return _genq.run_bundled(signature_id)
+    except KeyError:
+        raise HTTPException(status_code=404, detail=f"unknown signature: {signature_id}")

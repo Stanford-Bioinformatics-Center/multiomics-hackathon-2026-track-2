@@ -191,3 +191,23 @@ actions"), a stated judging criterion. Newest at the bottom.
   identical 1156/1156 cells, max diff 0.0; endpoints; export bundle; catalog analysis type). api suite
   38 passed; web 18 passed + build OK; engine golden byte-identical (adapter-only, no engine change).
   Honest conclusion (setting/scleroderma, not PAH; null acute response) carried verbatim to UI+export.
+
+
+## ADR-0012 — Generalized query_core wired in as a third analysis type; RUN_LOCAL added
+- **Context.** The merged `generalized/` module (`query_core`) is CLI-only; the frontend did not
+  expose it. A user opening the app could not reach the "run any signature vs MoTrPAC" flow, and a
+  port clash (an unrelated "aegis" app on :8000) made the app hard to find locally.
+- **Decision.** (a) Add `generalized_query.py`, an adapter that imports `query_core.engine.run_query`
+  in-process (adds `generalized/` to sys.path), runs a bundled signature into a temp dir, and returns
+  a JSON-safe summary + rank correlations + provenance. Endpoints `/api/generalized/signatures` and
+  `/api/generalized/query/{id}`; catalog gains the `generalized_query` analysis type. (b) Add a
+  `GeneralizedQuery.tsx` frontend view (8th nav item). (c) Add `RUN_LOCAL.md` documenting the two
+  processes and exact ports, and that :8000 is an unrelated app.
+- **Reasons.** Puts the generalized pipeline behind the UI (no longer CLI-only) using the same
+  adapter pattern as mprobe and the metabolomics case study; `query_core` stays the source of truth.
+  RUN_LOCAL removes the port confusion.
+- **Alternatives rejected.** Reimplement query_core inside the service (forks a source of truth);
+  leave it CLI-only (the user explicitly wanted it in the frontend).
+- **Consequences.** 5 generalized tests (adapter reproduces the legacy six blood Spearman values
+  through the service; endpoints; catalog). api suite 43 passed; web 18 + build OK (8 views). Engine
+  golden unchanged (adapter-only).
