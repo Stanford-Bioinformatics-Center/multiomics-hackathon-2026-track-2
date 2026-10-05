@@ -224,7 +224,7 @@ merged.
   - ##### Christopher Thai: Team Lead
   - ##### Bradley Haraguchi: Chief Developer 
   - ##### Daniyal Rahman: Project Manager
-  - ##### Nur-Taz Rahman: Quality Assurance/Resident Mom
+  - ##### Nur-Taz Rahman: Biology Lead, Multi-Omics Analysis Design, & Scientific Communication
 - **License & citation.** MIT — see [LICENSE](LICENSE) (© 2026 Stanford Bioinformatics
   Center). Cite the MoTrPAC data releases and the external datasets listed in
   [Methods & provenance](#6-methods--provenance).
